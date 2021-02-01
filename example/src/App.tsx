@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
-import RNNetwatch, { Counter } from 'react-native-netwatch';
+import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { actionRequest } from './redux/actions/appActions';
 import { Dispatch } from 'redux';
 
 const App = () => {
-  useEffect(() => {
-    console.log(RNNetwatch);
-  });
+  useEffect(() => {});
 
   return (
     <Provider store={store}>
@@ -24,6 +22,6 @@ export function mapDispatchToProps(dispatch: Dispatch, props: any): any {
   };
 }
 
-const ConnectedComponent = connect(null, mapDispatchToProps)(Counter);
+const ConnectedComponent = connect(null, mapDispatchToProps)(Netwatch);
 
 export default App;
