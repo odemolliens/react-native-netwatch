@@ -1,0 +1,16 @@
+coverage/
+build
+scripts
+shell
+src/__tests__
+node_modules
+.vscode
+.watchmanconfig
+.eslintignore
+.github
+.idea
+
+CHANGELOG.md
+CONTRIBUTING.md
+REFERENCE_API.md
+README.md

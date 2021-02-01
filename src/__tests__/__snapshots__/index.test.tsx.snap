@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index test suite should render properly 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": "100%",
+          "justifyContent": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "borderRadius": 20,
+            "elevation": 5,
+            "height": "100%",
+            "margin": 20,
+            "padding": 35,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+            "width": "100%",
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "marginBottom": 15,
+              "textAlign": "center",
+            }
+          }
+        >
+          Hello World!
+        </Component>
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#2196F3",
+              "borderRadius": 20,
+              "elevation": 2,
+              "padding": 10,
+            }
+          }
+          testID="buttonHideNetwatch"
+        >
+          <Component
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            Hide Netwatch
+          </Component>
+        </ForwardRef>
+      </Component>
+    </Component>
+  </Component>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F194FF",
+        "borderRadius": 20,
+        "elevation": 2,
+        "padding": 10,
+      }
+    }
+    testID="buttonDisplayNetwatch"
+  >
+    <Component
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      Display Netwatch
+    </Component>
+  </ForwardRef>
+</Component>
+`;
+
+exports[`Index test suite should render properly with custom action 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "height": "100%",
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flex": 1,
+          "height": "100%",
+          "justifyContent": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "white",
+            "borderRadius": 20,
+            "elevation": 5,
+            "height": "100%",
+            "margin": 20,
+            "padding": 35,
+            "shadowColor": "#000",
+            "shadowOffset": Object {
+              "height": 2,
+              "width": 0,
+            },
+            "shadowOpacity": 0.25,
+            "shadowRadius": 3.84,
+            "width": "100%",
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "marginBottom": 15,
+              "textAlign": "center",
+            }
+          }
+        >
+          Hello World!
+        </Component>
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#2196F3",
+              "borderRadius": 20,
+              "elevation": 2,
+              "padding": 10,
+            }
+          }
+          testID="buttonCustomAction"
+        >
+          <Component
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            Request
+          </Component>
+        </ForwardRef>
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Object {
+              "backgroundColor": "#2196F3",
+              "borderRadius": 20,
+              "elevation": 2,
+              "padding": 10,
+            }
+          }
+          testID="buttonHideNetwatch"
+        >
+          <Component
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlign": "center",
+              }
+            }
+          >
+            Hide Netwatch
+          </Component>
+        </ForwardRef>
+      </Component>
+    </Component>
+  </Component>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F194FF",
+        "borderRadius": 20,
+        "elevation": 2,
+        "padding": 10,
+      }
+    }
+    testID="buttonDisplayNetwatch"
+  >
+    <Component
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      Display Netwatch
+    </Component>
+  </ForwardRef>
+</Component>
+`;
