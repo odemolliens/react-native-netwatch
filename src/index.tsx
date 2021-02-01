@@ -1,12 +1,11 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { useState } from 'react';
 
 export interface IProps {
   customAction?: () => void;
 }
 
-export const Netwatch = (props: IProps) => {
+export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
 
   return (
@@ -22,6 +21,7 @@ export const Netwatch = (props: IProps) => {
                 onPress={() => {
                   props.customAction?.();
                 }}
+                testID="buttonCustomAction"
               >
                 <Text style={styles.textStyle}>Request</Text>
               </TouchableHighlight>
@@ -32,6 +32,7 @@ export const Netwatch = (props: IProps) => {
               onPress={() => {
                 setNetwatchVisible(!netwatchVisible);
               }}
+              testID="buttonHideNetwatch"
             >
               <Text style={styles.textStyle}>Hide Netwatch</Text>
             </TouchableHighlight>
@@ -44,6 +45,7 @@ export const Netwatch = (props: IProps) => {
         onPress={() => {
           setNetwatchVisible(true);
         }}
+        testID="buttonDisplayNetwatch"
       >
         <Text style={styles.textStyle}>Display Netwatch</Text>
       </TouchableHighlight>

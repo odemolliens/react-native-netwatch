@@ -68,3 +68,6 @@ buck-out/
 
 # Library
 lib/
+
+# test-coverage
+coverage/
