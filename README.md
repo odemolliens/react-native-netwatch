@@ -1,6 +1,8 @@
-<img align="center" src="assets/lib_asset.png" width="60%">
+<p align="center">
+  <img src="assets/lib_asset.png" width="60%">
+</p>
 
-[![Build Status](https://travis-ci.org/imranMnts/react-native-logging-tools.svg?branch=develop)](https://travis-ci.org/imranMnts/react-native-logging-tools)
+[![Build Status](https://travis-ci.org/imranMnts/react-native-netwatch.svg?branch=develop)](https://travis-ci.org/imranMnts/react-native-netwatch)
 ![npm](https://img.shields.io/npm/v/react-native-netwatch.svg)
 ![GitHub](https://img.shields.io/github/license/odemolliens/react-native-netwatch.svg)
 
