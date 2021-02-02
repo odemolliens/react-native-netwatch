@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/lib_asset.png" width="100%">
+  <img src="assets/lib_asset.png" width="60%">
 </p>
 
 [![Build Status](https://travis-ci.org/imranMnts/react-native-netwatch.svg?branch=develop)](https://travis-ci.org/imranMnts/react-native-netwatch)
