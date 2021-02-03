@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import * as React from 'react';
+import { useEffect } from 'react';
 import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';

@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import logger from './LoggerSingleton';
 
 export interface IProps {
   customAction?: () => void;
@@ -7,6 +9,17 @@ export interface IProps {
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
+  const [netwatchEnabled, setNetwatchEnabled] = useState(true);
+
+  // Start NetWatcher
+  useEffect(() => {
+    if (netwatchEnabled) logger.enableXHRInterception();
+  });
+
+  useEffect(() => {
+    logger.getRequest(1);
+    console.log(logger.getRequest(1));
+  });
 
   return (
     <View style={styles.centeredView}>
