@@ -1,11 +1,108 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Modal, StyleSheet, Text, TouchableHighlight, View, FlatList } from 'react-native';
+import {
+  Modal,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+  FlatList,
+  SafeAreaView,
+} from 'react-native';
 import logger from './LoggerSingleton';
+// @ts-ignore
+import { Appbar, Searchbar, Surface, List } from 'react-native-paper';
+import { en as translation } from './i18n/en';
+import Item from './Components/Item';
 
 export interface IProps {
   customAction?: () => void;
 }
+
+export const Netwatch: React.FC<IProps> = (props: IProps) => {
+  const [netwatchVisible, setNetwatchVisible] = useState(false);
+  const [netwatchEnabled, setNetwatchEnabled] = useState(true);
+  const [requests, setRequests] = useState(logger.getRequests());
+  const [searchQuery, setSearchQuery] = useState('');
+  logger.setCallback(setRequests);
+
+  // Start NetWatcher
+  useEffect(() => {
+    if (netwatchEnabled) logger.enableXHRInterception();
+    // Else stop watcher (and clean requests ?)
+  }, [netwatchEnabled]);
+
+  const _goBack = () => setNetwatchVisible(!netwatchVisible);
+
+  const onChangeSearch = (query: string) => setSearchQuery(query);
+
+  const filteredRequests = requests.filter((request) =>
+    request.url.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <SafeAreaView style={styles.centeredView}>
+      <Modal animationType="slide" visible={netwatchVisible}>
+        <Appbar.Header>
+          <Appbar.BackAction onPress={_goBack} />
+          <Appbar.Content title={translation.title} />
+        </Appbar.Header>
+        <Surface style={{ padding: 16 }}>
+          <Searchbar
+            placeholder={translation.placeholderSearchbar}
+            onChangeText={onChangeSearch}
+            value={searchQuery}
+          />
+        </Surface>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <FlatList
+              style={{ marginLeft: -8, width: '100%' }}
+              keyExtractor={(item) => item._id.toString()}
+              data={filteredRequests}
+              renderItem={({ item }) => <Item item={item} />}
+            />
+          </View>
+        </View>
+      </Modal>
+
+      <TouchableHighlight
+        style={styles.openButton}
+        onPress={() => {
+          setNetwatchVisible(true);
+        }}
+        testID="buttonDisplayNetwatch"
+      >
+        <Text style={styles.textStyle}>Display Netwatch</Text>
+      </TouchableHighlight>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+  },
+  modalView: {
+    width: '100%',
+    height: '100%',
+  },
+  openButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
 
 // For testing only
 const formData = new FormData();
@@ -31,106 +128,8 @@ const makeRequest = () => {
   // fetch('https://failingrequest');
 };
 
-setTimeout(() => {
-  makeRequest()
-}, 2000);
-
-export const Netwatch: React.FC<IProps> = (props: IProps) => {
-  const [netwatchVisible, setNetwatchVisible] = useState(false);
-  const [netwatchEnabled, setNetwatchEnabled] = useState(true);
-  const [requests, setRequests] = useState(logger.getRequests());
-  logger.setCallback(setRequests)
-
-  // Start NetWatcher
-  useEffect(() => {
-    if (netwatchEnabled) logger.enableXHRInterception();
-    // Else stop watcher (and clean requests ?)
-  }, [netwatchEnabled]);
-
-  return (
-    <View style={styles.centeredView}>
-      <Modal animationType="slide" visible={netwatchVisible}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-              onPress={() => {
-                setNetwatchVisible(!netwatchVisible);
-              }}
-              testID="buttonHideNetwatch"
-            >
-              <Text style={styles.textStyle}>Hide Netwatch</Text>
-            </TouchableHighlight>
-
-            <FlatList
-              keyExtractor={(item) => item._id.toString()}
-              data={requests}
-              renderItem={({ item }) => (
-                <TouchableHighlight onPress={() => () => {}}>
-                  <View style={{ flexDirection: 'row', backgroundColor: 'lightgray' }}>
-                    <Text>{item._id}</Text>
-                    <Text>{item.url}</Text>
-                  </View>
-                </TouchableHighlight>
-              )}
-            />
-          </View>
-        </View>
-      </Modal>
-
-      <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setNetwatchVisible(true);
-        }}
-        testID="buttonDisplayNetwatch"
-      >
-        <Text style={styles.textStyle}>Display Netwatch</Text>
-      </TouchableHighlight>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    width: '100%',
-    height: '100%',
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
+if (__DEV__) {
+  setTimeout(() => {
+    makeRequest();
+  }, 2000);
+}

@@ -45,8 +45,8 @@ class Logger {
   };
 
   clear = () => {
-    this.requests = []
-  }
+    this.requests = [];
+  };
 
   // readyState = 0 - Client has been created. open() not called yet.
   // readyState = 1 - open() has been called.
@@ -99,9 +99,9 @@ class Logger {
   };
 
   requestHeadersCallback = (header: string, value: string, xhr: IXHR) => {
-    let _requestHeaders: Partial<Request> = {}
+    let _requestHeaders: Partial<Request> = {};
     // @ts-ignore
-    _requestHeaders[header] = value
+    _requestHeaders[header] = value;
     this.updaterequest(xhr._index, _requestHeaders);
   };
 

@@ -5,13 +5,16 @@ import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { actionRequest } from './redux/actions/appActions';
 import { Dispatch } from 'redux';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 const App = () => {
   useEffect(() => {});
 
   return (
     <Provider store={store}>
-      <ConnectedComponent />
+      <PaperProvider>
+        <ConnectedComponent />
+      </PaperProvider>
     </Provider>
   );
 };
