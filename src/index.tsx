@@ -1,25 +1,29 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import { Modal, StyleSheet, Text, TouchableHighlight, View, FlatList } from 'react-native';
 import logger from './LoggerSingleton';
 
 export interface IProps {
   customAction?: () => void;
 }
 
+setInterval(() => {
+  fetch('http://reactnative.dev/movies.json')
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+}, 2000);
+
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
+  const [requests, setRequests] = useState(logger.getRequests());
+  logger.setCallback(setRequests)
 
   // Start NetWatcher
   useEffect(() => {
     if (netwatchEnabled) logger.enableXHRInterception();
-  });
-
-  useEffect(() => {
-    logger.getRequest(1);
-    console.log(logger.getRequest(1));
-  });
+    // Else stop watcher (and clean requests ?)
+  }, [netwatchEnabled]);
 
   return (
     <View style={styles.centeredView}>
@@ -28,17 +32,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
 
-            {props.customAction && (
+            {/* {props.customAction && (
               <TouchableHighlight
                 style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
                 onPress={() => {
                   props.customAction?.();
+                  setRequests(logger.getRequests());
                 }}
                 testID="buttonCustomAction"
               >
                 <Text style={styles.textStyle}>Request</Text>
               </TouchableHighlight>
-            )}
+            )} */}
 
             <TouchableHighlight
               style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
@@ -49,6 +54,19 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
             >
               <Text style={styles.textStyle}>Hide Netwatch</Text>
             </TouchableHighlight>
+
+            <FlatList
+              keyExtractor={(item) => item._id.toString()}
+              data={requests}
+              renderItem={({ item }) => (
+                <TouchableHighlight onPress={() => () => {}}>
+                  <View style={{ flexDirection: 'row', backgroundColor: 'lightgray' }}>
+                    <Text>{item._id}</Text>
+                    <Text>{item.url}</Text>
+                  </View>
+                </TouchableHighlight>
+              )}
+            />
           </View>
         </View>
       </Modal>

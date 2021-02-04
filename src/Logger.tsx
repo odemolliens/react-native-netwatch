@@ -25,15 +25,36 @@ class Logger {
   requests: Map<number, IRequest> = new Map();
   queue: Map<number, IRequest> = new Map();
   requestId: number = 0;
+  firstRequestId: number = 0;
 
-  getRequests = () => {
-    return this.requests.entries();
+  callback: Function = () => {}
+
+  setCallback = (callback: any) => {
+    this.callback = callback;
+  }
+
+  getRequests = (): Array<any> => {
+    const _results = Array.from(this.requests.values());
+    return _results.reverse();
   };
+
+  getExecutedRequests = (): number => {
+    return this.requests.size
+  }
 
   getRequest = (index: number) => {
     return this.requests.get(index);
   };
 
+  // Changer this.requests >>> Array
+  // Commenter
+
+
+  // readyState = 0 - Client has been created. open() not called yet.
+  // readyState = 1 - open() has been called.
+  // readyState = 2 - send() has been called, and headers and status are available.
+  // readyState = 3 - Downloading; responseText holds partial data.
+  // readyState = 4 -	The operation is complete.
   updaterequest = (index: number, request: Partial<IRequest>): void => {
     if (request.readyState === 4) {
       this.requests.set(index, {
@@ -41,6 +62,13 @@ class Logger {
         ...request,
       });
       this.queue.delete(index);
+      this.callback(this.getRequests())
+
+      if (this.getExecutedRequests() > this.maxRequests) {
+        this.requests.delete(this.firstRequestId);
+        this.firstRequestId++;
+      }
+
     } else {
       this.queue.set(index, {
         ...(this.queue.get(index) as IRequest),
@@ -51,6 +79,7 @@ class Logger {
 
   openCallback = (method: RequestMethod, url: string, xhr: IXHR) => {
     this.requestId++;
+    if (this.requestId === 0) this.firstRequestId = this.requestId;
     xhr._index = this.requestId;
     const _request: IRequest = {
       _id: this.requestId,
@@ -98,7 +127,7 @@ class Logger {
     xhr: IXHR
   ) => {
     console.log('*******responseCallback***********');
-    console.log(xhr._index);
+    // console.log(xhr._index);
     this.updaterequest(xhr._index, {
       endTime: Date.now(),
       readyState: xhr.readyState,
@@ -114,7 +143,6 @@ class Logger {
     // if (XHRInterceptor.isInterceptorEnabled()) {
     //   return;
     // }
-
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(
