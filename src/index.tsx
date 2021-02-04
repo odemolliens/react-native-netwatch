@@ -7,10 +7,32 @@ export interface IProps {
   customAction?: () => void;
 }
 
-setInterval(() => {
-  fetch('http://reactnative.dev/movies.json')
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+// For testing only
+const formData = new FormData();
+formData.append('test', 'hello');
+const makeRequest = () => {
+  fetch(
+    'https://postman-echo.com/post?query=some really long query that goes onto multiple lines so we can test what happens',
+    {
+      method: 'POST',
+      body: JSON.stringify({ test: 'hello' }),
+    }
+  );
+  fetch('https://postman-echo.com/post?formData', {
+    method: 'POST',
+    body: formData,
+  });
+  fetch('https://httpstat.us/302');
+  fetch('https://httpstat.us/400');
+  fetch('https://httpstat.us/500');
+  // Non JSON response
+  fetch('https://postman-echo.com/stream/2');
+  // Test requests that fail
+  // fetch('https://failingrequest');
+};
+
+setTimeout(() => {
+  makeRequest()
 }, 2000);
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
@@ -31,19 +53,6 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
-
-            {/* {props.customAction && (
-              <TouchableHighlight
-                style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-                onPress={() => {
-                  props.customAction?.();
-                  setRequests(logger.getRequests());
-                }}
-                testID="buttonCustomAction"
-              >
-                <Text style={styles.textStyle}>Request</Text>
-              </TouchableHighlight>
-            )} */}
 
             <TouchableHighlight
               style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
