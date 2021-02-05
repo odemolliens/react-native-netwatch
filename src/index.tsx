@@ -13,6 +13,7 @@ export interface IProps {
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [showDetails, setShowDetails] = useState(false);
+  const [item, setItem] = useState(undefined);
 
   if (logger.isEnabled() && !props.enabled) {
     logger.disableXHRInterception();
@@ -26,9 +27,13 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     <SafeAreaView>
       <Modal animationType="slide" visible={props.visible}>
         {showDetails ? (
-          <Details onPressBack={setShowDetails} />
+          <Details onPressBack={setShowDetails} item={item} />
         ) : (
-          <Logger onPressBack={props.onPressBack} onPressDetail={setShowDetails} />
+          <Logger
+            onPressBack={props.onPressBack}
+            onPressDetail={setShowDetails}
+            onPress={setItem}
+          />
         )}
       </Modal>
     </SafeAreaView>

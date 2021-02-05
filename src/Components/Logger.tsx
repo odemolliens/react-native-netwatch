@@ -35,7 +35,13 @@ export const Logger = (props: any) => {
             keyExtractor={(item) => item._id.toString()}
             data={filteredRequests}
             renderItem={({ item }) => (
-              <Item item={item} onPress={() => props.onPressDetail(true)} />
+              <Item
+                item={item}
+                onPress={() => {
+                  props.onPress(item);
+                  props.onPressDetail(true);
+                }}
+              />
             )}
           />
         </View>
