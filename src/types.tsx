@@ -7,3 +7,14 @@ export type StartNetworkLoggingOptions = {
   /** Max number of requests to keep before overwriting, default 500 */
   maxRequests?: number;
 };
+
+export interface IRequest {
+  _id: number;
+  readyState: number;
+  status?: number;
+  url: string;
+  method: string;
+  body?: string;
+  requestHeaders?: Headers;
+  responseHeaders?: Headers;
+}

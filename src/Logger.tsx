@@ -1,6 +1,6 @@
 // @ts-ignore
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
-import { Headers, RequestMethod, StartNetworkLoggingOptions } from './types';
+import { Headers, RequestMethod, StartNetworkLoggingOptions, IRequest } from './types';
 
 // xhr will be passed in every step (open/send/requestHeaders/headerReceived/response)
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
@@ -8,16 +8,6 @@ interface IXHR {
   _index: number;
   readyState: number;
   responseHeaders?: Headers;
-}
-
-interface IRequest {
-  _id: number;
-  readyState: number;
-  status?: number;
-  url: string;
-  method: string;
-  body?: string;
-  requestHeaders?: Headers;
 }
 
 class Logger {
