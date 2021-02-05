@@ -1,26 +1,20 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import {
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View,
-  FlatList,
-  SafeAreaView,
-} from 'react-native';
+import { Modal, StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
 import logger from './LoggerSingleton';
 // @ts-ignore
 import { Appbar, Searchbar, Surface, List } from 'react-native-paper';
 import { en as translation } from './i18n/en';
 import Item from './Components/Item';
 
+// Activation/Desactivation depuis exterieur du logger
+// Vérifier status 302 (headers)
 export interface IProps {
-  customAction?: () => void;
+  onPressBack: (visible: boolean) => void;
+  visible?: boolean;
 }
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
-  const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
   const [requests, setRequests] = useState(logger.getRequests());
   const [searchQuery, setSearchQuery] = useState('');
@@ -32,8 +26,6 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     // Else stop watcher (and clean requests ?)
   }, [netwatchEnabled]);
 
-  const _goBack = () => setNetwatchVisible(!netwatchVisible);
-
   const onChangeSearch = (query: string) => setSearchQuery(query);
 
   const filteredRequests = requests.filter((request) =>
@@ -42,9 +34,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   return (
     <SafeAreaView style={styles.centeredView}>
-      <Modal animationType="slide" visible={netwatchVisible}>
+      <Modal animationType="slide" visible={props.visible}>
         <Appbar.Header>
-          <Appbar.BackAction onPress={_goBack} />
+          <Appbar.BackAction onPress={() => props.onPressBack(false)} />
           <Appbar.Content title={translation.title} />
         </Appbar.Header>
         <Surface style={{ padding: 16 }}>
@@ -65,16 +57,6 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
           </View>
         </View>
       </Modal>
-
-      <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setNetwatchVisible(true);
-        }}
-        testID="buttonDisplayNetwatch"
-      >
-        <Text style={styles.textStyle}>Display Netwatch</Text>
-      </TouchableHighlight>
     </SafeAreaView>
   );
 };
@@ -90,17 +72,6 @@ const styles = StyleSheet.create({
   modalView: {
     width: '100%',
     height: '100%',
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
 
