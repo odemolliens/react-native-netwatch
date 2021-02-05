@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Modal, StyleSheet, View, FlatList, SafeAreaView } from 'react-native';
 import logger from './LoggerSingleton';
 // @ts-ignore
@@ -7,30 +7,31 @@ import { Appbar, Searchbar, Surface, List } from 'react-native-paper';
 import { en as translation } from './i18n/en';
 import Item from './Components/Item';
 
-// Activation/Desactivation depuis exterieur du logger
 // Vérifier status 302 (headers)
 export interface IProps {
   onPressBack: (visible: boolean) => void;
-  visible?: boolean;
+  visible: boolean;
+  enabled: boolean;
 }
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
-  const [netwatchEnabled, setNetwatchEnabled] = useState(true);
   const [requests, setRequests] = useState(logger.getRequests());
   const [searchQuery, setSearchQuery] = useState('');
   logger.setCallback(setRequests);
-
-  // Start NetWatcher
-  useEffect(() => {
-    if (netwatchEnabled) logger.enableXHRInterception();
-    // Else stop watcher (and clean requests ?)
-  }, [netwatchEnabled]);
 
   const onChangeSearch = (query: string) => setSearchQuery(query);
 
   const filteredRequests = requests.filter((request) =>
     request.url.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (logger.isEnabled() && !props.enabled) {
+    logger.disableXHRInterception();
+  }
+
+  if (!logger.isEnabled() && props.enabled) {
+    logger.enableXHRInterception();
+  }
 
   return (
     <SafeAreaView style={styles.centeredView}>
@@ -76,31 +77,42 @@ const styles = StyleSheet.create({
 });
 
 // For testing only
-const formData = new FormData();
-formData.append('test', 'hello');
-const makeRequest = () => {
-  fetch(
-    'https://postman-echo.com/post?query=some really long query that goes onto multiple lines so we can test what happens',
-    {
-      method: 'POST',
-      body: JSON.stringify({ test: 'hello' }),
+
+function getRndInteger(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+let isStarted: boolean = false;
+const makeRequestInContinue = (): void => {
+  setInterval(() => {
+    const key: number = getRndInteger(1, 4);
+    let url: string = '';
+    switch (key) {
+      case 1:
+        // Mock StatusCode 200 (delete link: https://designer.mocky.io/manage/delete/1a2d092a-42b2-4a89-a44f-267935dc13e9/BIMk8qNoP2zMvZtx6yQ3u9yGsWoK1g8HyYxO)
+        url = 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9';
+        break;
+      case 2:
+        // Mock StatusCode 302 (delete link: https://designer.mocky.io/manage/delete/7ee3fd63-f862-435f-8557-5de3e3d2fa91/4QPNsmOER7ghGDFKPWyIFvNAvGPysyYxkBi2)
+        url = 'https://run.mocky.io/v3/7ee3fd63-f862-435f-8557-5de3e3d2fa91';
+        break;
+      case 3:
+        // Mock StatusCode 400 (delete link: https://designer.mocky.io/manage/delete/d810eeaf-26ef-46fc-8e44-79c7df25d268/Rqq8qeKviPA80JI0ujlVJBZtbhRkNPBHYY2U)
+        url = 'https://run.mocky.io/v3/d810eeaf-26ef-46fc-8e44-79c7df25d268';
+        break;
+      default:
+        // Mock StatusCode 500 (delete link: https://designer.mocky.io/manage/delete/cea80db8-5848-4ef6-bb05-9c0a1d0971d0/MYZJzMDfg2GxA7jTbrXlbIK0lTzC1rU5U0Mh)
+        url = 'https://run.mocky.io/v3/cea80db8-5848-4ef6-bb05-9c0a1d0971d0';
+        break;
     }
-  );
-  fetch('https://postman-echo.com/post?formData', {
-    method: 'POST',
-    body: formData,
-  });
-  fetch('https://httpstat.us/302');
-  fetch('https://httpstat.us/400');
-  fetch('https://httpstat.us/500');
-  // Non JSON response
-  fetch('https://postman-echo.com/stream/2');
-  // Test requests that fail
-  // fetch('https://failingrequest');
+    fetch(url).catch((e) => console.log(e));
+  }, 2000);
 };
 
 if (__DEV__) {
-  setTimeout(() => {
-    makeRequest();
-  }, 2000);
+  !isStarted &&
+    setTimeout(() => {
+      makeRequestInContinue();
+    }, 2000);
+  isStarted = true;
 }

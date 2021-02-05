@@ -17,10 +17,11 @@ interface IRequest {
   url: string;
   method: string;
   body?: string;
-  requestHeaders?: any;
+  requestHeaders?: Headers;
 }
 
 class Logger {
+  initialized: boolean = false;
   maxRequests: number = 10;
   requests: Array<IRequest> = [];
   queue: Map<number, IRequest> = new Map();
@@ -46,6 +47,14 @@ class Logger {
 
   clear = () => {
     this.requests = [];
+  };
+
+  disableXHRInterception = () => {
+    XHRInterceptor.disableInterception();
+  };
+
+  isEnabled = () => {
+    return this.initialized && XHRInterceptor.isInterceptorEnabled();
   };
 
   // readyState = 0 - Client has been created. open() not called yet.
@@ -108,7 +117,7 @@ class Logger {
   headerReceivedCallback = (
     responseContentType: string,
     responseSize: number,
-    responseHeaders: Headers,
+    _responseHeaders: Headers, // Unused parameter, remove _ to used responseHeaders value in the function
     xhr: IXHR
   ) => {
     this.updaterequest(xhr._index, {
@@ -139,9 +148,6 @@ class Logger {
   };
 
   enableXHRInterception = (options?: StartNetworkLoggingOptions) => {
-    // if (XHRInterceptor.isInterceptorEnabled()) {
-    //   return;
-    // }
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(
@@ -159,6 +165,7 @@ class Logger {
     XHRInterceptor.setResponseCallback(this.responseCallback);
 
     XHRInterceptor.enableInterception();
+    this.initialized = true;
   };
 }
 

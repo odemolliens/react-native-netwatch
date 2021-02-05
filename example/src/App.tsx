@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
@@ -10,12 +10,12 @@ import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
-  useEffect(() => {});
+  const [netwatchEnabled, setNetwatchEnabled] = useState(true);
 
   return (
     <Provider store={store}>
       <PaperProvider>
-        <ConnectedComponent visible={netwatchVisible} onPressBack={setNetwatchVisible} />
+        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressBack={setNetwatchVisible} />
         <View style={styles.container}>
           <TouchableHighlight
             style={styles.openButton}
@@ -25,6 +25,15 @@ const App = () => {
             testID="buttonDisplayNetwatch"
           >
             <Text style={styles.textStyle}>Display Netwatch</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.enableButton}
+            onPress={() => {
+              setNetwatchEnabled(!netwatchEnabled);
+            }}
+            testID="buttonDisplayNetwatch"
+          >
+            <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
           </TouchableHighlight>
         </View>
       </PaperProvider>
@@ -50,6 +59,13 @@ const styles = StyleSheet.create({
   },
   openButton: {
     backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginBottom: 16,
+  },
+  enableButton: {
+    backgroundColor: '#349EEB',
     borderRadius: 20,
     padding: 10,
     elevation: 2,
