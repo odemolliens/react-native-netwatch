@@ -11,8 +11,8 @@ const Left: React.FC<any> = (props) => {
   };
 
   const _setColor = (status: number): string => {
-    if (status <= 200) return 'green';
-    if (status < 400) return 'orange';
+    if (status >= 200 && status < 300) return 'green';
+    if (status >= 300 && status < 400) return 'orange';
     return 'red';
   };
   const _color = _setColor(props.item.status);
@@ -24,7 +24,8 @@ const Left: React.FC<any> = (props) => {
         <Text style={styles.methodText}>{props.item.method}</Text>
         <Text style={[styles.statusText, { color: _color }]}>{props.item.status}</Text>
         <Text style={styles.dateText}>
-          {props.item.responseHeaders && _formatDate(props.item.responseHeaders.Date, props.item._id)}
+          {props.item.responseHeaders &&
+            _formatDate(props.item.responseHeaders.Date, props.item._id)}
         </Text>
       </View>
     </View>
