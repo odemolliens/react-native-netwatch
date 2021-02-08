@@ -2,9 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
 import { Appbar, Searchbar, Surface } from 'react-native-paper';
-import { en as translation } from '../i18n/en';
 import Item from '../Components/Item';
-import logger from '../LoggerSingleton';
+import logger from '../Core/LoggerSingleton';
 
 export const Logger = (props: any) => {
   const [requests, setRequests] = useState(logger.getRequests());
@@ -19,14 +18,10 @@ export const Logger = (props: any) => {
     <>
       <Appbar.Header>
         <Appbar.BackAction onPress={() => props.onPressBack(false)} />
-        <Appbar.Content title={translation.title} />
+        <Appbar.Content title="Netwatch" />
       </Appbar.Header>
       <Surface style={styles.surface}>
-        <Searchbar
-          placeholder={translation.placeholderSearchbar}
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-        />
+        <Searchbar placeholder={'Search'} onChangeText={onChangeSearch} value={searchQuery} />
       </Surface>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>

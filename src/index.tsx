@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Modal, SafeAreaView } from 'react-native';
-import logger from './LoggerSingleton';
+import logger from './Core/LoggerSingleton';
 import { Details } from './Components/Details';
 import { Logger } from './Components/Logger';
 
@@ -26,15 +26,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" visible={props.visible}>
-        {showDetails ? (
-          <Details onPressBack={setShowDetails} item={item} />
-        ) : (
-          <Logger
-            onPressBack={props.onPressBack}
-            onPressDetail={setShowDetails}
-            onPress={setItem}
-          />
-        )}
+        <Logger onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
+        {showDetails && <Details onPressBack={setShowDetails} item={item} />}
       </Modal>
     </SafeAreaView>
   );
@@ -47,10 +40,34 @@ function _getRndInteger(min: number, max: number): number {
 
 let isStarted: boolean = false;
 const makeRequestInContinue = (): void => {
-  // Test long request - to see if request continue in background and correctly displayed when go back in the app
-  fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=20s').catch((e) =>
-    console.error(e)
+  const formData = new FormData();
+  formData.append('test', 'hello');
+  fetch(
+    'https://postman-echo.com/post?query=some really long query that goes onto multiple lines so we can test what happens',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Special': 'dev-test',
+        'X-others':
+          'Another test with a very very long string just to see how it is render in the application and if it is all done',
+      },
+      body: JSON.stringify({ test: 'hello' }),
+    }
   );
+  // fetch('https://postman-echo.com/post?formData', {
+  //   method: 'POST',
+  //   body: formData,
+  // });
+  // // Test long request - to see if request continue in background and correctly displayed when go back in the app
+  // fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=20s').catch((e) =>
+  //   console.error(e)
+  // );
+
+  // // Post method
+  // fetch('https://run.mocky.io/v3/987b1858-cbc9-4911-84a7-fdea1614e224').catch((e) =>
+  //   console.error(e)
+  // );
 
   // setInterval(() => {
   //   const key: number = _getRndInteger(1, 4);

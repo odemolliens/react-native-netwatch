@@ -1,6 +1,6 @@
 // @ts-ignore
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
-import { Headers, RequestMethod, StartNetworkLoggingOptions, IRequest } from './types';
+import { Headers, RequestMethod, StartNetworkLoggingOptions, IRequest } from '../types';
 
 // xhr will be passed in every step (open/send/requestHeaders/headerReceived/response)
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
@@ -8,6 +8,7 @@ interface IXHR {
   _index: number;
   readyState: number;
   responseHeaders?: Headers;
+  requestHeaders?: any;
 }
 
 class Logger {
@@ -66,6 +67,8 @@ class Logger {
       if (this.getExecutedRequests() > this.maxRequests) {
         this.requests = [...this.requests.slice(0, this.getExecutedRequests() - 1)];
       }
+      console.log('*******Final request*******');
+      console.log(this.requests[0]);
 
       this.callback(this.getRequests());
       this.queue.delete(index);
@@ -98,10 +101,10 @@ class Logger {
   };
 
   requestHeadersCallback = (header: string, value: string, xhr: IXHR) => {
-    let _requestHeaders: Partial<Request> = {};
+    let _requestHeaders: Partial<Request> = { ...this.queue.get(xhr._index)?.requestHeaders };
     // @ts-ignore
     _requestHeaders[header] = value;
-    this.updaterequest(xhr._index, _requestHeaders);
+    this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<IRequest>);
   };
 
   headerReceivedCallback = (

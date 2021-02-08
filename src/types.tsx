@@ -15,6 +15,7 @@ export interface IRequest {
   url: string;
   method: string;
   body?: string;
+  startTime?: number;
   requestHeaders?: Headers;
   responseHeaders?: Headers;
 }
