@@ -11,11 +11,18 @@ export type StartNetworkLoggingOptions = {
 export interface IRequest {
   _id: number;
   readyState: number;
-  status?: number;
   url: string;
   method: string;
-  body?: string;
+  status?: number;
   startTime?: number;
+  endTime?: number;
+  timeout?: number;
+  dataSent?: string;
   requestHeaders?: Headers;
   responseHeaders?: Headers;
+  responseContentType?: string;
+  responseSize?: number;
+  responseType?: string;
+  responseURL?: string;
+  response?: any;
 }

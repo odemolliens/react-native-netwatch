@@ -67,8 +67,8 @@ class Logger {
       if (this.getExecutedRequests() > this.maxRequests) {
         this.requests = [...this.requests.slice(0, this.getExecutedRequests() - 1)];
       }
-      console.log('*******Final request*******');
-      console.log(this.requests[0]);
+      // console.log('*******Final request*******');
+      // console.log(this.requests[0]);
 
       this.callback(this.getRequests());
       this.queue.delete(index);

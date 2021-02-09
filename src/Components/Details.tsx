@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
 import { IRequest } from '../types';
 import { Status } from './Status';
 import { duration, convert, getDate } from '../Utils/helpers';
+// @ts-ignore
+import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
   // request: any; // WIP: Should be a request object
@@ -11,18 +14,85 @@ interface IProps {
   item: IRequest | undefined;
 }
 
-const _items = (listOfItems: Array<[]>) => {
-  return listOfItems.map((item: Array<string>, index: number) => {
-    return (
-      <View key={index} style={styles.attribtuesContainer}>
-        <Text style={styles.attributes}>{item[0]}</Text>
-        <Text style={styles.text}>{item[1]}</Text>
-      </View>
-    );
+// These attribute will be not added in the detail's scrollview because always displayed in the other components
+const excludedAttributes: Array<string> = [
+  '_id',
+  'readyState',
+  'method',
+  'status',
+  'startTime',
+  'endTime',
+  'dataSent',
+  'requestHeaders',
+  'responseHeaders',
+  'response',
+  'responseSize',
+  'responseContentType',
+];
+
+const stringifyData = (data: any) => {
+  try {
+    return JSON.stringify(JSON.parse(data), null, 2);
+  } catch (e) {
+    return `${data}`;
+  }
+};
+
+const getRequestBody = (item: any) => {
+  return stringifyData(item.dataSent || '');
+};
+
+const getResponseBody = async (item: IRequest): Promise<string> => {
+  const _responseBody = await (item.responseType !== 'blob'
+    ? item.response
+    : parseResponseBlob(item.response));
+  return stringifyData(_responseBody || '');
+};
+
+const parseResponseBlob = async (response: Blob) => {
+  const blobReader = new BlobFileReader();
+  blobReader.readAsText(response);
+
+  return await new Promise<string>((resolve, reject) => {
+    const handleError = () => reject(blobReader.error);
+
+    blobReader.addEventListener('load', () => {
+      resolve(blobReader.result);
+    });
+    blobReader.addEventListener('error', handleError);
+    blobReader.addEventListener('abort', handleError);
   });
 };
 
+const _items = (listOfItems: Array<[]>) => {
+  return listOfItems
+    .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
+    .map((item: Array<string>, index: number) => {
+      let _value = item[1];
+      if (typeof _value !== 'string') {
+        _value = stringifyData(_value);
+      }
+
+      return (
+        <View key={index} style={styles.attribtuesContainer}>
+          <Text style={styles.attributes}>{item[0]}</Text>
+          <Text style={styles.text}>{_value}</Text>
+        </View>
+      );
+    });
+};
+
 export const Details: React.FC<IProps> = (props) => {
+  const [bodyResponse, setBodyResponse] = useState('');
+  useEffect(() => {
+    let _bodyResponse = '';
+    (async () => {
+      _bodyResponse = await getResponseBody(props.item);
+      setBodyResponse(_bodyResponse);
+    })();
+    return () => {};
+  }, []);
+
   return (
     <View style={styles.container}>
       <Appbar.Header>
@@ -42,24 +112,21 @@ export const Details: React.FC<IProps> = (props) => {
         <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
           <View>
             <Subheading style={styles.subheading}>GENERAL</Subheading>
-            {props.item && (
-              <>
-                <View style={styles.attribtuesContainer}>
-                  <Text style={styles.attributes}>Internal Request ID</Text>
-                  <Text style={styles.text}>{props.item._id}</Text>
-                </View>
-                <View style={styles.attribtuesContainer}>
-                  <Text style={styles.attributes}>URL</Text>
-                  <Text style={styles.text}>{props.item.url}</Text>
-                </View>
-              </>
-            )}
+            {props.item && _items(Object.entries(props.item))}
+            <Subheading style={styles.subheading}>REQUEST</Subheading>
+            {props.item?.requestHeaders && _items(Object.entries(props.item?.requestHeaders))}
+            <Subheading style={styles.subheading}>BODY REQUEST</Subheading>
+            <View style={styles.attribtuesContainer}>
+              <Text style={styles.text}>{getRequestBody(props.item)}</Text>
+            </View>
             <Subheading style={styles.subheading}>RESPONSE</Subheading>
             {props.item &&
               props.item?.responseHeaders &&
               _items(Object.entries(props.item?.responseHeaders))}
-            <Subheading style={styles.subheading}>REQUEST</Subheading>
-            {props.item?.requestHeaders && _items(Object.entries(props.item?.requestHeaders))}
+            <Subheading style={styles.subheading}>BODY RESPONSE</Subheading>
+            <View style={styles.attribtuesContainer}>
+              <Text style={styles.text}>{bodyResponse}</Text>
+            </View>
           </View>
         </ScrollView>
       </View>

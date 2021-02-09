@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Modal, SafeAreaView } from 'react-native';
 import logger from './Core/LoggerSingleton';
 import { Details } from './Components/Details';
-import { Logger } from './Components/Logger';
+import { Main } from './Components/Main';
 
 export interface IProps {
   onPressBack: (visible: boolean) => void;
@@ -26,7 +26,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   return (
     <SafeAreaView>
       <Modal animationType="slide" visible={props.visible}>
-        <Logger onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
+        <Main onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
         {showDetails && <Details onPressBack={setShowDetails} item={item} />}
       </Modal>
     </SafeAreaView>
@@ -55,6 +55,28 @@ const makeRequestInContinue = (): void => {
       body: JSON.stringify({ test: 'hello' }),
     }
   );
+
+  // Request Status 200 - Specific headers
+  var myHeaders = new Headers();
+  myHeaders.append('x-dev', 'test');
+  myHeaders.append('Authorization', 'Bearer testbearer');
+  myHeaders.append(
+    'Cookie',
+    'Cookie_1=value; __cfduid=d6771f773b6862eec7ed068f472c9112f1612861163'
+  );
+
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow',
+    body: JSON.stringify({ test: 'hello' }),
+  };
+
+  fetch(
+    'https://run.mocky.io/v3/c67ffc95-67ff-42ef-975d-c744020696da',
+    requestOptions
+  ).catch((error) => console.log('error', error));
+
   // fetch('https://postman-echo.com/post?formData', {
   //   method: 'POST',
   //   body: formData,
