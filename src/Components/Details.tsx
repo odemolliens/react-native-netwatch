@@ -9,7 +9,6 @@ import { duration, convert, getDate } from '../Utils/helpers';
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
-  // request: any; // WIP: Should be a request object
   onPressBack: (showDetails: boolean) => void;
   item: IRequest | undefined;
 }
@@ -93,6 +92,8 @@ export const Details: React.FC<IProps> = (props) => {
     return () => {};
   }, []);
 
+  // Appbar header is repeated here cause we use the absolute position in the style
+  // Put this directly in the index.tsx cause that the Appbar will be added
   return (
     <View style={styles.container}>
       <Appbar.Header>
@@ -102,8 +103,8 @@ export const Details: React.FC<IProps> = (props) => {
       <Surface style={{ flexDirection: 'row' }}>
         <Status item={props.item} />
         <View style={{ justifyContent: 'center' }}>
-          <Text style={styles.text}>{`Started at: ${getDate(props.item?.startTime)}`}</Text>
-          <Text style={styles.text}>{`Duration ${convert(
+          <Text style={styles.textSubheader}>{`Started at: ${getDate(props.item?.startTime)}`}</Text>
+          <Text style={styles.textSubheader}>{`Duration ${convert(
             duration(props.item.startTime, props.item.endTime)
           )}ms`}</Text>
         </View>
@@ -138,6 +139,7 @@ const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     height: '100%',
+    width: '100%',
     flex: 1,
     top: 0,
     left: 0,
@@ -150,6 +152,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     marginTop: -1,
     backgroundColor: 'lightgray',
+    color: 'black',
   },
   attribtuesContainer: {
     paddingHorizontal: 16,
@@ -158,8 +161,13 @@ const styles = StyleSheet.create({
   attributes: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'black',
   },
   text: {
+    fontSize: 16,
+    color: 'black'
+  },
+  textSubheader: {
     fontSize: 16,
   },
 });

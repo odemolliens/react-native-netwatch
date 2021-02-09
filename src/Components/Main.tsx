@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { View, FlatList, StyleSheet } from 'react-native';
-import { Appbar, Searchbar, Surface, IconButton } from 'react-native-paper';
+// NOTE: React Native Paper modal doesn't work fine - DON'T USE
+import { View, FlatList, StyleSheet, Modal } from 'react-native';
+import {
+  Dialog,
+  Button,
+  Paragraph,
+  Appbar,
+  Searchbar,
+  Surface,
+  IconButton,
+} from 'react-native-paper';
 import Item from './Item';
 import logger from '../Core/LoggerSingleton';
 // @ts-ignore
@@ -16,6 +25,11 @@ export const Main = (props: any) => {
   );
   logger.setCallback(setRequests);
 
+  const [settingsVisible, setSettingsVisible] = useState(false);
+
+  const showDialog = () => setSettingsVisible(true);
+  const hideDialog = () => setSettingsVisible(false);
+
   return (
     <>
       <Appbar.Header>
@@ -23,14 +37,32 @@ export const Main = (props: any) => {
         <Appbar.Content title="Netwatch" />
       </Appbar.Header>
       <Surface style={styles.surface}>
-        <Searchbar style={{ flex: 1 }} placeholder={'Search'} onChangeText={onChangeSearch} value={searchQuery} />
+        <Searchbar
+          style={{ flex: 1 }}
+          placeholder={'Search'}
+          onChangeText={onChangeSearch}
+          value={searchQuery}
+        />
         <IconButton
-          style= {{ marginRight: -8 }}
-          icon={() => <Icon size={24} name="settings"></Icon>}
+          style={{ marginRight: -8 }}
+          icon={() => <Icon color="white" size={24} name="settings"></Icon>}
           size={24}
-          onPress={() => console.log('test')}
+          onPress={showDialog}
         ></IconButton>
       </Surface>
+
+      <Modal animationType="fade" transparent visible={settingsVisible}>
+        <Dialog visible={settingsVisible} onDismiss={hideDialog}>
+          <Dialog.Title>Alert</Dialog.Title>
+          <Dialog.Content>
+            <Paragraph>This is simple dialog</Paragraph>
+          </Dialog.Content>
+          <Dialog.Actions>
+            <Button onPress={hideDialog}>Done</Button>
+          </Dialog.Actions>
+        </Dialog>
+      </Modal>
+
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <FlatList
@@ -57,7 +89,7 @@ const styles = StyleSheet.create({
   surface: {
     padding: 16,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   flatList: {
     marginLeft: -8,
