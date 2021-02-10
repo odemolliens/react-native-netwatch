@@ -68,7 +68,7 @@
     "collectCoverage": true,
     "preset": "react-native",
     "setupFiles": [
-      "./jest.setup.ts"
+      "./config/jest.setup.ts"
     ],
     "moduleFileExtensions": [
       "ts",
@@ -76,12 +76,18 @@
       "js",
       "jsx"
     ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
     "transform": {
-      "\\.(js|jsx|ts|tsx)$": "./node_modules/babel-jest"
+      "\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "transformIgnorePatterns": [
-      "./node_modules/(?!react-native)/"
+    "testMatch": [
+      "**/__tests__/**/*.test.(js|ts|tsx)"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/example/"
     ],
     "coverageThreshold": {
       "global": {
