@@ -1,5 +1,3 @@
-export type Headers = { [header: string]: string };
-
 // export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 export type RequestMethod = 'GET' | 'POST' | 'UPDATE' | 'DELETE';
 
@@ -18,8 +16,8 @@ export interface IRequest {
   endTime: number;
   timeout?: number;
   dataSent?: string;
-  requestHeaders?: Headers;
-  responseHeaders?: Headers;
+  requestHeaders?: any;
+  responseHeaders?: any;
   responseContentType?: string;
   responseSize?: number;
   responseType?: string;

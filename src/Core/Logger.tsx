@@ -1,6 +1,7 @@
 // @ts-ignore
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
-import { Headers, RequestMethod, StartNetworkLoggingOptions, IRequest } from '../types';
+import { RequestMethod, StartNetworkLoggingOptions } from '../types';
+import { Request } from './Request';
 
 // xhr will be passed in every step (open/send/requestHeaders/headerReceived/response)
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
@@ -14,9 +15,9 @@ interface IXHR {
 class Logger {
   initialized: boolean = false;
   maxRequests: number = 10;
-  requests: Array<IRequest> = [];
-  queue: Map<number, IRequest> = new Map();
   requestId: number = 0;
+  requests: Array<Request> = [];
+  queue: Map<number, Request> = new Map();
 
   callback: Function = () => {};
 
@@ -53,13 +54,13 @@ class Logger {
   // readyState = 2 - send() has been called, and headers and status are available.
   // readyState = 3 - Downloading; responseText holds partial data.
   // readyState = 4 -	The operation is complete (suucessful or failed).
-  updaterequest = (index: number, request: Partial<IRequest>): void => {
+  updaterequest = (index: number, request: Partial<Request>): void => {
     if (request.readyState === 4) {
       // Be careful, always use immutable function on array (concat, splice)
       // never unshift/shift function
       this.requests = [
         {
-          ...(this.queue.get(index) as IRequest),
+          ...(this.queue.get(index) as Request),
           ...request,
         },
       ].concat(this.requests);
@@ -67,14 +68,11 @@ class Logger {
       if (this.getExecutedRequests() > this.maxRequests) {
         this.requests = [...this.requests.slice(0, this.getExecutedRequests() - 1)];
       }
-      // console.log('*******Final request*******');
-      // console.log(this.requests[0]);
-
       this.callback(this.getRequests());
       this.queue.delete(index);
     } else {
       this.queue.set(index, {
-        ...(this.queue.get(index) as IRequest),
+        ...(this.queue.get(index) as Request),
         ...request,
       });
     }
@@ -83,20 +81,18 @@ class Logger {
   openCallback = (method: RequestMethod, url: string, xhr: IXHR) => {
     this.requestId++;
     xhr._index = this.requestId;
-    const _request: IRequest = {
+
+    const _request: Request = new Request({
       _id: this.requestId,
       readyState: xhr.readyState,
       url: url,
       method: method,
-      startTime: Date.now(),
-      endTime: Date.now(),
-      status: 500,
-    };
-    this.queue.set(this.requestId, _request);
+    });
+    this.queue.set(xhr._index, _request);
   };
 
   sendCallback = (data: string, xhr: IXHR) => {
-    this.updaterequest(xhr._index, {
+    this.updaterequest(this.requestId, {
       readyState: xhr.readyState,
       dataSent: data,
     } as Partial<Request>);
@@ -106,7 +102,7 @@ class Logger {
     let _requestHeaders: Partial<Request> = { ...this.queue.get(xhr._index)?.requestHeaders };
     // @ts-ignore
     _requestHeaders[header] = value;
-    this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<IRequest>);
+    this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<Request>);
   };
 
   headerReceivedCallback = (

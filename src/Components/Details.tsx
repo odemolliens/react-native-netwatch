@@ -2,15 +2,15 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
-import { IRequest } from '../types';
 import { Status } from './Status';
 import { duration, convert, getDate } from '../Utils/helpers';
+import { Request, stringifyData, getRequestBody, getResponseBody } from '../Core/Request';
 // @ts-ignore
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
   onPressBack: (showDetails: boolean) => void;
-  item?: IRequest;
+  item?: Request;
 }
 
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
@@ -29,43 +29,6 @@ const excludedAttributes: Array<string> = [
   'responseContentType',
 ];
 
-const stringifyData = (data: any) => {
-  try {
-    return JSON.stringify(JSON.parse(data), null, 2);
-  } catch (e) {
-    return `${data}`;
-  }
-};
-
-// NOTE: A mettre coté listeners
-const getRequestBody = (item: any) => {
-  return stringifyData(item.dataSent || '');
-};
-
-const getResponseBody = async (item?: IRequest): Promise<string> => {
-  if (!item) return '';
-  const _responseBody = await (item.responseType !== 'blob'
-    ? item.response
-    : parseResponseBlob(item.response));
-  return stringifyData(_responseBody || '');
-};
-
-const parseResponseBlob = async (response: Blob) => {
-  const blobReader = new BlobFileReader();
-  blobReader.readAsText(response);
-
-  return await new Promise<string>((resolve, reject) => {
-    const handleError = () => reject(blobReader.error);
-
-    blobReader.addEventListener('load', () => {
-      resolve(blobReader.result);
-    });
-    blobReader.addEventListener('error', handleError);
-    blobReader.addEventListener('abort', handleError);
-  });
-};
-
-// NOTE: Voir pour mettre cote listeners
 const _renderItems = (listOfItems: Array<[string, any]>) => {
   return listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
@@ -85,7 +48,7 @@ const _renderItems = (listOfItems: Array<[string, any]>) => {
 };
 
 export const Details: React.FC<IProps> = (props) => {
-  if (!props.item) return <Text>Error</Text>
+  if (!props.item) return <Text>Error</Text>;
   const [bodyResponse, setBodyResponse] = useState('');
   useEffect(() => {
     let _bodyResponse = '';
@@ -101,18 +64,16 @@ export const Details: React.FC<IProps> = (props) => {
   return (
     <View style={styles.container}>
       <Appbar.Header>
-        <Appbar.BackAction 
+        <Appbar.BackAction
           onPress={() => props.onPressBack(false)}
           testID="buttonBackToMainScreen"
-      />
+        />
         <Appbar.Content title="Netwatch" />
       </Appbar.Header>
       <Surface style={{ flexDirection: 'row' }}>
         {props.item && <Status item={props.item} />}
         <View style={{ justifyContent: 'center' }}>
-          <Text style={styles.textSubheader}>{`Started at: ${getDate(
-            props.item.startTime 
-          )}`}</Text>
+          <Text style={styles.textSubheader}>{`Started at: ${getDate(props.item.startTime)}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${convert(
             duration(props.item.startTime, props.item.endTime)
           )}ms`}</Text>
