@@ -10,15 +10,15 @@ export const stringifyData = (data: any) => {
   }
 };
 
-export const getRequestBody = (item: any) => {
-  return stringifyData(item.dataSent || '');
+export const getRequestBody = (dataSent: any) => {
+  return stringifyData(dataSent || '');
 };
 
-export const getResponseBody = async (item?: IRequest): Promise<string> => {
-  if (!item) return '';
-  const _responseBody = await (item.responseType !== 'blob'
-    ? item.response
-    : parseResponseBlob(item.response));
+export const getResponseBody = async (responseType: string, response?: IRequest): Promise<string> => {
+  if (!response) return '';
+  const _responseBody = await (responseType !== 'blob'
+    ? response
+    : parseResponseBlob(response));
   return stringifyData(_responseBody || '');
 };
 

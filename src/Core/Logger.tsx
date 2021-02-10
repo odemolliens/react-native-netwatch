@@ -2,6 +2,7 @@
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
 import { RequestMethod, StartNetworkLoggingOptions } from '../types';
 import { Request } from './Request';
+import { getResponseBody, getRequestBody } from './Request'
 
 // xhr will be passed in every step (open/send/requestHeaders/headerReceived/response)
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
@@ -94,7 +95,7 @@ class Logger {
   sendCallback = (data: string, xhr: IXHR) => {
     this.updaterequest(this.requestId, {
       readyState: xhr.readyState,
-      dataSent: data,
+      dataSent: getRequestBody(data),
     } as Partial<Request>);
   };
 
@@ -119,20 +120,21 @@ class Logger {
     } as Partial<Request>);
   };
 
-  responseCallback = (
+  responseCallback = async (
     status: number,
     timeout: number,
-    response: string,
+    response: any,
     responseURL: string,
     responseType: string,
     xhr: IXHR
   ) => {
+    const _response = await getResponseBody(responseType, response);
     this.updaterequest(xhr._index, {
       endTime: Date.now(),
       readyState: xhr.readyState,
       status,
       timeout,
-      response,
+      response: _response,
       responseURL,
       responseType,
     } as Partial<Request>);

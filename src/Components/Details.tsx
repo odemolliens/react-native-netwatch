@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
 import { Status } from './Status';
 import { duration, convert, getDate } from '../Utils/helpers';
-import { Request, stringifyData, getRequestBody, getResponseBody } from '../Core/Request';
+import { Request } from '../Core/Request';
 // @ts-ignore
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
@@ -33,15 +32,10 @@ const _renderItems = (listOfItems: Array<[string, any]>) => {
   return listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
     .map((item: Array<string>, index: number) => {
-      let _value = item[1];
-      if (typeof _value !== 'string') {
-        _value = stringifyData(_value);
-      }
-
       return (
         <View key={index} style={styles.attribtuesContainer}>
           <Text style={styles.attributes}>{item[0]}</Text>
-          <Text style={styles.text}>{_value}</Text>
+          <Text style={styles.text}>{item[1]}</Text>
         </View>
       );
     });
@@ -49,16 +43,6 @@ const _renderItems = (listOfItems: Array<[string, any]>) => {
 
 export const Details: React.FC<IProps> = (props) => {
   if (!props.item) return <Text>Error</Text>;
-  const [bodyResponse, setBodyResponse] = useState('');
-  useEffect(() => {
-    let _bodyResponse = '';
-    (async () => {
-      _bodyResponse = await getResponseBody(props.item);
-      setBodyResponse(_bodyResponse);
-    })();
-    return () => {};
-  }, []);
-
   // Appbar header is repeated here cause we use the absolute position in the style
   // Put this directly in the index.tsx cause that the Appbar will be added
   return (
@@ -88,7 +72,7 @@ export const Details: React.FC<IProps> = (props) => {
             {props.item?.requestHeaders && _renderItems(Object.entries(props.item.requestHeaders))}
             <Subheading style={styles.subheading}>BODY REQUEST</Subheading>
             <View style={styles.attribtuesContainer}>
-              <Text style={styles.text}>{getRequestBody(props.item)}</Text>
+              <Text style={styles.text}>{props.item.dataSent}</Text>
             </View>
             <Subheading style={styles.subheading}>RESPONSE</Subheading>
             {props.item &&
@@ -96,7 +80,7 @@ export const Details: React.FC<IProps> = (props) => {
               _renderItems(Object.entries(props.item.responseHeaders))}
             <Subheading style={styles.subheading}>BODY RESPONSE</Subheading>
             <View style={styles.attribtuesContainer}>
-              <Text style={styles.text}>{bodyResponse}</Text>
+              <Text style={styles.text}>{props.item.response}</Text>
             </View>
           </View>
         </ScrollView>
