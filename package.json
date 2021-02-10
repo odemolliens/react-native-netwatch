@@ -1,29 +1,20 @@
 {
   "name": "react-native-netwatch",
   "version": "1.0.0",
-  "description": "",
+  "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "src/index.tsx",
   "types": "lib/index.d.ts",
   "author": "Imran Mentese <imran.mentese@gmail.com>",
   "license": "MIT",
-  "files": [
-    "android",
+  "keywords": [
+    "react-native",
+    "mobile",
     "ios",
-    "lib",
-    "react-native-netwatch.podspec",
-    "!.DS_Store",
-    "!.gradle",
-    "!.idea",
-    "!build",
-    "!gradle",
-    "!*.iml",
-    "!gradlew",
-    "!gradlew.bat",
-    "!local.properties",
-    "!project.xcworkspace",
-    "!xcshareddata",
-    "!xcuserdata"
+    "android",
+    "logging",
+    "network",
+    "traffic"
   ],
   "scripts": {
     "compile": "rm -rf lib && tsc -p .",
