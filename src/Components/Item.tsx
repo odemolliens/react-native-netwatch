@@ -17,7 +17,7 @@ const Item: React.FC<IProps> = ({ item, onPress }) => (
     titleStyle={styles.titleStyle}
     key={item._id}
     title={item.url}
-    left={() => <Status item={item} textColor={styles.textColor}/>}
+    left={() => <Status item={item} textColor={styles.textColor} />}
   />
 );
 
@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
   listItemContainer: {
     marginBottom: -12,
   },
-  titleStyle: { 
-    color: 'black'
+  titleStyle: {
+    color: 'black',
   },
   textColor: {
     color: 'black',
-  }
+  },
 });

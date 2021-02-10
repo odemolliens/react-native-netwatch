@@ -103,14 +103,16 @@ export const Details: React.FC<IProps> = (props) => {
       <Surface style={{ flexDirection: 'row' }}>
         <Status item={props.item} />
         <View style={{ justifyContent: 'center' }}>
-          <Text style={styles.textSubheader}>{`Started at: ${getDate(props.item?.startTime)}`}</Text>
+          <Text style={styles.textSubheader}>{`Started at: ${getDate(
+            props.item?.startTime
+          )}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${convert(
             duration(props.item.startTime, props.item.endTime)
           )}ms`}</Text>
         </View>
       </Surface>
       <View style={{ flex: 1 }}>
-        <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
+        <ScrollView contentContainerStyle={styles.scrollview}>
           <View>
             <Subheading style={styles.subheading}>GENERAL</Subheading>
             {props.item && _items(Object.entries(props.item))}
@@ -165,9 +167,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: 'black'
+    color: 'black',
   },
   textSubheader: {
     fontSize: 16,
+  },
+  scrollview: {
+    paddingBottom: 20,
   },
 });

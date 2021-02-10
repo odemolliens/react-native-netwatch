@@ -62,29 +62,13 @@ export const Main = (props: any) => {
           <Dialog.Content>
             <Dialog.Title>Settings</Dialog.Title>
             <RadioButton.Group onValueChange={(value) => setSource(value)} value={source}>
-              <View
-                style={{
-                  width: '100%',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}
-              >
+              <View style={styles.radioButtonContainer}>
                 <RadioButton value="rnr" />
-                <Text style={{ textAlignVertical: 'center', fontWeight: 'bold' }}>
-                  React Native Requests
-                </Text>
+                <Text style={styles.radioButtonText}>React Native Requests</Text>
               </View>
-              <View
-                style={{
-                  width: '100%',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}
-              >
+              <View style={styles.radioButtonContainer}>
                 <RadioButton value="nr" />
-                <Text style={{ textAlignVertical: 'center', fontWeight: 'bold' }}>
-                  Native Requests
-                </Text>
+                <Text style={styles.radioButtonText}>Native Requests</Text>
               </View>
             </RadioButton.Group>
 
@@ -93,9 +77,9 @@ export const Main = (props: any) => {
               <Button
                 labelStyle={[
                   styles.toggleButtonLabel,
-                  filter === 'all' && { color: 'white', fontWeight: 'bold' },
+                  filter === 'all' && styles.toogleButtonStatus,
                 ]}
-                style={[styles.toggleButton, filter === 'all' && { opacity: 0.5 }]}
+                style={[styles.toggleButton, filter === 'all' && styles.toggleButtonOpacity]}
                 onPress={() => setFilter('all')}
               >
                 All
@@ -103,9 +87,9 @@ export const Main = (props: any) => {
               <Button
                 labelStyle={[
                   styles.toggleButtonLabel,
-                  filter === 'get' && { color: 'white', fontWeight: 'bold' },
+                  filter === 'get' && styles.toogleButtonStatus,
                 ]}
-                style={[styles.toggleButton, filter === 'get' && { opacity: 0.5 }]}
+                style={[styles.toggleButton, filter === 'get' && styles.toggleButtonOpacity]}
                 onPress={() => setFilter('get')}
               >
                 GET
@@ -113,9 +97,9 @@ export const Main = (props: any) => {
               <Button
                 labelStyle={[
                   styles.toggleButtonLabel,
-                  filter === 'post' && { color: 'white', fontWeight: 'bold' },
+                  filter === 'post' && styles.toogleButtonStatus,
                 ]}
-                style={[styles.toggleButton, filter === 'post' && { opacity: 0.5 }]}
+                style={[styles.toggleButton, filter === 'post' && styles.toggleButtonOpacity]}
                 onPress={() => setFilter('post')}
               >
                 POST
@@ -123,9 +107,9 @@ export const Main = (props: any) => {
               <Button
                 labelStyle={[
                   styles.toggleButtonLabel,
-                  filter === 'put' && { color: 'white', fontWeight: 'bold' },
+                  filter === 'put' && styles.toogleButtonStatus,
                 ]}
-                style={[styles.toggleButton, filter === 'put' && { opacity: 0.5 }]}
+                style={[styles.toggleButton, filter === 'put' && styles.toggleButtonOpacity]}
                 onPress={() => setFilter('put')}
               >
                 PUT
@@ -133,11 +117,11 @@ export const Main = (props: any) => {
               <Button
                 labelStyle={[
                   styles.toggleButtonLabel,
-                  filter === 'delete' && { color: 'white', fontWeight: 'bold' },
+                  filter === 'delete' && styles.toogleButtonStatus,
                 ]}
                 style={[
                   styles.toggleButton,
-                  filter === 'delete' && { opacity: 0.5 },
+                  filter === 'delete' && styles.toggleButtonOpacity,
                   { borderRightWidth: 0 },
                 ]}
                 onPress={() => setFilter('delete')}
@@ -212,5 +196,21 @@ const styles = StyleSheet.create({
   },
   toggleButtonLabel: {
     color: 'white',
+  },
+  toogleButtonStatus: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  toggleButtonOpacity: {
+    opacity: 0.5,
+  },
+  radioButtonContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  radioButtonText: {
+    textAlignVertical: 'center',
+    fontWeight: 'bold',
   },
 });
