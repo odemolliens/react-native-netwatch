@@ -25,7 +25,7 @@ class Logger {
   };
 
   getRequests = (): Array<any> => {
-    return this.requests.reverse();
+    return this.requests;
   };
 
   getExecutedRequests = (): number => {

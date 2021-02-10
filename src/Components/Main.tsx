@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { useState } from 'react';
 // NOTE: React Native Paper modal doesn't work fine - DON'T USE
+// NOTE: React Native Paper ToggleButton can't allow add text in the button -> Custom Toggle Button here
 import { View, FlatList, StyleSheet, Modal } from 'react-native';
 import {
   Dialog,
   Button,
-  Paragraph,
   Appbar,
   Searchbar,
   Surface,
   IconButton,
+  Text,
+  RadioButton,
 } from 'react-native-paper';
 import Item from './Item';
 import logger from '../Core/LoggerSingleton';
@@ -19,16 +21,20 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export const Main = (props: any) => {
   const [requests, setRequests] = useState(logger.getRequests());
   const [searchQuery, setSearchQuery] = useState('');
-  const onChangeSearch = (query: string) => setSearchQuery(query);
-  const filteredRequests = requests.filter((request) =>
-    request.url.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-  logger.setCallback(setRequests);
-
+  const [source, setSource] = useState('rnr');
+  const [filter, setFilter] = useState('all');
   const [settingsVisible, setSettingsVisible] = useState(false);
-
+  const onChangeSearch = (query: string) => setSearchQuery(query);
   const showDialog = () => setSettingsVisible(true);
   const hideDialog = () => setSettingsVisible(false);
+  const filteredRequests = requests
+    .filter(
+      (request) =>
+        request.url.toLowerCase().includes(searchQuery.toLowerCase()) &&
+        (filter === 'all' || request.method.toLowerCase() === filter)
+    )
+    .reverse();
+  logger.setCallback(setRequests);
 
   return (
     <>
@@ -53,9 +59,92 @@ export const Main = (props: any) => {
 
       <Modal animationType="fade" transparent visible={settingsVisible}>
         <Dialog visible={settingsVisible} onDismiss={hideDialog}>
-          <Dialog.Title>Alert</Dialog.Title>
           <Dialog.Content>
-            <Paragraph>This is simple dialog</Paragraph>
+            <Dialog.Title>Settings</Dialog.Title>
+            <RadioButton.Group onValueChange={(value) => setSource(value)} value={source}>
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <RadioButton value="rnr" />
+                <Text style={{ textAlignVertical: 'center', fontWeight: 'bold' }}>
+                  React Native Requests
+                </Text>
+              </View>
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <RadioButton value="nr" />
+                <Text style={{ textAlignVertical: 'center', fontWeight: 'bold' }}>
+                  Native Requests
+                </Text>
+              </View>
+            </RadioButton.Group>
+
+            <Dialog.Title>Filter</Dialog.Title>
+            <View style={styles.toggleButtonGroup}>
+              <Button
+                labelStyle={[
+                  styles.toggleButtonLabel,
+                  filter === 'all' && { color: 'white', fontWeight: 'bold' },
+                ]}
+                style={[styles.toggleButton, filter === 'all' && { opacity: 0.5 }]}
+                onPress={() => setFilter('all')}
+              >
+                All
+              </Button>
+              <Button
+                labelStyle={[
+                  styles.toggleButtonLabel,
+                  filter === 'get' && { color: 'white', fontWeight: 'bold' },
+                ]}
+                style={[styles.toggleButton, filter === 'get' && { opacity: 0.5 }]}
+                onPress={() => setFilter('get')}
+              >
+                GET
+              </Button>
+              <Button
+                labelStyle={[
+                  styles.toggleButtonLabel,
+                  filter === 'post' && { color: 'white', fontWeight: 'bold' },
+                ]}
+                style={[styles.toggleButton, filter === 'post' && { opacity: 0.5 }]}
+                onPress={() => setFilter('post')}
+              >
+                POST
+              </Button>
+              <Button
+                labelStyle={[
+                  styles.toggleButtonLabel,
+                  filter === 'put' && { color: 'white', fontWeight: 'bold' },
+                ]}
+                style={[styles.toggleButton, filter === 'put' && { opacity: 0.5 }]}
+                onPress={() => setFilter('put')}
+              >
+                PUT
+              </Button>
+              <Button
+                labelStyle={[
+                  styles.toggleButtonLabel,
+                  filter === 'delete' && { color: 'white', fontWeight: 'bold' },
+                ]}
+                style={[
+                  styles.toggleButton,
+                  filter === 'delete' && { opacity: 0.5 },
+                  { borderRightWidth: 0 },
+                ]}
+                onPress={() => setFilter('delete')}
+              >
+                DEL
+              </Button>
+            </View>
           </Dialog.Content>
           <Dialog.Actions>
             <Button onPress={hideDialog}>Done</Button>
@@ -105,5 +194,23 @@ const styles = StyleSheet.create({
   modalView: {
     width: '100%',
     height: '100%',
+  },
+  toggleButtonGroup: {
+    minHeight: 38,
+    width: '100%',
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    borderWidth: 0.5,
+    borderColor: 'white',
+    borderRadius: 5,
+  },
+  toggleButton: {
+    borderRightWidth: 0.5,
+    borderColor: 'white',
+  },
+  toggleButtonLabel: {
+    color: 'white',
   },
 });
