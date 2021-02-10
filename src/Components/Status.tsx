@@ -6,7 +6,7 @@ import { setColor, identifier } from '../Utils/helpers';
 
 interface IProps {
   item: IRequest;
-  textColor: Object;
+  textColor?: Object;
 }
 
 export const Status: React.FC<IProps> = (props: IProps) => {

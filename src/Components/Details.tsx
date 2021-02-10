@@ -10,7 +10,7 @@ import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
   onPressBack: (showDetails: boolean) => void;
-  item: IRequest | undefined;
+  item?: IRequest;
 }
 
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
@@ -37,11 +37,13 @@ const stringifyData = (data: any) => {
   }
 };
 
+// NOTE: A mettre coté listeners
 const getRequestBody = (item: any) => {
   return stringifyData(item.dataSent || '');
 };
 
-const getResponseBody = async (item: IRequest): Promise<string> => {
+const getResponseBody = async (item?: IRequest): Promise<string> => {
+  if (!item) return '';
   const _responseBody = await (item.responseType !== 'blob'
     ? item.response
     : parseResponseBlob(item.response));
@@ -63,7 +65,8 @@ const parseResponseBlob = async (response: Blob) => {
   });
 };
 
-const _items = (listOfItems: Array<[]>) => {
+// NOTE: Voir pour mettre cote listeners
+const _renderItems = (listOfItems: Array<[string, any]>) => {
   return listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
     .map((item: Array<string>, index: number) => {
@@ -82,6 +85,7 @@ const _items = (listOfItems: Array<[]>) => {
 };
 
 export const Details: React.FC<IProps> = (props) => {
+  if (!props.item) return <Text>Error</Text>
   const [bodyResponse, setBodyResponse] = useState('');
   useEffect(() => {
     let _bodyResponse = '';
@@ -97,14 +101,17 @@ export const Details: React.FC<IProps> = (props) => {
   return (
     <View style={styles.container}>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => props.onPressBack(false)} />
+        <Appbar.BackAction 
+          onPress={() => props.onPressBack(false)}
+          testID="buttonBackToMainScreen"
+      />
         <Appbar.Content title="Netwatch" />
       </Appbar.Header>
       <Surface style={{ flexDirection: 'row' }}>
-        <Status item={props.item} />
+        {props.item && <Status item={props.item} />}
         <View style={{ justifyContent: 'center' }}>
           <Text style={styles.textSubheader}>{`Started at: ${getDate(
-            props.item?.startTime
+            props.item.startTime 
           )}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${convert(
             duration(props.item.startTime, props.item.endTime)
@@ -115,9 +122,9 @@ export const Details: React.FC<IProps> = (props) => {
         <ScrollView contentContainerStyle={styles.scrollview}>
           <View>
             <Subheading style={styles.subheading}>GENERAL</Subheading>
-            {props.item && _items(Object.entries(props.item))}
+            {props.item && _renderItems(Object.entries(props.item))}
             <Subheading style={styles.subheading}>REQUEST</Subheading>
-            {props.item?.requestHeaders && _items(Object.entries(props.item?.requestHeaders))}
+            {props.item?.requestHeaders && _renderItems(Object.entries(props.item.requestHeaders))}
             <Subheading style={styles.subheading}>BODY REQUEST</Subheading>
             <View style={styles.attribtuesContainer}>
               <Text style={styles.text}>{getRequestBody(props.item)}</Text>
@@ -125,7 +132,7 @@ export const Details: React.FC<IProps> = (props) => {
             <Subheading style={styles.subheading}>RESPONSE</Subheading>
             {props.item &&
               props.item?.responseHeaders &&
-              _items(Object.entries(props.item?.responseHeaders))}
+              _renderItems(Object.entries(props.item.responseHeaders))}
             <Subheading style={styles.subheading}>BODY RESPONSE</Subheading>
             <View style={styles.attribtuesContainer}>
               <Text style={styles.text}>{bodyResponse}</Text>

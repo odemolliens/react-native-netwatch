@@ -10,10 +10,6 @@ import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 
-// TODO: Finalize details screen
-// TODO: Cleaning
-
-
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
@@ -37,7 +33,7 @@ const App = () => {
             onPress={() => {
               setNetwatchEnabled(!netwatchEnabled);
             }}
-            testID="buttonDisplayNetwatch"
+            testID="buttonDisabledNetwatch"
           >
             <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
           </TouchableHighlight>
