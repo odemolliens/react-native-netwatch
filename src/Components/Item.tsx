@@ -14,9 +14,10 @@ const Item: React.FC<IProps> = ({ item, onPress }) => (
   <List.Item
     onPress={() => onPress()}
     style={styles.listItemContainer}
+    titleStyle={styles.titleStyle}
     key={item._id}
     title={item.url}
-    left={() => <Status item={item} />}
+    left={() => <Status item={item} textColor={styles.textColor} />}
   />
 );
 
@@ -25,5 +26,11 @@ export default Item;
 const styles = StyleSheet.create({
   listItemContainer: {
     marginBottom: -12,
+  },
+  titleStyle: {
+    color: 'black',
+  },
+  textColor: {
+    color: 'black',
   },
 });

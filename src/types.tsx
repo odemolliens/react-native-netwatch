@@ -13,9 +13,9 @@ export interface IRequest {
   readyState: number;
   url: string;
   method: string;
-  status?: number;
-  startTime?: number;
-  endTime?: number;
+  status: number;
+  startTime: number;
+  endTime: number;
   timeout?: number;
   dataSent?: string;
   requestHeaders?: Headers;

@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text } from 'react-native-paper';
 import { IRequest } from '../types';
 import { setColor, identifier } from '../Utils/helpers';
 
 interface IProps {
   item: IRequest;
+  textColor?: Object;
 }
 
 export const Status: React.FC<IProps> = (props: IProps) => {
@@ -14,9 +16,9 @@ export const Status: React.FC<IProps> = (props: IProps) => {
     <View style={styles.leftContainer}>
       <View style={[styles.statusIndicator, { backgroundColor: _color }]} />
       <View style={styles.textLeftContainer}>
-        <Text style={styles.methodText}>{props.item.method}</Text>
+        <Text style={[styles.methodText, props.textColor]}>{props.item.method}</Text>
         <Text style={[styles.statusText, { color: _color }]}>{props.item.status}</Text>
-        <Text style={styles.dateText}>
+        <Text style={[styles.dateText, props.textColor]}>
           {props.item.responseHeaders && identifier(props.item.startTime, props.item._id)}
         </Text>
       </View>

@@ -4,16 +4,17 @@ import { Modal, SafeAreaView } from 'react-native';
 import logger from './Core/LoggerSingleton';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
+import { Provider } from 'react-native-paper';
 
 export interface IProps {
   onPressBack: (visible: boolean) => void;
-  visible: boolean;
-  enabled: boolean;
+  visible?: boolean;
+  enabled?: boolean;
 }
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [showDetails, setShowDetails] = useState(false);
-  const [item, setItem] = useState(undefined);
+  const [item, setItem] = useState();
 
   if (logger.isEnabled() && !props.enabled) {
     logger.disableXHRInterception();
@@ -24,19 +25,21 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }
 
   return (
-    <SafeAreaView>
-      <Modal animationType="slide" visible={props.visible}>
-        <Main onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
-        {showDetails && <Details onPressBack={setShowDetails} item={item} />}
-      </Modal>
-    </SafeAreaView>
+    <Provider>
+      <SafeAreaView>
+        <Modal animationType="slide" visible={props.visible}>
+          <Main onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
+          {showDetails && <Details onPressBack={setShowDetails} item={item} />}
+        </Modal>
+      </SafeAreaView>
+    </Provider>
   );
 };
 
 // For testing only
-function _getRndInteger(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// function _getRndInteger(min: number, max: number): number {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 
 let isStarted: boolean = false;
 const makeRequestInContinue = (): void => {

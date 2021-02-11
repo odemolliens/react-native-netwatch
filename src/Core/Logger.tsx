@@ -25,7 +25,7 @@ class Logger {
   };
 
   getRequests = (): Array<any> => {
-    return this.requests.reverse();
+    return this.requests;
   };
 
   getExecutedRequests = (): number => {
@@ -88,13 +88,15 @@ class Logger {
       readyState: xhr.readyState,
       url: url,
       method: method,
+      startTime: Date.now(),
+      endTime: Date.now(),
+      status: 500,
     };
     this.queue.set(this.requestId, _request);
   };
 
   sendCallback = (data: string, xhr: IXHR) => {
     this.updaterequest(xhr._index, {
-      startTime: Date.now(),
       readyState: xhr.readyState,
       dataSent: data,
     } as Partial<Request>);
