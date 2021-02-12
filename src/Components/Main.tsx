@@ -21,7 +21,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 interface IProps {
   testId?: string;
   onPress: Function;
-  onPressBack: (value: boolean) => void;
+  onPressClose: (value: boolean) => void;
   onPressDetail: (value: boolean) => void;
 }
 
@@ -46,7 +46,7 @@ export const Main = (props: IProps) => {
   return (
     <>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => props.onPressBack(false)} />
+        <IconButton icon='close' onPress={() => props.onPressClose(false)} />
         <Appbar.Content title="Netwatch" />
       </Appbar.Header>
       <Surface style={styles.surface}>

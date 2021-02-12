@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressBack={setNetwatchVisible} />
+        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressClose={setNetwatchVisible} />
         <View style={styles.container}>
           <TouchableHighlight
             style={styles.openButton}

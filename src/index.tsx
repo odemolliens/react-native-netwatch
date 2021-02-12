@@ -7,7 +7,7 @@ import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
 
 export interface IProps {
-  onPressBack: (visible: boolean) => void;
+  onPressClose: (visible: boolean) => void;
   visible?: boolean;
   enabled?: boolean;
 }
@@ -30,7 +30,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         <Modal animationType="slide" visible={props.visible}>
           <Main
             testId="mainScreen"
-            onPressBack={props.onPressBack}
+            onPressClose={props.onPressClose}
             onPressDetail={setShowDetails}
             onPress={setItem}
           />
