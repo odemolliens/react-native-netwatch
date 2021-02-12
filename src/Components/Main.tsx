@@ -51,7 +51,7 @@ export const Main = (props: IProps) => {
       </Appbar.Header>
       <Surface style={styles.surface}>
         <Searchbar
-          style={{ flex: 1 }}
+          style={styles.searchBar}
           placeholder={'Search'}
           onChangeText={onChangeSearch}
           value={searchQuery}
@@ -166,6 +166,10 @@ export const Main = (props: IProps) => {
 };
 
 const styles = StyleSheet.create({
+  searchBar: { 
+    flex: 1, 
+    backgroundColor: 'gray' 
+  },
   surface: {
     padding: 16,
     flexDirection: 'row',
