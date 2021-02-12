@@ -26,6 +26,7 @@ const excludedAttributes: Array<string> = [
   'responseHeaders',
   'response',
   'responseSize',
+  'responseType',
   'responseContentType',
 ];
 
@@ -58,7 +59,7 @@ export const Details: React.FC<IProps> = (props) => {
       <Surface style={{ flexDirection: 'row' }}>
         {props.item && <Status item={props.item} />}
         <View style={{ justifyContent: 'center' }}>
-          <Text style={styles.textSubheader}>{`Started at: ${getDate(props.item.startTime)}`}</Text>
+          <Text style={styles.textSubheader}>{`${getDate(props.item.startTime)}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${duration(
             props.item.startTime,
             props.item.endTime

@@ -1,14 +1,14 @@
 export const getTime = (date: number): string => {
   // iOS need a string, Android need a number
   const _date = new Date(date);
-  const _minutes = _date.getUTCMinutes();
-  const _hours = _date.getUTCHours();
-  const _seconds = _date.getUTCSeconds();
+  const _minutes = _date.getMinutes();
+  const _hours = _date.getHours();
+  const _seconds = _date.getSeconds();
   return `${_hours}:${_minutes}:${_seconds}`;
 };
 
 export const getDate = (date: number): string => {
-  return new Date(date).toUTCString();
+  return new Date(date).toString();
 };
 
 export const identifier = (date: number, id: number): string => {

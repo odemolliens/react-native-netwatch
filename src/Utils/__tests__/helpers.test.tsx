@@ -2,22 +2,24 @@ import { getTime, getDate, identifier, setColor, duration } from '../helpers';
 
 describe('Index test suite', () => {
   // Test getTime
-  it('should return 17:3:44 if unixtime number is 1612976624143', () => {
+  it('should return 18:3:44 if unixtime number is 1612976624143', () => {
     const date: number = 1612976624143;
-    expect(getTime(date)).toBe('17:3:44');
+    expect(getTime(date)).toBe('18:3:44');
   });
 
   // Test getDate
-  it('should return Wed, 10 Feb 2021 17:03:44 GMT if unixtime number is 1612976624145', () => {
+  it('should return Wed Feb 10 2021 18:03:44 GMT+0100 (Central European Standard Time) if unixtime number is 1612976624145', () => {
     const date: number = 1612976624145; // unixtime
-    expect(getDate(date)).toBe('Wed, 10 Feb 2021 17:03:44 GMT');
+    expect(getDate(date)).toBe(
+      'Wed Feb 10 2021 18:03:44 GMT+0100 (Central European Standard Time)'
+    );
   });
 
   // Test identifier generator
-  it('should return 17:3:44:33 if unixtime number is 1612976624143 and id=33', () => {
+  it('should return 18:3:44:33 if unixtime number is 1612976624143 and id=33', () => {
     const date: number = 1612976624145; // unixtime
     const id: number = 33;
-    expect(identifier(date, id)).toBe('17:3:44:33');
+    expect(identifier(date, id)).toBe('18:3:44:33');
   });
 
   // Tests setColor
