@@ -71,17 +71,17 @@ export const Details: React.FC<IProps> = (props) => {
           <View>
             <Subheading style={styles.subheading}>GENERAL</Subheading>
             {props.item && _renderItems(Object.entries(props.item))}
-            <Subheading style={styles.subheading}>REQUEST</Subheading>
+            <Subheading style={styles.subheading}>REQUEST HEADERS</Subheading>
             {props.item?.requestHeaders && _renderItems(Object.entries(props.item.requestHeaders))}
-            <Subheading style={styles.subheading}>BODY REQUEST</Subheading>
+            <Subheading style={styles.subheading}>REQUEST DATA</Subheading>
             <View style={styles.attribtuesContainer}>
               <Text style={styles.text}>{props.item.dataSent}</Text>
             </View>
-            <Subheading style={styles.subheading}>RESPONSE</Subheading>
+            <Subheading style={styles.subheading}>RESPONSE HEADERS</Subheading>
             {props.item &&
               props.item?.responseHeaders &&
               _renderItems(Object.entries(props.item.responseHeaders))}
-            <Subheading style={styles.subheading}>BODY RESPONSE</Subheading>
+            <Subheading style={styles.subheading}>RESPONSE BODY</Subheading>
             <View style={styles.attribtuesContainer}>
               <Text style={styles.text}>{props.item.response}</Text>
             </View>
