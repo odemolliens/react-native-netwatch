@@ -28,8 +28,15 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     <Provider>
       <SafeAreaView>
         <Modal animationType="slide" visible={props.visible}>
-          <Main onPressBack={props.onPressBack} onPressDetail={setShowDetails} onPress={setItem} />
-          {showDetails && <Details onPressBack={setShowDetails} item={item} />}
+          <Main
+            testId="mainScreen"
+            onPressBack={props.onPressBack}
+            onPressDetail={setShowDetails}
+            onPress={setItem}
+          />
+          {showDetails && (
+            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+          )}
         </Modal>
       </SafeAreaView>
     </Provider>

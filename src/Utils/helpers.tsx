@@ -16,7 +16,7 @@ export const identifier = (date: number, id: number): string => {
 };
 
 // get the status code from the request and return a color
-export const setColor = (status: number): string => {
+export const setColor = (status: number = 500): string => {
   if (status >= 200 && status < 300) return 'green';
   if (status >= 300 && status < 400) return 'orange';
   return 'red';

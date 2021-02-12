@@ -1,9 +1,27 @@
 import { IRequest } from '../types';
 //@ts-ignore
+// BlobFileReader is needed to read the content of the body response (it's type can be blob)
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
+
+// export const stringifyData = (data: any) => {
+//   try {
+//     return JSON.stringify(JSON.parse(data), null, 2);
+//   } catch (e) {
+//     return `${data}`;
+//   }
+// };
+
+const fromEntries = (arr: any[]) =>
+  arr.reduce((acc, [k, v]) => {
+    acc[k] = v;
+    return acc;
+  }, {});
 
 export const stringifyData = (data: any) => {
   try {
+    if (data?._parts?.length) {
+      return JSON.stringify(fromEntries(data?._parts), null, 2);
+    }
     return JSON.stringify(JSON.parse(data), null, 2);
   } catch (e) {
     return `${data}`;
@@ -14,11 +32,12 @@ export const getRequestBody = (dataSent: any) => {
   return stringifyData(dataSent || '');
 };
 
-export const getResponseBody = async (responseType: string, response?: IRequest): Promise<string> => {
+export const getResponseBody = async (
+  responseType: string,
+  response?: Request
+): Promise<string> => {
   if (!response) return '';
-  const _responseBody = await (responseType !== 'blob'
-    ? response
-    : parseResponseBlob(response));
+  const _responseBody = await (responseType !== 'blob' ? response : parseResponseBlob(response));
   return stringifyData(_responseBody || '');
 };
 

@@ -2,15 +2,15 @@ import * as React from 'react';
 import { StyleSheet } from 'react-native';
 // @ts-ignore
 import { Appbar, Searchbar, Surface, List } from 'react-native-paper';
-import { IRequest } from '../types';
+import { Request } from '../Core/Request';
 import { Status } from './Status';
 
-interface IProps {
-  item: IRequest;
+export interface IProps {
+  item: Request;
   onPress: () => void;
 }
 
-const Item: React.FC<IProps> = ({ item, onPress }) => (
+export const Item: React.FC<IProps> = ({ item, onPress }) => (
   <List.Item
     onPress={() => onPress()}
     style={styles.listItemContainer}

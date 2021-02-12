@@ -8,6 +8,7 @@ import { Request } from '../Core/Request';
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
+  testId?: string;
   onPressBack: (showDetails: boolean) => void;
   item?: Request;
 }

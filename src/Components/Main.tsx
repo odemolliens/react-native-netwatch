@@ -18,7 +18,14 @@ import logger from '../Core/LoggerSingleton';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export const Main = (props: any) => {
+interface IProps {
+  testId?: string;
+  onPress: Function;
+  onPressBack: (value: boolean) => void;
+  onPressDetail: (value: boolean) => void;
+}
+
+export const Main = (props: IProps) => {
   const [requests, setRequests] = useState(logger.getRequests());
   const [searchQuery, setSearchQuery] = useState('');
   const [source, setSource] = useState('rnr');

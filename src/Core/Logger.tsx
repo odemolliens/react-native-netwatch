@@ -2,7 +2,18 @@
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
 import { RequestMethod, StartNetworkLoggingOptions } from '../types';
 import { Request } from './Request';
-import { getResponseBody, getRequestBody } from './Request'
+import { getResponseBody, getRequestBody } from './Request';
+
+// readyState = 0 - Client has been created. open() not called yet.
+// readyState = 1 - open() has been called.
+// readyState = 2 - send() has been called, and headers and status are available.
+// readyState = 3 - Downloading; responseText holds partial data.
+// readyState = 4 -	The operation is complete (suucessful or failed).
+// const XHR_CREATE_STATUS = 0;
+// const XHR_OPEN_STATUS = 1;
+// const XHR_SEND_STATUS = 2;
+// const XHR_DOWNLOAD_STATUS = 3;
+const XHR_COMPLETE_STATUS = 4;
 
 // xhr will be passed in every step (open/send/requestHeaders/headerReceived/response)
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
@@ -26,7 +37,7 @@ class Logger {
     this.callback = callback;
   };
 
-  getRequests = (): Array<any> => {
+  getRequests = (): Array<Request> => {
     return this.requests;
   };
 
@@ -50,13 +61,8 @@ class Logger {
     return this.initialized && XHRInterceptor.isInterceptorEnabled();
   };
 
-  // readyState = 0 - Client has been created. open() not called yet.
-  // readyState = 1 - open() has been called.
-  // readyState = 2 - send() has been called, and headers and status are available.
-  // readyState = 3 - Downloading; responseText holds partial data.
-  // readyState = 4 -	The operation is complete (suucessful or failed).
   updaterequest = (index: number, request: Partial<Request>): void => {
-    if (request.readyState === 4) {
+    if (request.readyState === XHR_COMPLETE_STATUS) {
       // Be careful, always use immutable function on array (concat, splice)
       // never unshift/shift function
       this.requests = [
