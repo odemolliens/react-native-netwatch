@@ -36,7 +36,7 @@ export const Status: React.FC<IProps> = (props: IProps) => {
 const styles = StyleSheet.create({
   leftContainer: {
     flexDirection: 'row',
-    width: 90,
+    width: 95,
   },
   statusIndicator: {
     height: 64,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   textLeftContainer: {
     justifyContent: 'space-between',
     alignContent: 'center',
-    width: 80,
+    width: 95,
     paddingVertical: 3,
   },
   methodText: {

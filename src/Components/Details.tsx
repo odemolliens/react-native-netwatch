@@ -58,7 +58,7 @@ export const Details: React.FC<IProps> = (props) => {
       </Appbar.Header>
       <Surface style={{ flexDirection: 'row' }}>
         {props.item && <Status item={props.item} />}
-        <View style={{ justifyContent: 'center' }}>
+        <View style={styles.subHeaderContainer}>
           <Text style={styles.textSubheader}>{`${getDate(props.item.startTime)}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${duration(
             props.item.startTime,
@@ -101,6 +101,10 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     backgroundColor: 'white',
+  },
+  subHeaderContainer: {
+    paddingLeft: 8,
+    justifyContent: 'center',
   },
   subheading: {
     fontWeight: 'bold',
