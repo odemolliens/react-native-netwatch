@@ -1,4 +1,4 @@
-import { getTime, getDate, identifier, setColor, duration, convert } from '../helpers';
+import { getTime, getDate, identifier, setColor, duration } from '../helpers';
 
 describe('Index test suite', () => {
   // Test getTime
@@ -75,11 +75,5 @@ describe('Index test suite', () => {
     const startTime: number = 1612976624145;
     const endTime: number = 1612977624145;
     expect(duration(startTime, endTime)).toBe(1000000);
-  });
-
-  //Test convert
-  it('should return 1612976624 if unixTime=1612976624145', () => {
-    const unixTime: number = 1612976624145;
-    expect(convert(unixTime)).toBe(1612976624.145);
   });
 });

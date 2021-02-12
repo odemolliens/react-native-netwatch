@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
 import { Status } from './Status';
-import { duration, convert, getDate } from '../Utils/helpers';
+import { duration, getDate } from '../Utils/helpers';
 import { Request } from '../Core/Request';
 // @ts-ignore
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
@@ -59,8 +59,9 @@ export const Details: React.FC<IProps> = (props) => {
         {props.item && <Status item={props.item} />}
         <View style={{ justifyContent: 'center' }}>
           <Text style={styles.textSubheader}>{`Started at: ${getDate(props.item.startTime)}`}</Text>
-          <Text style={styles.textSubheader}>{`Duration ${convert(
-            duration(props.item.startTime, props.item.endTime)
+          <Text style={styles.textSubheader}>{`Duration ${duration(
+            props.item.startTime,
+            props.item.endTime
           )}ms`}</Text>
         </View>
       </Surface>

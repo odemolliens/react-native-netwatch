@@ -25,8 +25,3 @@ export const setColor = (status: number = 500): string => {
 export const duration = (startTime: number, endTime: number): number => {
   return endTime - startTime;
 };
-
-// Convert unix time in ms
-export const convert = (unixtime: number): number => {
-  return unixtime / 1000;
-};
