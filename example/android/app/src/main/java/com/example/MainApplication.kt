@@ -33,7 +33,6 @@ class MainApplication : Application(), ReactApplication {
     override fun onCreate() {
         super.onCreate()
         SoLoader.init(this, false)
-        initializeFlipper(this, reactNativeHost.reactInstanceManager)
     }
 
     companion object {

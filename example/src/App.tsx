@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Netwatch } from 'react-native-netwatch';
+import { Netwatch, startNativeListerner } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { actionRequest } from './redux/actions/appActions';
 import { Dispatch } from 'redux';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
+import { Text, TouchableHighlight, StyleSheet, View, NativeModules } from 'react-native';
+
+const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 
@@ -22,7 +24,7 @@ const App = () => {
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              setNetwatchVisible(true);
+              startNativeListerner();
             }}
             testID="buttonDisplayNetwatch"
           >
@@ -31,7 +33,7 @@ const App = () => {
           <TouchableHighlight
             style={styles.enableButton}
             onPress={() => {
-              setNetwatchEnabled(!netwatchEnabled);
+              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
             }}
             testID="buttonDisabledNetwatch"
           >

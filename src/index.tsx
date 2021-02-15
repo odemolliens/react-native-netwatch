@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, SafeAreaView } from 'react-native';
+import { Modal, SafeAreaView, NativeModules } from 'react-native';
 import logger from './Core/LoggerSingleton';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
@@ -10,6 +10,12 @@ export interface IProps {
   onPressBack: (visible: boolean) => void;
   visible?: boolean;
   enabled?: boolean;
+}
+
+const { RNNetwatch } = NativeModules;
+
+export function startNativeListerner() {
+  RNNetwatch.startNativeInterceptor(); 
 }
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
