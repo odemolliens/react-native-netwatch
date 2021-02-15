@@ -22,7 +22,7 @@ export const Settings = (props: IProps) => {
   return (
     <Modal animationType="fade" transparent visible={props.visible}>
       <Dialog visible={props.visible} onDismiss={() => props.onDismiss()}>
-        <Dialog.Content>
+        <View style={styles.settingsContainer}>
           <Dialog.Title>Settings</Dialog.Title>
           <RadioButton.Group
             onValueChange={(value) => props.onSetSource(value)}
@@ -45,7 +45,11 @@ export const Settings = (props: IProps) => {
                 styles.toggleButtonLabel,
                 props.filter === 'all' && styles.toogleButtonStatus,
               ]}
-              style={[styles.toggleButton, props.filter === 'all' && styles.toggleButtonOpacity]}
+              style={[
+                styles.toggleButton,
+                props.filter === 'all' && styles.toggleButtonOpacity,
+                styles.toggleButtonLeft,
+              ]}
               onPress={() => props.onSetFilter('all')}
             >
               All
@@ -88,7 +92,7 @@ export const Settings = (props: IProps) => {
               style={[
                 styles.toggleButton,
                 props.filter === 'delete' && styles.toggleButtonOpacity,
-                { borderRightWidth: 0 },
+                styles.toggleButtonRight,
               ]}
               onPress={() => props.onSetFilter('delete')}
             >
@@ -100,7 +104,7 @@ export const Settings = (props: IProps) => {
               CLEAR LIST OF REQUESTS
             </Button>
           </View>
-        </Dialog.Content>
+        </View>
         <Dialog.Actions>
           <Button onPress={() => props.onDismiss()}>Done</Button>
         </Dialog.Actions>
@@ -110,30 +114,46 @@ export const Settings = (props: IProps) => {
 };
 
 const styles = StyleSheet.create({
+  settingsContainer: {
+    padding: 16,
+    justifyContent: 'center',
+  },
   toggleButtonGroup: {
     minHeight: 38,
     width: '100%',
     flexDirection: 'row',
     backgroundColor: 'transparent',
-    justifyContent: 'space-evenly',
     alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: 'white',
-    borderRadius: 5,
   },
   toggleButton: {
     borderRightWidth: 0.5,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
     borderColor: 'white',
+    borderRadius: 0,
+  },
+  toggleButtonLeft: {
+    borderLeftWidth: 0.5,
+    borderColor: 'white',
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+  },
+  toggleButtonRight: {
+    borderLeftWidth: 0,
+    borderColor: 'white',
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
   },
   toggleButtonLabel: {
+    padding: 0,
     color: 'white',
   },
   toogleButtonStatus: {
     color: 'white',
-    fontWeight: 'bold',
   },
   toggleButtonOpacity: {
     opacity: 0.5,
+    backgroundColor: 'gray',
   },
   radioButtonContainer: {
     width: '100%',
