@@ -21,7 +21,7 @@ public class ExampleModule extends ReactContextBaseJavaModule {
     ExampleModule(ReactApplicationContext context) {
         super(context);
         mContext = context;
-        client = new OkHttpClient.Builder().addInterceptor(new NetworkInterceptor()).build();
+        client = new OkHttpClient.Builder().addInterceptor(new NetworkInterceptor(mContext)).build();
     }
 
     @Override
