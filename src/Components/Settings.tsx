@@ -22,8 +22,8 @@ export const Settings = (props: IProps) => {
   return (
     <Modal animationType="fade" transparent visible={props.visible}>
       <Dialog visible={props.visible} onDismiss={() => props.onDismiss()}>
-        <Dialog.Content>
-          <Dialog.Title>Settings</Dialog.Title>
+        <View style={styles.settingsContainer}>
+          <Dialog.Title style={styles.section}>Settings</Dialog.Title>
           <RadioButton.Group
             onValueChange={(value) => props.onSetSource(value)}
             value={props.source}
@@ -38,14 +38,18 @@ export const Settings = (props: IProps) => {
             </View>
           </RadioButton.Group>
 
-          <Dialog.Title>Filter</Dialog.Title>
+          <Dialog.Title style={styles.section}>Filter</Dialog.Title>
           <View style={styles.toggleButtonGroup}>
             <Button
               labelStyle={[
                 styles.toggleButtonLabel,
                 props.filter === 'all' && styles.toogleButtonStatus,
               ]}
-              style={[styles.toggleButton, props.filter === 'all' && styles.toggleButtonOpacity]}
+              style={[
+                styles.toggleButton,
+                props.filter === 'all' && styles.toggleButtonOpacity,
+                styles.toggleButtonLeft,
+              ]}
               onPress={() => props.onSetFilter('all')}
             >
               All
@@ -88,20 +92,15 @@ export const Settings = (props: IProps) => {
               style={[
                 styles.toggleButton,
                 props.filter === 'delete' && styles.toggleButtonOpacity,
-                { borderRightWidth: 0 },
+                styles.toggleButtonRight,
               ]}
               onPress={() => props.onSetFilter('delete')}
             >
               DEL
             </Button>
           </View>
-          <View style={{ marginTop: 40 }}>
-            <Button style={styles.clearButton} onPress={() => props.onPressClear()}>
-              CLEAR LIST OF REQUESTS
-            </Button>
-          </View>
-        </Dialog.Content>
-        <Dialog.Actions>
+        </View>
+        <Dialog.Actions style={styles.actions}>
           <Button onPress={() => props.onDismiss()}>Done</Button>
         </Dialog.Actions>
       </Dialog>
@@ -110,30 +109,51 @@ export const Settings = (props: IProps) => {
 };
 
 const styles = StyleSheet.create({
+  settingsContainer: {
+    padding: 16,
+    justifyContent: 'center',
+    backgroundColor: '#212121',
+  },
+  section: {
+    color: 'white',
+  },
   toggleButtonGroup: {
     minHeight: 38,
     width: '100%',
     flexDirection: 'row',
     backgroundColor: 'transparent',
-    justifyContent: 'space-evenly',
     alignItems: 'center',
-    borderWidth: 0.5,
-    borderColor: 'white',
-    borderRadius: 5,
+    color: 'white',
   },
   toggleButton: {
     borderRightWidth: 0.5,
+    borderTopWidth: 0.5,
+    borderBottomWidth: 0.5,
     borderColor: 'white',
+    borderRadius: 0,
+  },
+  toggleButtonLeft: {
+    borderLeftWidth: 0.5,
+    borderColor: 'white',
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+  },
+  toggleButtonRight: {
+    borderLeftWidth: 0,
+    borderColor: 'white',
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
   },
   toggleButtonLabel: {
+    padding: 0,
     color: 'white',
   },
   toogleButtonStatus: {
     color: 'white',
-    fontWeight: 'bold',
   },
   toggleButtonOpacity: {
     opacity: 0.5,
+    backgroundColor: 'gray',
   },
   radioButtonContainer: {
     width: '100%',
@@ -143,10 +163,9 @@ const styles = StyleSheet.create({
   radioButtonText: {
     textAlignVertical: 'center',
     fontWeight: 'bold',
+    color: 'white',
   },
-  clearButton: {
-    borderWidth: 0.5,
-    borderColor: 'white',
-    borderRadius: 5,
+  actions: {
+    backgroundColor: '#212121',
   },
 });

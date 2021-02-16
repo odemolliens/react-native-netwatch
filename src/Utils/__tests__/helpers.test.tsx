@@ -23,53 +23,53 @@ describe('Index test suite', () => {
   });
 
   // Tests setColor
-  it('should return green if status=200', () => {
+  it('should return #aed581 if status=200', () => {
     const status: number = 200;
-    expect(setColor(status)).toBe('green');
+    expect(setColor(status)).toBe('#aed581');
   });
 
-  it('should return green if status=299', () => {
+  it('should return #aed581 if status=299', () => {
     const status: number = 299;
-    expect(setColor(status)).toBe('green');
+    expect(setColor(status)).toBe('#aed581');
   });
 
-  it('should return orange if status=300', () => {
+  it('should return #ffca28 if status=300', () => {
     const status: number = 300;
-    expect(setColor(status)).toBe('orange');
+    expect(setColor(status)).toBe('#ffca28');
   });
 
-  it('should return orange if status=399', () => {
+  it('should return #ffca28 if status=399', () => {
     const status: number = 399;
-    expect(setColor(status)).toBe('orange');
+    expect(setColor(status)).toBe('#ffca28');
   });
 
-  it('should return red if status=400', () => {
+  it('should return #ef5350 if status=400', () => {
     const status: number = 400;
-    expect(setColor(status)).toBe('red');
+    expect(setColor(status)).toBe('#ef5350');
   });
 
-  it('should return red if status=500', () => {
+  it('should return #ef5350 if status=500', () => {
     const status: number = 500;
-    expect(setColor(status)).toBe('red');
+    expect(setColor(status)).toBe('#ef5350');
   });
 
-  it('should return red if status=0', () => {
+  it('should return #ef5350 if status=0', () => {
     const status: number = 0;
-    expect(setColor(status)).toBe('red');
+    expect(setColor(status)).toBe('#ef5350');
   });
 
-  it('should return red if status=199', () => {
+  it('should return #ef5350 if status=199', () => {
     const status: number = 199;
-    expect(setColor(status)).toBe('red');
+    expect(setColor(status)).toBe('#ef5350');
   });
 
-  it('should return red if status=999', () => {
+  it('should return #ef5350 if status=999', () => {
     const status: number = 999;
-    expect(setColor(status)).toBe('red');
+    expect(setColor(status)).toBe('#ef5350');
   });
 
-  it('should return red if status is not specified', () => {
-    expect(setColor()).toBe('red');
+  it('should return #ef5350 if status is not specified', () => {
+    expect(setColor()).toBe('#ef5350');
   });
 
   //Test duration
