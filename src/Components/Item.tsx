@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 // @ts-ignore
 import { Appbar, Searchbar, Surface, List, Divider } from 'react-native-paper';
 import { Request } from '../Core/Request';
 import { Status } from './Status';
+import { getTime } from '../Utils/helpers';
 import url from 'url';
 
 export interface IProps {
@@ -13,40 +14,55 @@ export interface IProps {
 
 export const Item: React.FC<IProps> = ({ item, onPress }) => {
   let urlObject = url.parse(item.url);
-  return <>
-    <List.Item
-      onPress={() => onPress()}
-      style={styles.listItemContainer}
-      titleStyle={styles.titleStyle}
-      descriptionStyle={styles.descriptionStyle}
-      key={item._id}
-      title={urlObject.host}
-      description={item.url}
-      descriptionNumberOfLines={1}
-      left={() => <Status item={item} textColor={styles.textColor} />}
-    />
-    <Divider style={styles.divider} />
-  </>;
+  return (
+    <TouchableOpacity onPress={() => onPress()} style={styles.listItemContainer}>
+      <>
+        <Status item={item}></Status>
+        <View style={styles.url}>
+          <View style={styles.domain}>
+            <Text numberOfLines={1} style={styles.titleStyle}>{`${urlObject.host}`}</Text>
+            <Text style={styles.path}>{getTime(item.endTime)}</Text>
+          </View>
+          <Text numberOfLines={1} style={styles.descriptionStyle}>
+            {urlObject.path}
+          </Text>
+        </View>
+      </>
+    </TouchableOpacity>
+  );
 };
 
 export default Item;
 
 const styles = StyleSheet.create({
   listItemContainer: {
-    marginBottom: -12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomColor: '#bdbdbd',
+    borderBottomWidth: 0.5,
+    backgroundColor: '#757575',
+  },
+  url: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  domain: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  path: {
+    color: 'white',
   },
   titleStyle: {
-    color: 'black',
+    paddingLeft: 16,
+    color: 'white',
     fontWeight: 'bold',
   },
   descriptionStyle: {
-    color: 'black',
-  },
-  textColor: {
-    color: 'black',
+    paddingLeft: 16,
+    color: 'white',
   },
   divider: {
-    marginTop: 5,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'gray',
   },
 });

@@ -47,10 +47,17 @@ export const Details: React.FC<IProps> = (props) => {
   if (!props.item) return <Text>Error</Text>;
   // Appbar header is repeated here cause we use the absolute position in the style
   // Put this directly in the index.tsx cause that the Appbar will be added
+  const _generalElements = (props.item && Object.entries(props.item)) || null;
+  const _requestHeadersElements =
+    (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || null;
+  const _responseHeadersElements =
+    (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || null;
+
   return (
     <View style={styles.container}>
-      <Appbar.Header>
+      <Appbar.Header style={styles.header}>
         <Appbar.BackAction
+          color='white' 
           onPress={() => props.onPressBack(false)}
           testID="buttonBackToMainScreen"
         />
@@ -70,21 +77,29 @@ export const Details: React.FC<IProps> = (props) => {
         <ScrollView contentContainerStyle={styles.scrollview}>
           <View>
             <Subheading style={styles.subheading}>GENERAL</Subheading>
-            {props.item && _renderItems(Object.entries(props.item))}
+            {_generalElements && _renderItems(_generalElements)}
             <Subheading style={styles.subheading}>REQUEST HEADERS</Subheading>
-            {props.item?.requestHeaders && _renderItems(Object.entries(props.item.requestHeaders))}
-            <Subheading style={styles.subheading}>REQUEST DATA</Subheading>
-            <View style={styles.attribtuesContainer}>
-              <Text style={styles.text}>{props.item.dataSent}</Text>
-            </View>
+            {_requestHeadersElements && _renderItems(_requestHeadersElements)}
+
+            {props.item?.dataSent !== '' && (
+              <>
+                <Subheading style={styles.subheading}>REQUEST DATA</Subheading>
+                <View style={styles.attribtuesContainer}>
+                  <Text style={styles.text}>{props.item.dataSent}</Text>
+                </View>
+              </>
+            )}
+
             <Subheading style={styles.subheading}>RESPONSE HEADERS</Subheading>
-            {props.item &&
-              props.item?.responseHeaders &&
-              _renderItems(Object.entries(props.item.responseHeaders))}
-            <Subheading style={styles.subheading}>RESPONSE BODY</Subheading>
-            <View style={styles.attribtuesContainer}>
-              <Text style={styles.text}>{props.item.response}</Text>
-            </View>
+            {_responseHeadersElements && _renderItems(_responseHeadersElements)}
+            {props.item?.response !== '' && (
+              <>
+                <Subheading style={styles.subheading}>RESPONSE BODY</Subheading>
+                <View style={styles.attribtuesContainer}>
+                  <Text style={styles.text}>{props.item?.response}</Text>
+                </View>
+              </>
+            )}
           </View>
         </ScrollView>
       </View>
@@ -93,6 +108,9 @@ export const Details: React.FC<IProps> = (props) => {
 };
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#212121',
+  },
   container: {
     position: 'absolute',
     height: '100%',
@@ -105,6 +123,8 @@ const styles = StyleSheet.create({
   subHeaderContainer: {
     paddingLeft: 8,
     justifyContent: 'center',
+    backgroundColor: '#212121',
+    width: '100%'
   },
   subheading: {
     fontWeight: 'bold',
@@ -130,6 +150,7 @@ const styles = StyleSheet.create({
   },
   textSubheader: {
     fontSize: 16,
+    color: 'white',
   },
   scrollview: {
     paddingBottom: 20,

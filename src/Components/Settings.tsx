@@ -23,7 +23,7 @@ export const Settings = (props: IProps) => {
     <Modal animationType="fade" transparent visible={props.visible}>
       <Dialog visible={props.visible} onDismiss={() => props.onDismiss()}>
         <View style={styles.settingsContainer}>
-          <Dialog.Title>Settings</Dialog.Title>
+          <Dialog.Title style={styles.section}>Settings</Dialog.Title>
           <RadioButton.Group
             onValueChange={(value) => props.onSetSource(value)}
             value={props.source}
@@ -38,7 +38,7 @@ export const Settings = (props: IProps) => {
             </View>
           </RadioButton.Group>
 
-          <Dialog.Title>Filter</Dialog.Title>
+          <Dialog.Title style={styles.section}>Filter</Dialog.Title>
           <View style={styles.toggleButtonGroup}>
             <Button
               labelStyle={[
@@ -99,13 +99,8 @@ export const Settings = (props: IProps) => {
               DEL
             </Button>
           </View>
-          <View style={{ marginTop: 40 }}>
-            <Button style={styles.clearButton} onPress={() => props.onPressClear()}>
-              CLEAR LIST OF REQUESTS
-            </Button>
-          </View>
         </View>
-        <Dialog.Actions>
+        <Dialog.Actions style={styles.actions}>
           <Button onPress={() => props.onDismiss()}>Done</Button>
         </Dialog.Actions>
       </Dialog>
@@ -117,6 +112,10 @@ const styles = StyleSheet.create({
   settingsContainer: {
     padding: 16,
     justifyContent: 'center',
+    backgroundColor: '#212121',
+  },
+  section: {
+    color: 'white',
   },
   toggleButtonGroup: {
     minHeight: 38,
@@ -124,6 +123,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'transparent',
     alignItems: 'center',
+    color: 'white',
   },
   toggleButton: {
     borderRightWidth: 0.5,
@@ -163,10 +163,9 @@ const styles = StyleSheet.create({
   radioButtonText: {
     textAlignVertical: 'center',
     fontWeight: 'bold',
+    color: 'white',
   },
-  clearButton: {
-    borderWidth: 0.5,
-    borderColor: 'white',
-    borderRadius: 5,
+  actions: {
+    backgroundColor: '#212121',
   },
 });
