@@ -2,13 +2,13 @@ import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 // @ts-ignore
 import { Appbar, Searchbar, Surface, List, Divider } from 'react-native-paper';
-import { Request } from '../Core/Request';
+import { RNRequest } from '../Core/Objects/RNRequest';
 import { Status } from './Status';
 import { getTime } from '../Utils/helpers';
 import url from 'url';
 
 export interface IProps {
-  item: Request;
+  item: RNRequest;
   onPress: () => void;
 }
 

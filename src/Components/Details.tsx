@@ -3,14 +3,14 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
 import { Status } from './Status';
 import { duration, getDate } from '../Utils/helpers';
-import { Request } from '../Core/Request';
+import { RNRequest } from '../Core/Objects/RNRequest';
 // @ts-ignore
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
 interface IProps {
   testId?: string;
   onPressBack: (showDetails: boolean) => void;
-  item?: Request;
+  item?: RNRequest;
 }
 
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
@@ -57,7 +57,7 @@ export const Details: React.FC<IProps> = (props) => {
     <View style={styles.container}>
       <Appbar.Header style={styles.header}>
         <Appbar.BackAction
-          color='white' 
+          color="white"
           onPress={() => props.onPressBack(false)}
           testID="buttonBackToMainScreen"
         />
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     justifyContent: 'center',
     backgroundColor: '#212121',
-    width: '100%'
+    width: '100%',
   },
   subheading: {
     fontWeight: 'bold',

@@ -1,8 +1,8 @@
 // @ts-ignore
 import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
-import { RequestMethod, StartNetworkLoggingOptions } from '../types';
-import { Request } from './Request';
-import { getResponseBody, getRequestBody } from './Request';
+import { RequestMethod, RNLoggerOptions } from '../types';
+import { RNRequest } from './Objects/RNRequest';
+import { getResponseBody, getRequestBody } from './Objects/RNRequest';
 
 // readyState = 0 - Client has been created. open() not called yet.
 // readyState = 1 - open() has been called.
@@ -24,20 +24,28 @@ interface IXHR {
   requestHeaders?: any;
 }
 
-class Logger {
-  initialized: boolean = false;
-  maxRequests: number = 10;
-  requestId: number = 0;
-  requests: Array<Request> = [];
-  queue: Map<number, Request> = new Map();
+export class RNLogger {
+  static instance: RNLogger;
 
+  initialized: boolean = true;
+  maxRequests: number = 100; // Maybe should be delete
+  requestId: number = 0;
+  requests: Array<RNRequest> = [];
+  queue: Map<number, RNRequest> = new Map();
   callback: Function = () => {};
+
+  constructor() {
+    if (RNLogger.instance) {
+      return RNLogger.instance;
+    }
+    RNLogger.instance = this;
+  }
 
   setCallback = (callback: any) => {
     this.callback = callback;
   };
 
-  getRequests = (): Array<Request> => {
+  getRequests = (): Array<RNRequest> => {
     return this.requests;
   };
 
@@ -61,13 +69,13 @@ class Logger {
     return this.initialized && XHRInterceptor.isInterceptorEnabled();
   };
 
-  updaterequest = (index: number, request: Partial<Request>): void => {
+  updaterequest = (index: number, request: Partial<RNRequest>): void => {
     if (request.readyState === XHR_COMPLETE_STATUS) {
       // Be careful, always use immutable function on array (concat, splice)
       // never unshift/shift function
       this.requests = [
         {
-          ...(this.queue.get(index) as Request),
+          ...(this.queue.get(index) as RNRequest),
           ...request,
         },
       ].concat(this.requests);
@@ -79,7 +87,7 @@ class Logger {
       this.queue.delete(index);
     } else {
       this.queue.set(index, {
-        ...(this.queue.get(index) as Request),
+        ...(this.queue.get(index) as RNRequest),
         ...request,
       });
     }
@@ -89,7 +97,7 @@ class Logger {
     this.requestId++;
     xhr._index = this.requestId;
 
-    const _request: Request = new Request({
+    const _request: RNRequest = new RNRequest({
       _id: this.requestId,
       readyState: xhr.readyState,
       url: url,
@@ -102,14 +110,14 @@ class Logger {
     this.updaterequest(this.requestId, {
       readyState: xhr.readyState,
       dataSent: getRequestBody(data),
-    } as Partial<Request>);
+    } as Partial<RNRequest>);
   };
 
   requestHeadersCallback = (header: string, value: string, xhr: IXHR) => {
-    let _requestHeaders: Partial<Request> = { ...this.queue.get(xhr._index)?.requestHeaders };
+    let _requestHeaders: Partial<RNRequest> = { ...this.queue.get(xhr._index)?.requestHeaders };
     // @ts-ignore
     _requestHeaders[header] = value;
-    this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<Request>);
+    this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<RNRequest>);
   };
 
   headerReceivedCallback = (
@@ -123,7 +131,7 @@ class Logger {
       responseSize,
       responseHeaders: xhr.responseHeaders,
       readyState: xhr.readyState,
-    } as Partial<Request>);
+    } as Partial<RNRequest>);
   };
 
   responseCallback = async (
@@ -143,10 +151,10 @@ class Logger {
       response: _response,
       responseURL,
       responseType,
-    } as Partial<Request>);
+    } as Partial<RNRequest>);
   };
 
-  enableXHRInterception = (options?: StartNetworkLoggingOptions) => {
+  enableXHRInterception = (options?: RNLoggerOptions) => {
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(
@@ -163,9 +171,9 @@ class Logger {
     XHRInterceptor.setSendCallback(this.sendCallback);
     XHRInterceptor.setResponseCallback(this.responseCallback);
 
-    XHRInterceptor.enableInterception();
+    !this.initialized && XHRInterceptor.enableInterception();
     this.initialized = true;
   };
 }
 
-export default Logger;
+export default RNLogger;

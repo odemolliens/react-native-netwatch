@@ -1,10 +1,17 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Modal, SafeAreaView } from 'react-native';
-import logger from './Core/LoggerSingleton';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
+import {
+  reduxLoggerMiddleware,
+  setCallback as setReduxActionsCallback,
+  clear as clearReduxActions,
+} from './Core/ReduxLogger';
+import { RNLogger } from './Core/RNLogger';
+import { RNRequest } from './Core/Objects/RNRequest';
+import { ReduxAction } from './Core/Objects/ReduxAction';
 
 export interface IProps {
   onPressClose: (visible: boolean) => void;
@@ -12,17 +19,24 @@ export interface IProps {
   enabled?: boolean;
 }
 
+export const reduxLogger = reduxLoggerMiddleware;
+export const _RNLogger = new RNLogger();
+
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
+  const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
+  const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [showDetails, setShowDetails] = useState(false);
   const [item, setItem] = useState();
+  _RNLogger.enableXHRInterception();
+  _RNLogger.setCallback(setRnRequests);
+  setReduxActionsCallback(setReduxActions);
 
-  if (logger.isEnabled() && !props.enabled) {
-    logger.disableXHRInterception();
-  }
-
-  if (!logger.isEnabled() && props.enabled) {
-    logger.enableXHRInterception();
-  }
+  const clearAll = () => {
+    _RNLogger.clear();
+    clearReduxActions();
+    setReduxActions([]);
+    setRnRequests([]);
+  };
 
   return (
     <Provider>
@@ -30,9 +44,13 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         <Modal animationType="slide" visible={props.visible}>
           <Main
             testId="mainScreen"
+            visible={props.visible}
             onPressClose={props.onPressClose}
             onPressDetail={setShowDetails}
             onPress={setItem}
+            reduxActions={reduxActions}
+            rnRequests={rnRequests}
+            clearAll={clearAll}
           />
           {showDetails && (
             <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />

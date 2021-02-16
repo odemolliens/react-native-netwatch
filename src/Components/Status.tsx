@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
-import { Request } from '../Core/Request';
+import { RNRequest } from '../Core/Objects/RNRequest';
 import { setColor } from '../Utils/helpers';
 
 export interface IProps {
-  item: Request;
+  item: RNRequest;
+  text?: string;
+  subText?: string;
   textColor?: Object;
+  backgroundColor?: string;
 }
 
 export const Status: React.FC<IProps> = (props: IProps) => {
   const _color = setColor(props.item.status);
 
   return (
-    <View style={[styles.leftContainer, { backgroundColor: _color }]}>
+    <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || _color }]}>
       <Text testID="statusMethod" style={[styles.methodText, props.textColor]}>
-        {props.item.method}
+        {props.item.method || props.text}
       </Text>
       <Text testID="statusCode" style={[styles.statusText]}>
-        {props.item.status}
+        {props.item.status || props.subText}
       </Text>
     </View>
   );
