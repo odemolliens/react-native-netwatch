@@ -6,18 +6,25 @@ exports[`Index test suite should render properly 1`] = `
     <Component
       animationType="slide"
       hardwareAccelerated={false}
-      visible={true}
+      visible={false}
     >
       <Main
+        clearAll={[Function]}
+        maxRequests={15}
         onPress={[Function]}
+        onPressClose={[MockFunction]}
         onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+        visible={false}
       />
     </Component>
   </ForwardRef(SafeAreaView)>
 </Provider>
 `;
 
-exports[`Index test suite should render properly with custom action 1`] = `
+exports[`Index test suite should render properly visible and enabled 1`] = `
 <Provider>
   <ForwardRef(SafeAreaView)>
     <Component
@@ -26,8 +33,39 @@ exports[`Index test suite should render properly with custom action 1`] = `
       visible={true}
     >
       <Main
+        clearAll={[Function]}
+        maxRequests={15}
         onPress={[Function]}
+        onPressClose={[MockFunction]}
         onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+        visible={true}
+      />
+    </Component>
+  </ForwardRef(SafeAreaView)>
+</Provider>
+`;
+
+exports[`Index test suite should render properly visible, enabled and maxRequest 1`] = `
+<Provider>
+  <ForwardRef(SafeAreaView)>
+    <Component
+      animationType="slide"
+      hardwareAccelerated={false}
+      visible={true}
+    >
+      <Main
+        clearAll={[Function]}
+        maxRequests={20}
+        onPress={[Function]}
+        onPressClose={[MockFunction]}
+        onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+        visible={true}
       />
     </Component>
   </ForwardRef(SafeAreaView)>

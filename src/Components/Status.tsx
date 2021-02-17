@@ -4,6 +4,7 @@ import { Text } from 'react-native-paper';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { setColor } from '../Utils/helpers';
+import { EnumSourceType } from '../types';
 
 export interface IProps {
   item: RNRequest | ReduxAction;
@@ -14,7 +15,7 @@ export interface IProps {
 }
 
 export const Status: React.FC<IProps> = (props: IProps) => {
-  if (props.item instanceof ReduxAction) {
+  if (props.item instanceof ReduxAction || props.item.type === EnumSourceType.Redux) {
     return (
       <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || 'white' }]}>
         <Text testID="statusText" style={[styles.methodText, props.textColor]}>

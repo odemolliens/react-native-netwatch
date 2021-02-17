@@ -12,15 +12,13 @@ import {
 } from 'react-native-paper';
 import Item from './Item';
 import ReduxItem from './ReduxItem';
-// @ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Settings } from '../Components/Settings';
+import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
-import { _RNLogger } from '../index';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 
-interface IProps {
+export interface IProps {
   testId?: string;
   onPress: Function;
   onPressClose: (value: boolean) => void;

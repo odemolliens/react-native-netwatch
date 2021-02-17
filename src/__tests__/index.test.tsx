@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { IProps, Netwatch } from '../index';
+import { IProps, Netwatch} from '../index';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
-  const action = jest.fn();
 
   it('should render properly', () => {
     givenProps();
@@ -13,45 +12,29 @@ describe('Index test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should render properly with custom action', () => {
-    givenProps(action);
+  it('should render properly visible and enabled', () => {
+    givenProps(true, true);
     givenComponent();
     expect(component).toMatchSnapshot();
   });
 
-  it('should render properly & press display button', () => {
-    givenProps(action);
+  it('should render properly visible, enabled and maxRequest', () => {
+    givenProps(true, true, 20);
     givenComponent();
-    whenPressingButton('buttonDisplayNetwatch');
+    expect(component).toMatchSnapshot();
   });
-
-  it('should render properly & press hide button', () => {
-    givenProps(action);
-    givenComponent();
-    whenPressingButton('buttonHideNetwatch');
-  });
-
-  it('should render properly & press custom action button', () => {
-    givenProps(action);
-    givenComponent();
-    whenPressingButton('buttonCustomAction');
-    expect(action).toHaveBeenCalledTimes(1);
-  });
-
-  // UTILITIES
-
-  function whenPressingButton(testId: string) {
-    component.find(`[testID="${testId}"]`).simulate('press');
-  }
 
   // GIVEN
   function givenComponent() {
     component = shallow(<Netwatch {...props} />);
   }
 
-  function givenProps(customAction?: any) {
+  function givenProps(visible: boolean = false, enabled: boolean = false, maxRequests?: number) {
     props = {
-      customAction,
+      visible,
+      enabled,
+      onPressClose: jest.fn(),
+      maxRequests,
     };
   }
 });

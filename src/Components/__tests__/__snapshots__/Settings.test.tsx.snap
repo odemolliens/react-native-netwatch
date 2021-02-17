@@ -1,0 +1,3401 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Settings test suite should render properly All Item & press all radio 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="ALL"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & all button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & delete button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & done button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & get button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & post button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & press Nativerequest filter 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Nativerequest Item & put button 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="NR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly ReactNativeRequest Item & press ReactNativeRequest filter 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="RNR"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={false}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;
+
+exports[`Settings test suite should render properly Redux Item & press Redux filter 1`] = `
+<Component
+  animationType="fade"
+  hardwareAccelerated={false}
+  transparent={true}
+  visible={true}
+>
+  <ForwardRef(withTheme(Dialog))
+    onDismiss={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "padding": 16,
+        }
+      }
+    >
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Settings
+      </ForwardRef(withTheme(Dialog.Title))>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="REDUX"
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioAll"
+            value="ALL"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            All Requests and Actions
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="checked"
+            testID="RadioRedux"
+            value="REDUX"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Redux Action
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioRNR"
+            value="RNR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            React Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <ForwardRef(withTheme(RadioButton))
+            onPress={[Function]}
+            status="unchecked"
+            testID="RadioNR"
+            value="NR"
+          />
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "white",
+                "fontWeight": "bold",
+                "textAlignVertical": "center",
+              }
+            }
+          >
+            Native Requests
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </RadioButton.Group>
+      <ForwardRef(withTheme(Dialog.Title))
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        Filter
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "color": "white",
+            "flexDirection": "row",
+            "minHeight": 38,
+            "width": "100%",
+          }
+        }
+      >
+        <ForwardRef(withTheme(Button))
+          disabled={true}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomLeftRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0.5,
+                "borderTopLeftRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonAll"
+        >
+          All
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={true}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              Object {
+                "color": "white",
+              },
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              Object {
+                "backgroundColor": "gray",
+                "opacity": 0.5,
+              },
+            ]
+          }
+          testID="ButtonGet"
+        >
+          GET
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={true}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPost"
+        >
+          POST
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={true}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+            ]
+          }
+          testID="ButtonPut"
+        >
+          PUT
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          disabled={true}
+          labelStyle={
+            Array [
+              Object {
+                "color": "white",
+                "padding": 0,
+              },
+              false,
+            ]
+          }
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "borderBottomWidth": 0.5,
+                "borderColor": "white",
+                "borderRadius": 0,
+                "borderRightWidth": 0.5,
+                "borderTopWidth": 0.5,
+              },
+              false,
+              Object {
+                "borderBottomRightRadius": 5,
+                "borderColor": "white",
+                "borderLeftWidth": 0,
+                "borderTopRightRadius": 5,
+              },
+            ]
+          }
+          testID="ButtonDel"
+        >
+          DEL
+        </ForwardRef(withTheme(Button))>
+      </Component>
+    </Component>
+    <Dialog.Actions
+      style={
+        Object {
+          "backgroundColor": "#212121",
+        }
+      }
+    >
+      <ForwardRef(withTheme(Button))
+        onPress={[Function]}
+        testID="ButtonDone"
+      >
+        Done
+      </ForwardRef(withTheme(Button))>
+    </Dialog.Actions>
+  </ForwardRef(withTheme(Dialog))>
+</Component>
+`;

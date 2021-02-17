@@ -35,6 +35,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.14",
     "@types/react-native": "^0.63.19",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.3",
     "babel-jest": "^26.6.3",
     "enzyme": "^3.11.0",
@@ -70,7 +71,7 @@
     "collectCoverage": true,
     "preset": "react-native",
     "setupFiles": [
-      "./config/jest.setup.ts"
+      "./config/jest.setup.js"
     ],
     "moduleFileExtensions": [
       "ts",

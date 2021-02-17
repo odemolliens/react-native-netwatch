@@ -4,10 +4,8 @@ import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
 import { Status } from './Status';
 import { duration, getDate } from '../Utils/helpers';
 import { RNRequest } from '../Core/Objects/RNRequest';
-// @ts-ignore
-import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
-interface IProps {
+export interface IProps {
   testId?: string;
   onPressBack: (showDetails: boolean) => void;
   item?: RNRequest;
@@ -31,24 +29,23 @@ const excludedAttributes: Array<string> = [
   'responseContentType',
 ];
 
-const _renderItems = (listOfItems: Array<[string, any]>) => {
-  return listOfItems
+const _renderItems = (listOfItems: Array<[string, any]>) =>
+  listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
-    .map((item: Array<string>, index: number) => {
-      return (
-        <View key={index} style={styles.attribtuesContainer}>
-          <Text style={styles.attributes}>{item[0]}</Text>
-          <Text style={styles.text}>{item[1]}</Text>
-        </View>
-      );
-    });
-};
+    .map((item: Array<string>, index: number) => (
+      <View key={index} style={styles.attribtuesContainer}>
+        <Text style={styles.attributes}>{item[0]}</Text>
+        <Text style={styles.text}>{item[1]}</Text>
+      </View>
+    ));
 
 export const Details: React.FC<IProps> = (props) => {
-  if (!props.item) return <Text>Error</Text>;
+  if (!props.item) {
+    return <Text>Error</Text>;
+  }
   // Appbar header is repeated here cause we use the absolute position in the style
   // Put this directly in the index.tsx cause that the Appbar will be added
-  const _generalElements = (props.item && Object.entries(props.item)) || null;
+  const _generalElements = Object.entries(props.item);
   const _requestHeadersElements =
     (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || null;
   const _responseHeadersElements =
@@ -70,7 +67,7 @@ export const Details: React.FC<IProps> = (props) => {
           <Text style={styles.textSubheader}>{`${getDate(props.item.startTime)}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${duration(
             props.item.startTime,
-            props.item.endTime
+            props.item.endTime,
           )}ms`}</Text>
         </View>
       </Surface>

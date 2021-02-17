@@ -15,5 +15,8 @@ jest.doMock('react-native', () => {
   );
 });
 
+jest.mock('react-native-paper');
 
+jest.useFakeTimers();
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 jest.mock('react-native/Libraries/Blob/FileReader', () => {});

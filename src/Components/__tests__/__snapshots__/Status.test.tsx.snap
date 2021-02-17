@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status test suite should render properly redux action 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "height": 50,
+        "justifyContent": "space-around",
+        "width": 50,
+      },
+      Object {
+        "backgroundColor": "white",
+      },
+    ]
+  }
+>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    testID="statusText"
+  >
+    text
+  </ForwardRef(withTheme(undefined))>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+      ]
+    }
+    testID="statusSubText"
+  >
+    subText
+  </ForwardRef(withTheme(undefined))>
+</Component>
+`;
+
+exports[`Status test suite should render properly request 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "height": 50,
+        "justifyContent": "space-around",
+        "width": 50,
+      },
+      Object {
+        "backgroundColor": "#ef5350",
+      },
+    ]
+  }
+>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    testID="statusMethod"
+  >
+    text
+  </ForwardRef(withTheme(undefined))>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+      ]
+    }
+    testID="statusCode"
+  >
+    subText
+  </ForwardRef(withTheme(undefined))>
+</Component>
+`;
+
+exports[`Status test suite should render properly request with method 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "height": 50,
+        "justifyContent": "space-around",
+        "width": 50,
+      },
+      Object {
+        "backgroundColor": "#aed581",
+      },
+    ]
+  }
+>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+        undefined,
+      ]
+    }
+    testID="statusMethod"
+  >
+    GET
+  </ForwardRef(withTheme(undefined))>
+  <ForwardRef(withTheme(undefined))
+    style={
+      Array [
+        Object {
+          "color": "#212121",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        },
+      ]
+    }
+    testID="statusCode"
+  >
+    200
+  </ForwardRef(withTheme(undefined))>
+</Component>
+`;
