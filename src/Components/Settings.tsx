@@ -5,16 +5,16 @@ import { View, StyleSheet, Modal } from 'react-native';
 import { Dialog, Button, Text, RadioButton } from 'react-native-paper';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { SourceType, RequestMethod } from '../types';
+import { SourceType, RequestMethod, EnumFilterType, EnumSourceType } from '../types';
 
 interface IProps {
   testId?: string;
   visible: boolean;
   onDismiss: () => void;
-  source: SourceType;
-  onSetSource: (value: SourceType) => void;
-  filter: RequestMethod | 'ALL';
-  onSetFilter: (value: RequestMethod | 'ALL') => void;
+  source: SourceType | EnumSourceType;
+  onSetSource: (value: any) => void;
+  filter: RequestMethod | EnumFilterType.All;
+  onSetFilter: (value: RequestMethod | EnumFilterType.All) => void;
   onPressClear: () => void;
 }
 
@@ -79,7 +79,7 @@ export const Settings = (props: IProps) => {
                 props.filter === 'ALL' && styles.toggleButtonOpacity,
                 styles.toggleButtonLeft,
               ]}
-              onPress={() => props.onSetFilter('ALL')}
+              onPress={() => props.onSetFilter(EnumFilterType.All)}
             >
               All
             </Button>

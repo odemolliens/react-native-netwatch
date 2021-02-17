@@ -21,7 +21,7 @@ export const Item: React.FC<IProps> = ({ item, onPress }) => {
         <View style={styles.url}>
           <View style={styles.domain}>
             <Text numberOfLines={1} style={styles.titleStyle}>{`${urlObject.host}`}</Text>
-            <Text style={styles.path}>{getTime(item.endTime)}</Text>
+            <Text style={styles.path}>{getTime(item.startTime)}</Text>
           </View>
           <Text numberOfLines={1} style={styles.descriptionStyle}>
             {urlObject.path}

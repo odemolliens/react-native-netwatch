@@ -7,6 +7,7 @@ import { Provider } from 'react-native-paper';
 import {
   reduxLoggerMiddleware,
   setCallback as setReduxActionsCallback,
+  setMaxActions as setReduxMaxActions,
   clear as clearReduxActions,
 } from './Core/ReduxLogger';
 import { RNLogger } from './Core/RNLogger';
@@ -17,19 +18,29 @@ export interface IProps {
   onPressClose: (visible: boolean) => void;
   visible?: boolean;
   enabled?: boolean;
+  maxRequests?: number;
 }
 
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
+const MAX_REQUESTS: number = 15;
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [showDetails, setShowDetails] = useState(false);
   const [item, setItem] = useState();
-  _RNLogger.enableXHRInterception();
-  _RNLogger.setCallback(setRnRequests);
-  setReduxActionsCallback(setReduxActions);
+
+  if (props.enabled) {
+    _RNLogger.enableXHRInterception();
+    _RNLogger.setCallback(setRnRequests);
+    setReduxMaxActions(props.maxRequests || MAX_REQUESTS);
+    setReduxActionsCallback(setReduxActions);
+  } else {
+    _RNLogger.disableXHRInterception();
+    _RNLogger.clear();
+    setReduxActionsCallback(() => {});
+  }
 
   const clearAll = () => {
     _RNLogger.clear();
@@ -43,6 +54,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       <SafeAreaView>
         <Modal animationType="slide" visible={props.visible}>
           <Main
+            maxRequests={props.maxRequests || MAX_REQUESTS}
             testId="mainScreen"
             visible={props.visible}
             onPressClose={props.onPressClose}

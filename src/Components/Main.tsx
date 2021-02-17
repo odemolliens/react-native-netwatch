@@ -15,12 +15,10 @@ import ReduxItem from './ReduxItem';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Settings } from '../Components/Settings';
-import { ILog, SourceType, RequestMethod } from '../types';
+import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
 import { _RNLogger } from '../index';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
-
-const maxRequests: number = 20;
 
 interface IProps {
   testId?: string;
@@ -31,13 +29,18 @@ interface IProps {
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
   clearAll: Function;
+  maxRequests?: number;
 }
+
+let reduxList: ReduxAction[] = [];
+let rnList: RNRequest[] = [];
+// let nList: NRequest[] = [];
 
 export const Main = (props: IProps) => {
   const [requests, setRequests] = useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [source, setSource] = useState<SourceType>('ALL');
-  const [filter, setFilter] = useState<RequestMethod | 'ALL'>('ALL');
+  const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
+  const [filter, setFilter] = useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
@@ -51,31 +54,58 @@ export const Main = (props: IProps) => {
   };
 
   useEffect(() => {
-    if (source === 'REDUX') {
-      setRequests(props.reduxActions.slice(0, maxRequests));
-    } else if (source === 'RNR') {
-      setRequests(props.rnRequests.slice(0, maxRequests));
-    } else if (source === 'NR') {
-      // setRequests(nRequests.reverse().slice(0, maxRequests));
+    if (source === EnumSourceType.Redux) {
+      if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
+      reduxList = [...props.reduxActions];
+      setRequests(reduxList);
+    } else if (source === EnumSourceType.ReactNativeRequest) {
+      rnList = [...props.rnRequests];
+      setRequests(rnList);
+    } else if (source === EnumSourceType.Nativerequest) {
+      setRequests([]);
+      // nList = [...props.nRequests.reverse()].slice(0, maxRequests);
+      // setRequests(nList);
     } else {
-      setRequests([...props.reduxActions, ...props.rnRequests].slice(0, maxRequests));
-      // setRequests([...props.rnRequests, ...props.reduxActions, ...props.nRequests].reverse().slice(0, maxRequests));
+      setRequests(mergeArrays(props.reduxActions, props.rnRequests).sort(compare).reverse());
     }
     return () => {};
   }, [props.rnRequests, props.reduxActions]);
 
-  const filteredRequests = requests
-    .filter((element) => source === 'ALL' || element.type === source)
-    .filter(
-      (request) =>
-        request.type === 'REDUX' ||
-        (request.type !== 'REDUX' &&
-          (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            request.status === parseInt(searchQuery) ||
-            request.method === searchQuery) &&
-          (filter === 'ALL' || request.method.toLowerCase() === filter))
-    )
-    .reverse();
+  const mergeArrays = (...arrays: Array<ILog[]>) => {
+    return [...arrays.flat()];
+  };
+
+  const compare = (a: ILog, b: ILog) => {
+    const startTimeA = a.startTime;
+    const startTimeB = b.startTime;
+
+    let comparison = 0;
+    if (startTimeA > startTimeB) {
+      comparison = 1;
+    } else if (startTimeA < startTimeB) {
+      comparison = -1;
+    }
+    return comparison;
+  };
+
+  const filteredRequests = requests.slice(0, props.maxRequests).filter((request) => {
+    if (filter === EnumFilterType.All) {
+      if (request instanceof ReduxAction) {
+        return request.action.type.toLowerCase().includes(searchQuery.toLowerCase());
+      }
+    }
+    // TODO: Add  || request instanceof NRequest when Native request will be available
+    if (request instanceof RNRequest) {
+      if (filter === request.method || filter === EnumFilterType.All) {
+        return (
+          request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          request.status === parseInt(searchQuery) ||
+          request.method.toLowerCase() === searchQuery.toLowerCase()
+        );
+      }
+    }
+    return;
+  });
 
   const clearList = () => {
     props.clearAll();
@@ -100,16 +130,16 @@ export const Main = (props: IProps) => {
         />
         <IconButton
           // style={{ marginRight: -8 }}
-          icon={() => <Icon color="white" size={24} name="delete"></Icon>}
+          icon={() => <Icon color="white" size={24} name="delete" />}
           size={24}
           onPress={showDialogDelete}
-        ></IconButton>
+        />
         <IconButton
           style={{ marginRight: -8 }}
-          icon={() => <Icon color="white" size={24} name="settings"></Icon>}
+          icon={() => <Icon color="white" size={24} name="settings" />}
           size={24}
           onPress={showDialog}
-        ></IconButton>
+        />
       </Surface>
 
       <Settings
@@ -139,21 +169,24 @@ export const Main = (props: IProps) => {
         <View style={styles.modalView}>
           <FlatList
             style={styles.flatList}
-            keyExtractor={(item) => `${item._id.toString()}${item.date}`}
+            keyExtractor={(item) => `${item._id.toString()}${item.startTime}`}
             data={filteredRequests}
-            renderItem={({ item }) =>
-              item.type === 'RNR' || item.type === 'NR' ? (
-                <Item
-                  item={item}
-                  onPress={() => {
-                    props.onPress(item);
-                    props.onPressDetail(true);
-                  }}
-                />
-              ) : (
-                <ReduxItem item={item} />
-              )
-            }
+            renderItem={({ item }) => {
+              if (item instanceof ReduxAction) {
+                return <ReduxItem item={item} />;
+              } else if (item instanceof RNRequest) {
+                return (
+                  <Item
+                    item={item}
+                    onPress={() => {
+                      props.onPress(item);
+                      props.onPressDetail(true);
+                    }}
+                  />
+                );
+              }
+              return null;
+            }}
           />
         </View>
       </View>

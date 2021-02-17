@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-paper';
+import ReduxAction from '../Core/Objects/ReduxAction';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { setColor } from '../Utils/helpers';
 
 export interface IProps {
-  item: RNRequest;
+  item: RNRequest | ReduxAction;
   text?: string;
   subText?: string;
   textColor?: Object;
@@ -13,8 +14,20 @@ export interface IProps {
 }
 
 export const Status: React.FC<IProps> = (props: IProps) => {
-  const _color = setColor(props.item.status);
+  if (props.item instanceof ReduxAction) {
+    return (
+      <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || 'white' }]}>
+        <Text testID="statusText" style={[styles.methodText, props.textColor]}>
+          {props.text}
+        </Text>
+        <Text testID="statusSubText" style={[styles.statusText]}>
+          {props.subText}
+        </Text>
+      </View>
+    );
+  }
 
+  const _color = setColor(props.item.status);
   return (
     <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || _color }]}>
       <Text testID="statusMethod" style={[styles.methodText, props.textColor]}>

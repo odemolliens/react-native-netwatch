@@ -16,6 +16,7 @@ interface IProps {
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
 const excludedAttributes: Array<string> = [
   '_id',
+  'type',
   'readyState',
   'method',
   'status',
