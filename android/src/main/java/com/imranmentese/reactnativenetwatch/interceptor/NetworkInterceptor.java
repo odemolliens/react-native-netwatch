@@ -17,6 +17,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.MAX_SAVED_REQUESTS;
 import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.MODULE_NAME;
 import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.NATIVE_REQUESTS;
 
@@ -54,6 +55,9 @@ public class NetworkInterceptor implements Interceptor {
         List<NativeRequest> requestsFromPref = gson.fromJson(resultFromPref, type);
         if (requestsFromPref != null) {
             requests = requestsFromPref;
+        }
+        if (requests.size() >= MAX_SAVED_REQUESTS) {
+            requests.remove(0);
         }
         requests.add(nativeRequest);
 

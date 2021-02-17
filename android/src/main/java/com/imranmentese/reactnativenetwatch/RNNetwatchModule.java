@@ -16,6 +16,8 @@ import com.google.gson.reflect.TypeToken;
 import com.imranmentese.reactnativenetwatch.interceptor.NetworkInterceptor;
 import com.imranmentese.reactnativenetwatch.model.NativeRequest;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -24,9 +26,16 @@ import java.util.List;
  */
 
 public class RNNetwatchModule extends ReactContextBaseJavaModule {
+    // =============
+    // | Constants |
+    // =============
     public static String MODULE_NAME = "RNNetwatch";
     public static String NATIVE_REQUESTS = "NATIVE_REQUESTS";
-    public static int HTTP_COMPLETE_STATUS = 4;
+    public static int MAX_SAVED_REQUESTS = 20;
+
+    // =============
+    // | Variables |
+    // =============
 
     SharedPreferences sharedPrefs;
 
@@ -44,24 +53,10 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
         Gson gson = new Gson();
         String result = gson.toJson(object);
         if (result != null) {
-            result = result.replaceAll("\\\\", "");
-            result = result.replaceAll("\\\\\"", "\"");
+            result = StringEscapeUtils.unescapeJava(result);
             result = result.replaceAll("\\\"\\{", "{");
             result = result.replaceAll("\\}\\\"", "}");
-            result = result.replaceAll("u003d", "=");
         }
-        WritableMap wResultMap = new WritableNativeMap();
-        wResultMap.putString("result", result);
-        return wResultMap;
-    }
-
-    /**
-     * Convert a string to a JSON with the said string.
-     *
-     * @param result The string to convert.
-     * @return The JSON form.
-     */
-    public static WritableMap getResultMap(String result) {
         WritableMap wResultMap = new WritableNativeMap();
         wResultMap.putString("result", result);
         return wResultMap;

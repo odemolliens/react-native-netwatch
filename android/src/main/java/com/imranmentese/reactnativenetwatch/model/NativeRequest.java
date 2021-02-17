@@ -1,18 +1,14 @@
 package com.imranmentese.reactnativenetwatch.model;
 
-import org.apache.commons.text.StringEscapeUtils;
+import android.util.Log;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import okhttp3.Request;
 import okhttp3.Response;
-
-import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.HTTP_COMPLETE_STATUS;
 
 /**
  * Created by MENTESE Imran on 16/02/2021.
@@ -20,7 +16,6 @@ import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.HTTP_COMPLET
 
 public class NativeRequest {
     int _id;
-    int readyState;
     String url;
     String method;
     int status;
@@ -45,9 +40,11 @@ public class NativeRequest {
             for(String key: response.headers().names()){
                 List<String> values = response.headers().values(key);
                 if (values != null && values.size() > 0){
-                    String value = response.headers().values(key).get(0);
+                    String value = values.get(0);
                     if (value.length() > 0 && (value.charAt(0) != '{'  || value.charAt(value.length() - 1) != '}')) {
-                        mapResponseHeaders.put(key, response.headers().values(key).get(0).replaceAll("\"", ""));
+                        mapResponseHeaders.put(key, value.replaceAll("\"", ""));
+                    } else {
+                        mapResponseHeaders.put(key, "\"" + value.replaceAll("\"", "") + "\"");
                     }
                 }
             }
@@ -67,6 +64,5 @@ public class NativeRequest {
         this._id = new Random().nextInt(10000);
         this.startTime = startTime;
         this.endTime = endTime;
-        this.readyState = HTTP_COMPLETE_STATUS;
     }
 }

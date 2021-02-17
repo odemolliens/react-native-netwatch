@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Netwatch, startNativeListerner } from 'react-native-netwatch';
+import { Netwatch, getNativeRequests } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { Dispatch } from 'redux';
@@ -23,7 +23,7 @@ const App = (props) => {
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              startNativeListerner();
+              getNativeRequests();
             }}
             testID="buttonDisplayNetwatch"
           >
