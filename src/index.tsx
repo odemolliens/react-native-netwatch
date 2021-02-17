@@ -1,96 +1,74 @@
-import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+import * as React from 'react';
+import { useState } from 'react';
+import { Modal, SafeAreaView } from 'react-native';
+import { Details } from './Components/Details';
+import { Main } from './Components/Main';
+import { Provider } from 'react-native-paper';
+import {
+  reduxLoggerMiddleware,
+  setCallback as setReduxActionsCallback,
+  setMaxActions as setReduxMaxActions,
+  clear as clearReduxActions,
+} from './Core/ReduxLogger';
+import { RNLogger } from './Core/RNLogger';
+import { RNRequest } from './Core/Objects/RNRequest';
+import { ReduxAction } from './Core/Objects/ReduxAction';
 
 export interface IProps {
-  customAction?: () => void;
+  onPressClose: (visible: boolean) => void;
+  visible?: boolean;
+  enabled?: boolean;
+  maxRequests?: number;
 }
 
+export const reduxLogger = reduxLoggerMiddleware;
+export const _RNLogger = new RNLogger();
+const MAX_REQUESTS: number = 15;
+
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
-  const [netwatchVisible, setNetwatchVisible] = useState(false);
+  const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
+  const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
+  const [showDetails, setShowDetails] = useState(false);
+  const [item, setItem] = useState();
+
+  if (props.enabled) {
+    _RNLogger.enableXHRInterception();
+    _RNLogger.setCallback(setRnRequests);
+    setReduxMaxActions(props.maxRequests || MAX_REQUESTS);
+    setReduxActionsCallback(setReduxActions);
+  } else {
+    _RNLogger.disableXHRInterception();
+    _RNLogger.clear();
+    setReduxActionsCallback(() => {});
+  }
+
+  const clearAll = () => {
+    _RNLogger.clear();
+    clearReduxActions();
+    setReduxActions([]);
+    setRnRequests([]);
+  };
 
   return (
-    <View style={styles.centeredView}>
-      <Modal animationType="slide" visible={netwatchVisible}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-
-            {props.customAction && (
-              <TouchableHighlight
-                style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-                onPress={() => {
-                  props.customAction?.();
-                }}
-                testID="buttonCustomAction"
-              >
-                <Text style={styles.textStyle}>Request</Text>
-              </TouchableHighlight>
-            )}
-
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: '#2196F3' }}
-              onPress={() => {
-                setNetwatchVisible(!netwatchVisible);
-              }}
-              testID="buttonHideNetwatch"
-            >
-              <Text style={styles.textStyle}>Hide Netwatch</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </Modal>
-
-      <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setNetwatchVisible(true);
-        }}
-        testID="buttonDisplayNetwatch"
-      >
-        <Text style={styles.textStyle}>Display Netwatch</Text>
-      </TouchableHighlight>
-    </View>
+    <Provider>
+      <SafeAreaView>
+        <Modal animationType="slide" visible={props.visible}>
+          <Main
+            maxRequests={props.maxRequests || MAX_REQUESTS}
+            testId="mainScreen"
+            visible={props.visible}
+            onPressClose={props.onPressClose}
+            onPressDetail={setShowDetails}
+            onPress={setItem}
+            reduxActions={reduxActions}
+            rnRequests={rnRequests}
+            clearAll={clearAll}
+          />
+          {showDetails && (
+            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+          )}
+        </Modal>
+      </SafeAreaView>
+    </Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-    width: '100%',
-    height: '100%',
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
