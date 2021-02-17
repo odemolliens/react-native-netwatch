@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-import { View, FlatList, StyleSheet, Modal } from 'react-native';
+import { View, FlatList, StyleSheet, Modal, Share, Alert } from 'react-native';
 import {
   Appbar,
   Searchbar,
@@ -112,11 +112,46 @@ export const Main = (props: IProps) => {
     setRequests([]);
   };
 
+  const formatSharedMessage = (array: Array<ILog>): string => {
+    let _string = '';
+    const _report = array.map((item) => {
+      if (item instanceof RNRequest) {
+        return _string.concat(
+          item.startTime.toString(),
+          ' ',
+          item.method,
+          ' : ',
+          item.status.toString(),
+          ' - ',
+          item.url,
+          '\n'
+        );
+      }
+
+      if (item instanceof ReduxAction) {
+        return _string.concat(item.startTime.toString(), ' ', item.action.type, '\n');
+      }
+      return '';
+    });
+    return _report.toString();
+  };
+
+  const onShare = async (): Promise<void> => {
+    try {
+      await Share.share({
+        message: formatSharedMessage(requests),
+      });
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
   return (
     <>
       <Appbar.Header style={styles.header}>
         <IconButton color="white" icon="close" onPress={() => props.onPressClose(false)} />
         <Appbar.Content title="Netwatch" />
+        <IconButton color="white" icon="share" onPress={onShare} />
       </Appbar.Header>
       <Surface style={styles.surface}>
         <Searchbar
