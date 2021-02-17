@@ -1,15 +1,7 @@
-import { IRequest } from '../types';
+import { ILog, LogType } from '../../types';
 //@ts-ignore
 // BlobFileReader is needed to read the content of the body response (it's type can be blob)
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
-
-// export const stringifyData = (data: any) => {
-//   try {
-//     return JSON.stringify(JSON.parse(data), null, 2);
-//   } catch (e) {
-//     return `${data}`;
-//   }
-// };
 
 const fromEntries = (arr: any[]) =>
   arr.reduce((acc, [k, v]) => {
@@ -56,13 +48,14 @@ export const parseResponseBlob = async (response: Blob) => {
   });
 };
 
-export class Request implements IRequest {
+export class RNRequest implements ILog {
   _id: number = -1;
+  type: LogType = 'RNR';
+  startTime: number = Date.now();
   readyState: number = 0;
   url: string = '';
   method: string = '';
   status: number = -1;
-  startTime: number = Date.now();
   endTime: number = 0;
   timeout?: number;
   dataSent?: string;
@@ -79,4 +72,4 @@ export class Request implements IRequest {
   }
 }
 
-export default Request;
+export default RNRequest;

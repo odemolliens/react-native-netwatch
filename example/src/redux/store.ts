@@ -4,6 +4,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { createActionLog } from 'redux-action-log';
 import { rootEpic } from './effects';
 import { setup } from '../config/reactotron';
+import { reduxLogger } from 'react-native-netwatch'
 
 export interface IRootState {
   app: IAppState;
@@ -19,7 +20,7 @@ export const actionLog = createActionLog({ limit: 100 });
 
 const store: any = createStore(
   createReducer(),
-  compose(applyMiddleware(epicMiddleware), setup().createEnhancer(), actionLog.enhancer),
+  compose(applyMiddleware(epicMiddleware, reduxLogger), setup().createEnhancer(), actionLog.enhancer),
 );
 
 epicMiddleware.run(rootEpic);

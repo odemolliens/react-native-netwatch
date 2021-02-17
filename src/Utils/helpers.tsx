@@ -1,9 +1,9 @@
 export const getTime = (date: number): string => {
   // iOS need a string, Android need a number
   const _date = new Date(date);
-  const _minutes = ("0" + _date.getMinutes()).slice(-2);
-  const _hours = ("0" + _date.getHours()).slice(-2);
-  const _seconds = ("0" + _date.getSeconds()).slice(-2);
+  const _minutes = ('0' + _date.getMinutes()).slice(-2);
+  const _hours = ('0' + _date.getHours()).slice(-2);
+  const _seconds = ('0' + _date.getSeconds()).slice(-2);
   return `${_hours}:${_minutes}:${_seconds}`;
 };
 

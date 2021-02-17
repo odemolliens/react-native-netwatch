@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Netwatch, startNativeListerner } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
-import { actionRequest } from './redux/actions/appActions';
 import { Dispatch } from 'redux';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Text, TouchableHighlight, StyleSheet, View, NativeModules } from 'react-native';
@@ -12,7 +11,7 @@ const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 
-const App = () => {
+const App = (props) => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
 
@@ -39,19 +38,35 @@ const App = () => {
           >
             <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
           </TouchableHighlight>
+          <ConnectedButton />
+          
         </View>
       </PaperProvider>
     </Provider>
   );
 };
 
+const Button = (props) => {
+  return <TouchableHighlight
+    style={styles.enableButton}
+    onPress={() => {
+      props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
+    }}
+    testID="buttonDisabledNetwatch"
+  >
+    <Text style={styles.textStyle}>Dispatch Action</Text>
+  </TouchableHighlight>
+
+}
+
 export function mapDispatchToProps(dispatch: Dispatch, props: any): any {
   return {
     ...props,
-    customAction: () => dispatch(actionRequest()),
+    customAction: (action) => dispatch(action),
   };
 }
 
+const ConnectedButton = connect(null, mapDispatchToProps)(Button);
 const ConnectedComponent = connect(null, mapDispatchToProps)(Netwatch);
 
 export default App;
@@ -73,6 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+    marginBottom: 16,
   },
   textStyle: {
     color: 'white',
@@ -81,11 +97,10 @@ const styles = StyleSheet.create({
   },
 });
 
-
 // For testing only
 const _getRndInteger = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+};
 
 let isStarted: boolean = false;
 const makeRequestInContinue = (): void => {
@@ -103,17 +118,14 @@ const makeRequestInContinue = (): void => {
           'Another test with a very very long string just to see how it is render in the application and if it is all done',
       },
       body: JSON.stringify({ test: 'hello' }),
-    }
+    },
   );
 
   // Request POST - Status 200 - Specific headers
   const _headers = new Headers();
   _headers.append('x-dev', 'test');
   _headers.append('Authorization', 'Bearer d6771f773b6862eec7ed068f472c9112f1612861163dfgjl5487s5ff45sf557g8g');
-  _headers.append(
-    'Cookie',
-    'Cookie_1=value; __cfduid=d6771f773b6862eec7ed068f472c9112f1612861163'
-  );
+  _headers.append('Cookie', 'Cookie_1=value; __cfduid=d6771f773b6862eec7ed068f472c9112f1612861163');
 
   const _requestOptions = {
     method: 'POST',
@@ -122,16 +134,12 @@ const makeRequestInContinue = (): void => {
     body: _formData,
   };
 
-  fetch(
-    'https://run.mocky.io/v3/c67ffc95-67ff-42ef-975d-c744020696da',
-    _requestOptions
-  ).catch((error) => console.log('error', error));
-
+  fetch('https://run.mocky.io/v3/c67ffc95-67ff-42ef-975d-c744020696da', _requestOptions).catch((error) =>
+    console.log('error', error),
+  );
 
   // Test long request - to see if request continue in background and correctly displayed when go back in the app
-  fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=20s').catch((e) =>
-    console.error(e)
-  );
+  fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=20s').catch((e) => console.error(e));
 
   // Send requests periodically
   setInterval(() => {
@@ -159,8 +167,12 @@ const makeRequestInContinue = (): void => {
         url = 'https://run.mocky.io/v3/cea80db8-5848-4ef6-bb05-9c0a1d0971d0';
         break;
     }
-    console.log(url);
-    fetch(url).catch(e => console.log(e));
+    //console.log(url);
+    fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).catch((e) => console.log(e));
   }, 2000);
 };
 

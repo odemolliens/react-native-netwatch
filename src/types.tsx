@@ -1,26 +1,16 @@
 // export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-export type RequestMethod = 'GET' | 'POST' | 'UPDATE' | 'DELETE';
+export type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-export type StartNetworkLoggingOptions = {
-  /** Max number of requests to keep before overwriting, default 500 */
+export type LogType = 'REDUX' | 'RNR' | 'NR';
+
+export type SourceType = 'ALL' | 'RNR' | 'NR' | 'REDUX';
+
+export type RNLoggerOptions = {
   maxRequests?: number;
 };
 
-export interface IRequest {
+export interface ILog {
   _id: number;
-  readyState: number;
-  url: string;
-  method: string;
-  status: number;
   startTime: number;
-  endTime: number;
-  timeout?: number;
-  dataSent?: string;
-  requestHeaders?: any;
-  responseHeaders?: any;
-  responseContentType?: string;
-  responseSize?: number;
-  responseType?: string;
-  responseURL?: string;
-  response?: any;
+  type: LogType;
 }

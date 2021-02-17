@@ -5,20 +5,24 @@ import { View, StyleSheet, Modal } from 'react-native';
 import { Dialog, Button, Text, RadioButton } from 'react-native-paper';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { SourceType, RequestMethod } from '../types';
 
 interface IProps {
   testId?: string;
   visible: boolean;
   onDismiss: () => void;
-  source: string;
-  onSetSource: (value: string) => void;
-  filter: string;
-  onSetFilter: (value: string) => void;
+  source: SourceType;
+  onSetSource: (value: SourceType) => void;
+  filter: RequestMethod | 'ALL';
+  onSetFilter: (value: RequestMethod | 'ALL') => void;
   onPressClear: () => void;
 }
 
 // KEEP Modal around Dialog (bug with react-native paper, dialog is always in transparency)
 export const Settings = (props: IProps) => {
+  const [checked, setChecked] = React.useState(props.source);
+  const disabledFilter = props.source === 'REDUX';
+
   return (
     <Modal animationType="fade" transparent visible={props.visible}>
       <Dialog visible={props.visible} onDismiss={() => props.onDismiss()}>
@@ -29,11 +33,35 @@ export const Settings = (props: IProps) => {
             value={props.source}
           >
             <View style={styles.radioButtonContainer}>
-              <RadioButton value="rnr" />
+              <RadioButton
+                value="ALL"
+                status={checked === 'ALL' ? 'checked' : 'unchecked'}
+                onPress={() => setChecked('ALL')}
+              />
+              <Text style={styles.radioButtonText}>All Requests and Actions</Text>
+            </View>
+            <View style={styles.radioButtonContainer}>
+              <RadioButton
+                value="REDUX"
+                status={checked === 'REDUX' ? 'checked' : 'unchecked'}
+                onPress={() => setChecked('REDUX')}
+              />
+              <Text style={styles.radioButtonText}>Redux Action</Text>
+            </View>
+            <View style={styles.radioButtonContainer}>
+              <RadioButton
+                value="RNR"
+                status={checked === 'RNR' ? 'checked' : 'unchecked'}
+                onPress={() => setChecked('RNR')}
+              />
               <Text style={styles.radioButtonText}>React Native Requests</Text>
             </View>
             <View style={styles.radioButtonContainer}>
-              <RadioButton value="nr" />
+              <RadioButton
+                value="NR"
+                status={checked === 'NR' ? 'checked' : 'unchecked'}
+                onPress={() => setChecked('NR')}
+              />
               <Text style={styles.radioButtonText}>Native Requests</Text>
             </View>
           </RadioButton.Group>
@@ -41,60 +69,65 @@ export const Settings = (props: IProps) => {
           <Dialog.Title style={styles.section}>Filter</Dialog.Title>
           <View style={styles.toggleButtonGroup}>
             <Button
+              disabled={disabledFilter}
               labelStyle={[
                 styles.toggleButtonLabel,
-                props.filter === 'all' && styles.toogleButtonStatus,
+                props.filter === 'ALL' && styles.toogleButtonStatus,
               ]}
               style={[
                 styles.toggleButton,
-                props.filter === 'all' && styles.toggleButtonOpacity,
+                props.filter === 'ALL' && styles.toggleButtonOpacity,
                 styles.toggleButtonLeft,
               ]}
-              onPress={() => props.onSetFilter('all')}
+              onPress={() => props.onSetFilter('ALL')}
             >
               All
             </Button>
             <Button
+              disabled={disabledFilter}
               labelStyle={[
                 styles.toggleButtonLabel,
-                props.filter === 'get' && styles.toogleButtonStatus,
+                props.filter === 'GET' && styles.toogleButtonStatus,
               ]}
-              style={[styles.toggleButton, props.filter === 'get' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('get')}
+              style={[styles.toggleButton, props.filter === 'GET' && styles.toggleButtonOpacity]}
+              onPress={() => props.onSetFilter('GET')}
             >
               GET
             </Button>
             <Button
+              disabled={disabledFilter}
               labelStyle={[
                 styles.toggleButtonLabel,
-                props.filter === 'post' && styles.toogleButtonStatus,
+                props.filter === 'POST' && styles.toogleButtonStatus,
               ]}
-              style={[styles.toggleButton, props.filter === 'post' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('post')}
+              style={[styles.toggleButton, props.filter === 'POST' && styles.toggleButtonOpacity]}
+              onPress={() => props.onSetFilter('POST')}
             >
               POST
             </Button>
             <Button
+              disabled={disabledFilter}
               labelStyle={[
                 styles.toggleButtonLabel,
-                props.filter === 'put' && styles.toogleButtonStatus,
+                props.filter === 'PUT' && styles.toogleButtonStatus,
               ]}
-              style={[styles.toggleButton, props.filter === 'put' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('put')}
+              style={[styles.toggleButton, props.filter === 'PUT' && styles.toggleButtonOpacity]}
+              onPress={() => props.onSetFilter('PUT')}
             >
               PUT
             </Button>
             <Button
+              disabled={disabledFilter}
               labelStyle={[
                 styles.toggleButtonLabel,
-                props.filter === 'delete' && styles.toogleButtonStatus,
+                props.filter === 'DELETE' && styles.toogleButtonStatus,
               ]}
               style={[
                 styles.toggleButton,
-                props.filter === 'delete' && styles.toggleButtonOpacity,
+                props.filter === 'DELETE' && styles.toggleButtonOpacity,
                 styles.toggleButtonRight,
               ]}
-              onPress={() => props.onSetFilter('delete')}
+              onPress={() => props.onSetFilter('DELETE')}
             >
               DEL
             </Button>
