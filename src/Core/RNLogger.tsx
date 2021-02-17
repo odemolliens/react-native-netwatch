@@ -28,9 +28,11 @@ export class RNLogger {
   static instance: RNLogger;
 
   initialized: boolean = true;
-  maxRequests: number = 100; // Maybe should be delete
+  maxRequests: number = 100;
   requestId: number = 0;
   requests: Array<RNRequest> = [];
+  // This queue will keep all the requests created until the readyState equal 4. At this moment, the request will be
+  // moved in requests: Array<RNRequest>
   queue: Map<number, RNRequest> = new Map();
   callback: Function = () => {};
 
@@ -70,15 +72,14 @@ export class RNLogger {
   };
 
   updaterequest = (index: number, request: Partial<RNRequest>): void => {
+    const _rnRequest = new RNRequest({
+      ...this.queue.get(index),
+      ...request,
+    });
     if (request.readyState === XHR_COMPLETE_STATUS) {
       // Be careful, always use immutable function on array (concat, splice)
       // never unshift/shift function
-      this.requests = [
-        {
-          ...(this.queue.get(index) as RNRequest),
-          ...request,
-        },
-      ].concat(this.requests);
+      this.requests = [_rnRequest].concat(this.requests);
 
       if (this.getExecutedRequests() > this.maxRequests) {
         this.requests = [...this.requests.slice(0, this.getExecutedRequests() - 1)];
@@ -86,10 +87,7 @@ export class RNLogger {
       this.callback(this.getRequests());
       this.queue.delete(index);
     } else {
-      this.queue.set(index, {
-        ...(this.queue.get(index) as RNRequest),
-        ...request,
-      });
+      this.queue.set(index, _rnRequest);
     }
   };
 
