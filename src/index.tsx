@@ -14,7 +14,7 @@ import { RNRequest } from './Core/Objects/RNRequest';
 import { ReduxAction } from './Core/Objects/ReduxAction';
 
 export interface IProps {
-  onPressBack: (visible: boolean) => void;
+  onPressClose: (visible: boolean) => void;
   visible?: boolean;
   enabled?: boolean;
 }
