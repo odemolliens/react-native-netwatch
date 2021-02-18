@@ -1,4 +1,4 @@
-export const mockNativeModules = {
+export const mockNativeModules: any = {
   Alert: {
     alert: jest.fn(),
   },
@@ -11,9 +11,9 @@ export const mockNativeModules = {
     timing: jest.fn().mockReturnValue({ start: jest.fn() }),
     start: jest.fn(),
     spring: jest.fn().mockReturnValue({ start: jest.fn() }),
-    Value: value => ({
-      interpolate: () => {},
-      setValue: styles => styles,
+    Value: (value: any) => ({
+      interpolate: () => value,
+      setValue: (styles: any) => styles,
     }),
   },
   LayoutAnimation: {
@@ -24,7 +24,7 @@ export const mockNativeModules = {
   },
   Linking: {
     openURL: jest.fn(),
-    canOpenURL: jest.fn(() => new Promise(resolve => resolve(true))),
+    canOpenURL: jest.fn(() => new Promise((resolve: any) => resolve(true))),
     openSettings: jest.fn(),
     addEventListener: jest.fn(),
     getInitialURL: jest.fn(() => Promise.resolve()),
@@ -86,7 +86,7 @@ export const mockNativeModules = {
       LibraryDir: '',
     },
     ViewData: {
-      dataForService: (serviceName, fn) =>
+      dataForService: (fn: any) =>
         fn({ error: null, data: { service: 'service', data: [{ items: [] }] } }),
     },
     UrlRouter: {
@@ -126,23 +126,23 @@ export const mockNativeModules = {
       },
     },
   },
-  NativeEventEmitter: component => ({
+  NativeEventEmitter: () => ({
     addListener: jest.fn(),
     removeListener: jest.fn(),
   }),
   Platform: {
     OS: 'ios',
     Version: '13.0.0',
-    select: value => ({
+    select: (value: any) => ({
       android: value,
       ios: value,
     }),
   },
   PushNotificationIOS: {
-    requestPermissions: permissions => ({ alert: true, badge: true, sound: true }),
+    requestPermissions: () => ({ alert: true, badge: true, sound: true }),
   },
   StyleSheet: {
-    create: style => style,
+    create: (style: any) => style,
     compose: jest.fn(),
     flatten: () => ({}),
   },

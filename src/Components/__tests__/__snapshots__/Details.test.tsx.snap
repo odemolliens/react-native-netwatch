@@ -1,0 +1,805 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details test suite should render properly 1`] = `
+<ForwardRef(withTheme(undefined))>
+  Error
+</ForwardRef(withTheme(undefined))>
+`;
+
+exports[`Details test suite should render properly with request with headers 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Object {
+        "backgroundColor": "#212121",
+      }
+    }
+  >
+    <Appbar.BackAction
+      color="white"
+      onPress={[Function]}
+      testID="buttonBackToMainScreen"
+    />
+    <ForwardRef(withTheme(Appbar.Content))
+      title="Netwatch"
+    />
+  </ForwardRef(withTheme(Appbar.Header))>
+  <ForwardRef(withTheme(Surface))
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Status
+      item={
+        Object {
+          "_id": 73,
+          "dataSent": "dataSent",
+          "endTime": 1613477575757,
+          "method": "GET",
+          "readyState": 4,
+          "requestHeaders": Object {
+            "Content-Type": "application/json",
+          },
+          "response": "response",
+          "responseContentType": "application/json",
+          "responseHeaders": Object {
+            "Content-Length": "0",
+            "Content-Type": "application/json; charset=UTF-8",
+            "Date": "Tue, 16 Feb 2021 12:12:55 GMT",
+            "Sozu-Id": "51989c0c-ebe7-4574-913d-443477875da7",
+          },
+          "responseSize": 0,
+          "responseType": "blob",
+          "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          "startTime": 1613477574742,
+          "status": 200,
+          "timeout": 0,
+          "type": "RNR",
+          "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        }
+      }
+    />
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "paddingLeft": 8,
+          "width": "100%",
+        }
+      }
+    >
+      <ForwardRef(withTheme(undefined))
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 16,
+          }
+        }
+      >
+        Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)
+      </ForwardRef(withTheme(undefined))>
+      <ForwardRef(withTheme(undefined))
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 16,
+          }
+        }
+      >
+        Duration 1015ms
+      </ForwardRef(withTheme(undefined))>
+    </Component>
+  </ForwardRef(withTheme(Surface))>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      contentContainerStyle={
+        Object {
+          "paddingBottom": 20,
+        }
+      }
+    >
+      <Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          GENERAL
+        </Subheading>
+        <Component
+          key="0"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            responseURL
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="1"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            timeout
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            0
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="2"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            url
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          REQUEST HEADERS
+        </Subheading>
+        <Component
+          key="0"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Content-Type
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            application/json
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          REQUEST DATA
+        </Subheading>
+        <Component
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            dataSent
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          RESPONSE HEADERS
+        </Subheading>
+        <Component
+          key="0"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Content-Length
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            0
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="1"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Content-Type
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            application/json; charset=UTF-8
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="2"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Date
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            Tue, 16 Feb 2021 12:12:55 GMT
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="3"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Sozu-Id
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            51989c0c-ebe7-4574-913d-443477875da7
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          RESPONSE BODY
+        </Subheading>
+        <Component
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            response
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render properly with request without headers & press backbutton 1`] = `
+<Component
+  style={
+    Object {
+      "backgroundColor": "white",
+      "flex": 1,
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Object {
+        "backgroundColor": "#212121",
+      }
+    }
+  >
+    <Appbar.BackAction
+      color="white"
+      onPress={[Function]}
+      testID="buttonBackToMainScreen"
+    />
+    <ForwardRef(withTheme(Appbar.Content))
+      title="Netwatch"
+    />
+  </ForwardRef(withTheme(Appbar.Header))>
+  <ForwardRef(withTheme(Surface))
+    style={
+      Object {
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Status
+      item={
+        Object {
+          "_id": 73,
+          "dataSent": "dataSent",
+          "endTime": 1613477575757,
+          "method": "GET",
+          "readyState": 4,
+          "response": "response",
+          "responseContentType": "application/json",
+          "responseSize": 0,
+          "responseType": "blob",
+          "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          "startTime": 1613477574742,
+          "status": 200,
+          "timeout": 0,
+          "type": "RNR",
+          "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        }
+      }
+    />
+    <Component
+      style={
+        Object {
+          "backgroundColor": "#212121",
+          "justifyContent": "center",
+          "paddingLeft": 8,
+          "width": "100%",
+        }
+      }
+    >
+      <ForwardRef(withTheme(undefined))
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 16,
+          }
+        }
+      >
+        Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)
+      </ForwardRef(withTheme(undefined))>
+      <ForwardRef(withTheme(undefined))
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 16,
+          }
+        }
+      >
+        Duration 1015ms
+      </ForwardRef(withTheme(undefined))>
+    </Component>
+  </ForwardRef(withTheme(Surface))>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Component
+      contentContainerStyle={
+        Object {
+          "paddingBottom": 20,
+        }
+      }
+    >
+      <Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          GENERAL
+        </Subheading>
+        <Component
+          key="0"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            responseURL
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="1"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            timeout
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            0
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Component
+          key="2"
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            url
+          </ForwardRef(withTheme(undefined))>
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          REQUEST HEADERS
+        </Subheading>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          REQUEST DATA
+        </Subheading>
+        <Component
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            dataSent
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          RESPONSE HEADERS
+        </Subheading>
+        <Subheading
+          style={
+            Object {
+              "backgroundColor": "lightgray",
+              "borderWidth": 0,
+              "color": "black",
+              "fontWeight": "bold",
+              "marginTop": -1,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          RESPONSE BODY
+        </Subheading>
+        <Component
+          style={
+            Object {
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            }
+          }
+        >
+          <ForwardRef(withTheme(undefined))
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+              }
+            }
+          >
+            response
+          </ForwardRef(withTheme(undefined))>
+        </Component>
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;

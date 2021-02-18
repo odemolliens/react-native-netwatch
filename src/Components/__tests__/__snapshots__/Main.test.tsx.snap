@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main test suite should render properly 1`] = `
+<Fragment>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Object {
+        "backgroundColor": "#212121",
+      }
+    }
+  >
+    <ForwardRef(withTheme(IconButton))
+      color="white"
+      icon="close"
+      onPress={[Function]}
+    />
+    <ForwardRef(withTheme(Appbar.Content))
+      title="Netwatch"
+    />
+  </ForwardRef(withTheme(Appbar.Header))>
+  <ForwardRef(withTheme(Surface))
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#212121",
+        "flexDirection": "row",
+        "padding": 16,
+      }
+    }
+  >
+    <ForwardRef(withTheme(undefined))
+      iconColor="white"
+      inputStyle={
+        Object {
+          "color": "white",
+        }
+      }
+      onChangeText={[Function]}
+      placeholder="Search"
+      placeholderTextColor="white"
+      style={
+        Object {
+          "backgroundColor": "#616161",
+          "color": "white",
+          "flex": 1,
+        }
+      }
+      value=""
+    />
+    <ForwardRef(withTheme(IconButton))
+      icon={[Function]}
+      onPress={[Function]}
+      size={24}
+    />
+    <ForwardRef(withTheme(IconButton))
+      icon={[Function]}
+      onPress={[Function]}
+      size={24}
+      style={
+        Object {
+          "marginRight": -8,
+        }
+      }
+    />
+  </ForwardRef(withTheme(Surface))>
+  <Settings
+    filter="ALL"
+    onDismiss={[Function]}
+    onPressClear={[Function]}
+    onSetFilter={[Function]}
+    onSetSource={[Function]}
+    source="ALL"
+    visible={false}
+  />
+  <Component
+    animationType="fade"
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <ForwardRef(withTheme(Dialog))
+      onDismiss={[Function]}
+      visible={false}
+    >
+      <ForwardRef(withTheme(Dialog.Title))>
+        WARNING
+      </ForwardRef(withTheme(Dialog.Title))>
+      <Dialog.Content>
+        <Paragraph>
+          Do you really want clear the call list?
+        </Paragraph>
+      </Dialog.Content>
+      <Dialog.Actions>
+        <ForwardRef(withTheme(Button))
+          onPress={[Function]}
+        >
+          CANCEL
+        </ForwardRef(withTheme(Button))>
+        <ForwardRef(withTheme(Button))
+          onPress={[Function]}
+        >
+          OK
+        </ForwardRef(withTheme(Button))>
+      </Dialog.Actions>
+    </ForwardRef(withTheme(Dialog))>
+  </Component>
+  <Component
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "height": "100%",
+        "justifyContent": "center",
+        "width": "100%",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+      <FlatList
+        data={Array []}
+        disableVirtualization={false}
+        horizontal={false}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        maxToRenderPerBatch={10}
+        numColumns={1}
+        onEndReachedThreshold={2}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        style={
+          Object {
+            "backgroundColor": "#bdbdbd",
+            "margin": 0,
+            "padding": 0,
+            "width": "100%",
+          }
+        }
+        updateCellsBatchingPeriod={50}
+        windowSize={21}
+      />
+    </Component>
+  </Component>
+</Fragment>
+`;

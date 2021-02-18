@@ -2,24 +2,26 @@ package com.example;
 
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import org.json.JSONObject;
-import java.util.ArrayList;
-import java.util.List;
+import com.imranmentese.reactnativenetwatch.interceptor.NetworkInterceptor;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ExampleModule extends ReactContextBaseJavaModule {
     ReactApplicationContext mContext;
+    OkHttpClient client;
     ExampleModule(ReactApplicationContext context) {
         super(context);
         mContext = context;
+        client = new OkHttpClient.Builder().addInterceptor(new NetworkInterceptor(mContext)).build();
     }
 
     @Override
@@ -34,32 +36,25 @@ public class ExampleModule extends ReactContextBaseJavaModule {
 
 
     public void volleyGet(String url){
-        List<String> jsonResponses = new ArrayList<>();
+        Request request = new Request.Builder()
+                .url(url)
+                .header("User-Agent", "OkHttp Example")
+                .build();
 
-        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+        client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onResponse(JSONObject response) {
-                Log.i("NetwatchExampleModule", "<<>> Success response: " + response);
-//                try {
-//                    JSONArray jsonArray = response.getJSONArray("data");
-//                    for(int i = 0; i < jsonArray.length(); i++){
-//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                        String email = jsonObject.getString("email");
-//
-//                        jsonResponses.add(email);
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("NetwatchExampleModule", "<<>> Error: " + error);
-                error.printStackTrace();
+            public void onResponse(Call call, final Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    throw new IOException("Unexpected code " + response);
+                } else {
+                    Log.e("<<>>", "<<>> Response : " + response);
+                }
             }
         });
-        requestQueue.add(jsonObjectRequest);
     }
 }

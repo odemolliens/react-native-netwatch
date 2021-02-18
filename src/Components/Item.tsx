@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-// @ts-ignore
-import { Appbar, Searchbar, Surface, List, Divider } from 'react-native-paper';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { Status } from './Status';
 import { getTime } from '../Utils/helpers';
@@ -13,11 +11,15 @@ export interface IProps {
 }
 
 export const Item: React.FC<IProps> = ({ item, onPress }) => {
-  let urlObject = url.parse(item.url);
+  const urlObject = url.parse(item.url);
   return (
-    <TouchableOpacity onPress={() => onPress()} style={styles.listItemContainer}>
+    <TouchableOpacity
+      onPress={() => onPress()}
+      style={styles.listItemContainer}
+      testID={`itemTouchable-${item._id}`}
+    >
       <>
-        <Status item={item}></Status>
+        <Status item={item} />
         <View style={styles.url}>
           <View style={styles.domain}>
             <Text numberOfLines={1} style={styles.titleStyle}>{`${urlObject.host}`}</Text>

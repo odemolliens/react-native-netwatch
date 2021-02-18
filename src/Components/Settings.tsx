@@ -3,11 +3,9 @@ import * as React from 'react';
 // NOTE: React Native Paper ToggleButton can't allow add text in the button -> Custom Toggle Button here
 import { View, StyleSheet, Modal } from 'react-native';
 import { Dialog, Button, Text, RadioButton } from 'react-native-paper';
-// @ts-ignore
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SourceType, RequestMethod, EnumFilterType, EnumSourceType } from '../types';
 
-interface IProps {
+export interface IProps {
   testId?: string;
   visible: boolean;
   onDismiss: () => void;
@@ -34,33 +32,37 @@ export const Settings = (props: IProps) => {
           >
             <View style={styles.radioButtonContainer}>
               <RadioButton
-                value="ALL"
-                status={checked === 'ALL' ? 'checked' : 'unchecked'}
-                onPress={() => setChecked('ALL')}
+                value={EnumSourceType.All}
+                status={checked === EnumSourceType.All ? 'checked' : 'unchecked'}
+                onPress={() => setChecked(EnumSourceType.All)}
+                testID={'RadioAll'}
               />
               <Text style={styles.radioButtonText}>All Requests and Actions</Text>
             </View>
             <View style={styles.radioButtonContainer}>
               <RadioButton
-                value="REDUX"
-                status={checked === 'REDUX' ? 'checked' : 'unchecked'}
-                onPress={() => setChecked('REDUX')}
+                value={EnumSourceType.Redux}
+                status={checked === EnumSourceType.Redux ? 'checked' : 'unchecked'}
+                onPress={() => setChecked(EnumSourceType.Redux)}
+                testID={'RadioRedux'}
               />
               <Text style={styles.radioButtonText}>Redux Action</Text>
             </View>
             <View style={styles.radioButtonContainer}>
               <RadioButton
-                value="RNR"
-                status={checked === 'RNR' ? 'checked' : 'unchecked'}
-                onPress={() => setChecked('RNR')}
+                value={EnumSourceType.ReactNativeRequest}
+                status={checked === EnumSourceType.ReactNativeRequest ? 'checked' : 'unchecked'}
+                onPress={() => setChecked(EnumSourceType.ReactNativeRequest)}
+                testID={'RadioRNR'}
               />
               <Text style={styles.radioButtonText}>React Native Requests</Text>
             </View>
             <View style={styles.radioButtonContainer}>
               <RadioButton
-                value="NR"
-                status={checked === 'NR' ? 'checked' : 'unchecked'}
-                onPress={() => setChecked('NR')}
+                value={EnumSourceType.Nativerequest}
+                status={checked === EnumSourceType.Nativerequest ? 'checked' : 'unchecked'}
+                onPress={() => setChecked(EnumSourceType.Nativerequest)}
+                testID={'RadioNR'}
               />
               <Text style={styles.radioButtonText}>Native Requests</Text>
             </View>
@@ -80,6 +82,7 @@ export const Settings = (props: IProps) => {
                 styles.toggleButtonLeft,
               ]}
               onPress={() => props.onSetFilter(EnumFilterType.All)}
+              testID={'ButtonAll'}
             >
               All
             </Button>
@@ -91,6 +94,7 @@ export const Settings = (props: IProps) => {
               ]}
               style={[styles.toggleButton, props.filter === 'GET' && styles.toggleButtonOpacity]}
               onPress={() => props.onSetFilter('GET')}
+              testID={'ButtonGet'}
             >
               GET
             </Button>
@@ -102,6 +106,7 @@ export const Settings = (props: IProps) => {
               ]}
               style={[styles.toggleButton, props.filter === 'POST' && styles.toggleButtonOpacity]}
               onPress={() => props.onSetFilter('POST')}
+              testID={'ButtonPost'}
             >
               POST
             </Button>
@@ -113,6 +118,7 @@ export const Settings = (props: IProps) => {
               ]}
               style={[styles.toggleButton, props.filter === 'PUT' && styles.toggleButtonOpacity]}
               onPress={() => props.onSetFilter('PUT')}
+              testID={'ButtonPut'}
             >
               PUT
             </Button>
@@ -128,13 +134,16 @@ export const Settings = (props: IProps) => {
                 styles.toggleButtonRight,
               ]}
               onPress={() => props.onSetFilter('DELETE')}
+              testID={'ButtonDel'}
             >
               DEL
             </Button>
           </View>
         </View>
         <Dialog.Actions style={styles.actions}>
-          <Button onPress={() => props.onDismiss()}>Done</Button>
+          <Button onPress={() => props.onDismiss()} testID={'ButtonDone'}>
+            Done
+          </Button>
         </Dialog.Actions>
       </Dialog>
     </Modal>

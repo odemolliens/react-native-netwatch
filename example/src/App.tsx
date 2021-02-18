@@ -1,12 +1,13 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { Netwatch } from 'react-native-netwatch';
+import React, { useState } from 'react';
+import { Netwatch, getNativeRequests } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { Dispatch } from 'redux';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
-import { makeRequestInContinue } from './utils/requestGenerator'
+import { Text, TouchableHighlight, StyleSheet, View, NativeModules } from 'react-native';
+import { makeRequestInContinue } from './utils/requestGenerator';
+
+const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 
@@ -22,7 +23,7 @@ const App = () => {
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              setNetwatchVisible(true);
+              getNativeRequests();
             }}
             testID="buttonDisplayNetwatch"
           >
@@ -31,7 +32,7 @@ const App = () => {
           <TouchableHighlight
             style={styles.enableButton}
             onPress={() => {
-              setNetwatchEnabled(!netwatchEnabled);
+              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
             }}
             testID="buttonDisabledNetwatch"
           >
@@ -44,19 +45,17 @@ const App = () => {
   );
 };
 
-const Button = (props: any) => {
-  return (
-    <TouchableHighlight
-      style={styles.enableButton}
-      onPress={() => {
-        props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
-      }}
-      testID="buttonDisabledNetwatch"
-    >
-      <Text style={styles.textStyle}>Dispatch Action</Text>
-    </TouchableHighlight>
-  );
-};
+const Button = (props: any) => (
+  <TouchableHighlight
+    style={styles.enableButton}
+    onPress={() => {
+      props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
+    }}
+    testID="buttonDisabledNetwatch"
+  >
+    <Text style={styles.textStyle}>Dispatch Action</Text>
+  </TouchableHighlight>
+);
 
 export function mapDispatchToProps(dispatch: Dispatch, props: any): any {
   return {

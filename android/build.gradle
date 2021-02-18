@@ -41,4 +41,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${safeExtGet('kotlinVersion', '1.4.10')}"
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'
+
+    implementation 'org.apache.commons:commons-text:1.9'
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // Android interceptor
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 }

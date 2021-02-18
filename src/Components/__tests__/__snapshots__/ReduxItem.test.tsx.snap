@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReduxItem test suite should render properly 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#757575",
+      "borderBottomColor": "#bdbdbd",
+      "borderBottomWidth": 0.5,
+      "flexDirection": "row",
+      "height": 50,
+    }
+  }
+>
+  <Status
+    backgroundColor="#64b5f6"
+    item={
+      Object {
+        "_id": 73,
+        "action": Object {
+          "action": "",
+          "type": "__ERROR:UNDEFINED__",
+        },
+        "startTime": 100,
+        "type": "REDUX",
+      }
+    }
+    subText="-"
+    text="ACT"
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingRight": 8,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Component
+        numberOfLines={1}
+        style={
+          Object {
+            "color": "white",
+            "fontWeight": "bold",
+            "paddingLeft": 16,
+          }
+        }
+      >
+        __ERROR:UNDEFINED__
+      </Component>
+      <Component
+        style={
+          Object {
+            "color": "white",
+          }
+        }
+      >
+        00:00:00
+      </Component>
+    </Component>
+    <Component
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "white",
+          "paddingLeft": 16,
+        }
+      }
+    >
+      Redux action
+    </Component>
+  </Component>
+</Component>
+`;

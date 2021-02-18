@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, SafeAreaView } from 'react-native';
+import { Modal, SafeAreaView, NativeModules } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -19,6 +19,14 @@ export interface IProps {
   visible?: boolean;
   enabled?: boolean;
   maxRequests?: number;
+}
+
+const { RNNetwatch } = NativeModules;
+
+export function getNativeRequests() {
+  RNNetwatch.getNativeRequests((response: any) => {
+    console.warn('<<>> : ', response);
+  });
 }
 
 export const reduxLogger = reduxLoggerMiddleware;

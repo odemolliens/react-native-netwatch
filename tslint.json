@@ -28,7 +28,6 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "import-spacing": true,
-    "no-duplicate-imports": true,
     "no-var-requires": false,
     "variable-name": [
       true,
@@ -36,11 +35,6 @@
       "check-format",
       "allow-leading-underscore",
       "allow-pascal-case"
-    ],
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double"
     ],
     "jsx-no-lambda": false,
     "jsx-key": false,
@@ -61,6 +55,8 @@
         "esSpecCompliant": true
       }
     ],
+    "no-empty": false,
+    "arrow-parens": false,
     "semicolon": [
       true,
       "always",
