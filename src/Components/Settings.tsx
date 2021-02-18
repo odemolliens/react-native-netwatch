@@ -19,7 +19,7 @@ export interface IProps {
 // KEEP Modal around Dialog (bug with react-native paper, dialog is always in transparency)
 export const Settings = (props: IProps) => {
   const [checked, setChecked] = React.useState(props.source);
-  const disabledFilter = props.source === 'REDUX';
+  const disabledFilter = props.source === EnumSourceType.Redux;
 
   return (
     <Modal animationType="fade" transparent visible={props.visible}>
@@ -68,77 +68,85 @@ export const Settings = (props: IProps) => {
             </View>
           </RadioButton.Group>
 
-          <Dialog.Title style={styles.section}>Filter</Dialog.Title>
-          <View style={styles.toggleButtonGroup}>
-            <Button
-              disabled={disabledFilter}
-              labelStyle={[
-                styles.toggleButtonLabel,
-                props.filter === 'ALL' && styles.toogleButtonStatus,
-              ]}
-              style={[
-                styles.toggleButton,
-                props.filter === 'ALL' && styles.toggleButtonOpacity,
-                styles.toggleButtonLeft,
-              ]}
-              onPress={() => props.onSetFilter(EnumFilterType.All)}
-              testID={'ButtonAll'}
-            >
-              All
-            </Button>
-            <Button
-              disabled={disabledFilter}
-              labelStyle={[
-                styles.toggleButtonLabel,
-                props.filter === 'GET' && styles.toogleButtonStatus,
-              ]}
-              style={[styles.toggleButton, props.filter === 'GET' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('GET')}
-              testID={'ButtonGet'}
-            >
-              GET
-            </Button>
-            <Button
-              disabled={disabledFilter}
-              labelStyle={[
-                styles.toggleButtonLabel,
-                props.filter === 'POST' && styles.toogleButtonStatus,
-              ]}
-              style={[styles.toggleButton, props.filter === 'POST' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('POST')}
-              testID={'ButtonPost'}
-            >
-              POST
-            </Button>
-            <Button
-              disabled={disabledFilter}
-              labelStyle={[
-                styles.toggleButtonLabel,
-                props.filter === 'PUT' && styles.toogleButtonStatus,
-              ]}
-              style={[styles.toggleButton, props.filter === 'PUT' && styles.toggleButtonOpacity]}
-              onPress={() => props.onSetFilter('PUT')}
-              testID={'ButtonPut'}
-            >
-              PUT
-            </Button>
-            <Button
-              disabled={disabledFilter}
-              labelStyle={[
-                styles.toggleButtonLabel,
-                props.filter === 'DELETE' && styles.toogleButtonStatus,
-              ]}
-              style={[
-                styles.toggleButton,
-                props.filter === 'DELETE' && styles.toggleButtonOpacity,
-                styles.toggleButtonRight,
-              ]}
-              onPress={() => props.onSetFilter('DELETE')}
-              testID={'ButtonDel'}
-            >
-              DEL
-            </Button>
-          </View>
+          {!disabledFilter && (
+            <>
+              <Dialog.Title style={styles.section}>Filter</Dialog.Title>
+              <View style={styles.toggleButtonGroup}>
+                <Button
+                  labelStyle={[
+                    styles.toggleButtonLabel,
+                    props.filter === EnumFilterType.All && styles.toogleButtonStatus,
+                  ]}
+                  style={[
+                    styles.toggleButton,
+                    props.filter === EnumFilterType.All && styles.toggleButtonOpacity,
+                    styles.toggleButtonLeft,
+                  ]}
+                  onPress={() => props.onSetFilter(EnumFilterType.All)}
+                  testID={'ButtonAll'}
+                >
+                  All
+                </Button>
+                <Button
+                  labelStyle={[
+                    styles.toggleButtonLabel,
+                    props.filter === EnumFilterType.Get && styles.toogleButtonStatus,
+                  ]}
+                  style={[
+                    styles.toggleButton,
+                    props.filter === EnumFilterType.Get && styles.toggleButtonOpacity,
+                  ]}
+                  onPress={() => props.onSetFilter(EnumFilterType.Get)}
+                  testID={'ButtonGet'}
+                >
+                  GET
+                </Button>
+                <Button
+                  labelStyle={[
+                    styles.toggleButtonLabel,
+                    props.filter === EnumFilterType.Post && styles.toogleButtonStatus,
+                  ]}
+                  style={[
+                    styles.toggleButton,
+                    props.filter === EnumFilterType.Post && styles.toggleButtonOpacity,
+                  ]}
+                  onPress={() => props.onSetFilter(EnumFilterType.Post)}
+                  testID={'ButtonPost'}
+                >
+                  POST
+                </Button>
+                <Button
+                  labelStyle={[
+                    styles.toggleButtonLabel,
+                    props.filter === EnumFilterType.Put && styles.toogleButtonStatus,
+                  ]}
+                  style={[
+                    styles.toggleButton,
+                    props.filter === EnumFilterType.Put && styles.toggleButtonOpacity,
+                  ]}
+                  onPress={() => props.onSetFilter(EnumFilterType.Put)}
+                  testID={'ButtonPut'}
+                >
+                  PUT
+                </Button>
+                <Button
+                  labelStyle={[
+                    styles.toggleButtonLabel,
+                    props.filter === EnumFilterType.Delete && styles.toogleButtonStatus,
+                  ]}
+                  style={[
+                    styles.toggleButton,
+                    props.filter === EnumFilterType.Delete && styles.toggleButtonOpacity,
+                    styles.toggleButtonRight,
+                  ]}
+                  onPress={() => props.onSetFilter(EnumFilterType.Delete)}
+                  testID={'ButtonDel'}
+                >
+                  DEL
+                </Button>
+              </View>
+            </>
+          )}
         </View>
         <Dialog.Actions style={styles.actions}>
           <Button onPress={() => props.onDismiss()} testID={'ButtonDone'}>

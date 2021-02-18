@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { Appbar, Subheading, Text, Surface } from 'react-native-paper';
+import { StyleSheet, View, ScrollView, Share, Alert } from 'react-native';
+import { Appbar, Subheading, Text, Surface, IconButton } from 'react-native-paper';
 import { Status } from './Status';
 import { duration, getDate } from '../Utils/helpers';
-import { RNRequest } from '../Core/Objects/RNRequest';
+import RNRequest from '../Core/Objects/RNRequest';
 
 export interface IProps {
   testId?: string;
@@ -28,6 +28,67 @@ const excludedAttributes: Array<string> = [
   'responseType',
   'responseContentType',
 ];
+
+const stringifyData = (array: Array<string[]>): string => {
+  let _string = '';
+  let _result = array
+    .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
+    .map((item: Array<string>) => {
+      return _string.concat(item[0], ': ', item[1], '\n');
+    });
+  return _result.join('\n');
+};
+
+const formatSharedMessage = (
+  general: Array<string[]>,
+  requestHeaders: Array<string[]>,
+  postData: string,
+  responseHeaders: Array<string[]>,
+  bodyResponse: string
+): string => {
+  let _general = stringifyData(general);
+  let _requestHeaders = stringifyData(requestHeaders);
+  let _responseHeaders = stringifyData(responseHeaders);
+  let _report = ''.concat(
+    'GENERAL\n',
+    _general,
+    '\n',
+    'REQUEST HEADERS\n',
+    _requestHeaders,
+    '\n',
+    'REQUEST DATA\n',
+    postData,
+    '\n',
+    'RESPONSE HEADERS\n',
+    _responseHeaders,
+    '\n',
+    'RESPONSE BODY\n',
+    bodyResponse
+  );
+  return _report;
+};
+
+const onShare = async (
+  general: Array<string[]>,
+  requestHeaders: Array<string[]>,
+  postData: string = '',
+  responseHeaders: Array<string[]>,
+  bodyResponse: string = ''
+): Promise<void> => {
+  try {
+    await Share.share({
+      message: formatSharedMessage(
+        general,
+        requestHeaders,
+        postData,
+        responseHeaders,
+        bodyResponse
+      ),
+    });
+  } catch (error) {
+    Alert.alert('Error', error.message);
+  }
+};
 
 const _renderItems = (listOfItems: Array<[string, any]>) =>
   listOfItems
@@ -60,6 +121,19 @@ export const Details: React.FC<IProps> = (props) => {
           testID="buttonBackToMainScreen"
         />
         <Appbar.Content title="Netwatch" />
+        <IconButton
+          color="white"
+          icon="share"
+          onPress={() =>
+            onShare(
+              _generalElements,
+              _requestHeadersElements,
+              props.item?.dataSent,
+              _responseHeadersElements,
+              props.item?.response
+            )
+          }
+        />
       </Appbar.Header>
       <Surface style={{ flexDirection: 'row' }}>
         {props.item && <Status item={props.item} />}
@@ -67,7 +141,7 @@ export const Details: React.FC<IProps> = (props) => {
           <Text style={styles.textSubheader}>{`${getDate(props.item.startTime)}`}</Text>
           <Text style={styles.textSubheader}>{`Duration ${duration(
             props.item.startTime,
-            props.item.endTime,
+            props.item.endTime
           )}ms`}</Text>
         </View>
       </Surface>
@@ -83,7 +157,7 @@ export const Details: React.FC<IProps> = (props) => {
               <>
                 <Subheading style={styles.subheading}>REQUEST DATA</Subheading>
                 <View style={styles.attribtuesContainer}>
-                  <Text style={styles.text}>{props.item.dataSent}</Text>
+                  <Text style={styles.text}>{props.item?.dataSent}</Text>
                 </View>
               </>
             )}

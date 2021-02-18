@@ -20,8 +20,8 @@ export const stringifyData = (data: any) => {
   }
 };
 
-export const getRequestBody = (dataSent: any) => {
-  return stringifyData(dataSent || '');
+export const getRequestBody = (dataSent: any): string => {
+  return stringifyData(dataSent) || '';
 };
 
 export const getResponseBody = async (
@@ -58,14 +58,14 @@ export class RNRequest implements ILog {
   status: number = -1;
   endTime: number = 0;
   timeout?: number;
-  dataSent?: string;
+  dataSent?: string = '';
   requestHeaders?: any;
   responseHeaders?: any;
   responseContentType?: string;
   responseSize?: number;
   responseType?: string;
   responseURL?: string;
-  response?: any = '';
+  response?: string = '';
 
   constructor(attributes: any) {
     Object.assign(this, attributes);

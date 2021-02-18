@@ -26,6 +26,9 @@
     "test": "TZ=UTC jest",
     "testu": "TZ=UTC node_modules/.bin/jest --updateSnapshot"
   },
+  "dependencies": {
+    "url": "^0.11.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
@@ -56,15 +59,13 @@
     "tslint-config-airbnb-base": "^0.3.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^5.0.0",
-    "typescript": "^4.0.3",
-    "url": "^0.11.0"
+    "typescript": "^4.0.3"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
     "react-native-paper": "*",
-    "react-native-vector-icons": "*",
-    "url": "*"
+    "react-native-vector-icons": "*"
   },
   "jest": {
     "verbose": true,

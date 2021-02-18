@@ -12,11 +12,13 @@ import {
 } from 'react-native-paper';
 import Item from './Item';
 import ReduxItem from './ReduxItem';
+//@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
+import { getTime } from '../Utils/helpers'
 
 export interface IProps {
   testId?: string;
@@ -67,7 +69,7 @@ export const Main = (props: IProps) => {
       setRequests(mergeArrays(props.reduxActions, props.rnRequests).sort(compare).reverse());
     }
     return () => {};
-  }, [props.rnRequests, props.reduxActions]);
+  }, [props.rnRequests, props.reduxActions, source, filter]);
 
   const mergeArrays = (...arrays: Array<ILog[]>) => {
     return [...arrays.flat()];
@@ -115,14 +117,13 @@ export const Main = (props: IProps) => {
     const _report = array.map((item) => {
       if (item instanceof RNRequest) {
         return _string.concat(
-          item.startTime.toString(),
+          getTime(item.startTime),
           ' ',
           item.method,
           ' : ',
           item.status.toString(),
           ' - ',
-          item.url,
-          '\n'
+          item.url
         );
       }
 
@@ -131,7 +132,7 @@ export const Main = (props: IProps) => {
       }
       return '';
     });
-    return _report.toString();
+    return _report.join('\n');
   };
 
   const onShare = async (): Promise<void> => {
