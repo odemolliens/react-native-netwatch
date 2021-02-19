@@ -71,6 +71,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               url: item.url,
               method: item.method,
               status: item.status,
+              startTime: item.startTime,
               endTime: item.endTime,
               timeout: item.timeout,
               dataSent: JSON.stringify(item.dataSent, null, 2),
@@ -83,7 +84,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               response: JSON.stringify(item.response, null, 2),
             });
           });
-          setnRequests(_result);
+          setnRequests([..._result, ...nRequests]);
         }
       } catch (error) {
         console.error(error.message);

@@ -34,10 +34,6 @@ export interface IProps {
   maxRequests?: number;
 }
 
-let reduxList: ReduxAction[] = [];
-let rnList: RNRequest[] = [];
-let nList: NRequest[] = [];
-
 export const Main = (props: IProps) => {
   const [requests, setRequests] = useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,19 +54,14 @@ export const Main = (props: IProps) => {
   useEffect(() => {
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
-      reduxList = [...props.reduxActions];
-      setRequests(reduxList);
+      setRequests(props.reduxActions);
     } else if (source === EnumSourceType.ReactNativeRequest) {
-      rnList = [...props.rnRequests];
-      setRequests(rnList);
+      setRequests(props.rnRequests);
     } else if (source === EnumSourceType.Nativerequest) {
-      setRequests([]);
-      nList = [...props.nRequests];
-      setRequests(nList);
+      setRequests(props.nRequests.sort(compare).reverse());
     } else {
       setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
-    return () => {};
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
 
   const mergeArrays = (...arrays: Array<ILog[]>) => {
@@ -96,7 +87,6 @@ export const Main = (props: IProps) => {
         return request.action.type.toLowerCase().includes(searchQuery.toLowerCase());
       }
     }
-
     if (request instanceof RNRequest || request instanceof NRequest) {
       if (request.type === EnumSourceType.ReactNativeRequest) {
         if (filter === request.method || filter === EnumFilterType.All) {
