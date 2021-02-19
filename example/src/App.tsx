@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Netwatch, getNativeRequests } from 'react-native-netwatch';
+import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { Dispatch } from 'redux';
@@ -23,7 +23,7 @@ const App = () => {
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              getNativeRequests();
+              setNetwatchVisible(true);
             }}
             testID="buttonDisplayNetwatch"
           >
@@ -32,11 +32,20 @@ const App = () => {
           <TouchableHighlight
             style={styles.enableButton}
             onPress={() => {
-              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
+              setNetwatchEnabled(!netwatchEnabled);
             }}
             testID="buttonDisabledNetwatch"
           >
             <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.enableButton}
+            onPress={() => {
+              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
+            }}
+            testID="buttonSendNativeRequest"
+          >
+            <Text style={styles.textStyle}>Send a Native request</Text>
           </TouchableHighlight>
           <ConnectedButton />
         </View>
@@ -51,7 +60,7 @@ const Button = (props: any) => (
     onPress={() => {
       props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
     }}
-    testID="buttonDisabledNetwatch"
+    testID="buttonDispatchAction"
   >
     <Text style={styles.textStyle}>Dispatch Action</Text>
   </TouchableHighlight>

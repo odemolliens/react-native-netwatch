@@ -3,12 +3,14 @@ import { StyleSheet, View, ScrollView, Share, Alert } from 'react-native';
 import { Appbar, Subheading, Text, Surface, IconButton } from 'react-native-paper';
 import { Status } from './Status';
 import { duration, getDate } from '../Utils/helpers';
+import { ILog } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
+import NRequest from '../Core/Objects/NRequest';
 
 export interface IProps {
   testId?: string;
   onPressBack: (showDetails: boolean) => void;
-  item?: RNRequest;
+  item: ILog;
 }
 
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
@@ -94,23 +96,26 @@ const _renderItems = (listOfItems: Array<[string, any]>) =>
   listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
     .map((item: Array<string>, index: number) => (
-      <View key={index} style={styles.attribtuesContainer}>
-        <Text style={styles.attributes}>{item[0]}</Text>
-        <Text style={styles.text}>{item[1]}</Text>
+      <View key={index} style={{ flexDirection: 'row' }}>
+        <View style={[styles.attribtuesContainer]}>
+          <Text style={styles.attributes}>{item[0]}</Text>
+          <Text style={styles.text}>{item[1]}</Text>
+        </View>
+        {
+          item[0] === 'url' && <IconButton icon="content-copy" onPress={() => console.log('Copy in the clipboard')} />
+        }
       </View>
     ));
 
 export const Details: React.FC<IProps> = (props) => {
-  if (!props.item) {
-    return <Text>Error</Text>;
-  }
+  if (!(props.item instanceof RNRequest || props.item instanceof NRequest)) return null;
   // Appbar header is repeated here cause we use the absolute position in the style
   // Put this directly in the index.tsx cause that the Appbar will be added
-  const _generalElements = Object.entries(props.item);
+  const _generalElements = (props.item && Object.entries(props.item)) || [];
   const _requestHeadersElements =
-    (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || null;
+    (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || [];
   const _responseHeadersElements =
-    (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || null;
+    (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || [];
 
   return (
     <View style={styles.container}>
@@ -168,7 +173,13 @@ export const Details: React.FC<IProps> = (props) => {
               <>
                 <Subheading style={styles.subheading}>RESPONSE BODY</Subheading>
                 <View style={styles.attribtuesContainer}>
-                  <Text style={styles.text}>{props.item?.response}</Text>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Text style={styles.text}>{props.item?.response}</Text>
+                    <IconButton
+                      icon="content-copy"
+                      onPress={() => console.log('Copy in the clipboard')}
+                    />
+                  </View>
                 </View>
               </>
             )}
@@ -208,6 +219,9 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   attribtuesContainer: {
+    flex: 1, 
+    width: '100%', 
+    justifyContent: 'center',
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
@@ -217,6 +231,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   text: {
+    flex: 1, 
+    width: '100%',
     fontSize: 16,
     color: 'black',
   },

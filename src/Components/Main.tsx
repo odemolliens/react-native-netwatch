@@ -18,7 +18,8 @@ import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
-import { getTime } from '../Utils/helpers'
+import NRequest from '../Core/Objects/NRequest';
+import { getTime } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
@@ -28,13 +29,14 @@ export interface IProps {
   visible?: boolean;
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
+  nRequests: NRequest[];
   clearAll: Function;
   maxRequests?: number;
 }
 
 let reduxList: ReduxAction[] = [];
 let rnList: RNRequest[] = [];
-// let nList: NRequest[] = [];
+let nList: NRequest[] = [];
 
 export const Main = (props: IProps) => {
   const [requests, setRequests] = useState<Array<ILog>>([]);
@@ -63,13 +65,13 @@ export const Main = (props: IProps) => {
       setRequests(rnList);
     } else if (source === EnumSourceType.Nativerequest) {
       setRequests([]);
-      // nList = [...props.nRequests.reverse()].slice(0, maxRequests);
-      // setRequests(nList);
+      nList = [...props.nRequests];
+      setRequests(nList);
     } else {
-      setRequests(mergeArrays(props.reduxActions, props.rnRequests).sort(compare).reverse());
+      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
     return () => {};
-  }, [props.rnRequests, props.reduxActions, source, filter]);
+  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
 
   const mergeArrays = (...arrays: Array<ILog[]>) => {
     return [...arrays.flat()];
@@ -94,17 +96,29 @@ export const Main = (props: IProps) => {
         return request.action.type.toLowerCase().includes(searchQuery.toLowerCase());
       }
     }
-    // TODO: Add  || request instanceof NRequest when Native request will be available
-    if (request instanceof RNRequest) {
-      if (filter === request.method || filter === EnumFilterType.All) {
-        return (
-          request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          request.status === parseInt(searchQuery) ||
-          request.method.toLowerCase() === searchQuery.toLowerCase()
-        );
+
+    if (request instanceof RNRequest || request instanceof NRequest) {
+      if (request.type === EnumSourceType.ReactNativeRequest) {
+        if (filter === request.method || filter === EnumFilterType.All) {
+          return (
+            request.type === EnumSourceType.ReactNativeRequest &&
+            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              request.status === parseInt(searchQuery) ||
+              request.method.toLowerCase() === searchQuery.toLowerCase())
+          );
+        }
+      } else {
+        if (filter === request.method || filter === EnumFilterType.All) {
+          return (
+            request.type === EnumSourceType.Nativerequest &&
+            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              request.status === parseInt(searchQuery) ||
+              request.method.toLowerCase() === searchQuery.toLowerCase())
+          );
+        }
       }
     }
-    return;
+    return [];
   });
 
   const clearList = () => {
@@ -203,12 +217,12 @@ export const Main = (props: IProps) => {
         <View style={styles.modalView}>
           <FlatList
             style={styles.flatList}
-            keyExtractor={(item) => `${item._id.toString()}${item.startTime}`}
+            keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
             data={filteredRequests}
             renderItem={({ item }) => {
               if (item instanceof ReduxAction) {
                 return <ReduxItem item={item} />;
-              } else if (item instanceof RNRequest) {
+              } else if (item instanceof RNRequest || item instanceof NRequest ) {
                 return (
                   <Item
                     item={item}
