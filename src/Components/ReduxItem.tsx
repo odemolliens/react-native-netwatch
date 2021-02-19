@@ -1,15 +1,20 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import { getTime } from '../Utils/helpers';
 import { Status } from './Status';
 
 export interface IProps {
   item: ReduxAction;
+  onPress: () => void;
 }
 
-export const ReduxItem: React.FC<IProps> = ({ item }) => (
-  <View style={styles.listItemContainer}>
+export const ReduxItem: React.FC<IProps> = ({ item, onPress }) => (
+  <TouchableOpacity
+    onPress={() => onPress()}
+    style={styles.listItemContainer}
+    testID={`itemTouchable-${item._id}`}
+  >
     <Status item={item} backgroundColor="#64b5f6" text="ACT" subText="-" />
     <View style={styles.url}>
       <View style={styles.action}>
@@ -22,7 +27,7 @@ export const ReduxItem: React.FC<IProps> = ({ item }) => (
         Redux action
       </Text>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 export default ReduxItem;

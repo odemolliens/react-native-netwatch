@@ -60,7 +60,9 @@ export const Main = (props: IProps) => {
     } else if (source === EnumSourceType.Nativerequest) {
       setRequests(props.nRequests.sort(compare).reverse());
     } else {
-      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
+      setRequests(
+        mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse()
+      );
     }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
 
@@ -211,8 +213,16 @@ export const Main = (props: IProps) => {
             data={filteredRequests}
             renderItem={({ item }) => {
               if (item instanceof ReduxAction) {
-                return <ReduxItem item={item} />;
-              } else if (item instanceof RNRequest || item instanceof NRequest ) {
+                return (
+                  <ReduxItem
+                    item={item}
+                    onPress={() => {
+                      props.onPress(item);
+                      props.onPressDetail(true);
+                    }}
+                  />
+                );
+              } else if (item instanceof RNRequest || item instanceof NRequest) {
                 return (
                   <Item
                     item={item}

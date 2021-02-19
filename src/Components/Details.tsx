@@ -7,6 +7,7 @@ import { ILog } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import NRequest from '../Core/Objects/NRequest';
 import Clipboard from '@react-native-clipboard/clipboard';
+import ReduxAction from '../Core/Objects/ReduxAction';
 
 export interface IProps {
   testId?: string;
@@ -93,6 +94,16 @@ const onShare = async (
   }
 };
 
+const onShareReduxAction = async (type: string, payload: string): Promise<void> => {
+  try {
+    await Share.share({
+      message: `${type}\n${payload}`,
+    });
+  } catch (error) {
+    Alert.alert('Error', error.message);
+  }
+};
+
 const copyToClipboard = (text: string): void => {
   if (typeof text === 'string') Clipboard.setString(text);
 };
@@ -106,13 +117,68 @@ const _renderItems = (listOfItems: Array<[string, any]>) =>
           <Text style={styles.attributes}>{item[0]}</Text>
           <Text style={styles.text}>{item[1]}</Text>
         </View>
-        {
-          item[0] === 'url' && <IconButton icon="content-copy" onPress={() => copyToClipboard(item[1])} />
-        }
+        {item[0] === 'url' && (
+          <IconButton icon="content-copy" onPress={() => copyToClipboard(item[1])} />
+        )}
       </View>
     ));
 
 export const Details: React.FC<IProps> = (props) => {
+  if (props.item instanceof ReduxAction) {
+    return (
+      <View style={styles.container}>
+        <Appbar.Header style={styles.header}>
+          <Appbar.BackAction
+            color="white"
+            onPress={() => props.onPressBack(false)}
+            testID="buttonBackToMainScreen"
+          />
+          <Appbar.Content title="Netwatch" />
+          <IconButton
+            color="white"
+            icon="share"
+            onPress={
+              () => {
+                onShareReduxAction(
+                  props.item.action.type.toUpperCase(),
+                  JSON.stringify(props.item.action.payload, null, 2)
+                );
+              }
+              // onShare()
+            }
+          />
+        </Appbar.Header>
+        <Surface style={{ flexDirection: 'row' }}>
+          {props.item && (
+            <Status item={props.item} backgroundColor="#64b5f6" text="ACT" subText="-" />
+          )}
+          <View style={styles.subHeaderContainer}>
+            <Text style={styles.textSubheader}>{props.item.action.type.toUpperCase()}</Text>
+            <Text style={styles.textSubheader}>{`${getDate(props.item.startTime)}`}</Text>
+          </View>
+        </Surface>
+        <View style={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={styles.scrollview}>
+            <View>
+              <Subheading style={styles.subheading}>PAYLOAD</Subheading>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={styles.text}>
+                  {JSON.stringify(props.item.action.payload, null, 2)}
+                </Text>
+                <IconButton
+                  icon="content-copy"
+                  onPress={() =>
+                    copyToClipboard(JSON.stringify(props.item.action.payload, null, 2))
+                  }
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+    );
+  }
+
   if (!(props.item instanceof RNRequest || props.item instanceof NRequest)) return null;
   // Appbar header is repeated here cause we use the absolute position in the style
   // Put this directly in the index.tsx cause that the Appbar will be added
@@ -224,8 +290,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   attribtuesContainer: {
-    flex: 1, 
-    width: '100%', 
+    flex: 1,
+    width: '100%',
     justifyContent: 'center',
     paddingHorizontal: 16,
     paddingVertical: 8,
@@ -236,7 +302,7 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   text: {
-    flex: 1, 
+    flex: 1,
     width: '100%',
     fontSize: 16,
     color: 'black',
