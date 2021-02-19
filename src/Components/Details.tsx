@@ -6,6 +6,7 @@ import { duration, getDate } from '../Utils/helpers';
 import { ILog } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import NRequest from '../Core/Objects/NRequest';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 export interface IProps {
   testId?: string;
@@ -92,6 +93,10 @@ const onShare = async (
   }
 };
 
+const copyToClipboard = (text: string): void => {
+  if (typeof text === 'string') Clipboard.setString(text);
+};
+
 const _renderItems = (listOfItems: Array<[string, any]>) =>
   listOfItems
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
@@ -102,7 +107,7 @@ const _renderItems = (listOfItems: Array<[string, any]>) =>
           <Text style={styles.text}>{item[1]}</Text>
         </View>
         {
-          item[0] === 'url' && <IconButton icon="content-copy" onPress={() => console.log('Copy in the clipboard')} />
+          item[0] === 'url' && <IconButton icon="content-copy" onPress={() => copyToClipboard(item[1])} />
         }
       </View>
     ));
@@ -177,7 +182,7 @@ export const Details: React.FC<IProps> = (props) => {
                     <Text style={styles.text}>{props.item?.response}</Text>
                     <IconButton
                       icon="content-copy"
-                      onPress={() => console.log('Copy in the clipboard')}
+                      onPress={() => copyToClipboard(props.item?.response)}
                     />
                   </View>
                 </View>
