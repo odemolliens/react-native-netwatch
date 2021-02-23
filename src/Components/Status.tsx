@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-paper';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import { RNRequest } from '../Core/Objects/RNRequest';
-import { setColor } from '../Utils/helpers';
-import { EnumSourceType } from '../types';
+import { getStatus } from '../Utils/helpers';
+import { ThemeContext } from '../Theme';
+import { EnumStatus } from '../types';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import { Text } from '../Components/Text';
 
 export interface IProps {
   item: RNRequest | ReduxAction;
@@ -14,49 +17,68 @@ export interface IProps {
   backgroundColor?: string;
 }
 
-export const Status: React.FC<IProps> = (props: IProps) => {
-  if (props.item instanceof ReduxAction || props.item.type === EnumSourceType.Redux) {
-    return (
-      <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || 'white' }]}>
-        <Text testID="statusText" style={[styles.methodText, props.textColor]}>
-          {props.text}
-        </Text>
-        <Text testID="statusSubText" style={[styles.statusText]}>
-          {props.subText}
-        </Text>
-      </View>
-    );
-  }
-
-  const _color = setColor(props.item.status);
+export const tag = (color: string, text: string) => {
   return (
-    <View style={[styles.leftContainer, { backgroundColor: props.backgroundColor || _color }]}>
-      <Text testID="statusMethod" style={[styles.methodText, props.textColor]}>
-        {props.item.method || props.text}
-      </Text>
-      <Text testID="statusCode" style={[styles.statusText]}>
-        {props.item.status || props.subText}
+    <View style={[styles.status, { backgroundColor: color }]}>
+      <Text style={styles.text} testID={`statusCode-${text}`}>
+        {text}
       </Text>
     </View>
   );
 };
 
+export const reduxTag = () => {
+  const theme = useContext(ThemeContext);
+  return (
+    <View style={[styles.status, { backgroundColor: theme.violet700 }, { paddingHorizontal: 8 }]}>
+      <Fontisto name="redux" color={theme.gray50} size={12} />
+    </View>
+  );
+};
+
+export const Status: React.FC<IProps> = (props: IProps) => {
+  const theme = useContext(ThemeContext);
+  let _color: string = theme.gray50;
+  let _line1: string = '';
+  let _line2: string = '';
+
+  if (props.item instanceof ReduxAction) {
+    _color = theme.violet700;
+    _line1 = 'REDUX';
+  } else {
+    let _temp = getStatus(props.item.status);
+    if (_temp === EnumStatus.Success) _color = theme.green700;
+    if (_temp === EnumStatus.Warning) _color = theme.orange700;
+    if (_temp === EnumStatus.Failed) _color = theme.red700;
+    _line1 = props.item.method;
+    _line2 = props.item.status.toString();
+  }
+
+  return (
+    <View style={[styles.container]}>
+      <Text testID="statusMethod">{_line1}</Text>
+      {_line2.length > 0 ? tag(_color, _line2) : reduxTag()}
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  leftContainer: {
-    justifyContent: 'space-around',
-    width: 50,
-    height: 50,
+  container: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: 60,
+    height: 60,
+    padding: 6,
   },
-  methodText: {
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#212121',
-  },
-  statusText: {
-    textAlign: 'center',
+  status: {
+    justifyContent: 'center',
     fontSize: 12,
-    fontWeight: 'bold',
-    color: '#212121',
+    height: 22,
+    width: 30,
+    borderRadius: 4,
+  },
+
+  text: {
+    textAlign: 'center',
   },
 });

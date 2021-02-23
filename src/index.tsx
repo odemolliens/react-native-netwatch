@@ -14,6 +14,7 @@ import { RNLogger } from './Core/RNLogger';
 import { RNRequest } from './Core/Objects/RNRequest';
 import { ReduxAction } from './Core/Objects/ReduxAction';
 import { NRequest } from './Core/Objects/NRequest';
+import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
   onPressClose: (visible: boolean) => void;
@@ -25,7 +26,7 @@ export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
 
 const { RNNetwatch } = NativeModules;
-const MAX_REQUESTS: number = 15;
+const MAX_REQUESTS: number = 50;
 let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
 
@@ -113,25 +114,27 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   return (
     <Provider>
-      <SafeAreaView>
-        <Modal animationType="slide" visible={props.visible}>
-          <Main
-            maxRequests={props.maxRequests || MAX_REQUESTS}
-            testId="mainScreen"
-            visible={props.visible}
-            onPressClose={props.onPressClose}
-            onPressDetail={setShowDetails}
-            onPress={setItem}
-            reduxActions={reduxActions}
-            rnRequests={rnRequests}
-            nRequests={nRequests}
-            clearAll={clearAll}
-          />
-          {showDetails && (
-            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-          )}
-        </Modal>
-      </SafeAreaView>
+      <ThemeContext.Provider value={themes.dark}>
+        <SafeAreaView>
+          <Modal animationType="slide" visible={props.visible}>
+            <Main
+              maxRequests={props.maxRequests || MAX_REQUESTS}
+              testId="mainScreen"
+              visible={props.visible}
+              onPressClose={props.onPressClose}
+              onPressDetail={setShowDetails}
+              onPress={setItem}
+              reduxActions={reduxActions}
+              rnRequests={rnRequests}
+              nRequests={nRequests}
+              clearAll={clearAll}
+            />
+            {showDetails && (
+              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+            )}
+          </Modal>
+        </SafeAreaView>
+      </ThemeContext.Provider>
     </Provider>
   );
 };

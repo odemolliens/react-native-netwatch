@@ -20,6 +20,7 @@ const App = () => {
       <PaperProvider>
         <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressClose={setNetwatchVisible} />
         <View style={styles.container}>
+          <Text style={styles.title}>react-native-netwatch</Text>
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
@@ -80,26 +81,34 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    paddingHorizontal: 60,
+    backgroundColor: '#111827',
+  },
+  title: { 
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    color: '#F9FAFB', 
+    marginBottom: 16 
   },
   openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    backgroundColor: '#67E8F9',
+    justifyContent: 'center',
+    width: '100%',
+    height: 48,
     marginBottom: 16,
   },
   enableButton: {
-    backgroundColor: '#349EEB',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    backgroundColor: '#06B6D4',
+    justifyContent: 'center',
+    width: '100%',
+    height: 48,
     marginBottom: 16,
   },
   textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: '#111827',
     textAlign: 'center',
   },
 });

@@ -1,25 +1,18 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { View, FlatList, StyleSheet, Modal, Share, Alert } from 'react-native';
-import {
-  Appbar,
-  Searchbar,
-  Surface,
-  IconButton,
-  Dialog,
-  Paragraph,
-  Button,
-} from 'react-native-paper';
+import { useState, useEffect, useContext } from 'react';
+import { View, StyleSheet, Share, Alert, TouchableOpacity, FlatList } from 'react-native';
+import { Appbar, Searchbar } from 'react-native-paper';
 import Item from './Item';
-import ReduxItem from './ReduxItem';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { getTime } from '../Utils/helpers';
+import { ThemeContext } from '../Theme';
 
 export interface IProps {
   testId?: string;
@@ -35,6 +28,7 @@ export interface IProps {
 }
 
 export const Main = (props: IProps) => {
+  const theme = useContext(ThemeContext);
   const [requests, setRequests] = useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
@@ -42,13 +36,10 @@ export const Main = (props: IProps) => {
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
-  const showDialog = () => setSettingsVisible(true);
   const hideSettingsDialog = () => setSettingsVisible(false);
-  const showDialogDelete = () => setDeleteVisible(true);
-  const hideDialogDelete = () => setDeleteVisible(false);
   const hideDialogAndDelete = () => {
     clearList();
-    hideDialogDelete();
+    setDeleteVisible(false);
   };
 
   useEffect(() => {
@@ -83,10 +74,10 @@ export const Main = (props: IProps) => {
     return comparison;
   };
 
-  const filteredRequests = requests.slice(0, props.maxRequests).filter((request) => {
+  const filteredRequests = (): Array<ILog> => requests.slice(0, props.maxRequests).filter((request) => {
     if (filter === EnumFilterType.All) {
       if (request instanceof ReduxAction) {
-        return request.action.type.toLowerCase().includes(searchQuery.toLowerCase());
+        return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
       }
     }
     if (request instanceof RNRequest || request instanceof NRequest) {
@@ -110,7 +101,7 @@ export const Main = (props: IProps) => {
         }
       }
     }
-    return [];
+    return false;
   });
 
   const clearList = () => {
@@ -151,130 +142,135 @@ export const Main = (props: IProps) => {
     }
   };
 
+  const onDelete = () => {
+    Alert.alert('Warning', 'Do you really want clear the call list?', [
+      {
+        text: 'Cancel',
+        onPress: () => setDeleteVisible(false),
+        style: 'cancel',
+      },
+      { text: 'OK', onPress: hideDialogAndDelete },
+    ]);
+  };
+
+  const _renderItems = ({ item, index }) => {
+    const _color = index % 2 ? theme.gray700 : theme.gray800;
+    return (
+      <Item
+        item={item}
+        onPress={() => {
+          props.onPress(item);
+          props.onPressDetail(true);
+        }}
+        color={_color}
+      />
+    );
+  };
+
   return (
     <>
-      <Appbar.Header style={styles.header}>
-        <IconButton color="white" icon="close" onPress={() => props.onPressClose(false)} />
-        <Appbar.Content title="Netwatch" />
-        <IconButton color="white" icon="share" onPress={onShare} />
+      <Appbar.Header style={[styles.header, { backgroundColor: theme.gray900 }]}>
+        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
+          <FeatherIcon
+            name="x"
+            color={theme.white}
+            size={24}
+            onPress={() =>
+              settingsVisible ? setSettingsVisible(false) : props.onPressClose(false)
+            }
+          />
+        </TouchableOpacity>
+        <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
+        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
+          <FeatherIcon name="download" color={theme.white} size={24} onPress={onShare} />
+        </TouchableOpacity>
       </Appbar.Header>
-      <Surface style={styles.surface}>
+      <View style={[styles.options, { backgroundColor: theme.gray800 }]}>
         <Searchbar
-          placeholderTextColor="white"
-          iconColor="white"
-          inputStyle={styles.searchBarInputStyle}
-          style={styles.searchBar}
+          placeholderTextColor={theme.gray400}
+          iconColor={theme.gray500}
+          inputStyle={{ color: theme.gray400 }}
+          style={[styles.searchBar, { backgroundColor: theme.gray800 }]}
           placeholder={'Search'}
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
-        <IconButton
-          // style={{ marginRight: -8 }}
-          icon={() => <Icon color="white" size={24} name="delete" />}
-          size={24}
-          onPress={showDialogDelete}
-        />
-        <IconButton
-          style={{ marginRight: -8 }}
-          icon={() => <Icon color="white" size={24} name="settings" />}
-          size={24}
-          onPress={showDialog}
-        />
-      </Surface>
 
-      <Settings
-        visible={settingsVisible}
-        onDismiss={hideSettingsDialog}
-        source={source}
-        onSetSource={setSource}
-        filter={filter}
-        onSetFilter={setFilter}
-        onPressClear={clearList}
-      />
-
-      <Modal animationType="fade" transparent visible={deleteVisible}>
-        <Dialog visible={deleteVisible} onDismiss={hideDialogDelete}>
-          <Dialog.Title>WARNING</Dialog.Title>
-          <Dialog.Content>
-            <Paragraph>Do you really want clear the call list?</Paragraph>
-          </Dialog.Content>
-          <Dialog.Actions>
-            <Button onPress={hideDialogDelete}>CANCEL</Button>
-            <Button onPress={hideDialogAndDelete}>OK</Button>
-          </Dialog.Actions>
-        </Dialog>
-      </Modal>
-
-      <View style={styles.centeredView}>
-        <View style={styles.modalView}>
-          <FlatList
-            style={styles.flatList}
-            keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
-            data={filteredRequests}
-            renderItem={({ item }) => {
-              if (item instanceof ReduxAction) {
-                return (
-                  <ReduxItem
-                    item={item}
-                    onPress={() => {
-                      props.onPress(item);
-                      props.onPressDetail(true);
-                    }}
-                  />
-                );
-              } else if (item instanceof RNRequest || item instanceof NRequest) {
-                return (
-                  <Item
-                    item={item}
-                    onPress={() => {
-                      props.onPress(item);
-                      props.onPressDetail(true);
-                    }}
-                  />
-                );
-              }
-              return null;
-            }}
+        <TouchableOpacity
+          style={[
+            styles.button,
+            {
+              borderLeftColor: theme.gray900,
+              backgroundColor: settingsVisible ? theme.gray900 : theme.gray800,
+            },
+          ]}
+        >
+          <FeatherIcon
+            name="filter"
+            color={
+              filter !== EnumFilterType.All || source !== EnumSourceType.All
+                ? theme.blue500
+                : theme.gray300
+            }
+            size={24}
+            onPress={() => setSettingsVisible(!settingsVisible)}
           />
-        </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={[styles.button, { borderLeftColor: theme.gray900 }]}>
+          <FeatherIcon name="trash-2" color={theme.gray300} size={24} onPress={onDelete} />
+        </TouchableOpacity>
       </View>
+
+      {settingsVisible ? (
+        <Settings
+          onDismiss={hideSettingsDialog}
+          source={source}
+          onSetSource={setSource}
+          filter={filter}
+          onSetFilter={setFilter}
+          onPressClear={clearList}
+        />
+      ) : (
+        <FlatList
+          style={{ backgroundColor: theme.gray800 }}
+          keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
+          data={filteredRequests()}
+          renderItem={_renderItems}
+        />
+      )}
     </>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#212121',
+    elevation: 0,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0,
   },
   searchBar: {
     flex: 1,
-    backgroundColor: '#616161',
-    color: 'white',
+    elevation: 0,
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0,
   },
-  searchBarInputStyle: {
-    color: 'white',
-  },
-  surface: {
-    padding: 16,
+  options: {
+    height: 56,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#212121',
   },
-  flatList: {
-    width: '100%',
-    backgroundColor: '#bdbdbd',
-    padding: 0,
-    margin: 0,
-  },
-  centeredView: {
-    flex: 1,
+  button: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '100%',
-  },
-  modalView: {
-    width: '100%',
-    height: '100%',
+    height: 56,
+    width: 56,
+    borderLeftWidth: 1,
   },
 });
