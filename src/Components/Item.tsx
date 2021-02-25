@@ -12,6 +12,7 @@ import { EnumSourceType } from '../types';
 
 export const ITEM_HEIGHT = 60;
 export interface IProps {
+  testID?: string
   item: RNRequest | ReduxAction;
   onPress: () => void;
   color: string;
@@ -26,9 +27,11 @@ export const Item: React.FC<IProps> = (props: IProps) => {
     _line1 = 'redux action'
     _line2 = JSON.stringify(props.item.action)
   } else {
-    const urlObject = url.parse(props.item.url);
-    _line1 = urlObject.host || '';
-    _line2 = urlObject.path || '';
+    if (props.item.url) {
+      const urlObject = url.parse(props.item.url);
+      _line1 = (urlObject.host !== null && urlObject?.host) || '';
+      _line2 = (urlObject.path !== null && urlObject?.path) || '';
+    }
   }
 
   return (

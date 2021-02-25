@@ -1,17 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Details test suite should render properly 1`] = `
-<ForwardRef(withTheme(undefined))>
-  Error
-</ForwardRef(withTheme(undefined))>
-`;
-
-exports[`Details test suite should render properly with request with headers 1`] = `
+exports[`Details test suite should render Redux action properly & press copybutton 1`] = `
 <Component
   style={
     Object {
-      "backgroundColor": "white",
-      "flex": 1,
       "height": "100%",
       "left": 0,
       "position": "absolute",
@@ -22,465 +14,1989 @@ exports[`Details test suite should render properly with request with headers 1`]
 >
   <ForwardRef(withTheme(Appbar.Header))
     style={
-      Object {
-        "backgroundColor": "#212121",
-      }
-    }
-  >
-    <Appbar.BackAction
-      color="white"
-      onPress={[Function]}
-      testID="buttonBackToMainScreen"
-    />
-    <ForwardRef(withTheme(Appbar.Content))
-      title="Netwatch"
-    />
-  </ForwardRef(withTheme(Appbar.Header))>
-  <ForwardRef(withTheme(Surface))
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Status
-      item={
+      Array [
         Object {
-          "_id": 73,
-          "dataSent": "dataSent",
-          "endTime": 1613477575757,
-          "method": "GET",
-          "readyState": 4,
-          "requestHeaders": Object {
-            "Content-Type": "application/json",
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
           },
-          "response": "response",
-          "responseContentType": "application/json",
-          "responseHeaders": Object {
-            "Content-Length": "0",
-            "Content-Type": "application/json; charset=UTF-8",
-            "Date": "Tue, 16 Feb 2021 12:12:55 GMT",
-            "Sozu-Id": "51989c0c-ebe7-4574-913d-443477875da7",
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
           },
-          "responseSize": 0,
-          "responseType": "blob",
-          "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
-          "startTime": 1613477574742,
-          "status": 200,
-          "timeout": 0,
-          "type": "RNR",
-          "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
         }
       }
     />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
     <Component
       style={
         Object {
-          "backgroundColor": "#212121",
-          "justifyContent": "center",
-          "paddingLeft": 8,
+          "flex": 1,
           "width": "100%",
         }
       }
     >
-      <ForwardRef(withTheme(undefined))
+      <Component
         style={
-          Object {
-            "color": "white",
-            "fontSize": 16,
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
         }
       >
-        Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)
-      </ForwardRef(withTheme(undefined))>
-      <ForwardRef(withTheme(undefined))
-        style={
-          Object {
-            "color": "white",
-            "fontSize": 16,
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
+        >
+          REDUX
+        </Title>
+        <Component
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#764ABC",
+              },
+              Object {
+                "paddingHorizontal": 8,
+              },
+            ]
+          }
+          testID="statusCodeColor"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#F9FAFB"
+            name="redux"
+            size={12}
+          />
+        </Component>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
         }
       >
-        Duration 1015ms
-      </ForwardRef(withTheme(undefined))>
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Started at : 
+        </Text>
+        <Text>
+          01/01/1970 - 00:00:00
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Content
+      </Subheading>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Type : 
+        </Text>
+        <Text>
+          __ERROR:UNDEFINED__
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Payload : 
+        </Text>
+        <Text />
+      </Component>
     </Component>
-  </ForwardRef(withTheme(Surface))>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render Redux action properly & press sharebutton 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
   <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
     style={
       Object {
-        "flex": 1,
+        "backgroundColor": "#1F2937",
       }
     }
   >
     <Component
-      contentContainerStyle={
+      style={
         Object {
-          "paddingBottom": 20,
+          "flex": 1,
+          "width": "100%",
         }
       }
     >
-      <Component>
-        <Subheading
-          style={
+      <Component
+        style={
+          Array [
             Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
               "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          GENERAL
-        </Subheading>
+          REDUX
+        </Title>
         <Component
-          key="0"
           style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#764ABC",
+              },
+              Object {
+                "paddingHorizontal": 8,
+              },
+            ]
           }
+          testID="statusCodeColor"
         >
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
-            }
-          >
-            responseURL
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
-          </ForwardRef(withTheme(undefined))>
+          <Icon
+            allowFontScaling={false}
+            color="#F9FAFB"
+            name="redux"
+            size={12}
+          />
         </Component>
-        <Component
-          key="1"
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "color": "#6B7280",
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+          Started at : 
+        </Text>
+        <Text>
+          01/01/1970 - 00:00:00
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Content
+      </Subheading>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
             }
-          >
-            timeout
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
+          }
+        >
+          Type : 
+        </Text>
+        <Text>
+          __ERROR:UNDEFINED__
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
             }
-          >
-            0
-          </ForwardRef(withTheme(undefined))>
+          }
+        >
+          Payload : 
+        </Text>
+        <Text />
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render Redux action properly 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          REDUX
+        </Title>
+        <Component
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#764ABC",
+              },
+              Object {
+                "paddingHorizontal": 8,
+              },
+            ]
+          }
+          testID="statusCodeColor"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#F9FAFB"
+            name="redux"
+            size={12}
+          />
         </Component>
-        <Component
-          key="2"
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "color": "#6B7280",
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          Started at : 
+        </Text>
+        <Text>
+          01/01/1970 - 00:00:00
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Content
+      </Subheading>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Type : 
+        </Text>
+        <Text>
+          __ERROR:UNDEFINED__
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Payload : 
+        </Text>
+        <Text />
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render Request properly 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Title>
+        <Component
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#4D7C0F",
+              },
+            ]
+          }
+          testID="statusCodeColor"
+        >
+          <Text
             style={
               Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
+                "textAlign": "center",
               }
+            }
+            testID="statusCode-200"
+          >
+            200
+          </Text>
+        </Component>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Hostname : 
+        </Text>
+        <Text>
+          run.mocky.io
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Started at : 
+        </Text>
+        <Text>
+          16/02/2021 - 12:12:54
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Info
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             url
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
+          </Text>
+          <ForwardRef
+            onPress={[Function]}
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
+            }
+            testID="buttonCopyToClipboard"
+          >
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="clipboard-arrow-left-outline"
+              size={14}
+              testID="buttonCopyToClipBoard"
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginLeft": 6,
+                  },
+                ]
               }
+            >
+              Copy
+            </Text>
+          </ForwardRef>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
-            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
-          </ForwardRef(withTheme(undefined))>
+            responseURL
+          </Text>
         </Component>
-        <Subheading
+        <Text
           style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          REQUEST HEADERS
-        </Subheading>
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Data
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          dataSent
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Body
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderLeftWidth": 0,
+                "flexDirection": "row",
+              },
+            ]
+          }
+          testID="buttonCopyToClipboard"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#06B6D4"
+            name="clipboard-arrow-left-outline"
+            size={14}
+            testID="buttonCopyToClipBoard"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#06B6D4",
+                  "marginLeft": 6,
+                },
+              ]
+            }
+          >
+            Copy
+          </Text>
+        </ForwardRef>
+      </Component>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          response
+        </Text>
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render properly with request with headers 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Title>
         <Component
-          key="0"
           style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#4D7C0F",
+              },
+            ]
           }
+          testID="statusCodeColor"
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
               Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
+                "textAlign": "center",
               }
+            }
+            testID="statusCode-200"
+          >
+            200
+          </Text>
+        </Component>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Hostname : 
+        </Text>
+        <Text>
+          run.mocky.io
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Started at : 
+        </Text>
+        <Text>
+          16/02/2021 - 12:12:54
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Info
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            url
+          </Text>
+          <ForwardRef
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
+            }
+            testID="buttonCopyToClipboard"
+          >
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="clipboard-arrow-left-outline"
+              size={14}
+              testID="buttonCopyToClipBoard"
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginLeft": 6,
+                  },
+                ]
+              }
+            >
+              Copy
+            </Text>
+          </ForwardRef>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            responseURL
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Headers
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             Content-Type
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            application/json
-          </ForwardRef(withTheme(undefined))>
+          </Text>
         </Component>
-        <Subheading
+        <Text
           style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          REQUEST DATA
-        </Subheading>
+          application/json
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Data
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          dataSent
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
         <Component
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            dataSent
-          </ForwardRef(withTheme(undefined))>
-        </Component>
-        <Subheading
-          style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
-          }
-        >
-          RESPONSE HEADERS
-        </Subheading>
-        <Component
-          key="0"
-          style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
-          }
-        >
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             Content-Length
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            0
-          </ForwardRef(withTheme(undefined))>
+          </Text>
         </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          0
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
         <Component
-          key="1"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             Content-Type
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            application/json; charset=UTF-8
-          </ForwardRef(withTheme(undefined))>
+          </Text>
         </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          application/json; charset=UTF-8
+        </Text>
+      </Component>
+      <Component
+        key="2"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
         <Component
-          key="2"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             Date
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            Tue, 16 Feb 2021 12:12:55 GMT
-          </ForwardRef(withTheme(undefined))>
+          </Text>
         </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          Tue, 16 Feb 2021 12:12:55 GMT
+        </Text>
+      </Component>
+      <Component
+        key="3"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
         <Component
-          key="3"
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             Sozu-Id
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            51989c0c-ebe7-4574-913d-443477875da7
-          </ForwardRef(withTheme(undefined))>
+          </Text>
         </Component>
-        <Subheading
+        <Text
           style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          RESPONSE BODY
-        </Subheading>
-        <Component
-          style={
+          51989c0c-ebe7-4574-913d-443477875da7
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
             Object {
+              "marginBottom": 10,
               "paddingHorizontal": 16,
               "paddingVertical": 8,
-            }
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Body
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "paddingHorizontal": 16,
           }
-        >
-          <ForwardRef(withTheme(undefined))
-            style={
+        }
+      >
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Array [
               Object {
-                "color": "black",
-                "fontSize": 16,
-              }
+                "alignItems": "center",
+                "borderLeftWidth": 0,
+                "flexDirection": "row",
+              },
+            ]
+          }
+          testID="buttonCopyToClipboard"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#06B6D4"
+            name="clipboard-arrow-left-outline"
+            size={14}
+            testID="buttonCopyToClipBoard"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#06B6D4",
+                  "marginLeft": 6,
+                },
+              ]
             }
           >
-            response
-          </ForwardRef(withTheme(undefined))>
-        </Component>
+            Copy
+          </Text>
+        </ForwardRef>
+      </Component>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          response
+        </Text>
       </Component>
     </Component>
   </Component>
@@ -491,8 +2007,6 @@ exports[`Details test suite should render properly with request without headers 
 <Component
   style={
     Object {
-      "backgroundColor": "white",
-      "flex": 1,
       "height": "100%",
       "left": 0,
       "position": "absolute",
@@ -503,301 +2017,1480 @@ exports[`Details test suite should render properly with request without headers 
 >
   <ForwardRef(withTheme(Appbar.Header))
     style={
-      Object {
-        "backgroundColor": "#212121",
-      }
-    }
-  >
-    <Appbar.BackAction
-      color="white"
-      onPress={[Function]}
-      testID="buttonBackToMainScreen"
-    />
-    <ForwardRef(withTheme(Appbar.Content))
-      title="Netwatch"
-    />
-  </ForwardRef(withTheme(Appbar.Header))>
-  <ForwardRef(withTheme(Surface))
-    style={
-      Object {
-        "flexDirection": "row",
-      }
-    }
-  >
-    <Status
-      item={
+      Array [
         Object {
-          "_id": 73,
-          "dataSent": "dataSent",
-          "endTime": 1613477575757,
-          "method": "GET",
-          "readyState": 4,
-          "response": "response",
-          "responseContentType": "application/json",
-          "responseSize": 0,
-          "responseType": "blob",
-          "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
-          "startTime": 1613477574742,
-          "status": 200,
-          "timeout": 0,
-          "type": "RNR",
-          "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
         }
       }
     />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
     <Component
       style={
         Object {
-          "backgroundColor": "#212121",
-          "justifyContent": "center",
-          "paddingLeft": 8,
+          "flex": 1,
           "width": "100%",
         }
       }
     >
-      <ForwardRef(withTheme(undefined))
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Title>
+        <Component
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#4D7C0F",
+              },
+            ]
+          }
+          testID="statusCodeColor"
+        >
+          <Text
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+            testID="statusCode-200"
+          >
+            200
+          </Text>
+        </Component>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Hostname : 
+        </Text>
+        <Text>
+          run.mocky.io
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Started at : 
+        </Text>
+        <Text>
+          16/02/2021 - 12:12:54
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Info
+      </Subheading>
+      <Component
+        key="0"
         style={
           Object {
-            "color": "white",
-            "fontSize": 16,
+            "paddingHorizontal": 16,
           }
         }
       >
-        Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)
-      </ForwardRef(withTheme(undefined))>
-      <ForwardRef(withTheme(undefined))
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            url
+          </Text>
+          <ForwardRef
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
+            }
+            testID="buttonCopyToClipboard"
+          >
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="clipboard-arrow-left-outline"
+              size={14}
+              testID="buttonCopyToClipBoard"
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginLeft": 6,
+                  },
+                ]
+              }
+            >
+              Copy
+            </Text>
+          </ForwardRef>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Component
+        key="1"
         style={
           Object {
-            "color": "white",
-            "fontSize": 16,
+            "paddingHorizontal": 16,
           }
         }
       >
-        Duration 1015ms
-      </ForwardRef(withTheme(undefined))>
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            responseURL
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Data
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          dataSent
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Body
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderLeftWidth": 0,
+                "flexDirection": "row",
+              },
+            ]
+          }
+          testID="buttonCopyToClipboard"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#06B6D4"
+            name="clipboard-arrow-left-outline"
+            size={14}
+            testID="buttonCopyToClipBoard"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#06B6D4",
+                  "marginLeft": 6,
+                },
+              ]
+            }
+          >
+            Copy
+          </Text>
+        </ForwardRef>
+      </Component>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          response
+        </Text>
+      </Component>
     </Component>
-  </ForwardRef(withTheme(Surface))>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render properly with request without headers & press copybutton 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
   <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
     style={
       Object {
-        "flex": 1,
+        "backgroundColor": "#1F2937",
       }
     }
   >
     <Component
-      contentContainerStyle={
+      style={
         Object {
-          "paddingBottom": 20,
+          "flex": 1,
+          "width": "100%",
         }
       }
     >
-      <Component>
-        <Subheading
-          style={
+      <Component
+        style={
+          Array [
             Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
               "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          GENERAL
-        </Subheading>
+          GET
+        </Title>
         <Component
-          key="0"
           style={
-            Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#4D7C0F",
+              },
+            ]
           }
+          testID="statusCodeColor"
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
               Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
+                "textAlign": "center",
               }
             }
+            testID="statusCode-200"
           >
-            responseURL
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
-          </ForwardRef(withTheme(undefined))>
+            200
+          </Text>
         </Component>
-        <Component
-          key="1"
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "color": "#6B7280",
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
-            }
-          >
-            timeout
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
-            style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
-            }
-          >
-            0
-          </ForwardRef(withTheme(undefined))>
-        </Component>
-        <Component
-          key="2"
+          Hostname : 
+        </Text>
+        <Text>
+          run.mocky.io
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "color": "#6B7280",
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          Started at : 
+        </Text>
+        <Text>
+          16/02/2021 - 12:12:54
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Info
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-                "fontWeight": "bold",
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
             url
-          </ForwardRef(withTheme(undefined))>
-          <ForwardRef(withTheme(undefined))
+          </Text>
+          <ForwardRef
+            onPress={[Function]}
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
             }
+            testID="buttonCopyToClipboard"
           >
-            https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
-          </ForwardRef(withTheme(undefined))>
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="clipboard-arrow-left-outline"
+              size={14}
+              testID="buttonCopyToClipBoard"
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginLeft": 6,
+                  },
+                ]
+              }
+            >
+              Copy
+            </Text>
+          </ForwardRef>
         </Component>
-        <Subheading
+        <Text
           style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
         >
-          REQUEST HEADERS
-        </Subheading>
-        <Subheading
-          style={
-            Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            }
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "paddingHorizontal": 16,
           }
-        >
-          REQUEST DATA
-        </Subheading>
+        }
+      >
         <Component
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
-            dataSent
-          </ForwardRef(withTheme(undefined))>
+            responseURL
+          </Text>
         </Component>
-        <Subheading
+        <Text
           style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
             Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
+              "marginBottom": 10,
               "paddingHorizontal": 16,
               "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Data
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          dataSent
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Body
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderLeftWidth": 0,
+                "flexDirection": "row",
+              },
+            ]
+          }
+          testID="buttonCopyToClipboard"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#06B6D4"
+            name="clipboard-arrow-left-outline"
+            size={14}
+            testID="buttonCopyToClipBoard"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#06B6D4",
+                  "marginLeft": 6,
+                },
+              ]
+            }
+          >
+            Copy
+          </Text>
+        </ForwardRef>
+      </Component>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          response
+        </Text>
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Details test suite should render properly with request without headers & press sharebutton 1`] = `
+<Component
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonBackToMainScreen"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="arrow-left"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+      testID="buttonShare"
+    >
+      <Icon
+        allowFontScaling={false}
+        color="#FFF"
+        name="download"
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Title
+          style={
+            Array [
+              Object {
+                "marginRight": 6,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Title>
+        <Component
+          style={
+            Array [
+              Object {
+                "borderRadius": 4,
+                "fontSize": 12,
+                "height": 22,
+                "justifyContent": "center",
+                "width": 30,
+              },
+              Object {
+                "backgroundColor": "#4D7C0F",
+              },
+            ]
+          }
+          testID="statusCodeColor"
+        >
+          <Text
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+            testID="statusCode-200"
+          >
+            200
+          </Text>
+        </Component>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
             }
           }
         >
-          RESPONSE HEADERS
-        </Subheading>
-        <Subheading
+          Hostname : 
+        </Text>
+        <Text>
+          run.mocky.io
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
           style={
             Object {
-              "backgroundColor": "lightgray",
-              "borderWidth": 0,
-              "color": "black",
-              "fontWeight": "bold",
-              "marginTop": -1,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "color": "#6B7280",
             }
           }
         >
-          RESPONSE BODY
-        </Subheading>
+          Started at : 
+        </Text>
+        <Text>
+          16/02/2021 - 12:12:54
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Info
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
         <Component
           style={
             Object {
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
             }
           }
         >
-          <ForwardRef(withTheme(undefined))
+          <Text
             style={
-              Object {
-                "color": "black",
-                "fontSize": 16,
-              }
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
             }
           >
-            response
-          </ForwardRef(withTheme(undefined))>
+            url
+          </Text>
+          <ForwardRef
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
+            }
+            testID="buttonCopyToClipboard"
+          >
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="clipboard-arrow-left-outline"
+              size={14}
+              testID="buttonCopyToClipBoard"
+            />
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginLeft": 6,
+                  },
+                ]
+              }
+            >
+              Copy
+            </Text>
+          </ForwardRef>
         </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            responseURL
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "marginBottom": 10,
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Request Data
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          dataSent
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Body
+      </Subheading>
+      <Component
+        style={
+          Object {
+            "flexDirection": "row-reverse",
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <ForwardRef
+          onPress={[Function]}
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "borderLeftWidth": 0,
+                "flexDirection": "row",
+              },
+            ]
+          }
+          testID="buttonCopyToClipboard"
+        >
+          <Icon
+            allowFontScaling={false}
+            color="#06B6D4"
+            name="clipboard-arrow-left-outline"
+            size={14}
+            testID="buttonCopyToClipBoard"
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#06B6D4",
+                  "marginLeft": 6,
+                },
+              ]
+            }
+          >
+            Copy
+          </Text>
+        </ForwardRef>
+      </Component>
+      <Component
+        style={
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text>
+          response
+        </Text>
       </Component>
     </Component>
   </Component>

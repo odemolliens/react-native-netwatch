@@ -157,6 +157,7 @@ export const Main = (props: IProps) => {
     const _color = index % 2 ? theme.gray700 : theme.gray800;
     return (
       <Item
+        testID={`${index}`}
         item={item}
         onPress={() => {
           props.onPress(item);
@@ -197,6 +198,7 @@ export const Main = (props: IProps) => {
         />
 
         <TouchableOpacity
+          testID='showDetailsButton'
           style={[
             styles.button,
             {
@@ -204,6 +206,7 @@ export const Main = (props: IProps) => {
               backgroundColor: settingsVisible ? theme.gray900 : theme.gray800,
             },
           ]}
+          onPress={() => setSettingsVisible(!settingsVisible)}
         >
           <FeatherIcon
             name="filter"
@@ -213,23 +216,20 @@ export const Main = (props: IProps) => {
                 : theme.gray300
             }
             size={24}
-            onPress={() => setSettingsVisible(!settingsVisible)}
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.button, { borderLeftColor: theme.gray900 }]}>
-          <FeatherIcon name="trash-2" color={theme.gray300} size={24} onPress={onDelete} />
+        <TouchableOpacity testID='deleteListButton' style={[styles.button, { borderLeftColor: theme.gray900 }]} onPress={onDelete}>
+          <FeatherIcon name="trash-2" color={theme.gray300} size={24} />
         </TouchableOpacity>
       </View>
 
       {settingsVisible ? (
         <Settings
-          onDismiss={hideSettingsDialog}
           source={source}
           onSetSource={setSource}
           filter={filter}
           onSetFilter={setFilter}
-          onPressClear={clearList}
         />
       ) : (
         <FlatList

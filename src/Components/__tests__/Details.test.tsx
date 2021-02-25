@@ -2,16 +2,28 @@ import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Details, IProps } from '../Details';
 import { RNRequest } from '../../Core/Objects/RNRequest';
+import { ReduxAction } from '../../Core/Objects/ReduxAction';
 
 describe('Details test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
   const back = jest.fn();
+  const share = jest.fn();
+  const copy = jest.fn();
 
-  it('should render properly', () => {
-    givenProps();
+  it('should render Request properly', () => {
+    givenProps(mockRequest);
     givenComponent();
     expect(component).toMatchSnapshot();
+  });
+
+  it('should render Redux action properly', () => {
+    givenProps(mockAction);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+
+    whenPressingButton('buttonBackToMainScreen');
+    expect(back).toHaveBeenCalledTimes(1);
   });
 
   it('should render properly with request without headers & press backbutton', () => {
@@ -21,6 +33,39 @@ describe('Details test suite', () => {
 
     whenPressingButton('buttonBackToMainScreen');
     expect(back).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render properly with request without headers & press sharebutton', () => {
+    givenProps(mockRequest);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+
+    whenPressingButton('buttonShare');
+    expect(share).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render Redux action properly & press sharebutton', () => {
+    givenProps(mockAction);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+
+    whenPressingButton('buttonShare');
+    expect(share).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render properly with request without headers & press copybutton', () => {
+    givenProps(mockRequest);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+
+    whenPressingButton('buttonCopyToClipboard');
+    expect(copy).toHaveBeenCalledTimes(1);
+  });
+
+  it('should render Redux action properly & press copybutton', () => {
+    givenProps(mockAction);
+    givenComponent();
+    expect(component).toMatchSnapshot();
   });
 
   it('should render properly with request with headers', () => {
@@ -34,7 +79,7 @@ describe('Details test suite', () => {
     component = shallow(<Details {...props} />);
   }
 
-  function givenProps(item?: RNRequest) {
+  function givenProps(item?: RNRequest | ReduxAction) {
     props = {
       testId: 'testId',
       onPressBack: back,
@@ -48,7 +93,14 @@ describe('Details test suite', () => {
     component.find(`[testID="${testId}"]`).simulate('press');
   }
 
-  const mockRequest: RNRequest = {
+  const mockAction: ReduxAction = new ReduxAction({
+    _id: 73,
+    startTime: 100,
+    type: 'REDUX',
+    action: { type: '__ERROR:UNDEFINED__', action: '' },
+  });
+
+  const mockRequest: RNRequest = new RNRequest({
     _id: 73,
     dataSent: 'dataSent',
     endTime: 1613477575757,
@@ -64,9 +116,9 @@ describe('Details test suite', () => {
     timeout: 0,
     type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  };
+  });
 
-  const mockRequestWithHeaders: RNRequest = {
+  const mockRequestWithHeaders: RNRequest = new RNRequest({
     _id: 73,
     dataSent: 'dataSent',
     endTime: 1613477575757,
@@ -91,5 +143,5 @@ describe('Details test suite', () => {
     timeout: 0,
     type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  };
+  });
 });

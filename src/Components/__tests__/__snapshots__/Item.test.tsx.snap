@@ -1,37 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item test suite should render properly & press item 1`] = `
+exports[`Item test suite should render Action properly 1`] = `
 <ForwardRef
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#757575",
-      "borderBottomColor": "#bdbdbd",
-      "borderBottomWidth": 0.5,
-      "flexDirection": "row",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 60,
+      },
+      Object {
+        "backgroundColor": "#374151",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
   }
   testID="itemTouchable-73"
 >
   <Status
     item={
-      Object {
+      ReduxAction {
         "_id": 73,
-        "dataSent": "dataSent",
-        "endTime": 1613477575757,
-        "method": "GET",
-        "readyState": 4,
-        "response": "response",
-        "responseContentType": "application/json",
-        "responseSize": 0,
-        "responseType": "blob",
-        "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
-        "startTime": 1613477574742,
-        "status": 200,
-        "timeout": 0,
-        "type": "RNR",
-        "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "action": Object {
+          "action": "",
+          "type": "__ERROR:UNDEFINED__",
+        },
+        "startTime": 100,
+        "type": "REDUX",
       }
     }
   />
@@ -39,7 +37,7 @@ exports[`Item test suite should render properly & press item 1`] = `
     style={
       Object {
         "flex": 1,
-        "paddingRight": 8,
+        "paddingHorizontal": 16,
       }
     }
   >
@@ -51,54 +49,61 @@ exports[`Item test suite should render properly & press item 1`] = `
         }
       }
     >
-      <Component
+      <TextSecondaryColor
         numberOfLines={1}
+      >
+        redux action
+      </TextSecondaryColor>
+      <TextSecondaryColor
         style={
-          Object {
-            "color": "white",
-            "fontWeight": "bold",
-            "paddingLeft": 16,
-          }
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
         }
       >
-        run.mocky.io
-      </Component>
-      <Component
-        style={
-          Object {
-            "color": "white",
-          }
-        }
-      >
-        12:12:54
-      </Component>
+        00:00:00
+      </TextSecondaryColor>
     </Component>
     <Component
-      numberOfLines={1}
       style={
         Object {
-          "color": "white",
-          "paddingLeft": 16,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
         }
       }
     >
-      /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+      <Text
+        numberOfLines={1}
+      >
+        {"type":"__ERROR:UNDEFINED__","action":""}
+      </Text>
     </Component>
   </Component>
 </ForwardRef>
 `;
 
-exports[`Item test suite should render properly 1`] = `
+exports[`Item test suite should render Request properly 1`] = `
 <ForwardRef
   onPress={[Function]}
   style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#757575",
-      "borderBottomColor": "#bdbdbd",
-      "borderBottomWidth": 0.5,
-      "flexDirection": "row",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 60,
+      },
+      Object {
+        "backgroundColor": "#374151",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
   }
   testID="itemTouchable-73"
 >
@@ -127,7 +132,7 @@ exports[`Item test suite should render properly 1`] = `
     style={
       Object {
         "flex": 1,
-        "paddingRight": 8,
+        "paddingHorizontal": 16,
       }
     }
   >
@@ -139,38 +144,315 @@ exports[`Item test suite should render properly 1`] = `
         }
       }
     >
-      <Component
+      <TextSecondaryColor
         numberOfLines={1}
-        style={
-          Object {
-            "color": "white",
-            "fontWeight": "bold",
-            "paddingLeft": 16,
-          }
-        }
       >
         run.mocky.io
-      </Component>
-      <Component
+      </TextSecondaryColor>
+      <TextSecondaryColor
         style={
-          Object {
-            "color": "white",
-          }
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
         }
       >
         12:12:54
-      </Component>
+      </TextSecondaryColor>
     </Component>
     <Component
-      numberOfLines={1}
       style={
         Object {
-          "color": "white",
-          "paddingLeft": 16,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
         }
       }
     >
-      /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+      <Text
+        numberOfLines={1}
+      >
+        /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+      </Text>
+    </Component>
+  </Component>
+</ForwardRef>
+`;
+
+exports[`Item test suite should render Request properly even bad URL passed in the request to avoid crash 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 60,
+      },
+      Object {
+        "backgroundColor": "#374151",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="itemTouchable-73"
+>
+  <Status
+    item={
+      Object {
+        "_id": 73,
+        "dataSent": "dataSent",
+        "endTime": 1613477575757,
+        "method": "GET",
+        "readyState": 4,
+        "response": "response",
+        "responseContentType": "application/json",
+        "responseSize": 0,
+        "responseType": "blob",
+        "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "startTime": 1613477574742,
+        "status": 200,
+        "timeout": 0,
+        "type": "RNR",
+        "url": null,
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <TextSecondaryColor
+        numberOfLines={1}
+      />
+      <TextSecondaryColor
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
+        }
+      >
+        12:12:54
+      </TextSecondaryColor>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+      />
+    </Component>
+  </Component>
+</ForwardRef>
+`;
+
+exports[`Item test suite should render Request properly even no URL passed in the request to avoid crash 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 60,
+      },
+      Object {
+        "backgroundColor": "#374151",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="itemTouchable-73"
+>
+  <Status
+    item={
+      Object {
+        "_id": 73,
+        "dataSent": "dataSent",
+        "endTime": 1613477575757,
+        "method": "GET",
+        "readyState": 4,
+        "response": "response",
+        "responseContentType": "application/json",
+        "responseSize": 0,
+        "responseType": "blob",
+        "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "startTime": 1613477574742,
+        "status": 200,
+        "timeout": 0,
+        "type": "RNR",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <TextSecondaryColor
+        numberOfLines={1}
+      />
+      <TextSecondaryColor
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
+        }
+      >
+        12:12:54
+      </TextSecondaryColor>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+      />
+    </Component>
+  </Component>
+</ForwardRef>
+`;
+
+exports[`Item test suite should render properly & press item 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 60,
+      },
+      Object {
+        "backgroundColor": "#374151",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="itemTouchable-73"
+>
+  <Status
+    item={
+      Object {
+        "_id": 73,
+        "dataSent": "dataSent",
+        "endTime": 1613477575757,
+        "method": "GET",
+        "readyState": 4,
+        "response": "response",
+        "responseContentType": "application/json",
+        "responseSize": 0,
+        "responseType": "blob",
+        "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "startTime": 1613477574742,
+        "status": 200,
+        "timeout": 0,
+        "type": "RNR",
+        "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+      }
+    }
+  />
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <TextSecondaryColor
+        numberOfLines={1}
+      >
+        run.mocky.io
+      </TextSecondaryColor>
+      <TextSecondaryColor
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
+        }
+      >
+        12:12:54
+      </TextSecondaryColor>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+      >
+        /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
+      </Text>
     </Component>
   </Component>
 </ForwardRef>

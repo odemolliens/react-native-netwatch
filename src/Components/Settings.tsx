@@ -8,12 +8,10 @@ import { Title } from '../Components/Text';
 
 export interface IProps {
   testId?: string;
-  onDismiss: () => void;
-  source: SourceType | EnumSourceType | string;
+  source: SourceType | EnumSourceType;
   onSetSource: (value: any) => void;
   filter: RequestMethod | EnumFilterType.All;
   onSetFilter: (value: RequestMethod | EnumFilterType.All) => void;
-  onPressClear: () => void;
 }
 
 export const Settings = (props: IProps) => {
@@ -122,7 +120,7 @@ export const Settings = (props: IProps) => {
                 value={EnumFilterType.Post}
                 status={checkedFilter === EnumFilterType.Post ? 'checked' : 'unchecked'}
                 onPress={() => setCheckedFilter(EnumFilterType.Post)}
-                testID={'Radiopost'}
+                testID={'RadioPost'}
                 label="POST"
                 labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
                 mode="android"
@@ -162,6 +160,7 @@ export const Settings = (props: IProps) => {
       </View>
       <View>
         <TouchableOpacity
+          testID={'ResetButton'}
           style={[styles.applyFilterButton, { backgroundColor: theme.blue500 }]}
           onPress={resetFilters}
         >

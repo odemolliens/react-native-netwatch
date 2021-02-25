@@ -6,6 +6,10 @@ let currentId: number = 0;
 let callback: Function = () => {};
 let maxActions = 100;
 
+export const initCurrentId = () => (currentId = 0)
+
+export const getCurrentId = () => currentId
+
 export const setCallback = (_callback: Function) => {
   callback = _callback;
 };
@@ -20,9 +24,11 @@ export const setMaxActions = (_maxActions?: number) => {
   }
 };
 
+export const getMaxActions = ():number => maxActions;
+
 export const clear = () => (actions = []);
 
-export const getExecutedRequests = (): number => {
+export const getStoredActions = (): number => {
   return actions.length;
 };
 
@@ -33,8 +39,8 @@ export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: an
   });
 
   actions = [_action].concat(actions);
-  if (getExecutedRequests() > maxActions) {
-    actions = [...actions.slice(0, getExecutedRequests() - 1)];
+  if (getStoredActions() > maxActions) {
+    actions = [...actions.slice(0, getStoredActions() - 1)];
   }
 
   callback(getReduxActions());

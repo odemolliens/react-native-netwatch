@@ -14,7 +14,7 @@ export const getTime = (date: number): string => {
 export const getShortDate = (date: number): string => {
   const _date = new Date(date);
   const _day = ('0' + _date.getDate()).slice(-2);
-  const _month = ('0' + _date.getMonth()).slice(-2);
+  const _month = ('0' + (_date.getMonth() + 1)).slice(-2);
   const _year = _date.getFullYear()
 
   return`${_day}/${_month}/${_year}`;
@@ -22,10 +22,6 @@ export const getShortDate = (date: number): string => {
 
 export const getDate = (date: number): string => {
   return new Date(date).toString();
-};
-
-export const identifier = (date: number, id: number): string => {
-  return `${getTime(date)}:${id}`;
 };
 
 export const getStatus = (status: number = 500): string => {

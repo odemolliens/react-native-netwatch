@@ -133,6 +133,7 @@ const _copyClipbutton = (onPress: Function, text: string = '', toastMessage: str
   const theme = useContext(ThemeContext);
   return (
     <TouchableOpacity
+      testID='buttonCopyToClipboard'
       style={[{ flexDirection: 'row', borderLeftWidth: 0, alignItems: 'center' }]}
       onPress={() => {
         onPress(text);
@@ -318,18 +319,16 @@ export const Details: React.FC<IProps> = (props) => {
   return (
     <View style={styles.container}>
       <Appbar.Header style={[styles.header, { backgroundColor: theme.gray900 }]}>
-        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon
-            name="arrow-left"
-            color={theme.white}
-            size={24}
-            onPress={() => props.onPressBack(false)}
-            testID="buttonBackToMainScreen"
-          />
+        <TouchableOpacity
+          style={[styles.button, { borderLeftWidth: 0 }]}
+          onPress={() => props.onPressBack(false)}
+          testID="buttonBackToMainScreen"
+        >
+          <FeatherIcon name="arrow-left" color={theme.white} size={24} />
         </TouchableOpacity>
         <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
-        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon name="download" color={theme.white} size={24} onPress={() => _action()} />
+        <TouchableOpacity testID="buttonShare" style={[styles.button, { borderLeftWidth: 0 }]} onPress={() => _action()}>
+          <FeatherIcon name="download" color={theme.white} size={24} />
         </TouchableOpacity>
       </Appbar.Header>
 

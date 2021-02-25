@@ -26,7 +26,7 @@ export const getRequestBody = (dataSent: any): string => {
 
 export const getResponseBody = async (
   responseType: string,
-  response?: Request
+  response?: any
 ): Promise<string> => {
   if (!response) return '';
   const _responseBody = await (responseType !== 'blob' ? response : parseResponseBlob(response));

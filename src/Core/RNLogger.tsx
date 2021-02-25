@@ -153,6 +153,10 @@ export class RNLogger {
   };
 
   enableXHRInterception = (options?: RNLoggerOptions) => {
+    if (XHRInterceptor.isInterceptorEnabled()) {
+      return;
+    }
+    
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(

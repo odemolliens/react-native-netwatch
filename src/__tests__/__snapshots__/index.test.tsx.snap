@@ -2,72 +2,153 @@
 
 exports[`Index test suite should render properly 1`] = `
 <Provider>
-  <ForwardRef(SafeAreaView)>
-    <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      visible={false}
-    >
-      <Main
-        clearAll={[Function]}
-        maxRequests={15}
-        onPress={[Function]}
-        onPressClose={[MockFunction]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
+  <ContextProvider
+    value={
+      Object {
+        "black": "#000",
+        "blue300": "#67E8F9",
+        "blue500": "#06B6D4",
+        "blue700": "#0E7490",
+        "gray100": "#F3F4F6",
+        "gray200": "#E5E7EB",
+        "gray300": "#D1D5DB",
+        "gray400": "#9CA3AF",
+        "gray50": "#F9FAFB",
+        "gray500": "#6B7280",
+        "gray600": "#4B5563",
+        "gray700": "#374151",
+        "gray800": "#1F2937",
+        "gray900": "#111827",
+        "green700": "#4D7C0F",
+        "orange700": "#D97706",
+        "red700": "#B91C1C",
+        "violet700": "#764ABC",
+        "white": "#FFF",
+      }
+    }
+  >
+    <ForwardRef(SafeAreaView)>
+      <Component
+        animationType="slide"
+        hardwareAccelerated={false}
         visible={false}
-      />
-    </Component>
-  </ForwardRef(SafeAreaView)>
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={50}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[MockFunction]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+          visible={false}
+        />
+      </Component>
+    </ForwardRef(SafeAreaView)>
+  </ContextProvider>
 </Provider>
 `;
 
 exports[`Index test suite should render properly visible and enabled 1`] = `
 <Provider>
-  <ForwardRef(SafeAreaView)>
-    <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      visible={true}
-    >
-      <Main
-        clearAll={[Function]}
-        maxRequests={15}
-        onPress={[Function]}
-        onPressClose={[MockFunction]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
+  <ContextProvider
+    value={
+      Object {
+        "black": "#000",
+        "blue300": "#67E8F9",
+        "blue500": "#06B6D4",
+        "blue700": "#0E7490",
+        "gray100": "#F3F4F6",
+        "gray200": "#E5E7EB",
+        "gray300": "#D1D5DB",
+        "gray400": "#9CA3AF",
+        "gray50": "#F9FAFB",
+        "gray500": "#6B7280",
+        "gray600": "#4B5563",
+        "gray700": "#374151",
+        "gray800": "#1F2937",
+        "gray900": "#111827",
+        "green700": "#4D7C0F",
+        "orange700": "#D97706",
+        "red700": "#B91C1C",
+        "violet700": "#764ABC",
+        "white": "#FFF",
+      }
+    }
+  >
+    <ForwardRef(SafeAreaView)>
+      <Component
+        animationType="slide"
+        hardwareAccelerated={false}
         visible={true}
-      />
-    </Component>
-  </ForwardRef(SafeAreaView)>
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={50}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[MockFunction]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+          visible={true}
+        />
+      </Component>
+    </ForwardRef(SafeAreaView)>
+  </ContextProvider>
 </Provider>
 `;
 
 exports[`Index test suite should render properly visible, enabled and maxRequest 1`] = `
 <Provider>
-  <ForwardRef(SafeAreaView)>
-    <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      visible={true}
-    >
-      <Main
-        clearAll={[Function]}
-        maxRequests={20}
-        onPress={[Function]}
-        onPressClose={[MockFunction]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
+  <ContextProvider
+    value={
+      Object {
+        "black": "#000",
+        "blue300": "#67E8F9",
+        "blue500": "#06B6D4",
+        "blue700": "#0E7490",
+        "gray100": "#F3F4F6",
+        "gray200": "#E5E7EB",
+        "gray300": "#D1D5DB",
+        "gray400": "#9CA3AF",
+        "gray50": "#F9FAFB",
+        "gray500": "#6B7280",
+        "gray600": "#4B5563",
+        "gray700": "#374151",
+        "gray800": "#1F2937",
+        "gray900": "#111827",
+        "green700": "#4D7C0F",
+        "orange700": "#D97706",
+        "red700": "#B91C1C",
+        "violet700": "#764ABC",
+        "white": "#FFF",
+      }
+    }
+  >
+    <ForwardRef(SafeAreaView)>
+      <Component
+        animationType="slide"
+        hardwareAccelerated={false}
         visible={true}
-      />
-    </Component>
-  </ForwardRef(SafeAreaView)>
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={20}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[MockFunction]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+          visible={true}
+        />
+      </Component>
+    </ForwardRef(SafeAreaView)>
+  </ContextProvider>
 </Provider>
 `;

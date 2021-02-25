@@ -1,32 +1,44 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet } from 'react-native';
 import { Text as RNPText } from 'react-native-paper';
 import { ThemeContext } from '../Theme';
 
-export const Text = (props) => {
+export interface IProps {
+  children: string;
+  style?: StyleProp<any>;
+  numberOfLines?: number
+}
+
+export const Text = (props: IProps) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <RNPText style={[styles.text, { color: theme.gray50 }, props.style]} {...props}>{props.children}</RNPText>
+    <RNPText style={[styles.text, { color: theme.gray50 }, props.style]} {...props}>
+      {props.children}
+    </RNPText>
   );
 };
 
-export const TextSecondaryColor = (props) => {
+export const TextSecondaryColor = (props: IProps) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <RNPText style={[styles.text, { color: theme.gray300 }, props.style]} {...props}>{props.children}</RNPText>
+    <RNPText style={[styles.text, { color: theme.gray300 }, props.style]} {...props}>
+      {props.children}
+    </RNPText>
   );
 };
 
-export const Title = (props) => {
-    const theme = useContext(ThemeContext);
-  
-    return (
-      <RNPText style={[styles.text, styles.text, { color: theme.gray50 }, props.style]} {...props}>{props.children}</RNPText>
-    );
-  };
+export const Title = (props: IProps) => {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <RNPText style={[styles.text, styles.text, { color: theme.gray50 }, props.style]} {...props}>
+      {props.children}
+    </RNPText>
+  );
+};
 
 const styles = StyleSheet.create({
   text: {
