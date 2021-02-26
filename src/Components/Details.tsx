@@ -13,7 +13,7 @@ import {
 import { Appbar, Subheading } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
 import { getStatus, getTime, getShortDate } from '../Utils/helpers';
-import { ILog, EnumStatus } from '../types';
+import { EnumStatus } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import NRequest from '../Core/Objects/NRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
@@ -27,7 +27,7 @@ import url from 'url';
 export interface IProps {
   testId?: string;
   onPressBack: (showDetails: boolean) => void;
-  item: ILog;
+  item: RNRequest | NRequest | ReduxAction;
 }
 
 // These attribute will be not added in the detail's scrollview because always displayed in the other components
@@ -133,7 +133,7 @@ const _copyClipbutton = (onPress: Function, text: string = '', toastMessage: str
   const theme = useContext(ThemeContext);
   return (
     <TouchableOpacity
-      testID='buttonCopyToClipboard'
+      testID="buttonCopyToClipboard"
       style={[{ flexDirection: 'row', borderLeftWidth: 0, alignItems: 'center' }]}
       onPress={() => {
         onPress(text);
@@ -184,7 +184,7 @@ export const Details: React.FC<IProps> = (props) => {
   let _action: any = () => {};
 
   if (props.item instanceof ReduxAction) {
-    _action = () => _onShareReduxAction(props.item);
+    _action = () => _onShareReduxAction(props.item as ReduxAction);
     _content = (
       <View style={{ flex: 1, width: '100%' }}>
         {/* REDUX + REDUX TAG */}
@@ -223,14 +223,17 @@ export const Details: React.FC<IProps> = (props) => {
       (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || [];
     const _responseHeadersElements =
       (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || [];
-    _action = () =>
-      _onShareRequest(
-        _generalElements,
-        _requestHeadersElements,
-        props.item?.dataSent,
-        _responseHeadersElements,
-        props.item?.response
-      );
+    _action = () => {
+      if (props.item instanceof RNRequest || props.item instanceof NRequest) {
+        _onShareRequest(
+          _generalElements,
+          _requestHeadersElements,
+          props.item.dataSent,
+          _responseHeadersElements,
+          props.item.response
+        );
+      }
+    };
 
     let _temp = getStatus(props.item.status);
     if (_temp === EnumStatus.Success) _color = theme.green700;
@@ -271,7 +274,7 @@ export const Details: React.FC<IProps> = (props) => {
         </Subheading>
         {_requestHeadersElements && _renderItems(_requestHeadersElements)}
 
-        {props.item?.dataSent?.length > 0 && (
+        {props.item.dataSent?.length > 0 && (
           <>
             <Subheading
               style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
@@ -327,7 +330,11 @@ export const Details: React.FC<IProps> = (props) => {
           <FeatherIcon name="arrow-left" color={theme.white} size={24} />
         </TouchableOpacity>
         <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
-        <TouchableOpacity testID="buttonShare" style={[styles.button, { borderLeftWidth: 0 }]} onPress={() => _action()}>
+        <TouchableOpacity
+          testID="buttonShare"
+          style={[styles.button, { borderLeftWidth: 0 }]}
+          onPress={() => _action()}
+        >
           <FeatherIcon name="download" color={theme.white} size={24} />
         </TouchableOpacity>
       </Appbar.Header>

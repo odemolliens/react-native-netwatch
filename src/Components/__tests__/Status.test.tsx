@@ -26,7 +26,6 @@ describe('Status test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
-
   it('should render properly request with method post and warning', () => {
     givenProps(mockRequestWithMethodPostWarning);
     givenComponent();
@@ -104,6 +103,4 @@ describe('Status test suite', () => {
     type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
   };
-  
-
 });

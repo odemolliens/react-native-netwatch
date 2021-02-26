@@ -36,7 +36,7 @@ describe('enableXHRInterception', () => {
     expect(getReduxActions()).toEqual([]);
   });
   it('should dispatch simple action', () => {
-    clear()
+    clear();
     store.dispatch(createSuccess('response'));
     expect(store.getActions()).toEqual([
       {
@@ -47,20 +47,19 @@ describe('enableXHRInterception', () => {
   });
 
   it('should execute callback function when action is dispatched', () => {
-    clear()
+    clear();
     const next = jest.fn();
     const callback = jest.fn();
-    setCallback(callback)
+    setCallback(callback);
 
     const action = { type: 'CONNECT' };
     reduxLoggerMiddleware(store)(next)(action);
     expect(callback).toHaveBeenCalledTimes(1);
-
   });
 
   // TODO: Fix this test startTime change every time!
   it('should dispatch Redux actions and can be retrieve with getReduxAction', () => {
-    clear()
+    clear();
     initCurrentId();
     setMaxActions(5);
     const next = jest.fn();
@@ -80,7 +79,7 @@ describe('enableXHRInterception', () => {
   });
 
   it('should get how many actions stored', () => {
-    clear()
+    clear();
     const next = jest.fn();
 
     const action1 = { type: 'CONNECT1' };
@@ -92,11 +91,10 @@ describe('enableXHRInterception', () => {
     reduxLoggerMiddleware(store)(next)(action3);
     reduxLoggerMiddleware(store)(next)(action4);
     expect(getStoredActions()).toEqual(4);
-  })
-
+  });
 
   it('should limit how many actions logged', () => {
-    clear()
+    clear();
     setMaxActions(2);
     const next = jest.fn();
 
@@ -112,7 +110,7 @@ describe('enableXHRInterception', () => {
   });
 
   it('should return last action at index 0 in the list', () => {
-    clear()
+    clear();
     const next = jest.fn();
 
     const action1 = { type: 'CONNECT1' };
@@ -127,12 +125,11 @@ describe('enableXHRInterception', () => {
 
   it('should keep current value if maxActions is invalid', () => {
     setMaxActions(100);
-    const maxActions = getMaxActions()
+    const maxActions = getMaxActions();
     expect(maxActions).toEqual(100);
-    
+
     // @ts-ignore
     setMaxActions('Bad value');
     expect(maxActions).toEqual(100);
-
   });
 });

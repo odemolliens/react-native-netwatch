@@ -87,7 +87,7 @@ export const Settings = (props: IProps) => {
           <>
             <Title style={[styles.title, { color: theme.gray50 }]}>Type:</Title>
             <RadioButton.Group
-              onValueChange={(value) => props.onSetFilter(value)}
+              onValueChange={(value) => props.onSetFilter(value as EnumFilterType)}
               value={props.filter}
             >
               <RadioButton.Item

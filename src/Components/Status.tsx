@@ -21,9 +21,7 @@ export interface IProps {
 export const tag = (color: string, text: string) => {
   return (
     <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
-      <Text style={styles.text} testID={`statusCode-${text}`}>
-        {text}
-      </Text>
+      <Text style={styles.text}>{text}</Text>
     </View>
   );
 };
@@ -60,7 +58,7 @@ export const Status: React.FC<IProps> = (props: IProps) => {
 
   return (
     <View style={[styles.container]}>
-      <Text testID="statusMethod">{_line1}</Text>
+      <Text>{_line1}</Text>
       {_line2.length > 0 ? tag(_color, _line2) : reduxTag()}
     </View>
   );

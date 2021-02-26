@@ -20,8 +20,8 @@ beforeEach(() => {
 describe('enableXHRInterception', () => {
   it('should setCallback', () => {
     const logger = new RNLogger();
-    const callback = jest.fn()
-    logger.setCallback(callback)
+    const callback = jest.fn();
+    logger.setCallback(callback);
     expect(logger.callback).toEqual(callback);
   });
 
@@ -99,8 +99,8 @@ describe('enableXHRInterception', () => {
     const logger = new RNLogger();
     const xhr = {
       _index: 1,
-      readyState: 0
-    }
+      readyState: 0,
+    };
     logger.enableXHRInterception();
     logger.openCallback('POST', 'http://test.url', xhr);
 
@@ -128,8 +128,8 @@ describe('enableXHRInterception', () => {
       status: -1,
       endTime: 0,
       dataSent: '',
-      response: ''
-    }
+      response: '',
+    };
 
     expect(logger.updaterequest(1, mockPartialRequest)).toEqual(expectRequest);
   });

@@ -10,16 +10,16 @@ export class NRequest implements ILog {
   status: number = -1;
   endTime: number = 0;
   timeout?: number;
-  dataSent?: string = '';
+  dataSent: string = '';
   requestHeaders?: any;
   responseHeaders?: any;
   responseContentType?: string;
   responseSize?: number;
   responseType?: string;
   responseURL?: string;
-  response?: string = '';
+  response: string = '';
 
-  constructor(attributes: any) {
+  constructor(attributes?: any) {
     Object.assign(this, attributes);
   }
 }

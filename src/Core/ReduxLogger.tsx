@@ -6,9 +6,9 @@ let currentId: number = 0;
 let callback: Function = () => {};
 let maxActions = 100;
 
-export const initCurrentId = () => (currentId = 0)
+export const initCurrentId = () => (currentId = 0);
 
-export const getCurrentId = () => currentId
+export const getCurrentId = () => currentId;
 
 export const setCallback = (_callback: Function) => {
   callback = _callback;
@@ -24,7 +24,7 @@ export const setMaxActions = (_maxActions?: number) => {
   }
 };
 
-export const getMaxActions = ():number => maxActions;
+export const getMaxActions = (): number => maxActions;
 
 export const clear = () => (actions = []);
 
@@ -44,9 +44,25 @@ export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: an
   }
 
   callback(getReduxActions());
+  // actions = []
   return next(action);
 };
 
 export const getReduxActions = () => {
   return actions;
 };
+
+if (__DEV__) {
+  console.log('Launch Redux actions simulator');
+  let counter = 0;
+  let testActions: Array<ReduxAction> = [];
+  setInterval(() => {
+    let _action: ReduxAction = new ReduxAction({
+      _id: counter++,
+      action: { payload: 'Learn about actions', type: 'todos/todoAdded' },
+    });
+    testActions = [_action].concat(testActions);
+    // callback(testActions);
+    testActions = [];
+  }, 6000);
+}

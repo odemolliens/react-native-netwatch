@@ -3,7 +3,7 @@ import { getTime, getShortDate, getDate, getStatus, duration } from '../helpers'
 //Set jest to UTC if necessary
 describe('Timezones', () => {
   it('should always be UTC', () => {
-      expect(new Date().getTimezoneOffset()).toBe(0);
+    expect(new Date().getTimezoneOffset()).toBe(0);
   });
 });
 

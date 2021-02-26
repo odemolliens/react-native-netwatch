@@ -24,10 +24,7 @@ export const getRequestBody = (dataSent: any): string => {
   return stringifyData(dataSent) || '';
 };
 
-export const getResponseBody = async (
-  responseType: string,
-  response?: any
-): Promise<string> => {
+export const getResponseBody = async (responseType: string, response?: any): Promise<string> => {
   if (!response) return '';
   const _responseBody = await (responseType !== 'blob' ? response : parseResponseBlob(response));
   return stringifyData(_responseBody || '');
@@ -58,16 +55,16 @@ export class RNRequest implements ILog {
   status: number = -1;
   endTime: number = 0;
   timeout?: number;
-  dataSent?: string = '';
+  dataSent: string = '';
   requestHeaders?: any;
   responseHeaders?: any;
   responseContentType?: string;
   responseSize?: number;
   responseType?: string;
   responseURL?: string;
-  response?: string = '';
+  response: string = '';
 
-  constructor(attributes: any) {
+  constructor(attributes?: any) {
     Object.assign(this, attributes);
   }
 }

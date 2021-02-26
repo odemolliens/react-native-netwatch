@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
 import { shallow } from 'enzyme';
-import { Text, Title, TextSecondaryColor ,IProps } from '../Text';
+import { Text, Title, TextSecondaryColor, IProps } from '../Text';
 
 describe('Status test suite', () => {
   let props: IProps;
@@ -15,7 +15,7 @@ describe('Status test suite', () => {
     givenProps('Children text', StyleSheet.create({ text: { color: 'red' } }));
     expect(shallow(<Title {...props} />)).toMatchSnapshot();
   });
-  
+
   it('should render Title properly', () => {
     givenProps('Children text', StyleSheet.create({ text: { color: 'red' } }));
     expect(shallow(<TextSecondaryColor {...props} />)).toMatchSnapshot();

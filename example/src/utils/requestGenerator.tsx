@@ -73,5 +73,5 @@ export const makeRequestInContinue = (): void => {
         'Content-Type': 'application/json',
       },
     }).catch((e) => console.log(e));
-  }, 2000);
+  }, 5000);
 };

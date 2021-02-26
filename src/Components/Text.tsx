@@ -7,7 +7,7 @@ import { ThemeContext } from '../Theme';
 export interface IProps {
   children: string;
   style?: StyleProp<any>;
-  numberOfLines?: number
+  numberOfLines?: number;
 }
 
 export const Text = (props: IProps) => {

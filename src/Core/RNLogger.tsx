@@ -48,7 +48,9 @@ export class RNLogger {
   };
 
   getRequests = (): Array<RNRequest> => {
-    return this.requests;
+    let _temp = this.requests;
+    // this.clear()
+    return _temp;
   };
 
   getExecutedRequests = (): number => {
@@ -153,10 +155,10 @@ export class RNLogger {
   };
 
   enableXHRInterception = (options?: RNLoggerOptions) => {
-    if (XHRInterceptor.isInterceptorEnabled()) {
-      return;
-    }
-    
+    // if (XHRInterceptor.isInterceptorEnabled()) {
+    //   return;
+    // }
+
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(

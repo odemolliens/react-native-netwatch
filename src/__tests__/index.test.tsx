@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { IProps, Netwatch} from '../index';
+import { IProps, Netwatch } from '../index';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;

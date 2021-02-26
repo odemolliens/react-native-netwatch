@@ -2,7 +2,7 @@ import NRequest from '../NRequest';
 
 describe('NRequest', () => {
   it('should return a NRequest', () => {
-    const _NRequest = new NRequest(mockRequestWithMethod)
+    const _NRequest = new NRequest(mockRequestWithMethod);
     expect(_NRequest).toBeInstanceOf(NRequest);
   });
 

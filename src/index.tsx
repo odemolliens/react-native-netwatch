@@ -35,7 +35,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
   const [showDetails, setShowDetails] = useState(false);
-  const [item, setItem] = useState();
+  const [item, setItem] = useState(new ReduxAction());
 
   const startNativeLoop = () => {
     if (!nativeLoopStarted && Platform.OS === 'android') {

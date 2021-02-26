@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useState, useEffect, useContext } from 'react';
-import { View, StyleSheet, Share, Alert, TouchableOpacity, FlatList } from 'react-native';
+import { useState, useEffect, useContext, useRef } from 'react';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Share } from 'react-native';
 import { Appbar, Searchbar } from 'react-native-paper';
 import Item from './Item';
-//@ts-ignore
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
@@ -13,6 +11,8 @@ import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { getTime } from '../Utils/helpers';
 import { ThemeContext } from '../Theme';
+
+// import Share from 'react-native-share'
 
 export interface IProps {
   testId?: string;
@@ -27,19 +27,22 @@ export interface IProps {
   maxRequests?: number;
 }
 
+let _positionFlatList = 0;
+
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
+  const refFlatList = useRef<FlatList<any>>(null);
+  const [flatListLastOffset, setFlatListLastOffset] = useState<number>(0);
   const [requests, setRequests] = useState<Array<ILog>>([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
   const [filter, setFilter] = useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
   const [settingsVisible, setSettingsVisible] = useState(false);
-  const [deleteVisible, setDeleteVisible] = useState(false);
+  const [deleteVisible, setDeleteVisible] = useState<boolean>(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
-  const hideSettingsDialog = () => setSettingsVisible(false);
   const hideDialogAndDelete = () => {
     clearList();
-    setDeleteVisible(false);
+    deleteVisible && setDeleteVisible(false);
   };
 
   useEffect(() => {
@@ -55,7 +58,21 @@ export const Main = (props: IProps) => {
         mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse()
       );
     }
+
+    // TODO: Keep the same color after update for each items
+    // TODO: We can add many items during one loop -> we must set the offset to handle that
+    // TODO: What if we filtering -> scroll to 0 ?
+    if (_positionFlatList > 55) {
+      setFlatListLastOffset(_positionFlatList);
+    }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
+
+  useEffect(() => {
+    refFlatList?.current?.scrollToOffset({
+      animated: false,
+      offset: flatListLastOffset + 60 * 1,
+    });
+  }, [flatListLastOffset]);
 
   const mergeArrays = (...arrays: Array<ILog[]>) => {
     return [...arrays.flat()];
@@ -74,35 +91,36 @@ export const Main = (props: IProps) => {
     return comparison;
   };
 
-  const filteredRequests = (): Array<ILog> => requests.slice(0, props.maxRequests).filter((request) => {
-    if (filter === EnumFilterType.All) {
-      if (request instanceof ReduxAction) {
-        return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
-      }
-    }
-    if (request instanceof RNRequest || request instanceof NRequest) {
-      if (request.type === EnumSourceType.ReactNativeRequest) {
-        if (filter === request.method || filter === EnumFilterType.All) {
-          return (
-            request.type === EnumSourceType.ReactNativeRequest &&
-            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              request.status === parseInt(searchQuery) ||
-              request.method.toLowerCase() === searchQuery.toLowerCase())
-          );
-        }
-      } else {
-        if (filter === request.method || filter === EnumFilterType.All) {
-          return (
-            request.type === EnumSourceType.Nativerequest &&
-            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              request.status === parseInt(searchQuery) ||
-              request.method.toLowerCase() === searchQuery.toLowerCase())
-          );
+  const filteredRequests = (): Array<any> =>
+    requests.slice(0, props.maxRequests).filter((request) => {
+      if (filter === EnumFilterType.All) {
+        if (request instanceof ReduxAction) {
+          return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
         }
       }
-    }
-    return false;
-  });
+      if (request instanceof RNRequest || request instanceof NRequest) {
+        if (request.type === EnumSourceType.ReactNativeRequest) {
+          if (filter === request.method || filter === EnumFilterType.All) {
+            return (
+              request.type === EnumSourceType.ReactNativeRequest &&
+              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                request.status === parseInt(searchQuery) ||
+                request.method.toLowerCase() === searchQuery.toLowerCase())
+            );
+          }
+        } else {
+          if (filter === request.method || filter === EnumFilterType.All) {
+            return (
+              request.type === EnumSourceType.Nativerequest &&
+              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                request.status === parseInt(searchQuery) ||
+                request.method.toLowerCase() === searchQuery.toLowerCase())
+            );
+          }
+        }
+      }
+      return false;
+    });
 
   const clearList = () => {
     props.clearAll();
@@ -153,14 +171,14 @@ export const Main = (props: IProps) => {
     ]);
   };
 
-  const _renderItems = ({ item, index }) => {
-    const _color = index % 2 ? theme.gray700 : theme.gray800;
+  const _renderItems = (_props: { item: ReduxAction | RNRequest | NRequest; index: number }) => {
+    const _color = _props.index % 2 ? theme.gray700 : theme.gray800;
     return (
       <Item
-        testID={`${index}`}
-        item={item}
+        testID={`${_props.index}`}
+        item={_props.item}
         onPress={() => {
-          props.onPress(item);
+          props.onPress(_props.item);
           props.onPressDetail(true);
         }}
         color={_color}
@@ -198,7 +216,7 @@ export const Main = (props: IProps) => {
         />
 
         <TouchableOpacity
-          testID='showDetailsButton'
+          testID="showDetailsButton"
           style={[
             styles.button,
             {
@@ -219,25 +237,29 @@ export const Main = (props: IProps) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity testID='deleteListButton' style={[styles.button, { borderLeftColor: theme.gray900 }]} onPress={onDelete}>
+        <TouchableOpacity
+          testID="deleteListButton"
+          style={[styles.button, { borderLeftColor: theme.gray900 }]}
+          onPress={onDelete}
+        >
           <FeatherIcon name="trash-2" color={theme.gray300} size={24} />
         </TouchableOpacity>
       </View>
 
       {settingsVisible ? (
-        <Settings
-          source={source}
-          onSetSource={setSource}
-          filter={filter}
-          onSetFilter={setFilter}
-        />
+        <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
         <FlatList
+          ref={refFlatList}
+          maintainVisibleContentPosition={{
+            autoscrollToTopThreshold: 10,
+            minIndexForVisible: 1,
+          }}
           style={{ backgroundColor: theme.gray800 }}
+          renderItem={_renderItems}
           keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
           data={filteredRequests()}
-          renderItem={_renderItems}
-        />
+        ></FlatList>
       )}
     </>
   );

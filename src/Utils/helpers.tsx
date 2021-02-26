@@ -1,4 +1,4 @@
-import { EnumStatus } from '../types'
+import { EnumStatus } from '../types';
 
 export const getTime = (date: number): string => {
   // iOS need a string, Android need a number
@@ -9,15 +9,14 @@ export const getTime = (date: number): string => {
   return `${_hours}:${_minutes}:${_seconds}`;
 };
 
-
 // format date -> DD/MM/YYYY
 export const getShortDate = (date: number): string => {
   const _date = new Date(date);
   const _day = ('0' + _date.getDate()).slice(-2);
   const _month = ('0' + (_date.getMonth() + 1)).slice(-2);
-  const _year = _date.getFullYear()
+  const _year = _date.getFullYear();
 
-  return`${_day}/${_month}/${_year}`;
+  return `${_day}/${_month}/${_year}`;
 };
 
 export const getDate = (date: number): string => {

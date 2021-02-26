@@ -51,7 +51,7 @@ describe('Item test suite', () => {
     props = {
       onPress,
       item: mockedElement,
-      color: 'red'
+      color: 'red',
     };
   }
 
