@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useContext, useRef } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Share } from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Share, Keyboard } from 'react-native';
 import { Appbar, Searchbar } from 'react-native-paper';
 import Item from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -206,6 +206,12 @@ export const Main = (props: IProps) => {
       </Appbar.Header>
       <View style={[styles.options, { backgroundColor: theme.gray800 }]}>
         <Searchbar
+          onFocus={() => {
+            settingsVisible && setSettingsVisible(false);
+          }}
+          onChange={() => {
+            settingsVisible && setSettingsVisible(false);
+          }}
           placeholderTextColor={theme.gray400}
           iconColor={theme.gray500}
           inputStyle={{ color: theme.gray400 }}
@@ -224,7 +230,10 @@ export const Main = (props: IProps) => {
               backgroundColor: settingsVisible ? theme.gray900 : theme.gray800,
             },
           ]}
-          onPress={() => setSettingsVisible(!settingsVisible)}
+          onPress={() => {
+            Keyboard.dismiss();
+            setSettingsVisible(!settingsVisible);
+          }}
         >
           <FeatherIcon
             name="filter"
