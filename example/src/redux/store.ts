@@ -4,7 +4,7 @@ import { createEpicMiddleware } from 'redux-observable';
 import { createActionLog } from 'redux-action-log';
 import { rootEpic } from './effects';
 import { setup } from '../config/reactotron';
-import { reduxLogger } from 'react-native-netwatch'
+import { reduxLogger } from 'react-native-netwatch';
 
 export interface IRootState {
   app: IAppState;

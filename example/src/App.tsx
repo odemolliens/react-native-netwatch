@@ -87,11 +87,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 60,
     backgroundColor: '#111827',
   },
-  title: { 
-    fontSize: 20, 
-    fontWeight: 'bold', 
-    color: '#F9FAFB', 
-    marginBottom: 16 
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#F9FAFB',
+    marginBottom: 16,
   },
   openButton: {
     backgroundColor: '#67E8F9',
