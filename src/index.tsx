@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { Modal, SafeAreaView, NativeModules } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -56,6 +56,12 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     setReduxActions([]);
     setRnRequests([]);
   };
+
+  useEffect(() => {
+    DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
+      console.warn('<<>> DEVICE SHAKE: ');
+    });
+  }, []);
 
   return (
     <Provider>
