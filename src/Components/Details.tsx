@@ -40,8 +40,8 @@ const excludedAttributes: Array<string> = [
 ];
 
 const stringifyData = (array: Array<string[]>): string => {
-  let _string = '';
-  let _result = array
+  const _string = '';
+  const _result = array
     .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
     .map((item: Array<string>) => {
       return _string.concat(item[0], ': ', item[1], '\n');
@@ -54,12 +54,12 @@ const formatSharedMessage = (
   requestHeaders: Array<string[]>,
   postData: string,
   responseHeaders: Array<string[]>,
-  bodyResponse: string
+  bodyResponse: string,
 ): string => {
-  let _general = stringifyData(general);
-  let _requestHeaders = stringifyData(requestHeaders);
-  let _responseHeaders = stringifyData(responseHeaders);
-  let _report = ''.concat(
+  const _general = stringifyData(general);
+  const _requestHeaders = stringifyData(requestHeaders);
+  const _responseHeaders = stringifyData(responseHeaders);
+  const _report = ''.concat(
     'GENERAL\n',
     _general,
     '\n',
@@ -73,7 +73,7 @@ const formatSharedMessage = (
     _responseHeaders,
     '\n',
     'RESPONSE BODY\n',
-    bodyResponse
+    bodyResponse,
   );
   return _report;
 };
@@ -91,7 +91,7 @@ export const Details: React.FC<IProps> = (props) => {
     requestHeaders: Array<string[]>,
     postData: string = '',
     responseHeaders: Array<string[]>,
-    bodyResponse: string = ''
+    bodyResponse: string = '',
   ): Promise<void> => {
     try {
       await Share.share({
@@ -100,7 +100,7 @@ export const Details: React.FC<IProps> = (props) => {
           requestHeaders,
           postData,
           responseHeaders,
-          bodyResponse
+          bodyResponse,
         ),
       });
     } catch (error) {
@@ -125,7 +125,6 @@ export const Details: React.FC<IProps> = (props) => {
   };
 
   const _copyClipbutton = (onPress: Function, text: string = '', toastMessage: string = '') => {
-    const theme = useContext(ThemeContext);
     return (
       <TouchableOpacity
         testID="buttonCopyToClipboard"
@@ -148,7 +147,6 @@ export const Details: React.FC<IProps> = (props) => {
   };
 
   const _renderItems = (listOfItems: Array<[string, any]>) => {
-    const theme = useContext(ThemeContext);
     return listOfItems
       .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
       .filter((item: Array<string>) => item[1] && item[1].length > 0)
@@ -220,12 +218,12 @@ export const Details: React.FC<IProps> = (props) => {
           _requestHeadersElements,
           props.item.dataSent,
           _responseHeadersElements,
-          props.item.response
+          props.item.response,
         );
       }
     };
 
-    let _temp = getStatus(props.item.status);
+    const _temp = getStatus(props.item.status);
     if (_temp === EnumStatus.Success) _color = theme.green700;
     if (_temp === EnumStatus.Warning) _color = theme.orange700;
     if (_temp === EnumStatus.Failed) _color = theme.red700;
@@ -295,7 +293,7 @@ export const Details: React.FC<IProps> = (props) => {
               {_copyClipbutton(
                 _copyToClipboard,
                 props.item?.response,
-                'Response has been copied to clipboard'
+                'Response has been copied to clipboard',
               )}
             </View>
             <View style={styles.attribtuesContainer}>

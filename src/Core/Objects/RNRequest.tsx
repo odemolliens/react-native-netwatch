@@ -1,5 +1,5 @@
 import { ILog, LogType } from '../../types';
-//@ts-ignore
+// @ts-ignore
 // BlobFileReader is needed to read the content of the body response (it's type can be blob)
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
@@ -20,9 +20,7 @@ export const stringifyData = (data: any) => {
   }
 };
 
-export const getRequestBody = (dataSent: any): string => {
-  return stringifyData(dataSent) || '';
-};
+export const getRequestBody = (dataSent: any): string => stringifyData(dataSent) || '';
 
 export const getResponseBody = async (responseType: string, response?: any): Promise<string> => {
   if (!response) return '';

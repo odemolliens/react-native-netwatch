@@ -18,13 +18,11 @@ export interface IProps {
   backgroundColor?: string;
 }
 
-export const tag = (color: string, text: string) => {
-  return (
-    <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
-      <Text style={styles.text}>{text}</Text>
-    </View>
-  );
-};
+export const tag = (color: string, text: string) => (
+  <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
+    <Text style={styles.text}>{text}</Text>
+  </View>
+);
 
 export const reduxTag = () => {
   const theme = useContext(ThemeContext);
@@ -48,7 +46,7 @@ export const Status: React.FC<IProps> = (props: IProps) => {
     _color = theme.violet700;
     _line1 = 'REDUX';
   } else {
-    let _temp = getStatus(props.item.status);
+    const _temp = getStatus(props.item.status);
     if (_temp === EnumStatus.Success) _color = theme.green700;
     if (_temp === EnumStatus.Warning) _color = theme.orange700;
     if (_temp === EnumStatus.Failed) _color = theme.red700;

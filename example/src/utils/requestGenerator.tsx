@@ -19,7 +19,7 @@ export const makeRequestInContinue = (): void => {
       },
       body: JSON.stringify({ test: 'hello' }),
     },
-  );
+  ).catch((e) => console.error(e));
 
   // Request POST - Status 200 - Specific headers
   const _headers = new Headers();

@@ -17,7 +17,7 @@ export const setCallback = (_callback: Function) => {
 export const setMaxActions = (_maxActions?: number) => {
   if (typeof _maxActions !== 'number' || _maxActions < 1) {
     console.warn(
-      `react-native-netwatch: maxActions must be a number greater than 0. The logger will use the default value: ${maxActions}`
+      `react-native-netwatch: maxActions must be a number greater than 0. The logger will use the default value: ${maxActions}`,
     );
   } else {
     maxActions = _maxActions;
@@ -28,9 +28,7 @@ export const getMaxActions = (): number => maxActions;
 
 export const clear = () => (actions = []);
 
-export const getStoredActions = (): number => {
-  return actions.length;
-};
+export const getStoredActions = (): number => actions.length;
 
 export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: any) => {
   const _action = new ReduxAction({
@@ -48,16 +46,14 @@ export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: an
   return next(action);
 };
 
-export const getReduxActions = () => {
-  return actions;
-};
+export const getReduxActions = () => actions;
 
 if (__DEV__) {
   console.log('Launch Redux actions simulator');
   let counter = 0;
   let testActions: Array<ReduxAction> = [];
   setInterval(() => {
-    let _action: ReduxAction = new ReduxAction({
+    const _action: ReduxAction = new ReduxAction({
       _id: counter++,
       action: { payload: 'Learn about actions', type: 'todos/todoAdded' },
     });

@@ -19,9 +19,7 @@ export const getShortDate = (date: number): string => {
   return `${_day}/${_month}/${_year}`;
 };
 
-export const getDate = (date: number): string => {
-  return new Date(date).toString();
-};
+export const getDate = (date: number): string => new Date(date).toString();
 
 export const getStatus = (status: number = 500): string => {
   if (status >= 200 && status < 300) return EnumStatus.Success;
@@ -29,6 +27,4 @@ export const getStatus = (status: number = 500): string => {
   return EnumStatus.Failed;
 };
 
-export const duration = (startTime: number, endTime: number): number => {
-  return endTime - startTime;
-};
+export const duration = (startTime: number, endTime: number): number => endTime - startTime;

@@ -63,26 +63,26 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const getNativeRequestsAndroid = (): void => {
     RNNetwatch.getNativeRequests((response: any) => {
       try {
-        let _temp = JSON.parse(response.result);
+        const _temp = JSON.parse(response.result);
         if (_temp && _temp instanceof Array && _temp.length > 0) {
-          const _result = _temp.map((item: any) => {
+          const _result = _temp.map((element: any) => {
             return new NRequest({
-              _id: item._id,
+              _id: element._id,
               readyState: 4,
-              url: item.url,
-              method: item.method,
-              status: item.status,
-              startTime: item.startTime,
-              endTime: item.endTime,
-              timeout: item.timeout,
-              dataSent: JSON.stringify(item.dataSent, null, 2),
-              requestHeaders: item.requestHeaders,
-              responseHeaders: item.responseHeaders,
-              responseContentType: item.responseContentType,
-              responseSize: item.responseSize,
-              responseType: item.responseType,
-              responseURL: item.responseURL,
-              response: JSON.stringify(item.response, null, 2),
+              url: element.url,
+              method: element.method,
+              status: element.status,
+              startTime: element.startTime,
+              endTime: element.endTime,
+              timeout: element.timeout,
+              dataSent: JSON.stringify(element.dataSent, null, 2),
+              requestHeaders: element.requestHeaders,
+              responseHeaders: element.responseHeaders,
+              responseContentType: element.responseContentType,
+              responseSize: element.responseSize,
+              responseType: element.responseType,
+              responseURL: element.responseURL,
+              response: JSON.stringify(element.response, null, 2),
             });
           });
           setnRequests([..._result, ...nRequests]);
