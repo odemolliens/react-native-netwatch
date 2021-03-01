@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "clean:android": "rm -rf android/.gradle android/build android/.idea android/*.iml",
     "compile": "tsc -p .",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
+    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache --port 8082",
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.6.0",
     "react": "^16.13.1",
     "react-native": "^0.63.2",
+    "react-native-fs": "^2.16.6",
     "react-native-paper": "^4.7.1",
     "react-native-vector-icons": "^8.0.0",
     "react-redux": "^7.2.2",
