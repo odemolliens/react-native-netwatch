@@ -26,10 +26,10 @@ import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.NATIVE_REQUE
  * Created by MENTESE Imran on 09/02/2021.
  */
 
-public class NetworkInterceptor implements Interceptor {
+public class NetwatchInterceptor implements Interceptor {
     SharedPreferences sharedPrefs;
 
-    public NetworkInterceptor(Context context) {
+    public NetwatchInterceptor(Context context) {
         super();
         sharedPrefs = context.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
         // clean SharedPref before first use
