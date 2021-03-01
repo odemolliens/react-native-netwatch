@@ -1,16 +1,7 @@
 import * as React from 'react';
-import { useContext } from 'react';
-import {
-  StyleSheet,
-  View,
-  ScrollView,
-  Share,
-  Alert,
-  ToastAndroid,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
-import { Appbar, Subheading } from 'react-native-paper';
+import { useContext, useState } from 'react';
+import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity } from 'react-native';
+import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
 import { getStatus, getTime, getShortDate } from '../Utils/helpers';
 import { EnumStatus } from '../types';
@@ -87,101 +78,100 @@ const formatSharedMessage = (
   return _report;
 };
 
-const _onShareRequest = async (
-  general: Array<string[]>,
-  requestHeaders: Array<string[]>,
-  postData: string = '',
-  responseHeaders: Array<string[]>,
-  bodyResponse: string = ''
-): Promise<void> => {
-  try {
-    await Share.share({
-      message: formatSharedMessage(
-        general,
-        requestHeaders,
-        postData,
-        responseHeaders,
-        bodyResponse
-      ),
-    });
-  } catch (error) {
-    Alert.alert('Error', error.message);
-  }
-};
-
-const _onShareReduxAction = async (item: ReduxAction): Promise<void> => {
-  const _type = item.action.type.toUpperCase();
-  const _payload = JSON.stringify(item.action.payload, null, 2);
-  try {
-    await Share.share({
-      message: `${_type}\n${_payload}`,
-    });
-  } catch (error) {
-    Alert.alert('Error', error.message);
-  }
-};
-
-const _copyToClipboard = (text: string): void => {
-  if (typeof text === 'string') Clipboard.setString(text);
-};
-
-const _showToast = (message: string) => {
-  ToastAndroid.show(message, ToastAndroid.SHORT);
-};
-
-const _copyClipbutton = (onPress: Function, text: string = '', toastMessage: string = '') => {
-  const theme = useContext(ThemeContext);
-  return (
-    <TouchableOpacity
-      testID="buttonCopyToClipboard"
-      style={[{ flexDirection: 'row', borderLeftWidth: 0, alignItems: 'center' }]}
-      onPress={() => {
-        onPress(text);
-        Platform.OS === 'android' && _showToast(toastMessage);
-      }}
-    >
-      <MaterialCommunityIcons
-        name="clipboard-arrow-left-outline"
-        color={theme.blue500}
-        size={14}
-        testID="buttonCopyToClipBoard"
-      />
-      <Text style={[{ color: theme.blue500, marginLeft: 6 }]}>Copy</Text>
-    </TouchableOpacity>
-  );
-};
-
-const _renderItems = (listOfItems: Array<[string, any]>) => {
-  const theme = useContext(ThemeContext);
-  return listOfItems
-    .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
-    .filter((item: Array<string>) => item[1] && item[1].length > 0)
-    .map((item: Array<string>, index: number) => (
-      <View style={{ paddingHorizontal: 16 }} key={index}>
-        <View
-          style={{
-            marginBottom: 10,
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Text style={[{ color: theme.gray500 }]}>{item[0]}</Text>
-          {item[0] === 'url' &&
-            _copyClipbutton(_copyToClipboard, item[0], 'URL has been copied to clipboard')}
-        </View>
-        <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>
-          {item[1]}
-        </Text>
-      </View>
-    ));
-};
-
 export const Details: React.FC<IProps> = (props) => {
   const theme = useContext(ThemeContext);
+  const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
+  const [snackBarMessage, setSnackBarMessage] = useState<string>('');
   let _content = null;
   let _color: string = theme.violet700;
   let _action: any = () => {};
+
+  const _onShareRequest = async (
+    general: Array<string[]>,
+    requestHeaders: Array<string[]>,
+    postData: string = '',
+    responseHeaders: Array<string[]>,
+    bodyResponse: string = ''
+  ): Promise<void> => {
+    try {
+      await Share.share({
+        message: formatSharedMessage(
+          general,
+          requestHeaders,
+          postData,
+          responseHeaders,
+          bodyResponse
+        ),
+      });
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
+  const _onShareReduxAction = async (item: ReduxAction): Promise<void> => {
+    const _type = item.action.type.toUpperCase();
+    const _payload = JSON.stringify(item.action.payload, null, 2);
+    try {
+      await Share.share({
+        message: `${_type}\n${_payload}`,
+      });
+    } catch (error) {
+      Alert.alert('Error', error.message);
+    }
+  };
+
+  const _copyToClipboard = (text: string): void => {
+    if (typeof text === 'string') Clipboard.setString(text);
+  };
+
+  const _copyClipbutton = (onPress: Function, text: string = '', toastMessage: string = '') => {
+    const theme = useContext(ThemeContext);
+    return (
+      <TouchableOpacity
+        testID="buttonCopyToClipboard"
+        style={[{ flexDirection: 'row', borderLeftWidth: 0, alignItems: 'center' }]}
+        onPress={() => {
+          onPress(text);
+          setSnackBarMessage(toastMessage);
+          setSnackBarVisibility(true);
+        }}
+      >
+        <MaterialCommunityIcons
+          name="clipboard-arrow-left-outline"
+          color={theme.blue500}
+          size={14}
+          testID="buttonCopyToClipBoard"
+        />
+        <Text style={[{ color: theme.blue500, marginLeft: 6 }]}>Copy</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const _renderItems = (listOfItems: Array<[string, any]>) => {
+    const theme = useContext(ThemeContext);
+    return listOfItems
+      .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
+      .filter((item: Array<string>) => item[1] && item[1].length > 0)
+      .map((item: Array<string>, index: number) => (
+        <View style={{ paddingHorizontal: 16 }} key={index}>
+          <View
+            style={{
+              marginBottom: 10,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Text style={[{ color: theme.gray500 }]}>{item[0]}</Text>
+            {item[0] === 'url' &&
+              _copyClipbutton(_copyToClipboard, item[0], 'URL has been copied to clipboard')}
+          </View>
+          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>
+            {item[1]}
+          </Text>
+        </View>
+      ));
+  };
 
   if (props.item instanceof ReduxAction) {
     _action = () => _onShareReduxAction(props.item as ReduxAction);
@@ -345,6 +335,14 @@ export const Details: React.FC<IProps> = (props) => {
       >
         {_content}
       </ScrollView>
+      <Snackbar
+        visible={snackBarVisibility}
+        onDismiss={() => setSnackBarVisibility(false)}
+        duration={3000}
+        style={{ backgroundColor: theme.gray50 }}
+      >
+        {snackBarMessage}
+      </Snackbar>
     </View>
   );
 };
