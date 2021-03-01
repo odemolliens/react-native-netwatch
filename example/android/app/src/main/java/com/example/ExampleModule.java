@@ -5,7 +5,7 @@ import android.util.Log;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.imranmentese.reactnativenetwatch.interceptor.NetworkInterceptor;
+import com.imranmentese.reactnativenetwatch.interceptor.NetwatchInterceptor;
 
 import java.io.IOException;
 
@@ -21,7 +21,7 @@ public class ExampleModule extends ReactContextBaseJavaModule {
     ExampleModule(ReactApplicationContext context) {
         super(context);
         mContext = context;
-        client = new OkHttpClient.Builder().addInterceptor(new NetworkInterceptor(mContext)).build();
+        client = new OkHttpClient.Builder().addInterceptor(new NetwatchInterceptor(mContext)).build();
     }
 
     @Override

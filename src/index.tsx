@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { Modal, SafeAreaView, NativeModules, Platform } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, Platform } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -111,6 +111,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   useEffect(() => {
     !props.visible ? stopNativeLoop() : startNativeLoop();
   }, [props.visible]);
+  useEffect(() => {
+    DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
+      // Will be trigger when user will shake device
+    });
+  }, []);
 
   return (
     <Provider>

@@ -1,20 +1,24 @@
 package com.imranmentese.reactnativenetwatch;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.hardware.SensorManager;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.imranmentese.reactnativenetwatch.interceptor.NetworkInterceptor;
 import com.imranmentese.reactnativenetwatch.model.NativeRequest;
+import com.imranmentese.reactnativenetwatch.shake.CustomShakeDetector;
 
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -38,6 +42,8 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
     // =============
 
     SharedPreferences sharedPrefs;
+    ReactApplicationContext mReactContext;
+    CustomShakeDetector cShakeDetector;
 
     // =============
     // | Internals |
@@ -67,9 +73,21 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
         return MODULE_NAME;
     }
 
-    public RNNetwatchModule(ReactApplicationContext context) {
-        super(context);
-        sharedPrefs = context.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
+    public RNNetwatchModule(final ReactApplicationContext reactContext) {
+        super(reactContext);
+        Log.e("<<>>", "Start");
+        mReactContext = reactContext;
+        sharedPrefs = reactContext.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
+
+        cShakeDetector = new CustomShakeDetector(new CustomShakeDetector.ShakeListener() {
+            @Override
+            public void onShake() {
+                Log.e("<<>>", "shake custom andorid");
+                sendEvent(reactContext, "NetwatchShakeEvent", null);
+            }
+        });
+        cShakeDetector.start(
+                (SensorManager) reactContext.getSystemService(Context.SENSOR_SERVICE));
     }
 
     @SuppressWarnings("unused")
@@ -84,5 +102,13 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
 
         // clean after each return
         sharedPrefs.edit().clear().apply();
+    }
+
+    private void sendEvent(ReactContext reactContext,
+                           String eventName,
+                           @Nullable WritableMap params) {
+        if (reactContext.hasActiveCatalystInstance()) {
+            reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
+        }
     }
 }
