@@ -59,7 +59,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   useEffect(() => {
     DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
-      console.warn('<<>> DEVICE SHAKE: ');
+      // Will be trigger when user will shake device
     });
   }, []);
 
