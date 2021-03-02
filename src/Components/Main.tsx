@@ -51,9 +51,7 @@ export const Main = (props: IProps) => {
     } else if (source === EnumSourceType.Nativerequest) {
       setRequests(props.nRequests.sort(compare).reverse());
     } else {
-      setRequests(
-        mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse(),
-      );
+      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
 
     // TODO: Keep the same color after update for each items
@@ -89,7 +87,7 @@ export const Main = (props: IProps) => {
   };
 
   const filteredRequests = (): Array<any> =>
-    requests.slice(0, props.maxRequests).filter((request) => {
+    requests.slice(0, props.maxRequests).filter(request => {
       if (filter === EnumFilterType.All) {
         if (request instanceof ReduxAction) {
           return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
@@ -125,7 +123,7 @@ export const Main = (props: IProps) => {
   };
 
   const formatSharedMessage = (array: Array<ILog>): string => {
-    const _report = array.map((item) => {
+    const _report = array.map(item => {
       return Object.values(item).flat().join(';');
     });
     return _report.join('\n');
@@ -174,9 +172,7 @@ export const Main = (props: IProps) => {
             name="x"
             color={theme.white}
             size={24}
-            onPress={() =>
-              settingsVisible ? setSettingsVisible(false) : props.onPressClose(false)
-            }
+            onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
           />
         </TouchableOpacity>
         <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
@@ -217,11 +213,7 @@ export const Main = (props: IProps) => {
         >
           <FeatherIcon
             name="filter"
-            color={
-              filter !== EnumFilterType.All || source !== EnumSourceType.All
-                ? theme.blue500
-                : theme.gray300
-            }
+            color={filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.blue500 : theme.gray300}
             size={24}
           />
         </TouchableOpacity>
@@ -246,7 +238,7 @@ export const Main = (props: IProps) => {
           }}
           style={{ backgroundColor: theme.gray800 }}
           renderItem={_renderItems}
-          keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
+          keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
           data={filteredRequests()}
         />
       )}

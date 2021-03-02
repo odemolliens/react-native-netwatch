@@ -134,9 +134,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               nRequests={nRequests}
               clearAll={clearAll}
             />
-            {showDetails && (
-              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-            )}
+            {showDetails && <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />}
           </Modal>
         </SafeAreaView>
       </ThemeContext.Provider>

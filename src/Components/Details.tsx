@@ -78,7 +78,7 @@ const formatSharedMessage = (
   return _report;
 };
 
-export const Details: React.FC<IProps> = (props) => {
+export const Details: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
   const [snackBarMessage, setSnackBarMessage] = useState<string>('');
@@ -95,13 +95,7 @@ export const Details: React.FC<IProps> = (props) => {
   ): Promise<void> => {
     try {
       await Share.share({
-        message: formatSharedMessage(
-          general,
-          requestHeaders,
-          postData,
-          responseHeaders,
-          bodyResponse,
-        ),
+        message: formatSharedMessage(general, requestHeaders, postData, responseHeaders, bodyResponse),
       });
     } catch (error) {
       Alert.alert('Error', error.message);
@@ -161,12 +155,9 @@ export const Details: React.FC<IProps> = (props) => {
             }}
           >
             <Text style={[{ color: theme.gray500 }]}>{item[0]}</Text>
-            {item[0] === 'url' &&
-              _copyClipbutton(_copyToClipboard, item[0], 'URL has been copied to clipboard')}
+            {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[0], 'URL has been copied to clipboard')}
           </View>
-          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>
-            {item[1]}
-          </Text>
+          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>{item[1]}</Text>
         </View>
       ));
   };
@@ -186,9 +177,7 @@ export const Details: React.FC<IProps> = (props) => {
           <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}`}</Text>
         </View>
 
-        <Subheading
-          style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-        >
+        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
           Content
         </Subheading>
 
@@ -207,10 +196,8 @@ export const Details: React.FC<IProps> = (props) => {
 
   if (props.item instanceof RNRequest || props.item instanceof NRequest) {
     const _generalElements = (props.item && Object.entries(props.item)) || [];
-    const _requestHeadersElements =
-      (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || [];
-    const _responseHeadersElements =
-      (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || [];
+    const _requestHeadersElements = (props.item?.requestHeaders && Object.entries(props.item.requestHeaders)) || [];
+    const _responseHeadersElements = (props.item?.responseHeaders && Object.entries(props.item.responseHeaders)) || [];
     _action = () => {
       if (props.item instanceof RNRequest || props.item instanceof NRequest) {
         _onShareRequest(
@@ -248,25 +235,19 @@ export const Details: React.FC<IProps> = (props) => {
           <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}`}</Text>
         </View>
 
-        <Subheading
-          style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-        >
+        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
           Request Info
         </Subheading>
         {_generalElements && _renderItems(_generalElements)}
 
-        <Subheading
-          style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-        >
+        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
           Request Headers
         </Subheading>
         {_requestHeadersElements && _renderItems(_requestHeadersElements)}
 
         {props.item.dataSent?.length > 0 && (
           <>
-            <Subheading
-              style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-            >
+            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
               Request Data
             </Subheading>
             <View style={styles.attribtuesContainer}>
@@ -275,26 +256,18 @@ export const Details: React.FC<IProps> = (props) => {
           </>
         )}
 
-        <Subheading
-          style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-        >
+        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
           Response Headers
         </Subheading>
         {_responseHeadersElements && _renderItems(_responseHeadersElements)}
 
         {props.item?.response?.length > 0 && (
           <>
-            <Subheading
-              style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}
-            >
+            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
               Response Body
             </Subheading>
             <View style={{ flexDirection: 'row-reverse', paddingHorizontal: 16 }}>
-              {_copyClipbutton(
-                _copyToClipboard,
-                props.item?.response,
-                'Response has been copied to clipboard',
-              )}
+              {_copyClipbutton(_copyToClipboard, props.item?.response, 'Response has been copied to clipboard')}
             </View>
             <View style={styles.attribtuesContainer}>
               <Text>{props.item?.response}</Text>
@@ -327,10 +300,7 @@ export const Details: React.FC<IProps> = (props) => {
         </TouchableOpacity>
       </Appbar.Header>
 
-      <ScrollView
-        style={{ backgroundColor: theme.gray800 }}
-        contentContainerStyle={styles.scrollview}
-      >
+      <ScrollView style={{ backgroundColor: theme.gray800 }} contentContainerStyle={styles.scrollview}>
         {_content}
       </ScrollView>
       <Snackbar
