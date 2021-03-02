@@ -6,11 +6,11 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require('path')
-const blacklist = require('metro-config/src/defaults/blacklist')
+const path = require('path');
+const blacklist = require('metro-config/src/defaults/blacklist');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
-const moduleRoot = path.resolve(__dirname, '..')
+const moduleRoot = path.resolve(__dirname, '..');
 
 module.exports = {
   watchFolders: [moduleRoot],
@@ -32,4 +32,4 @@ module.exports = {
       },
     }),
   },
-}
+};

@@ -48,16 +48,14 @@ export class RNLogger {
   };
 
   getRequests = (): Array<RNRequest> => {
-    return this.requests;
+    const _temp = this.requests;
+    // this.clear()
+    return _temp;
   };
 
-  getExecutedRequests = (): number => {
-    return this.requests.length;
-  };
+  getExecutedRequests = (): number => this.requests.length;
 
-  getRequest = (index: number) => {
-    return this.requests[index];
-  };
+  getRequest = (index: number) => this.requests[index];
 
   clear = () => {
     this.requests = [];
@@ -67,9 +65,7 @@ export class RNLogger {
     XHRInterceptor.disableInterception();
   };
 
-  isEnabled = () => {
-    return this.initialized && XHRInterceptor.isInterceptorEnabled();
-  };
+  isEnabled = () => this.initialized && XHRInterceptor.isInterceptorEnabled();
 
   updaterequest = (index: number, request: Partial<RNRequest>): void => {
     const _rnRequest = new RNRequest({
@@ -98,8 +94,8 @@ export class RNLogger {
     const _request: RNRequest = new RNRequest({
       _id: this.requestId,
       readyState: xhr.readyState,
-      url: url,
-      method: method,
+      url,
+      method,
     });
     this.queue.set(xhr._index, _request);
   };
@@ -112,7 +108,7 @@ export class RNLogger {
   };
 
   requestHeadersCallback = (header: string, value: string, xhr: IXHR) => {
-    let _requestHeaders: Partial<RNRequest> = { ...this.queue.get(xhr._index)?.requestHeaders };
+    const _requestHeaders: Partial<RNRequest> = { ...this.queue.get(xhr._index)?.requestHeaders };
     // @ts-ignore
     _requestHeaders[header] = value;
     this.updaterequest(xhr._index, { requestHeaders: _requestHeaders } as Partial<RNRequest>);
@@ -122,7 +118,7 @@ export class RNLogger {
     responseContentType: string,
     responseSize: number,
     _responseHeaders: Headers, // Unused parameter, remove _ to used responseHeaders value in the function
-    xhr: IXHR
+    xhr: IXHR,
   ) => {
     this.updaterequest(xhr._index, {
       responseContentType,
@@ -138,7 +134,7 @@ export class RNLogger {
     response: any,
     responseURL: string,
     responseType: string,
-    xhr: IXHR
+    xhr: IXHR,
   ) => {
     const _response = await getResponseBody(responseType, response);
     this.updaterequest(xhr._index, {
@@ -153,10 +149,14 @@ export class RNLogger {
   };
 
   enableXHRInterception = (options?: RNLoggerOptions) => {
+    // if (XHRInterceptor.isInterceptorEnabled()) {
+    //   return;
+    // }
+
     if (options?.maxRequests !== undefined) {
       if (typeof options.maxRequests !== 'number' || options.maxRequests < 1) {
         console.warn(
-          'react-native-netwatch: maxRequests must be a number greater than 0. The logger has not been started.'
+          'react-native-netwatch: maxRequests must be a number greater than 0. The logger has not been started.',
         );
         return;
       }
@@ -169,7 +169,7 @@ export class RNLogger {
     XHRInterceptor.setSendCallback(this.sendCallback);
     XHRInterceptor.setResponseCallback(this.responseCallback);
 
-    !this.initialized && XHRInterceptor.enableInterception();
+    if (!this.initialized) XHRInterceptor.enableInterception();
     this.initialized = true;
   };
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Netwatch, getNativeRequests } from 'react-native-netwatch';
+import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { Dispatch } from 'redux';
@@ -20,10 +20,11 @@ const App = () => {
       <PaperProvider>
         <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressClose={setNetwatchVisible} />
         <View style={styles.container}>
+          <Text style={styles.title}>react-native-netwatch</Text>
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              getNativeRequests();
+              setNetwatchVisible(true);
             }}
             testID="buttonDisplayNetwatch"
           >
@@ -32,11 +33,20 @@ const App = () => {
           <TouchableHighlight
             style={styles.enableButton}
             onPress={() => {
-              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
+              setNetwatchEnabled(!netwatchEnabled);
             }}
             testID="buttonDisabledNetwatch"
           >
             <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.enableButton}
+            onPress={() => {
+              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
+            }}
+            testID="buttonSendNativeRequest"
+          >
+            <Text style={styles.textStyle}>Send a Native request</Text>
           </TouchableHighlight>
           <ConnectedButton />
         </View>
@@ -51,7 +61,7 @@ const Button = (props: any) => (
     onPress={() => {
       props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
     }}
-    testID="buttonDisabledNetwatch"
+    testID="buttonDispatchAction"
   >
     <Text style={styles.textStyle}>Dispatch Action</Text>
   </TouchableHighlight>
@@ -71,26 +81,34 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingHorizontal: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    paddingHorizontal: 60,
+    backgroundColor: '#111827',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#F9FAFB',
+    marginBottom: 16,
   },
   openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    backgroundColor: '#67E8F9',
+    justifyContent: 'center',
+    width: '100%',
+    height: 48,
     marginBottom: 16,
   },
   enableButton: {
-    backgroundColor: '#349EEB',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
+    backgroundColor: '#06B6D4',
+    justifyContent: 'center',
+    width: '100%',
+    height: 48,
     marginBottom: 16,
   },
   textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: '#111827',
     textAlign: 'center',
   },
 });

@@ -9,6 +9,12 @@ export enum EnumFilterType {
   Delete = 'DELETE',
 }
 
+export enum EnumStatus {
+  Success = 'SUCCESS',
+  Warning = 'WARNING',
+  Failed = 'FAILED',
+}
+
 export type LogType = 'REDUX' | 'RNR' | 'NR';
 export type SourceType = 'ALL' | 'RNR' | 'NR' | 'REDUX';
 

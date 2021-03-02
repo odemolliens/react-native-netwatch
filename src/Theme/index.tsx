@@ -1,0 +1,48 @@
+import React from 'react';
+
+export const themes = {
+  light: {
+    white: '#FFF',
+    black: '#000',
+    gray50: '#F9FAFB',
+    gray100: '#F3F4F6',
+    gray200: '#E5E7EB',
+    gray300: '#D1D5DB',
+    gray400: '#9CA3AF',
+    gray500: '#6B7280',
+    gray600: '#4B5563',
+    gray700: '#374151',
+    gray800: '#1F2937',
+    gray900: '#111827',
+    blue300: '#67E8F9',
+    blue500: '#06B6D4',
+    blue700: '#0E7490',
+    red700: '#B91C1C',
+    orange700: '#D97706',
+    green700: '#4D7C0F',
+    violet700: '#764ABC',
+  },
+  dark: {
+    white: '#FFF',
+    black: '#000',
+    gray50: '#F9FAFB',
+    gray100: '#F3F4F6',
+    gray200: '#E5E7EB',
+    gray300: '#D1D5DB',
+    gray400: '#9CA3AF',
+    gray500: '#6B7280',
+    gray600: '#4B5563',
+    gray700: '#374151',
+    gray800: '#1F2937',
+    gray900: '#111827',
+    blue300: '#67E8F9',
+    blue500: '#06B6D4',
+    blue700: '#0E7490',
+    red700: '#B91C1C',
+    orange700: '#D97706',
+    green700: '#4D7C0F',
+    violet700: '#764ABC',
+  },
+};
+
+export const ThemeContext = React.createContext(themes.dark);

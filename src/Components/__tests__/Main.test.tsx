@@ -18,19 +18,36 @@ describe('Main test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should render properly & Delete', () => {
+    givenProps();
+    givenComponent();
+    expect(component).toMatchSnapshot();
+
+    whenPressingButton('deleteListButton');
+    expect(component.find(`[testID="MainScreen"]`).prop('ReduxAction')).toEqual([]);
+  });
+
+  // UTILITIES
+  function whenPressingButton(testId: string) {
+    component.find(`[testID="${testId}"]`).simulate('press');
+  }
+
   // GIVEN
   function givenComponent() {
     component = shallow(<Main {...props} />);
   }
 
-  function givenProps() {
+  function givenProps(visible: boolean = true) {
     props = {
+      testID: 'MainScreen',
       onPress,
       onPressClose,
       onPressDetail,
       reduxActions: mockActions,
       rnRequests: mockRequests,
+      nRequests: mockRequests,
       clearAll,
+      visible,
     };
   }
 

@@ -1,5 +1,5 @@
 import { ILog, LogType } from '../../types';
-//@ts-ignore
+// @ts-ignore
 // BlobFileReader is needed to read the content of the body response (it's type can be blob)
 import BlobFileReader from 'react-native/Libraries/Blob/FileReader';
 
@@ -20,14 +20,9 @@ export const stringifyData = (data: any) => {
   }
 };
 
-export const getRequestBody = (dataSent: any) => {
-  return stringifyData(dataSent || '');
-};
+export const getRequestBody = (dataSent: any): string => stringifyData(dataSent) || '';
 
-export const getResponseBody = async (
-  responseType: string,
-  response?: Request
-): Promise<string> => {
+export const getResponseBody = async (responseType: string, response?: any): Promise<string> => {
   if (!response) return '';
   const _responseBody = await (responseType !== 'blob' ? response : parseResponseBlob(response));
   return stringifyData(_responseBody || '');
@@ -58,16 +53,16 @@ export class RNRequest implements ILog {
   status: number = -1;
   endTime: number = 0;
   timeout?: number;
-  dataSent?: string;
+  dataSent: string = '';
   requestHeaders?: any;
   responseHeaders?: any;
   responseContentType?: string;
   responseSize?: number;
   responseType?: string;
   responseURL?: string;
-  response?: any = '';
+  response: string = '';
 
-  constructor(attributes: any) {
+  constructor(attributes?: any) {
     Object.assign(this, attributes);
   }
 }

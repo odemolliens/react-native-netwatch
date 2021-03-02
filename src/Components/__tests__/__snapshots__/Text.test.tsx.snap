@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status test suite should render Text properly 1`] = `
+<ForwardRef(withTheme(undefined))
+  style={
+    Object {
+      "text": Object {
+        "color": "red",
+      },
+    }
+  }
+>
+  Children text
+</ForwardRef(withTheme(undefined))>
+`;
+
+exports[`Status test suite should render Title properly 1`] = `
+<ForwardRef(withTheme(undefined))
+  style={
+    Object {
+      "text": Object {
+        "color": "red",
+      },
+    }
+  }
+>
+  Children text
+</ForwardRef(withTheme(undefined))>
+`;
+
+exports[`Status test suite should render Title properly 2`] = `
+<ForwardRef(withTheme(undefined))
+  style={
+    Object {
+      "text": Object {
+        "color": "red",
+      },
+    }
+  }
+>
+  Children text
+</ForwardRef(withTheme(undefined))>
+`;

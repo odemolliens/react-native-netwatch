@@ -5,47 +5,47 @@ exports[`Status test suite should render properly redux action 1`] = `
   style={
     Array [
       Object {
-        "height": 50,
-        "justifyContent": "space-around",
-        "width": 50,
-      },
-      Object {
-        "backgroundColor": "white",
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
       },
     ]
   }
 >
-  <ForwardRef(withTheme(undefined))
-    style={
-      Array [
-        Object {
-          "color": "#212121",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        },
-        undefined,
-      ]
-    }
-    testID="statusText"
+  <Text
+    testID="statusMethod"
   >
-    text
-  </ForwardRef(withTheme(undefined))>
-  <ForwardRef(withTheme(undefined))
+    REDUX
+  </Text>
+  <Component
     style={
       Array [
         Object {
-          "color": "#212121",
+          "borderRadius": 4,
           "fontSize": 12,
-          "fontWeight": "bold",
-          "textAlign": "center",
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#764ABC",
+        },
+        Object {
+          "paddingHorizontal": 8,
         },
       ]
     }
-    testID="statusSubText"
+    testID="statusCodeColor"
   >
-    subText
-  </ForwardRef(withTheme(undefined))>
+    <Icon
+      allowFontScaling={false}
+      color="#F9FAFB"
+      name="redux"
+      size={12}
+    />
+  </Component>
 </Component>
 `;
 
@@ -54,47 +54,46 @@ exports[`Status test suite should render properly request 1`] = `
   style={
     Array [
       Object {
-        "height": 50,
-        "justifyContent": "space-around",
-        "width": 50,
-      },
-      Object {
-        "backgroundColor": "#ef5350",
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
       },
     ]
   }
 >
-  <ForwardRef(withTheme(undefined))
-    style={
-      Array [
-        Object {
-          "color": "#212121",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        },
-        undefined,
-      ]
-    }
+  <Text
     testID="statusMethod"
-  >
-    text
-  </ForwardRef(withTheme(undefined))>
-  <ForwardRef(withTheme(undefined))
+  />
+  <Component
     style={
       Array [
         Object {
-          "color": "#212121",
+          "borderRadius": 4,
           "fontSize": 12,
-          "fontWeight": "bold",
-          "textAlign": "center",
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#B91C1C",
         },
       ]
     }
-    testID="statusCode"
+    testID="statusCodeColor"
   >
-    subText
-  </ForwardRef(withTheme(undefined))>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      testID="statusCode-500"
+    >
+      500
+    </Text>
+  </Component>
 </Component>
 `;
 
@@ -103,46 +102,97 @@ exports[`Status test suite should render properly request with method 1`] = `
   style={
     Array [
       Object {
-        "height": 50,
-        "justifyContent": "space-around",
-        "width": 50,
-      },
-      Object {
-        "backgroundColor": "#aed581",
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
       },
     ]
   }
 >
-  <ForwardRef(withTheme(undefined))
-    style={
-      Array [
-        Object {
-          "color": "#212121",
-          "fontSize": 16,
-          "fontWeight": "bold",
-          "textAlign": "center",
-        },
-        undefined,
-      ]
-    }
+  <Text
     testID="statusMethod"
   >
     GET
-  </ForwardRef(withTheme(undefined))>
-  <ForwardRef(withTheme(undefined))
+  </Text>
+  <Component
     style={
       Array [
         Object {
-          "color": "#212121",
+          "borderRadius": 4,
           "fontSize": 12,
-          "fontWeight": "bold",
-          "textAlign": "center",
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#4D7C0F",
         },
       ]
     }
-    testID="statusCode"
+    testID="statusCodeColor"
   >
-    200
-  </ForwardRef(withTheme(undefined))>
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      testID="statusCode-200"
+    >
+      200
+    </Text>
+  </Component>
+</Component>
+`;
+
+exports[`Status test suite should render properly request with method post and warning 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
+      },
+    ]
+  }
+>
+  <Text
+    testID="statusMethod"
+  >
+    POST
+  </Text>
+  <Component
+    style={
+      Array [
+        Object {
+          "borderRadius": 4,
+          "fontSize": 12,
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#D97706",
+        },
+      ]
+    }
+    testID="statusCodeColor"
+  >
+    <Text
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+      testID="statusCode-302"
+    >
+      302
+    </Text>
+  </Component>
 </Component>
 `;

@@ -6,8 +6,6 @@ import { EnumFilterType, EnumSourceType, RequestMethod, SourceType } from '../..
 describe('Settings test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
-  const onDismiss = jest.fn();
-  const onPressClear = jest.fn();
   const onSetFilter = jest.fn();
   const onSetSource = jest.fn();
 
@@ -16,7 +14,8 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('RadioAll');
+    whenPressingButton('RadioAllSource');
+    expect(component.find(`[testID="RadioAllSource"]`).prop('value')).toBe(EnumSourceType.All);
   });
 
   it('should render properly Redux Item & press Redux filter', () => {
@@ -25,6 +24,7 @@ describe('Settings test suite', () => {
     expect(component).toMatchSnapshot();
 
     whenPressingButton('RadioRedux');
+    expect(component.find(`[testID="RadioRedux"]`).prop('value')).toBe(EnumSourceType.Redux);
   });
 
   it('should render properly ReactNativeRequest Item & press ReactNativeRequest filter', () => {
@@ -33,6 +33,7 @@ describe('Settings test suite', () => {
     expect(component).toMatchSnapshot();
 
     whenPressingButton('RadioRNR');
+    expect(component.find(`[testID="RadioRNR"]`).prop('value')).toBe(EnumSourceType.ReactNativeRequest);
   });
 
   it('should render properly Nativerequest Item & press Nativerequest filter', () => {
@@ -41,6 +42,7 @@ describe('Settings test suite', () => {
     expect(component).toMatchSnapshot();
 
     whenPressingButton('RadioNR');
+    expect(component.find(`[testID="RadioNR"]`).prop('value')).toBe(EnumSourceType.Nativerequest);
   });
 
   it('should render properly Nativerequest Item & all button', () => {
@@ -48,7 +50,8 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('ButtonAll');
+    whenPressingButton('RadioAllMethod');
+    expect(component.find(`[testID="RadioAllMethod"]`).prop('value')).toBe(EnumFilterType.All);
   });
 
   it('should render properly Nativerequest Item & get button', () => {
@@ -56,7 +59,8 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('ButtonGet');
+    whenPressingButton('RadioGet');
+    expect(component.find(`[testID="RadioGet"]`).prop('value')).toBe(EnumFilterType.Get);
   });
 
   it('should render properly Nativerequest Item & post button', () => {
@@ -64,7 +68,8 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('ButtonPost');
+    whenPressingButton('RadioPost');
+    expect(component.find(`[testID="RadioPost"]`).prop('value')).toBe(EnumFilterType.Post);
   });
 
   it('should render properly Nativerequest Item & put button', () => {
@@ -72,7 +77,8 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('ButtonPut');
+    whenPressingButton('RadioPut');
+    expect(component.find(`[testID="RadioPut"]`).prop('value')).toBe(EnumFilterType.Put);
   });
 
   it('should render properly Nativerequest Item & delete button', () => {
@@ -80,18 +86,20 @@ describe('Settings test suite', () => {
     givenComponent();
     expect(component).toMatchSnapshot();
 
-    whenPressingButton('ButtonDel');
+    whenPressingButton('RadioDelete');
+    expect(component.find(`[testID="RadioDelete"]`).prop('value')).toBe(EnumFilterType.Delete);
   });
 
-  it('should render properly Nativerequest Item & done button', () => {
-    givenProps(EnumSourceType.Nativerequest);
+  it('should render properly Nativerequest Item & reset button', () => {
+    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Put);
     givenComponent();
     expect(component).toMatchSnapshot();
-
-    whenPressingButton('ButtonDone');
+    whenPressingButton('ResetButton');
+    expect(component.find(`[testID="RadioAllSource"]`).prop('value')).toBe(EnumSourceType.All);
+    expect(component.find(`[testID="RadioAllMethod"]`).prop('value')).toBe(EnumFilterType.All);
   });
-  // UTILITIES
 
+  // UTILITIES
   function whenPressingButton(testId: string) {
     component.find(`[testID="${testId}"]`).simulate('press');
   }
@@ -106,13 +114,10 @@ describe('Settings test suite', () => {
     filter: RequestMethod | EnumFilterType.All = EnumFilterType.Get,
   ) {
     props = {
-      visible: true,
-      onDismiss,
       source,
       filter,
       onSetSource,
       onSetFilter,
-      onPressClear,
     };
   }
 });

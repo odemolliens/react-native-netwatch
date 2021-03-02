@@ -1,73 +1,79 @@
-import { getTime, getDate, identifier, setColor, duration } from '../helpers';
+import { getTime, getShortDate, getDate, getStatus, duration } from '../helpers';
+
+//Set jest to UTC if necessary
+describe('Timezones', () => {
+  it('should always be UTC', () => {
+    expect(new Date().getTimezoneOffset()).toBe(0);
+  });
+});
 
 describe('Index test suite', () => {
   // Test getTime
-  it('should return 18:3:44 if unixtime number is 1612976624143', () => {
+  it('should return 17:03:44 if unixtime number is 1612976624143', () => {
     const date: number = 1612976624143;
     expect(getTime(date)).toBe('17:03:44');
   });
 
+  // Test getShortTime
+  it('should return 10/02/2021 if unixtime number is 1612976624145', () => {
+    const date: number = 1612976624145;
+    expect(getShortDate(date)).toBe('10/02/2021');
+  });
+
   // Test getDate
-  it('should return Wed Feb 10 2021 18:03:44 GMT+0100 (Central European Standard Time) if unixtime number is 1612976624145', () => {
+  it('should return Wed Feb 10 2021 17:03:44 GMT+0000 (Coordinated Universal Time) if unixtime number is 1612976624145', () => {
     const date: number = 1612976624145; // unixtime
     expect(getDate(date)).toBe('Wed Feb 10 2021 17:03:44 GMT+0000 (Coordinated Universal Time)');
   });
 
-  // Test identifier generator
-  it('should return 18:3:44:33 if unixtime number is 1612976624143 and id=33', () => {
-    const date: number = 1612976624145; // unixtime
-    const id: number = 33;
-    expect(identifier(date, id)).toBe('17:03:44:33');
-  });
-
-  // Tests setColor
-  it('should return #aed581 if status=200', () => {
+  // Tests getStatus
+  it('should return SUCCESS if status=200', () => {
     const status: number = 200;
-    expect(setColor(status)).toBe('#aed581');
+    expect(getStatus(status)).toBe('SUCCESS');
   });
 
-  it('should return #aed581 if status=299', () => {
+  it('should return SUCCESS if status=299', () => {
     const status: number = 299;
-    expect(setColor(status)).toBe('#aed581');
+    expect(getStatus(status)).toBe('SUCCESS');
   });
 
-  it('should return #ffca28 if status=300', () => {
+  it('should return WARNING if status=300', () => {
     const status: number = 300;
-    expect(setColor(status)).toBe('#ffca28');
+    expect(getStatus(status)).toBe('WARNING');
   });
 
-  it('should return #ffca28 if status=399', () => {
+  it('should return WARNING if status=399', () => {
     const status: number = 399;
-    expect(setColor(status)).toBe('#ffca28');
+    expect(getStatus(status)).toBe('WARNING');
   });
 
-  it('should return #ef5350 if status=400', () => {
+  it('should return FAILED if status=400', () => {
     const status: number = 400;
-    expect(setColor(status)).toBe('#ef5350');
+    expect(getStatus(status)).toBe('FAILED');
   });
 
-  it('should return #ef5350 if status=500', () => {
+  it('should return FAILED if status=500', () => {
     const status: number = 500;
-    expect(setColor(status)).toBe('#ef5350');
+    expect(getStatus(status)).toBe('FAILED');
   });
 
-  it('should return #ef5350 if status=0', () => {
+  it('should return FAILED if status=0', () => {
     const status: number = 0;
-    expect(setColor(status)).toBe('#ef5350');
+    expect(getStatus(status)).toBe('FAILED');
   });
 
-  it('should return #ef5350 if status=199', () => {
+  it('should return FAILED if status=199', () => {
     const status: number = 199;
-    expect(setColor(status)).toBe('#ef5350');
+    expect(getStatus(status)).toBe('FAILED');
   });
 
-  it('should return #ef5350 if status=999', () => {
+  it('should return FAILED if status=999', () => {
     const status: number = 999;
-    expect(setColor(status)).toBe('#ef5350');
+    expect(getStatus(status)).toBe('FAILED');
   });
 
-  it('should return #ef5350 if status is not specified', () => {
-    expect(setColor()).toBe('#ef5350');
+  it('should return FAILED if status is not specified', () => {
+    expect(getStatus()).toBe('FAILED');
   });
 
   //Test duration

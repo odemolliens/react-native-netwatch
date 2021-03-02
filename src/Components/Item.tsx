@@ -1,35 +1,57 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { RNRequest } from '../Core/Objects/RNRequest';
+import { NRequest } from '../Core/Objects/NRequest';
+import { ReduxAction } from '../Core/Objects/ReduxAction';
 import { Status } from './Status';
 import { getTime } from '../Utils/helpers';
 import url from 'url';
+import { Text, TextSecondaryColor } from '../Components/Text';
+import { useContext } from 'react';
+import { ThemeContext } from '../Theme';
 
+export const ITEM_HEIGHT = 60;
 export interface IProps {
-  item: RNRequest;
+  testID?: string;
+  item: RNRequest | NRequest | ReduxAction;
   onPress: () => void;
+  color: string;
 }
 
-export const Item: React.FC<IProps> = ({ item, onPress }) => {
-  const urlObject = url.parse(item.url);
+export const Item: React.FC<IProps> = (props: IProps) => {
+  const theme = useContext(ThemeContext);
+  let _line1: string = '';
+  let _line2: string = '';
+
+  if (props.item instanceof ReduxAction) {
+    _line1 = 'redux action';
+    _line2 = JSON.stringify(props.item.action);
+  } else {
+    if ((props.item instanceof RNRequest || props.item instanceof NRequest) && props.item.url) {
+      const urlObject = url.parse(props.item.url);
+      _line1 = (urlObject.host !== null && urlObject?.host) || '';
+      _line2 = (urlObject.path !== null && urlObject?.path) || '';
+    }
+  }
+
   return (
     <TouchableOpacity
-      onPress={() => onPress()}
-      style={styles.listItemContainer}
-      testID={`itemTouchable-${item._id}`}
+      onPress={() => props.onPress()}
+      style={[styles.container, { backgroundColor: theme.gray700 }, { backgroundColor: props.color }]}
+      testID={`itemTouchable-${props.item._id}`}
     >
-      <>
-        <Status item={item} />
-        <View style={styles.url}>
-          <View style={styles.domain}>
-            <Text numberOfLines={1} style={styles.titleStyle}>{`${urlObject.host}`}</Text>
-            <Text style={styles.path}>{getTime(item.startTime)}</Text>
-          </View>
-          <Text numberOfLines={1} style={styles.descriptionStyle}>
-            {urlObject.path}
-          </Text>
+      <Status item={props.item} />
+      <View style={styles.main}>
+        <View style={styles.line}>
+          <TextSecondaryColor numberOfLines={1}>{_line1}</TextSecondaryColor>
+          <TextSecondaryColor style={[styles.time, { color: theme.gray400 }]}>
+            {getTime(props.item.startTime)}
+          </TextSecondaryColor>
         </View>
-      </>
+        <View style={styles.line}>
+          <Text numberOfLines={1}>{_line2}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 };
@@ -37,34 +59,20 @@ export const Item: React.FC<IProps> = ({ item, onPress }) => {
 export default Item;
 
 const styles = StyleSheet.create({
-  listItemContainer: {
+  container: {
+    height: ITEM_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
-    borderBottomColor: '#bdbdbd',
-    borderBottomWidth: 0.5,
-    backgroundColor: '#757575',
   },
-  url: {
+  main: {
     flex: 1,
-    paddingRight: 8,
+    paddingHorizontal: 16,
   },
-  domain: {
+  time: {
+    fontSize: 10,
+  },
+  line: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-  },
-  path: {
-    color: 'white',
-  },
-  titleStyle: {
-    paddingLeft: 16,
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  descriptionStyle: {
-    paddingLeft: 16,
-    color: 'white',
-  },
-  divider: {
-    backgroundColor: 'gray',
   },
 });
