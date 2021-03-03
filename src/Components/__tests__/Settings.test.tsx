@@ -33,9 +33,7 @@ describe('Settings test suite', () => {
     expect(component).toMatchSnapshot();
 
     whenPressingButton('RadioRNR');
-    expect(component.find(`[testID="RadioRNR"]`).prop('value')).toBe(
-      EnumSourceType.ReactNativeRequest
-    );
+    expect(component.find(`[testID="RadioRNR"]`).prop('value')).toBe(EnumSourceType.ReactNativeRequest);
   });
 
   it('should render properly Nativerequest Item & press Nativerequest filter', () => {
@@ -113,7 +111,7 @@ describe('Settings test suite', () => {
 
   function givenProps(
     source: SourceType | EnumSourceType,
-    filter: RequestMethod | EnumFilterType.All = EnumFilterType.Get
+    filter: RequestMethod | EnumFilterType.All = EnumFilterType.Get,
   ) {
     props = {
       source,

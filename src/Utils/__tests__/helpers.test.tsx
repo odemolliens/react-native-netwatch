@@ -1,4 +1,4 @@
-import { getTime, getShortDate, getDate, getStatus, duration } from '../helpers';
+import { getTime, getShortDate, getDate, getStatus, duration, getCSVfromArray } from '../helpers';
 
 //Set jest to UTC if necessary
 describe('Timezones', () => {
@@ -82,4 +82,67 @@ describe('Index test suite', () => {
     const endTime: number = 1612977624145;
     expect(duration(startTime, endTime)).toBe(1000000);
   });
+
+  //Test array conversion to CSV format
+  it('should return myRequests in CSV format with , as separator', () => {
+    expect(getCSVfromArray(myRequests)).toBe(myCSV);
+  });
 });
+
+const myRequests = [
+  {
+    _id: 73,
+    dataSent: 'dataSent',
+    endTime: 1613477575757,
+    method: 'GET',
+    readyState: 4,
+    requestHeaders: {
+      'Content-Type': 'application/json',
+    },
+    response: 'response',
+    responseContentType: 'application/json',
+    responseHeaders: {
+      'Content-Length': '0',
+      'Content-Type': 'application/json; charset=UTF-8',
+      Date: 'Tue, 16 Feb 2021 12:12:55 GMT',
+      'Sozu-Id': '51989c0c-ebe7-4574-913d-443477875da7',
+    },
+    responseSize: 0,
+    responseType: 'blob',
+    responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+    startTime: 1613477574742,
+    status: 200,
+    timeout: 0,
+    type: 'RNR',
+    url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+  },
+  {
+    _id: 77,
+    dataSent: 'dataSent',
+    endTime: 1613477575757,
+    method: 'GET',
+    readyState: 4,
+    requestHeaders: {
+      'Content-Type': 'application/json',
+    },
+    response: 'response',
+    responseContentType: 'application/json',
+    responseHeaders: {
+      'Content-Length': '0',
+      'Content-Type': 'application/json; charset=UTF-8',
+      Date: 'Tue, 16 Feb 2021 12:12:55 GMT',
+      'Sozu-Id': '51989c0c-ebe7-4574-913d-443477875da7',
+    },
+    responseSize: 0,
+    responseType: 'blob',
+    responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+    startTime: 1613477574742,
+    status: 200,
+    timeout: 0,
+    type: 'RNR',
+    url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+  },
+];
+
+const myCSV =
+  '73,dataSent,1613477575757,GET,4,application/json,response,application/json,0,application/json; charset=UTF-8,Tue, 16 Feb 2021 12:12:55 GMT,51989c0c-ebe7-4574-913d-443477875da7,0,blob,https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9,1613477574742,200,0,RNR,https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9\n77,dataSent,1613477575757,GET,4,application/json,response,application/json,0,application/json; charset=UTF-8,Tue, 16 Feb 2021 12:12:55 GMT,51989c0c-ebe7-4574-913d-443477875da7,0,blob,https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9,1613477574742,200,0,RNR,https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9';

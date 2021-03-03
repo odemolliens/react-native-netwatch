@@ -8,7 +8,7 @@ jest.mock('react-native/Libraries/Blob/FileReader', () =>
   jest.fn().mockImplementation(() => ({
     readAsText: jest.fn(),
     // addEventListener: jest.fn()
-  }))
+  })),
 );
 
 describe('getRequestBody', () => {

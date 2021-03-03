@@ -118,6 +118,6 @@ if (__DEV__) {
   !isStarted &&
     setTimeout(() => {
       makeRequestInContinue();
-    }, 2000);
+    }, 500);
   isStarted = true;
 }

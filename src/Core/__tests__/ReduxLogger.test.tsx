@@ -11,7 +11,7 @@ import {
 } from '../ReduxLogger';
 import configureMockStore from 'redux-mock-store';
 
-const createSuccess = (response) => ({
+const createSuccess = response => ({
   type: 'APP_ACTION_SUCCESS',
   response,
 });

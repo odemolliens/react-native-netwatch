@@ -37,11 +37,7 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   return (
     <TouchableOpacity
       onPress={() => props.onPress()}
-      style={[
-        styles.container,
-        { backgroundColor: theme.gray700 },
-        { backgroundColor: props.color },
-      ]}
+      style={[styles.container, { backgroundColor: theme.gray700 }, { backgroundColor: props.color }]}
       testID={`itemTouchable-${props.item._id}`}
     >
       <Status item={props.item} />

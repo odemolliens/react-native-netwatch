@@ -30,10 +30,7 @@ export const Settings = (props: IProps) => {
       <ScrollView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
           <Title style={[styles.title, { color: theme.gray50 }]}>Display:</Title>
-          <RadioButton.Group
-            onValueChange={(value) => props.onSetSource(value)}
-            value={props.source}
-          >
+          <RadioButton.Group onValueChange={value => props.onSetSource(value)} value={props.source}>
             <RadioButton.Item
               value={EnumSourceType.All}
               status={checkedSource === EnumSourceType.All ? 'checked' : 'unchecked'}
@@ -91,7 +88,7 @@ export const Settings = (props: IProps) => {
             <>
               <Title style={[styles.title, { color: theme.gray50 }]}>Type:</Title>
               <RadioButton.Group
-                onValueChange={(value) => props.onSetFilter(value as EnumFilterType)}
+                onValueChange={value => props.onSetFilter(value as EnumFilterType)}
                 value={props.filter}
               >
                 <RadioButton.Item

@@ -39,6 +39,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.14",
     "@types/react-native": "0.63.46",
+    "@types/react-native-share": "^3.3.1",
     "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.3",
     "babel-jest": "^26.6.3",
@@ -52,7 +53,9 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-native": "^0.63.4",
+    "react-native-fs": "^2.16.6",
     "react-native-paper": "^4.7.1",
+    "react-native-share": "^5.1.4",
     "react-native-vector-icons": "^8.0.0",
     "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
@@ -67,7 +70,9 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
+    "react-native-fs": "*",
     "react-native-paper": "*",
+    "react-native-share": "*",
     "react-native-vector-icons": "*"
   },
   "jest": {

@@ -34,8 +34,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const [item, setItem] = useState(new ReduxAction());
+  const [visible, setVisible] = useState<boolean>(props.visible || false);
 
   const startNativeLoop = () => {
     if (!nativeLoopStarted && Platform.OS === 'android') {
@@ -111,21 +112,24 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   useEffect(() => {
     !props.visible ? stopNativeLoop() : startNativeLoop();
   }, [props.visible]);
+
   useEffect(() => {
     DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
       // Will be trigger when user will shake device
+      console.log('Shake');
+      setVisible(true);
     });
-  }, []);
+  }, [visible]);
 
   return (
     <Provider>
       <ThemeContext.Provider value={themes.dark}>
         <SafeAreaView>
-          <Modal animationType="slide" visible={props.visible}>
+          <Modal animationType="slide" visible={visible}>
             <Main
               maxRequests={props.maxRequests || MAX_REQUESTS}
               testId="mainScreen"
-              visible={props.visible}
+              visible={visible}
               onPressClose={props.onPressClose}
               onPressDetail={setShowDetails}
               onPress={setItem}
@@ -134,9 +138,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               nRequests={nRequests}
               clearAll={clearAll}
             />
-            {showDetails && (
-              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-            )}
+            {showDetails && <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />}
           </Modal>
         </SafeAreaView>
       </ThemeContext.Provider>

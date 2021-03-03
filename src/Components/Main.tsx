@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect, useContext, useRef } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Share, Keyboard } from 'react-native';
+import { useState, useEffect, useContext, useCallback } from 'react';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
+import Share from 'react-native-share';
 import { Appbar, Searchbar } from 'react-native-paper';
 import Item from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,6 +11,7 @@ import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
+import { csvWriter, getCSVfromArray } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
@@ -24,12 +26,8 @@ export interface IProps {
   maxRequests?: number;
 }
 
-const _positionFlatList = 0;
-
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
-  const refFlatList = useRef<FlatList<any>>(null);
-  const [flatListLastOffset, setFlatListLastOffset] = useState<number>(0);
   const [requests, setRequests] = useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
@@ -51,25 +49,9 @@ export const Main = (props: IProps) => {
     } else if (source === EnumSourceType.Nativerequest) {
       setRequests(props.nRequests.sort(compare).reverse());
     } else {
-      setRequests(
-        mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse(),
-      );
-    }
-
-    // TODO: Keep the same color after update for each items
-    // TODO: We can add many items during one loop -> we must set the offset to handle that
-    // TODO: What if we filtering -> scroll to 0 ?
-    if (_positionFlatList > 55) {
-      setFlatListLastOffset(_positionFlatList);
+      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
-
-  useEffect(() => {
-    refFlatList?.current?.scrollToOffset({
-      animated: false,
-      offset: flatListLastOffset + 60 * 1,
-    });
-  }, [flatListLastOffset]);
 
   const mergeArrays = (...arrays: Array<ILog[]>) => {
     return [...arrays.flat()];
@@ -89,7 +71,7 @@ export const Main = (props: IProps) => {
   };
 
   const filteredRequests = (): Array<any> =>
-    requests.slice(0, props.maxRequests).filter((request) => {
+    requests.slice(0, props.maxRequests).filter(request => {
       if (filter === EnumFilterType.All) {
         if (request instanceof ReduxAction) {
           return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
@@ -124,22 +106,21 @@ export const Main = (props: IProps) => {
     setRequests([]);
   };
 
-  const formatSharedMessage = (array: Array<ILog>): string => {
-    const _report = array.map((item) => {
-      return Object.values(item).flat().join(';');
-    });
-    return _report.join('\n');
-  };
-
-  const onShare = async (): Promise<void> => {
+  const onShare = useCallback(async () => {
+    const message = getCSVfromArray(requests);
+    if (message.length === 0) return;
     try {
-      await Share.share({
-        message: formatSharedMessage(requests),
+      const path = await csvWriter(message);
+      await Share.open({
+        title: 'Export calls to CSV',
+        url: `file://${path}`,
+        type: 'text/csv',
+        // excludedActivityTypes: []
       });
     } catch (error) {
-      Alert.alert('Error', error.message);
+      console.error(error.message);
     }
-  };
+  }, [requests]);
 
   const onDelete = () => {
     Alert.alert('Warning', 'Do you really want clear the call list?', [
@@ -174,9 +155,7 @@ export const Main = (props: IProps) => {
             name="x"
             color={theme.white}
             size={24}
-            onPress={() =>
-              settingsVisible ? setSettingsVisible(false) : props.onPressClose(false)
-            }
+            onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
           />
         </TouchableOpacity>
         <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
@@ -217,11 +196,7 @@ export const Main = (props: IProps) => {
         >
           <FeatherIcon
             name="filter"
-            color={
-              filter !== EnumFilterType.All || source !== EnumSourceType.All
-                ? theme.blue500
-                : theme.gray300
-            }
+            color={filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.blue500 : theme.gray300}
             size={24}
           />
         </TouchableOpacity>
@@ -239,14 +214,13 @@ export const Main = (props: IProps) => {
         <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
         <FlatList
-          ref={refFlatList}
           maintainVisibleContentPosition={{
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,
           }}
           style={{ backgroundColor: theme.gray800 }}
           renderItem={_renderItems}
-          keyExtractor={(item) => `${item._id.toString()}${item.startTime}${item.type}`}
+          keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
           data={filteredRequests()}
         />
       )}
