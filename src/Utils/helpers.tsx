@@ -65,14 +65,15 @@ const normalize = array =>
 // STEP 3:
 // get all values in a nested array to store in the level 0 of the main array
 // [val1, [val4, val5], val3] ---> [val1, val4, val5, val3]
+const flatten = (array: any) => array.flat(2)
 // unlike the flat() function in Javascript vanilla, it is not necessary to know the level of nesting
-const flatten = array =>
-  array.reduce((acc, cur) => {
-    if (Array.isArray(cur)) {
-      return acc.concat(flatten(cur));
-    }
-    return acc.concat(cur);
-  }, []);
+// const flatten = array =>
+//   array.reduce((acc, cur) => {
+//     if (Array.isArray(cur)) {
+//       return acc.concat(flatten(cur));
+//     }
+//     return acc.concat(cur);
+//   }, []);
 
 // STEP 4:
 export const getCSVfromArray = (array: any): string => {

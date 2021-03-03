@@ -18,7 +18,6 @@ export interface IProps {
   onPress: Function;
   onPressClose: (value: boolean) => void;
   onPressDetail: (value: boolean) => void;
-  visible?: boolean;
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
   nRequests: NRequest[];

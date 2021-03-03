@@ -17,8 +17,8 @@ import { NRequest } from './Core/Objects/NRequest';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
-  onPressClose: (visible: boolean) => void;
-  visible?: boolean;
+  onAction: (visible: boolean) => void;
+  visible: boolean;
   enabled?: boolean;
   maxRequests?: number;
 }
@@ -36,7 +36,22 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [item, setItem] = useState(new ReduxAction());
-  const [visible, setVisible] = useState<boolean>(props.visible || false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(props.visible)
+  }, [props.visible])
+
+  const handleShake = () => {
+    props.onAction(true);
+  };
+
+  useEffect(() => {
+    DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    return () => {
+      DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
+    };
+  }, [handleShake]);
 
   const startNativeLoop = () => {
     if (!nativeLoopStarted && Platform.OS === 'android') {
@@ -113,32 +128,26 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     !props.visible ? stopNativeLoop() : startNativeLoop();
   }, [props.visible]);
 
-  useEffect(() => {
-    DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
-      // Will be trigger when user will shake device
-      console.log('Shake');
-      setVisible(true);
-    });
-  }, [visible]);
-
   return (
     <Provider>
       <ThemeContext.Provider value={themes.dark}>
         <SafeAreaView>
           <Modal animationType="slide" visible={visible}>
-            <Main
-              maxRequests={props.maxRequests || MAX_REQUESTS}
-              testId="mainScreen"
-              visible={visible}
-              onPressClose={props.onPressClose}
-              onPressDetail={setShowDetails}
-              onPress={setItem}
-              reduxActions={reduxActions}
-              rnRequests={rnRequests}
-              nRequests={nRequests}
-              clearAll={clearAll}
-            />
-            {showDetails && <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />}
+            {showDetails ? (
+              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+            ) : (
+              <Main
+                maxRequests={props.maxRequests || MAX_REQUESTS}
+                testId="mainScreen"
+                onPressClose={() => props.onAction(false)}
+                onPressDetail={setShowDetails}
+                onPress={setItem}
+                reduxActions={reduxActions}
+                rnRequests={rnRequests}
+                nRequests={nRequests}
+                clearAll={clearAll}
+              />
+            )}
           </Modal>
         </SafeAreaView>
       </ThemeContext.Provider>

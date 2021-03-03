@@ -235,15 +235,23 @@ export const Details: React.FC<IProps> = props => {
           <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}`}</Text>
         </View>
 
-        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
-          Request Info
-        </Subheading>
-        {_generalElements && _renderItems(_generalElements)}
+        {_generalElements.length > 0 && (
+          <>
+            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+              Request Info
+            </Subheading>
+            {_renderItems(_generalElements)}
+          </>
+        )}
 
-        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
-          Request Headers
-        </Subheading>
-        {_requestHeadersElements && _renderItems(_requestHeadersElements)}
+        {_requestHeadersElements.length > 0 && (
+          <>
+            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+              Request Headers
+            </Subheading>
+            {_renderItems(_requestHeadersElements)}
+          </>
+        )}
 
         {props.item.dataSent?.length > 0 && (
           <>
@@ -256,10 +264,14 @@ export const Details: React.FC<IProps> = props => {
           </>
         )}
 
-        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
-          Response Headers
-        </Subheading>
-        {_responseHeadersElements && _renderItems(_responseHeadersElements)}
+        {_responseHeadersElements.length > 0 && (
+          <>
+            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+              Response Headers
+            </Subheading>
+            {_renderItems(_responseHeadersElements)}
+          </>
+        )}
 
         {props.item?.response?.length > 0 && (
           <>

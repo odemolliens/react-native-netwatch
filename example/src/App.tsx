@@ -15,16 +15,19 @@ const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
 
+  console.log(netwatchVisible)
+
   return (
     <Provider store={store}>
       <PaperProvider>
-        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressClose={setNetwatchVisible} />
+        {netwatchVisible && <View style={{ position: 'absolute', top: 0, left: 0, height: 20, width: 20, backgroundColor: 'red', zIndex: 2000 }} />}
+        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onAction={setNetwatchVisible} />
         <View style={styles.container}>
           <Text style={styles.title}>react-native-netwatch</Text>
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              setNetwatchVisible(true);
+              setNetwatchVisible(!netwatchVisible);
             }}
             testID="buttonDisplayNetwatch"
           >
