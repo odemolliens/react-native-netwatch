@@ -36,6 +36,7 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
     public static String MODULE_NAME = "RNNetwatch";
     public static String NATIVE_REQUESTS = "NATIVE_REQUESTS";
     public static int MAX_SAVED_REQUESTS = 20;
+    public static int HTTP_COMPLETED = 4;
 
     // =============
     // | Variables |
@@ -75,14 +76,12 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
 
     public RNNetwatchModule(final ReactApplicationContext reactContext) {
         super(reactContext);
-        Log.e("<<>>", "Start");
         mReactContext = reactContext;
         sharedPrefs = reactContext.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
 
         cShakeDetector = new CustomShakeDetector(new CustomShakeDetector.ShakeListener() {
             @Override
             public void onShake() {
-                Log.e("<<>>", "shake custom andorid");
                 sendEvent(reactContext, "NetwatchShakeEvent", null);
             }
         });
