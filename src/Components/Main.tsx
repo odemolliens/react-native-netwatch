@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar } from 'react-native-paper';
@@ -105,7 +105,7 @@ export const Main = (props: IProps) => {
     setRequests([]);
   };
 
-  const onShare = useCallback(async () => {
+  const onShare = async () => {
     const message = getCSVfromArray(requests);
     if (message.length === 0) return;
     try {
@@ -119,7 +119,7 @@ export const Main = (props: IProps) => {
     } catch (error) {
       console.error(error.message);
     }
-  }, [requests]);
+  };
 
   const onDelete = () => {
     Alert.alert('Warning', 'Do you really want clear the call list?', [
