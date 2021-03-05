@@ -23,6 +23,7 @@ Includes an interface to see http traffic from RN and native side
 ## Screenshots
 
 <p float="left" align="center">
+  <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/rnnetwatch.gif" width="300" />
   <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/main_screen.png" width="300" />
   <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/details_screen.png" width="300" /> 
 </p>
@@ -39,7 +40,6 @@ Before install, you must have these dependancies in your react-native project
 - react-native-fs
 - react-native-paper
 - react-native-share
-- react-native-vector-icons
 
 ### Installation
 
