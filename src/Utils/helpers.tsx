@@ -1,6 +1,5 @@
 import { EnumStatus } from '../types';
 import RNFS from 'react-native-fs';
-import RNRequest from '../Core/Objects/RNRequest';
 
 export const getTime = (date: number): string => {
   // iOS need a string, Android need a number
@@ -31,7 +30,7 @@ export const getStatus = (status: number = 500): string => {
 
 export const duration = (startTime: number, endTime: number): number => endTime - startTime;
 
-const _path = RNFS.DocumentDirectoryPath + '/export_' + makeid(8) + '.csv';
+const _path = RNFS.DocumentDirectoryPath + '/export' + '.csv';
 // write the file
 export const csvWriter = async (text = '', path = _path, encoding = 'utf8') => {
   if (await RNFS.exists(path)) {
@@ -47,9 +46,7 @@ export const csvWriter = async (text = '', path = _path, encoding = 'utf8') => {
 export const deleteFile = (path: any) => {
   return (
     RNFS.unlink(path)
-      .then(() => {
-        console.log('FILE DELETED');
-      })
+      .then(() => {})
       // `unlink` will throw an error, if the item to unlink does not exist
       .catch(err => {
         console.log(err.message);
@@ -57,65 +54,66 @@ export const deleteFile = (path: any) => {
   );
 };
 
-function makeid(length = 12) {
-  var result = '';
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for (var i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-
 // *******************************************************
 // Helpers to convert the lists of calls into a CSV format
 // *******************************************************
+
+const _getTemplate = () => {
+  return {
+    type: '',
+    method: '',
+    status: '',
+    url: '',
+    action: '',
+    startTime: '',
+    endTime: '',
+    timeout: '',
+    dataSent: '',
+    requestHeaders: '',
+    responseHeaders: '',
+    responseContentType: '',
+    responseSize: '',
+    responseType: '',
+    responseURL: '',
+    response: '',
+  };
+};
+
 export const getCSVfromArray = (array: any, showLabel: boolean = true): string => {
-  const _array = new RNRequest();
-  const includedAttributes = [
-    '_id',
-    'type',
-    'startTime',
-    'readyState',
-    'url',
-    'method',
-    'status',
-    'endTime',
-    'timeout',
-    'dataSent',
-    'requestHeaders',
-    'responseHeaders',
-    'responseContentType',
-    'responseSize',
-    'responseType',
-    'responseURL',
-    'response',
-    'action',
-  ];
+  const excludedAttributes = ['_id', 'readyState'];
 
   // Loop 1: Iterate on every requests
   let rows = array.map((_row: any) => {
+    let _temp = _getTemplate();
     // Create a row as string
-    let row = Object.entries(_row)
-      .filter(item => includedAttributes.includes(item[0]))
+    Object.entries(_row)
+      .filter(item => !excludedAttributes.includes(item[0]))
       .map(value => {
         try {
-          if (typeof value[1] === 'object') return JSON.stringify(value[1]);
-          return value[1];
+          if ((value[0] === 'startTime' || value[0] === 'endTime') && typeof value[1] === 'number') {
+            _temp[value[0]] = getDate(value[1]);
+          } else if (value[0] === 'responseContentType' && typeof value[1] === 'string') {
+            _temp[value[0]] = value[1].replace(/(;)/gm, ':');
+          } else if (typeof value[1] === 'object') {
+            _temp[value[0]] = JSON.stringify(value[1])
+              .replace(/(\r\n|\n|\r)/gm, '')
+              .replace(/(;)/gm, ':');
+          } else {
+            _temp[value[0]] = value[1] || '';
+          }
         } catch (error) {
-          console.error(error.message);
           return;
         }
       });
-    return row.join(';').replace(/(\r\n|\n|\r)/gm, '');
+    return Object.values(_temp)
+      .join(';')
+      .replace(/(\r\n|\n|\r)/gm, '');
   });
 
   let _temp = null;
   if (showLabel) {
-    let headers = Object.keys(_array)
-      .filter((header: string) => includedAttributes.includes(header))
-      .map((header: string) => header);
-    _temp = [headers.join(';')].concat(rows);
+    let _headers = Object.keys(_getTemplate()).join(';');
+    _temp = [_headers].concat(rows);
   } else {
     _temp = rows;
   }

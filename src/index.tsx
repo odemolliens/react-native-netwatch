@@ -45,7 +45,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.visible]);
 
   const handleShake = () => {
-    if (props.shake && props.onShake) props.onShake();
+    console.log('shake...')
+    props.onShake();
   };
 
   useEffect(() => {
