@@ -17,9 +17,11 @@ import { NRequest } from './Core/Objects/NRequest';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
-  onAction: (visible: boolean) => void;
+  onPressClose: () => void;
+  onShake?: () => void;
   visible: boolean;
   enabled?: boolean;
+  shake?: boolean;
   maxRequests?: number;
 }
 export const reduxLogger = reduxLoggerMiddleware;
@@ -39,11 +41,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(props.visible)
-  }, [props.visible])
+    setVisible(props.visible);
+  }, [props.visible]);
 
   const handleShake = () => {
-    props.onAction(true);
+    if (props.shake && props.onShake) props.onShake();
   };
 
   useEffect(() => {
@@ -139,7 +141,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               <Main
                 maxRequests={props.maxRequests || MAX_REQUESTS}
                 testId="mainScreen"
-                onPressClose={() => props.onAction(false)}
+                onPressClose={() => props.onPressClose()}
                 onPressDetail={setShowDetails}
                 onPress={setItem}
                 reduxActions={reduxActions}

@@ -18,11 +18,14 @@ export interface IProps {
   backgroundColor?: string;
 }
 
-export const tag = (color: string, text: string) => (
-  <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
-    <Text style={styles.text}>{text}</Text>
-  </View>
-);
+export const tag = (color: string, text: string) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
+      <Text style={[styles.text, { color: theme.gray50 }]}>{text}</Text>
+    </View>
+  );
+};
 
 export const reduxTag = () => {
   const theme = useContext(ThemeContext);
