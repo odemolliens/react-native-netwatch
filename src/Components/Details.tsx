@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity } from 'react-native';
 import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
-import { getStatus, getTime, getShortDate } from '../Utils/helpers';
+import { getStatus, getTime, getShortDate, duration } from '../Utils/helpers';
 import { EnumStatus } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import NRequest from '../Core/Objects/NRequest';
@@ -155,7 +155,7 @@ export const Details: React.FC<IProps> = props => {
             }}
           >
             <Text style={[{ color: theme.gray500 }]}>{item[0]}</Text>
-            {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[0], 'URL has been copied to clipboard')}
+            {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
           </View>
           <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>{item[1]}</Text>
         </View>
@@ -232,7 +232,7 @@ export const Details: React.FC<IProps> = props => {
 
         <View style={[styles.line]}>
           <Text style={{ color: theme.gray500 }}>Started at : </Text>
-          <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}`}</Text>
+          <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}   ( ${duration(props.item.startTime, props.item.endTime)}ms )`}</Text>
         </View>
 
         {_generalElements.length > 0 && (
