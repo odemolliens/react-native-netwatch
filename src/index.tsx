@@ -57,7 +57,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [handleShake]);
 
   const startNativeLoop = () => {
-    if (!nativeLoopStarted && Platform.OS === 'android') {
+    if (props.enabled && !nativeLoopStarted && Platform.OS === 'android') {
       nativeLoopStarted = true;
       nativeLoop = setInterval(() => {
         getNativeRequestsAndroid();
