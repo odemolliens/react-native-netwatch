@@ -28,7 +28,6 @@ export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
 
 const { RNNetwatch } = NativeModules;
-const MAX_REQUESTS: number = 50;
 let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
 
@@ -45,8 +44,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.visible]);
 
   const handleShake = () => {
-    console.log('shake...')
-    props.onShake();
+    console.log('shake...');
+    if (props.shake && props.onShake) props.onShake();
   };
 
   useEffect(() => {
@@ -122,7 +121,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       startNativeLoop();
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
-      setReduxMaxActions(props.maxRequests || MAX_REQUESTS);
+      setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
     }
   }, [props.enabled]);
@@ -140,7 +139,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
             ) : (
               <Main
-                maxRequests={props.maxRequests || MAX_REQUESTS}
+                maxRequests={props.maxRequests}
                 testId="mainScreen"
                 onPressClose={() => props.onPressClose()}
                 onPressDetail={setShowDetails}
@@ -156,4 +155,12 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       </ThemeContext.Provider>
     </Provider>
   );
+};
+
+Netwatch.defaultProps = {
+  onShake: () => {},
+  visible: false,
+  enabled: true,
+  shake: true,
+  maxRequests: 100,
 };

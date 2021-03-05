@@ -43,48 +43,43 @@ export const csvWriter = async (text = '', path = _path, encoding = 'utf8') => {
       console.error(err.message);
     });
 };
-export const deleteFile = (path: any) => {
-  return (
-    RNFS.unlink(path)
-      .then(() => {})
-      // `unlink` will throw an error, if the item to unlink does not exist
-      .catch(err => {
-        console.log(err.message);
-      })
-  );
-};
+export const deleteFile = (path: any) =>
+  RNFS.unlink(path)
+    .then(() => {})
+    // `unlink` will throw an error, if the item to unlink does not exist
+    .catch(err => {
+      console.log(err.message);
+    });
 
 // *******************************************************
 // Helpers to convert the lists of calls into a CSV format
 // *******************************************************
 
-const _getTemplate = () => {
-  return {
-    type: '',
-    method: '',
-    status: '',
-    url: '',
-    action: '',
-    startTime: '',
-    endTime: '',
-    timeout: '',
-    dataSent: '',
-    requestHeaders: '',
-    responseHeaders: '',
-    responseContentType: '',
-    responseSize: '',
-    responseType: '',
-    responseURL: '',
-    response: '',
-  };
-};
+const _getTemplate = (): any => ({
+  type: '',
+  method: '',
+  status: '',
+  url: '',
+  action: '',
+  startTime: '',
+  endTime: '',
+  timeout: '',
+  dataSent: '',
+  requestHeaders: '',
+  responseHeaders: '',
+  responseContentType: '',
+  responseSize: '',
+  responseType: '',
+  responseURL: '',
+  response: '',
+});
 
 export const getCSVfromArray = (array: any, showLabel: boolean = true): string => {
   const excludedAttributes = ['_id', 'readyState'];
 
   // Loop 1: Iterate on every requests
-  let rows = array.map((_row: any) => {
-    let _temp = _getTemplate();
+  const rows = array.map((_row: any) => {
+    const _temp = _getTemplate();
     // Create a row as string
     Object.entries(_row)
       .filter(item => !excludedAttributes.includes(item[0]))
@@ -110,13 +105,13 @@ export const getCSVfromArray = (array: any, showLabel: boolean = true): string =
       .replace(/(\r\n|\n|\r)/gm, '');
   });
 
-  let _temp = null;
+  let _result = null;
   if (showLabel) {
-    let _headers = Object.keys(_getTemplate()).join(';');
-    _temp = [_headers].concat(rows);
+    const _headers = Object.keys(_getTemplate()).join(';');
+    _result = [_headers].concat(rows);
   } else {
-    _temp = rows;
+    _result = rows;
   }
 
-  return _temp.join('\n');
+  return _result.join('\n');
 };

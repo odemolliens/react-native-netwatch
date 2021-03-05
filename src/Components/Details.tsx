@@ -232,7 +232,10 @@ export const Details: React.FC<IProps> = props => {
 
         <View style={[styles.line]}>
           <Text style={{ color: theme.gray500 }}>Started at : </Text>
-          <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}   ( ${duration(props.item.startTime, props.item.endTime)}ms )`}</Text>
+          <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}   ( ${duration(
+            props.item.startTime,
+            props.item.endTime,
+          )}ms )`}</Text>
         </View>
 
         {_generalElements.length > 0 && (
