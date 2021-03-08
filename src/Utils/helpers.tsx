@@ -56,6 +56,7 @@ export const deleteFile = (path: any) =>
 // *******************************************************
 
 const _getTemplate = (): any => ({
+  icon: '',
   type: '',
   method: '',
   status: '',
@@ -74,18 +75,33 @@ const _getTemplate = (): any => ({
   response: '',
 });
 
+const _icon = (value: number) => {
+  if (getStatus(value) === EnumStatus.Success) return '✅';
+  if (getStatus(value) === EnumStatus.Warning) return '⚠️';
+  return '❌';
+};
+
 export const getCSVfromArray = (array: any, showLabel: boolean = true): string => {
   const excludedAttributes = ['_id', 'readyState'];
 
   // Loop 1: Iterate on every requests
-  const rows = array.map((_row: any) => {
+  const rows = array.map((row: any) => {
     const _temp = _getTemplate();
+    const _row = {
+      icon: _icon(row.status),
+      ...row,
+    };
+
     // Create a row as string
     Object.entries(_row)
       .filter(item => !excludedAttributes.includes(item[0]))
       .map(value => {
         try {
-          if ((value[0] === 'startTime' || value[0] === 'endTime') && typeof value[1] === 'number') {
+          if (value[0] === 'type') {
+            if (value[1] !== 'NR' && value[1] !== 'RNR') _temp[value[0]] = value[1];
+            if (value[1] === 'NR') _temp[value[0]] = 'NATIVE REQUEST';
+            if (value[1] === 'RNR') _temp[value[0]] = 'REACT NATIVE REQUEST';
+          } else if ((value[0] === 'startTime' || value[0] === 'endTime') && typeof value[1] === 'number') {
             _temp[value[0]] = getDate(value[1]);
           } else if (value[0] === 'responseContentType' && typeof value[1] === 'string') {
             _temp[value[0]] = value[1].replace(/(;)/gm, ':');
