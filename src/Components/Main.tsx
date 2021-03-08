@@ -141,28 +141,28 @@ export const Main = (props: IProps) => {
           props.onPress(_props.item);
           props.onPressDetail(true);
         }}
-        color={theme.gray800}
+        color={theme.secondaryColor}
       />
     );
   };
 
   return (
     <>
-      <Appbar.Header style={[styles.header, { backgroundColor: theme.gray900 }]}>
+      <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
         <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
           <FeatherIcon
             name="x"
-            color={theme.white}
+            color={theme.textColorOne}
             size={24}
             onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
           />
         </TouchableOpacity>
-        <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
+        <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
         <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon name="download" color={theme.white} size={24} onPress={onShare} />
+          <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={onShare} />
         </TouchableOpacity>
       </Appbar.Header>
-      <View style={[styles.options, { backgroundColor: theme.gray800 }]}>
+      <View style={[styles.options, { backgroundColor: theme.secondaryColor }]}>
         <Searchbar
           onFocus={() => {
             setSettingsVisible(false);
@@ -170,10 +170,10 @@ export const Main = (props: IProps) => {
           onChange={() => {
             setSettingsVisible(false);
           }}
-          placeholderTextColor={theme.gray400}
-          iconColor={theme.gray500}
-          inputStyle={{ color: theme.gray400 }}
-          style={[styles.searchBar, { backgroundColor: theme.gray800 }]}
+          placeholderTextColor={theme.textColorThree}
+          iconColor={theme.textColorFour}
+          inputStyle={{ color: theme.textColorThree }}
+          style={[styles.searchBar, { backgroundColor: theme.secondaryColor }]}
           placeholder={'Search'}
           onChangeText={onChangeSearch}
           value={searchQuery}
@@ -184,8 +184,8 @@ export const Main = (props: IProps) => {
           style={[
             styles.button,
             {
-              borderLeftColor: theme.gray900,
-              backgroundColor: settingsVisible ? theme.gray900 : theme.gray800,
+              borderLeftColor: theme.secondaryDarkColor,
+              backgroundColor: settingsVisible ? theme.secondaryDarkColor : theme.secondaryColor,
             },
           ]}
           onPress={() => {
@@ -195,17 +195,19 @@ export const Main = (props: IProps) => {
         >
           <FeatherIcon
             name="filter"
-            color={filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.blue500 : theme.gray300}
+            color={
+              filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.primaryColor : theme.textColorTwo
+            }
             size={24}
           />
         </TouchableOpacity>
 
         <TouchableOpacity
           testID="deleteListButton"
-          style={[styles.button, { borderLeftColor: theme.gray900 }]}
+          style={[styles.button, { borderLeftColor: theme.secondaryDarkColor }]}
           onPress={onDelete}
         >
-          <FeatherIcon name="trash-2" color={theme.gray300} size={24} />
+          <FeatherIcon name="trash-2" color={theme.textColorTwo} size={24} />
         </TouchableOpacity>
       </View>
 
@@ -217,7 +219,7 @@ export const Main = (props: IProps) => {
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,
           }}
-          style={{ backgroundColor: theme.gray800 }}
+          style={{ backgroundColor: theme.secondaryColor }}
           renderItem={_renderItems}
           keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
           data={filteredRequests()}

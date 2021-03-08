@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, Platform } from 'react-native';
+import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, Platform, useColorScheme } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -23,6 +23,7 @@ export interface IProps {
   enabled?: boolean;
   shake?: boolean;
   maxRequests?: number;
+  theme?: string;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -39,12 +40,15 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [item, setItem] = useState(new ReduxAction());
   const [visible, setVisible] = useState(false);
 
+  const colorScheme = props.theme ? props.theme : useColorScheme();
+  // At this time, if it's not light, that will be dark. No other possibility
+  const _theme = colorScheme === 'light' ? themes.light : themes.dark;
+
   useEffect(() => {
     setVisible(props.visible);
   }, [props.visible]);
 
   const handleShake = () => {
-    console.log('shake...');
     if (props.shake && props.onShake) props.onShake();
   };
 
@@ -136,7 +140,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   return (
     <Provider>
-      <ThemeContext.Provider value={themes.dark}>
+      <ThemeContext.Provider value={_theme}>
         <SafeAreaView>
           <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
             {showDetails ? (
@@ -167,4 +171,5 @@ Netwatch.defaultProps = {
   enabled: true,
   shake: true,
   maxRequests: 100,
+  theme: undefined,
 };

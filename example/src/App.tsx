@@ -23,6 +23,7 @@ const App = () => {
           visible={netwatchVisible}
           onPressClose={() => setNetwatchVisible(false)}
           onShake={() => setNetwatchVisible(true)}
+          theme="dark"
         />
         <View style={styles.container}>
           <Text style={styles.title}>react-native-netwatch</Text>

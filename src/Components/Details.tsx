@@ -83,7 +83,7 @@ export const Details: React.FC<IProps> = props => {
   const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
   const [snackBarMessage, setSnackBarMessage] = useState<string>('');
   let _content = null;
-  let _color: string = theme.violet700;
+  let _color: string = theme.reduxColor;
   let _action: any = () => {};
 
   const _onShareRequest = async (
@@ -131,11 +131,11 @@ export const Details: React.FC<IProps> = props => {
       >
         <MaterialCommunityIcons
           name="clipboard-arrow-left-outline"
-          color={theme.blue500}
+          color={theme.primaryColor}
           size={14}
           testID="buttonCopyToClipBoard"
         />
-        <Text style={[{ color: theme.blue500, marginLeft: 6 }]}>Copy</Text>
+        <Text style={[{ color: theme.primaryColor, marginLeft: 6 }]}>Copy</Text>
       </TouchableOpacity>
     );
   };
@@ -154,10 +154,10 @@ export const Details: React.FC<IProps> = props => {
               justifyContent: 'space-between',
             }}
           >
-            <Text style={[{ color: theme.gray500 }]}>{item[0]}</Text>
+            <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
             {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
           </View>
-          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.gray50 }]}>{item[1]}</Text>
+          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.textColorOne }]}>{item[1]}</Text>
         </View>
       ));
   };
@@ -168,26 +168,28 @@ export const Details: React.FC<IProps> = props => {
       <View style={{ flex: 1, width: '100%' }}>
         {/* REDUX + REDUX TAG */}
         <View style={[styles.line]}>
-          <Title style={[{ marginRight: 6 }, { color: theme.gray50 }]}>REDUX</Title>
+          <Title style={[{ marginRight: 6 }, { color: theme.textColorOne }]}>REDUX</Title>
           {reduxTag()}
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.gray500 }}>Started at : </Text>
+          <Text style={{ color: theme.textColorFour }}>Started at : </Text>
           <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}`}</Text>
         </View>
 
-        <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+        <Subheading
+          style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+        >
           Content
         </Subheading>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.gray500 }}>Type : </Text>
+          <Text style={{ color: theme.textColorFour }}>Type : </Text>
           <Text>{props.item.action.type}</Text>
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.gray500 }}>Payload : </Text>
+          <Text style={{ color: theme.textColorFour }}>Payload : </Text>
           <Text>{JSON.stringify(props.item.action?.payload, null, 2)}</Text>
         </View>
       </View>
@@ -211,9 +213,9 @@ export const Details: React.FC<IProps> = props => {
     };
 
     const _temp = getStatus(props.item.status);
-    if (_temp === EnumStatus.Success) _color = theme.green700;
-    if (_temp === EnumStatus.Warning) _color = theme.orange700;
-    if (_temp === EnumStatus.Failed) _color = theme.red700;
+    if (_temp === EnumStatus.Success) _color = theme.successColor;
+    if (_temp === EnumStatus.Warning) _color = theme.warningColor;
+    if (_temp === EnumStatus.Failed) _color = theme.failedColor;
     const urlObject = url.parse(props.item.url);
     const hostname = urlObject.host || '';
 
@@ -221,17 +223,17 @@ export const Details: React.FC<IProps> = props => {
       <View style={{ flex: 1, width: '100%' }}>
         {/* METHOD + STATUS CODE */}
         <View style={[styles.line]}>
-          <Title style={[{ marginRight: 6 }, { color: theme.gray50 }]}>{props.item.method}</Title>
+          <Title style={[{ marginRight: 6 }, { color: theme.textColorOne }]}>{props.item.method}</Title>
           {tag(_color, props.item.status.toString())}
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.gray500 }}>Hostname : </Text>
+          <Text style={{ color: theme.textColorFour }}>Hostname : </Text>
           <Text>{hostname}</Text>
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.gray500 }}>Started at : </Text>
+          <Text style={{ color: theme.textColorFour }}>Started at : </Text>
           <Text>{`${getShortDate(props.item.startTime)} - ${getTime(props.item.startTime)}   ( ${duration(
             props.item.startTime,
             props.item.endTime,
@@ -240,7 +242,9 @@ export const Details: React.FC<IProps> = props => {
 
         {_generalElements.length > 0 && (
           <>
-            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
               Request Info
             </Subheading>
             {_renderItems(_generalElements)}
@@ -249,7 +253,9 @@ export const Details: React.FC<IProps> = props => {
 
         {_requestHeadersElements.length > 0 && (
           <>
-            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
               Request Headers
             </Subheading>
             {_renderItems(_requestHeadersElements)}
@@ -258,7 +264,9 @@ export const Details: React.FC<IProps> = props => {
 
         {props.item.dataSent?.length > 0 && (
           <>
-            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
               Request Data
             </Subheading>
             <View style={styles.attribtuesContainer}>
@@ -269,7 +277,9 @@ export const Details: React.FC<IProps> = props => {
 
         {_responseHeadersElements.length > 0 && (
           <>
-            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
               Response Headers
             </Subheading>
             {_renderItems(_responseHeadersElements)}
@@ -278,7 +288,9 @@ export const Details: React.FC<IProps> = props => {
 
         {props.item?.response?.length > 0 && (
           <>
-            <Subheading style={[styles.subheading, { backgroundColor: theme.gray700, color: theme.gray50 }]}>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
               Response Body
             </Subheading>
             <View style={{ flexDirection: 'row-reverse', paddingHorizontal: 16 }}>
@@ -297,32 +309,32 @@ export const Details: React.FC<IProps> = props => {
   // Put this directly in the index.tsx cause that the Appbar will be added
   return (
     <View style={styles.container}>
-      <Appbar.Header style={[styles.header, { backgroundColor: theme.gray900 }]}>
+      <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
         <TouchableOpacity
           style={[styles.button, { borderLeftWidth: 0 }]}
           onPress={() => props.onPressBack(false)}
           testID="buttonBackToMainScreen"
         >
-          <FeatherIcon name="arrow-left" color={theme.white} size={24} />
+          <FeatherIcon name="arrow-left" color={theme.textColorOne} size={24} />
         </TouchableOpacity>
-        <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
+        <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
         <TouchableOpacity
           testID="buttonShare"
           style={[styles.button, { borderLeftWidth: 0 }]}
           onPress={() => _action()}
         >
-          <FeatherIcon name="download" color={theme.white} size={24} />
+          <FeatherIcon name="download" color={theme.textColorOne} size={24} />
         </TouchableOpacity>
       </Appbar.Header>
 
-      <ScrollView style={{ backgroundColor: theme.gray800 }} contentContainerStyle={styles.scrollview}>
+      <ScrollView style={{ backgroundColor: theme.secondaryColor }} contentContainerStyle={styles.scrollview}>
         {_content}
       </ScrollView>
       <Snackbar
         visible={snackBarVisibility}
         onDismiss={() => setSnackBarVisibility(false)}
         duration={3000}
-        style={{ backgroundColor: theme.gray50 }}
+        style={{ backgroundColor: theme.textColorOne }}
       >
         {snackBarMessage}
       </Snackbar>
