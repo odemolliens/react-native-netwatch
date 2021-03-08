@@ -55,6 +55,10 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     };
   }, [handleShake]);
 
+  const handleBack = () => {
+    showDetails ? setShowDetails(false) : props.onPressClose();
+  };
+
   const startNativeLoop = () => {
     if (props.enabled && !nativeLoopStarted && Platform.OS === 'android') {
       nativeLoopStarted = true;
@@ -134,7 +138,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     <Provider>
       <ThemeContext.Provider value={themes.dark}>
         <SafeAreaView>
-          <Modal animationType="slide" visible={visible}>
+          <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
             {showDetails ? (
               <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
             ) : (
