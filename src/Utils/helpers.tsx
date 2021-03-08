@@ -1,5 +1,44 @@
 import { EnumStatus } from '../types';
 import RNFS from 'react-native-fs';
+import {
+  getBrand,
+  getBaseOsSync,
+  getSystemVersion,
+  getApiLevelSync,
+  getApplicationName,
+  getVersion,
+  getBuildNumber,
+} from 'react-native-device-info';
+
+interface IDeviceInfo {
+  brand: string;
+  os: string;
+  systemVersion: string;
+  apiLevel: number;
+  appName: string;
+  appVersion: string;
+  appBuild: string;
+}
+
+const _getDeviceInfo = (): IDeviceInfo => {
+  const _brand = getBrand();
+  const _os = getBaseOsSync();
+  const _systemVersion = getSystemVersion();
+  const _apiLevel = getApiLevelSync();
+  const _appName = getApplicationName();
+  const _appVersion = getVersion();
+  const _appBuild = getBuildNumber();
+
+  return {
+    brand: _brand,
+    os: _os,
+    systemVersion: _systemVersion,
+    apiLevel: _apiLevel,
+    appName: _appName,
+    appVersion: _appVersion,
+    appBuild: _appBuild,
+  };
+};
 
 export const getTime = (date: number): string => {
   // iOS need a string, Android need a number
@@ -81,8 +120,15 @@ const _icon = (value: number) => {
   return '❌';
 };
 
-export const getCSVfromArray = (array: any, showLabel: boolean = true): string => {
+export const getCSVfromArray = (array: any, showLabel: boolean = true, showDeviceInfo: boolean = true): string => {
   const excludedAttributes = ['_id', 'readyState'];
+
+  let deviceInfo = {};
+  try {
+    deviceInfo = _getDeviceInfo();
+  } catch (error) {
+    console.error(error.message);
+  }
 
   // Loop 1: Iterate on every requests
   const rows = array.map((row: any) => {
@@ -121,12 +167,14 @@ export const getCSVfromArray = (array: any, showLabel: boolean = true): string =
       .replace(/(\r\n|\n|\r)/gm, '');
   });
 
-  let _result = null;
+  let _result = rows;
+  if (showDeviceInfo) {
+    const _deviceInfo = Object.entries(deviceInfo).join(';');
+    _result = [_deviceInfo].concat(_result);
+  }
   if (showLabel) {
     const _headers = Object.keys(_getTemplate()).join(';');
-    _result = [_headers].concat(rows);
-  } else {
-    _result = rows;
+    _result = [_headers].concat(_result);
   }
 
   return _result.join('\n');

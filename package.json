@@ -53,6 +53,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-native": "^0.63.4",
+    "react-native-device-info": "^8.0.2",
     "react-native-fs": "^2.16.6",
     "react-native-paper": "^4.7.1",
     "react-native-share": "^5.1.4",
@@ -74,7 +75,8 @@
     "react-native-fs": "*",
     "react-native-paper": "*",
     "react-native-share": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "react-native-device-info": "*"
   },
   "jest": {
     "verbose": true,
