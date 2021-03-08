@@ -64,8 +64,8 @@
 				FA4A9D292369C20E0065E0DD /* example-Bridging-Header.h */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				FA4A9D2A2369C4B80065E0DD /* LaunchScreen.storyboard */,
-				D39621F325C01E480049FE1F /* ExampleModule.m */,
 				D34239DB25C04025000E2444 /* ExampleModule.h */,
+				D39621F325C01E480049FE1F /* ExampleModule.m */,
 			);
 			name = example;
 			sourceTree = "<group>";

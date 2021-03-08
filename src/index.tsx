@@ -109,6 +109,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.enabled]);
 
   useEffect(() => {
+    RNNetwatch.startNetwatch();
     !props.visible ? stopNativeLoop() : startNativeLoop();
   }, [props.visible]);
   useEffect(() => {
