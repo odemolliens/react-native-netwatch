@@ -23,10 +23,7 @@ Includes an interface to see http traffic from RN and native side
 ## Screenshots
 
 <p float="left" align="center">
-  <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/main_screen.png" width="300" />
-  <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/main_screen_light.png" width="300" />
-  <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/details_screen.png" width="300" /> 
-  <img src="https://raw.githubusercontent.com/odemolliens/react-native-netwatch/feat/share/.github/screens/rnnetwatch.gif" width="300" />
+
 </p>
 
 ---
