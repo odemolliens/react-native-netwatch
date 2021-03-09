@@ -52,7 +52,7 @@ public class ExampleModule extends ReactContextBaseJavaModule {
                 if (!response.isSuccessful()) {
                     throw new IOException("Unexpected code " + response);
                 } else {
-                    Log.e("<<>>", "<<>> Response : " + response);
+                    Log.e("<<>>", "<<>> Example Response : " + response);
                 }
             }
         });

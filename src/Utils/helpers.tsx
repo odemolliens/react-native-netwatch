@@ -1,8 +1,8 @@
 import { EnumStatus } from '../types';
 
-export const getTime = (date: number): string => {
+export const getTime = (date: number | string): string => {
   // iOS need a string, Android need a number
-  const _date = new Date(date);
+  const _date = new Date(Number(date));
   const _minutes = ('0' + _date.getMinutes()).slice(-2);
   const _hours = ('0' + _date.getHours()).slice(-2);
   const _seconds = ('0' + _date.getSeconds()).slice(-2);
@@ -10,8 +10,8 @@ export const getTime = (date: number): string => {
 };
 
 // format date -> DD/MM/YYYY
-export const getShortDate = (date: number): string => {
-  const _date = new Date(date);
+export const getShortDate = (date: number | string): string => {
+  const _date = new Date(Number(date));
   const _day = ('0' + _date.getDate()).slice(-2);
   const _month = ('0' + (_date.getMonth() + 1)).slice(-2);
   const _year = _date.getFullYear();
@@ -19,7 +19,7 @@ export const getShortDate = (date: number): string => {
   return `${_day}/${_month}/${_year}`;
 };
 
-export const getDate = (date: number): string => new Date(date).toString();
+export const getDate = (date: number | string): string => new Date(Number(date)).toString();
 
 export const getStatus = (status: number = 500): string => {
   if (status >= 200 && status < 300) return EnumStatus.Success;

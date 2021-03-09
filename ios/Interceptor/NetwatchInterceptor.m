@@ -8,18 +8,27 @@
 
 #import "NetwatchInterceptor.h"
 
-@implementation NetwatchInterceptor
+@interface NetwatchInterceptor ()<NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+@property (nonatomic, strong) NSURLResponse *response;
+@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic,strong) NSUserDefaults *preferences;
+@property (nonatomic,strong) NativeRequest *currentRequest;
+@end
 
+@implementation NetwatchInterceptor
+@synthesize currentRequest;
+@synthesize preferences;
 @synthesize connection = connection_;
 
-#if WORKAROUND_MUTABLE_COPY_LEAK
-// required to workaround http://openradar.appspot.com/11596316
-@interface NSURLRequest(AvoidMutableCopyLeak)
 
-- (id) avoidMutableCopyLeak;
-
-@end
-#endif
+#pragma mark - superclass methods
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        preferences = [NSUserDefaults standardUserDefaults];
+    }
+    return self;
+}
 
 /**
  * Implementation of URLProtocol abstract method. Should determine if,
@@ -28,7 +37,9 @@
  * @return BOOL true if Interceptor handles the scheme, ortherwise, returns false
  */
 + (BOOL)canInitWithRequest:(NSURLRequest *) request {
-    NSLog(@"[%@] Netwatch: Requesting....", NSStringFromClass([self class]));
+    if ([NSURLProtocol propertyForKey:@"NetwatchHandledKey" inRequest:request]) {
+        return NO;
+    }
     
     return YES;
 }
@@ -39,7 +50,6 @@
  [NSURLProtocol](https://developer.apple.com/documentation/foundation/nsurlprotocol)
  */
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *) request {
-    NSLog(@"[%@] Netwatch: canonicalRequestForRequest", NSStringFromClass([self class]));
     return request;
 }
 
@@ -50,17 +60,23 @@
  * Starts loading of a request
  */
 - (void)startLoading {
-    NSLog(@"[%@] Netwatch: Starting Loading the request: %@", NSStringFromClass([self class]),[[self request] allHTTPHeaderFields]);
+    self.data = [NSMutableData data];
     
-    NSMutableURLRequest *interceptorRequest =
-#if WORKAROUND_MUTABLE_COPY_LEAK
-    [[self request] avoidMutableCopyLeak];
-#else
-    [[self request] mutableCopy];
-#endif
+    NSMutableURLRequest *newRequest = [self.request mutableCopy];
+    [NSURLProtocol setProperty:@YES forKey:@"NetwatchHandledKey" inRequest:newRequest];
     
-    [self setConnection:[NSURLConnection connectionWithRequest:interceptorRequest delegate:self]];
+    [self setConnection:[NSURLConnection connectionWithRequest:newRequest delegate:self]];
+    
+    currentRequest=[[NativeRequest alloc] init];
+    currentRequest.requestHeaders=newRequest.allHTTPHeaderFields;
+    currentRequest.url=newRequest.URL.absoluteString;
+    currentRequest.method=newRequest.HTTPMethod;
+    currentRequest.startTime=([[NSDate date] timeIntervalSince1970] * 1000.0);
+    currentRequest.readyState=4;
 
+    NSTimeInterval myID=[[NSDate date] timeIntervalSince1970];
+    double randomNum=((double)(arc4random() % 100))/10000;
+    currentRequest._id=myID+randomNum;
 }
 
 /**
@@ -71,6 +87,21 @@
  */
 - (void)stopLoading {
     [[self connection] cancel];
+    currentRequest.endTime=([[NSDate date] timeIntervalSince1970] * 1000.0);
+    
+    // Save data in NSUserDefaults
+    if (currentRequest != nil) {
+        NSArray *cachedRequests = [self readArrayWithCustomObjFromUserDefaults];
+        NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+        [mutableArray addObject:[currentRequest toJSON]];
+        [mutableArray addObjectsFromArray:cachedRequests];
+        
+        if ([mutableArray count] >= kSaveRequestMaxCount) {
+            [mutableArray removeLastObject];
+        }
+        
+        [NetwatchInterceptor writeArrayWithCustomObjToUserDefaults: mutableArray];
+    }
 }
 
 /**
@@ -80,8 +111,6 @@
  * Invokes the client method with the error. Empties the connection,data and repsonse variables.
  */
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"[%@] Netwatch: Failed With error: %@", NSStringFromClass([self class]), error.debugDescription);
-    
     [[self client] URLProtocol:self didFailWithError:error];
 }
 
@@ -93,7 +122,10 @@
  * Notified when a request will be sent
  */
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
-    NSLog(@"[%@] Netwatch: Will send request: %@ ", NSStringFromClass([self class]), [request allHTTPHeaderFields]);
+    if (response != nil){
+        self.response = response;
+        [[self client] URLProtocol:self wasRedirectedToRequest:request redirectResponse:response];
+    }
 
     return request;
 }
@@ -105,9 +137,12 @@
  * Notified when a response is received, redirects the response to the client.
  */
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"[%@] Netwatch: Received response code: %ld", NSStringFromClass([self class]), (long)[((NSHTTPURLResponse *) response) statusCode]);
-    
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+    
+    currentRequest.status=(int)[((NSHTTPURLResponse *) response) statusCode];
+    currentRequest.responseHeaders=[((NSHTTPURLResponse *) response) allHeaderFields];
+    currentRequest.responseContentType=[((NSHTTPURLResponse *) response) MIMEType];
+    self.response = response;
 }
 
 /**
@@ -117,9 +152,9 @@
  * Notified when data is received, notifies the client with respective data.
  */
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"[%@] Netwatch: Received data\n%@", NSStringFromClass([self class]), [NSJSONSerialization JSONObjectWithData:data options:0 error:nil]);
-
     [[self client] URLProtocol:self didLoadData:data];
+    [self.data appendData:data];
+    currentRequest.response=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 }
 
 /**
@@ -130,9 +165,25 @@
  * and clears the connection,data and repsonse variables.
  */
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"[%@] Netwatch: Finish loading", NSStringFromClass([self class]));
-
     [[self client] URLProtocolDidFinishLoading:self];
+}
+
+#pragma mark - Utils
+
++ (void)writeArrayWithCustomObjToUserDefaults:(NSMutableArray *)myArray
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSKeyedArchiver archivedDataWithRootObject:myArray] forKey:kNetwatchUserDefault];
+    [defaults synchronize];
+}
+
+-(NSArray *)readArrayWithCustomObjFromUserDefaults
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [defaults objectForKey:kNetwatchUserDefault];
+    NSArray *myArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [defaults synchronize];
+    return myArray;
 }
 
 @end

@@ -10,7 +10,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		AD7F6F5E51A4583A329C159C /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9830928ACC38C373A5553B3 /* libPods-example.a */; };
 		D34239D725C03FC5000E2444 /* ExampleModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D39621F325C01E480049FE1F /* ExampleModule.m */; };
-		FA0EFF72236CCB6600069FA8 /* libRNNetwatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0EFF71236CCB5C00069FA8 /* libRNNetwatch.a */; };
 		FA4A9D282369C1DB0065E0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9D272369C1DB0065E0DD /* AppDelegate.swift */; };
 		FA4A9D2B2369C4B80065E0DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4A9D2A2369C4B80065E0DD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -48,7 +47,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7F6F5E51A4583A329C159C /* libPods-example.a in Frameworks */,
-				FA0EFF72236CCB6600069FA8 /* libRNNetwatch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

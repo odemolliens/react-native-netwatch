@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3C5159D25F76B3800E9885B /* NativeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C5159C25F76B3800E9885B /* NativeRequest.m */; };
 		D3E6975E25DDA974008F80C6 /* NetwatchInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E6975D25DDA974008F80C6 /* NetwatchInterceptor.m */; };
 		FA4F9FEB2512ACC2002DB4D5 /* RNNetwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F9FEA2512ACC2002DB4D5 /* RNNetwatch.m */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		D3C5131925F0CD9D00E9885B /* Shake */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shake; sourceTree = "<group>"; };
 		D3C5141E25F217B400E9885B /* RNNetwatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNNetwatch.h; sourceTree = "<group>"; };
+		D3C5159C25F76B3800E9885B /* NativeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeRequest.m; sourceTree = "<group>"; };
+		D3C515A025F76B4500E9885B /* NativeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeRequest.h; sourceTree = "<group>"; };
 		D3E6975D25DDA974008F80C6 /* NetwatchInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetwatchInterceptor.m; sourceTree = "<group>"; };
 		D3E6976125DDA9A3008F80C6 /* NetwatchInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetwatchInterceptor.h; sourceTree = "<group>"; };
 		FA0EFF60236CC8FB00069FA8 /* libRNNetwatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNNetwatch.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3C5159B25F76AE800E9885B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3C515A025F76B4500E9885B /* NativeRequest.h */,
+				D3C5159C25F76B3800E9885B /* NativeRequest.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D3E6975C25DDA954008F80C6 /* Interceptor */ = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +68,7 @@
 		FA0EFF57236CC8FB00069FA8 = {
 			isa = PBXGroup;
 			children = (
+				D3C5159B25F76AE800E9885B /* Model */,
 				D3C5131925F0CD9D00E9885B /* Shake */,
 				D3E6975C25DDA954008F80C6 /* Interceptor */,
 				FA4F9FE62512AA41002DB4D5 /* RNNetwatch-Bridging-Header.h */,
@@ -131,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C5159D25F76B3800E9885B /* NativeRequest.m in Sources */,
 				FA4F9FEB2512ACC2002DB4D5 /* RNNetwatch.m in Sources */,
 				D3E6975E25DDA974008F80C6 /* NetwatchInterceptor.m in Sources */,
 			);

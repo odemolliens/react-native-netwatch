@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NativeRequest.h"
+
 NS_ASSUME_NONNULL_BEGIN
+
+#define kSaveRequestMaxCount 20
+static NSString * const kNetwatchUserDefault = @"NetwatchUserDefault";
 
 @interface NetwatchInterceptor : NSURLProtocol
 

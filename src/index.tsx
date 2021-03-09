@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, Platform } from 'react-native';
+import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -38,10 +38,10 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [item, setItem] = useState(new ReduxAction());
 
   const startNativeLoop = () => {
-    if (!nativeLoopStarted && Platform.OS === 'android') {
+    if (!nativeLoopStarted) {
       nativeLoopStarted = true;
       nativeLoop = setInterval(() => {
-        getNativeRequestsAndroid();
+        getNativeRequests();
       }, 3000);
     }
   };
@@ -60,10 +60,15 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   };
 
   // Extract data from shared pref and passed the result to the UI
-  const getNativeRequestsAndroid = (): void => {
+  const getNativeRequests = (): void => {
     RNNetwatch.getNativeRequests((response: any) => {
       try {
-        const _temp = JSON.parse(response.result);
+        let _temp;
+        try {
+          _temp = JSON.parse(response.result);
+        } catch (e) {
+          _temp = response.result;
+        }
         if (_temp && _temp instanceof Array && _temp.length > 0) {
           const _result = _temp.map((element: any) => {
             return new NRequest({
