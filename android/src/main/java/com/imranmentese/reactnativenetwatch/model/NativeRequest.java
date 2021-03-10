@@ -1,7 +1,5 @@
 package com.imranmentese.reactnativenetwatch.model;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +7,8 @@ import java.util.Map;
 import java.util.Random;
 
 import okhttp3.Response;
+
+import static com.imranmentese.reactnativenetwatch.RNNetwatchModule.HTTP_COMPLETED;
 
 /**
  * Created by MENTESE Imran on 16/02/2021.
@@ -19,6 +19,7 @@ public class NativeRequest {
     String url;
     String method;
     int status;
+    int readyState;
     long startTime;
     long endTime;
     Object requestHeaders;
@@ -64,5 +65,6 @@ public class NativeRequest {
         this._id = new Random().nextInt(10000);
         this.startTime = startTime;
         this.endTime = endTime;
+        this.readyState = HTTP_COMPLETED;
     }
 }

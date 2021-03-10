@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3C5112F25ED2FC400E9885B /* NetwatchShakeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C5112E25ED2FC400E9885B /* NetwatchShakeEvent.m */; };
-		FA4F9FE82512AA42002DB4D5 /* RNNetwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F9FE72512AA42002DB4D5 /* RNNetwatch.swift */; };
+		D3C5159D25F76B3800E9885B /* NativeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C5159C25F76B3800E9885B /* NativeRequest.m */; };
+		D3E6975E25DDA974008F80C6 /* NetwatchInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E6975D25DDA974008F80C6 /* NetwatchInterceptor.m */; };
 		FA4F9FEB2512ACC2002DB4D5 /* RNNetwatch.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4F9FEA2512ACC2002DB4D5 /* RNNetwatch.m */; };
 /* End PBXBuildFile section */
 
@@ -25,11 +25,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D3C5112D25ED2F9300E9885B /* NetwatchShakeEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetwatchShakeEvent.h; sourceTree = "<group>"; };
-		D3C5112E25ED2FC400E9885B /* NetwatchShakeEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetwatchShakeEvent.m; sourceTree = "<group>"; };
+		D3C5131925F0CD9D00E9885B /* Shake */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shake; sourceTree = "<group>"; };
+		D3C5141E25F217B400E9885B /* RNNetwatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNNetwatch.h; sourceTree = "<group>"; };
+		D3C5159C25F76B3800E9885B /* NativeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeRequest.m; sourceTree = "<group>"; };
+		D3C515A025F76B4500E9885B /* NativeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeRequest.h; sourceTree = "<group>"; };
+		D3E6975D25DDA974008F80C6 /* NetwatchInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetwatchInterceptor.m; sourceTree = "<group>"; };
+		D3E6976125DDA9A3008F80C6 /* NetwatchInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetwatchInterceptor.h; sourceTree = "<group>"; };
 		FA0EFF60236CC8FB00069FA8 /* libRNNetwatch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNNetwatch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4F9FE62512AA41002DB4D5 /* RNNetwatch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNNetwatch-Bridging-Header.h"; sourceTree = "<group>"; };
-		FA4F9FE72512AA42002DB4D5 /* RNNetwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNNetwatch.swift; sourceTree = "<group>"; };
 		FA4F9FEA2512ACC2002DB4D5 /* RNNetwatch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNNetwatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -44,22 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D3C5112C25ED2F5900E9885B /* Shake */ = {
+		D3C5159B25F76AE800E9885B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D3C5112D25ED2F9300E9885B /* NetwatchShakeEvent.h */,
-				D3C5112E25ED2FC400E9885B /* NetwatchShakeEvent.m */,
+				D3C515A025F76B4500E9885B /* NativeRequest.h */,
+				D3C5159C25F76B3800E9885B /* NativeRequest.m */,
 			);
-			path = Shake;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3E6975C25DDA954008F80C6 /* Interceptor */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6976125DDA9A3008F80C6 /* NetwatchInterceptor.h */,
+				D3E6975D25DDA974008F80C6 /* NetwatchInterceptor.m */,
+			);
+			path = Interceptor;
 			sourceTree = "<group>";
 		};
 		FA0EFF57236CC8FB00069FA8 = {
 			isa = PBXGroup;
 			children = (
-				D3C5112C25ED2F5900E9885B /* Shake */,
+				D3C5159B25F76AE800E9885B /* Model */,
+				D3C5131925F0CD9D00E9885B /* Shake */,
+				D3E6975C25DDA954008F80C6 /* Interceptor */,
 				FA4F9FE62512AA41002DB4D5 /* RNNetwatch-Bridging-Header.h */,
+				D3C5141E25F217B400E9885B /* RNNetwatch.h */,
 				FA4F9FEA2512ACC2002DB4D5 /* RNNetwatch.m */,
-				FA4F9FE72512AA42002DB4D5 /* RNNetwatch.swift */,
 				FA0EFF61236CC8FB00069FA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3C5112F25ED2FC400E9885B /* NetwatchShakeEvent.m in Sources */,
-				FA4F9FE82512AA42002DB4D5 /* RNNetwatch.swift in Sources */,
+				D3C5159D25F76B3800E9885B /* NativeRequest.m in Sources */,
 				FA4F9FEB2512ACC2002DB4D5 /* RNNetwatch.m in Sources */,
+				D3E6975E25DDA974008F80C6 /* NetwatchInterceptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,6 @@
 		23B0D0E125EE32F800B6D311 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B0D0E025EE32F800B6D311 /* libRNShare.a */; };
 		AD7F6F5E51A4583A329C159C /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9830928ACC38C373A5553B3 /* libPods-example.a */; };
 		D34239D725C03FC5000E2444 /* ExampleModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D39621F325C01E480049FE1F /* ExampleModule.m */; };
-		FA0EFF72236CCB6600069FA8 /* libRNNetwatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0EFF71236CCB5C00069FA8 /* libRNNetwatch.a */; };
 		FA4A9D282369C1DB0065E0DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A9D272369C1DB0065E0DD /* AppDelegate.swift */; };
 		FA4A9D2B2369C4B80065E0DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4A9D2A2369C4B80065E0DD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -53,7 +52,6 @@
 			files = (
 				23B0D0E125EE32F800B6D311 /* libRNShare.a in Frameworks */,
 				AD7F6F5E51A4583A329C159C /* libPods-example.a in Frameworks */,
-				FA0EFF72236CCB6600069FA8 /* libRNNetwatch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,8 +67,8 @@
 				FA4A9D292369C20E0065E0DD /* example-Bridging-Header.h */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				FA4A9D2A2369C4B80065E0DD /* LaunchScreen.storyboard */,
-				D39621F325C01E480049FE1F /* ExampleModule.m */,
 				D34239DB25C04025000E2444 /* ExampleModule.h */,
+				D39621F325C01E480049FE1F /* ExampleModule.m */,
 			);
 			name = example;
 			sourceTree = "<group>";
