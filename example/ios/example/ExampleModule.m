@@ -24,9 +24,9 @@ RCT_EXPORT_METHOD(fetchSomething:(NSString*)url) {
   NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
 
   if([responseCode statusCode] != 200){
-    NSLog(@"<<>> Error: %ld", (long)[responseCode statusCode]);
+    NSLog(@"<<>> Example Error: %ld", (long)[responseCode statusCode]);
   } else {
-    NSLog(@"<<>> Success response: %ld",(long)[responseCode statusCode]);
+    NSLog(@"<<>> Example Success response: %ld",(long)[responseCode statusCode]);
   }
 }
 
