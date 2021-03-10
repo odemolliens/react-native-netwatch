@@ -17,11 +17,9 @@ import { NRequest } from './Core/Objects/NRequest';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
-  onPressClose: () => void;
-  onShake?: () => void;
-  visible: boolean;
-  enabled?: boolean;
-  shake?: boolean;
+  visible?: boolean;
+  enabled: boolean;
+  disableShake?: boolean;
   maxRequests?: number;
   theme?: string;
 }
@@ -45,22 +43,24 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const _theme = colorScheme === 'light' ? themes.light : themes.dark;
 
   useEffect(() => {
-    setVisible(props.visible);
+    if (props.visible !== undefined) {
+      setVisible(props.visible);
+    }
   }, [props.visible]);
 
   const handleShake = () => {
-    if (props.shake && props.onShake) props.onShake();
+    if (!props.disableShake) setVisible(true);
   };
 
   useEffect(() => {
-    DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    if (!props.disableShake) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
       DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
     };
   }, [handleShake]);
 
   const handleBack = () => {
-    showDetails ? setShowDetails(false) : props.onPressClose();
+    showDetails ? setShowDetails(false) : setVisible(false);
   };
 
   const startNativeLoop = () => {
@@ -141,8 +141,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   useEffect(() => {
     RNNetwatch.startNetwatch();
-    !props.visible ? stopNativeLoop() : startNativeLoop();
-  }, [props.visible]);
+    !visible ? stopNativeLoop() : startNativeLoop();
+  }, [visible]);
 
   return (
     <Provider>
@@ -155,7 +155,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               <Main
                 maxRequests={props.maxRequests}
                 testId="mainScreen"
-                onPressClose={() => props.onPressClose()}
+                onPressClose={() => setVisible(false)}
                 onPressDetail={setShowDetails}
                 onPress={setItem}
                 reduxActions={reduxActions}
@@ -172,10 +172,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 };
 
 Netwatch.defaultProps = {
-  onShake: () => {},
   visible: false,
   enabled: true,
-  shake: true,
+  disableShake: false,
   maxRequests: 100,
   theme: undefined,
 };

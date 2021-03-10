@@ -3,8 +3,11 @@ assets/
 build
 scripts
 shell
-src/__tests__
-node_modules
+src/
+**/__tests__/
+node_modules/
+example/
+.travis.yml
 .vscode
 .watchmanconfig
 .eslintignore
