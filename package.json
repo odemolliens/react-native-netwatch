@@ -35,6 +35,7 @@
     "@babel/runtime": "^7.11.2",
     "@react-native-clipboard/clipboard": "^1.7.0",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/react-native": "^7.2.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.14",
@@ -72,11 +73,11 @@
     "@react-native-clipboard/clipboard": "*",
     "react": "*",
     "react-native": "*",
+    "react-native-device-info": "*",
     "react-native-fs": "*",
     "react-native-paper": "*",
     "react-native-share": "*",
-    "react-native-vector-icons": "*",
-    "react-native-device-info": "*"
+    "react-native-vector-icons": "*"
   },
   "jest": {
     "verbose": true,

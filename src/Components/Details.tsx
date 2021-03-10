@@ -142,18 +142,12 @@ export const Details: React.FC<IProps> = props => {
 
   const _renderItems = (listOfItems: Array<[string, any]>) => {
     return listOfItems
+      .filter((item: Array<string>) => item.length > 1) // To be sure that item has at least two element
       .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
       .filter((item: Array<string>) => item[1] && item[1].length > 0)
       .map((item: Array<string>, index: number) => (
-        <View style={{ paddingHorizontal: 16 }} key={index}>
-          <View
-            style={{
-              marginBottom: 10,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
+        <View style={styles.itemContainer} key={index}>
+          <View style={styles.attribute}>
             <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
             {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
           </View>
@@ -356,6 +350,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginBottom: 10,
     alignItems: 'center',
+  },
+
+  attribute: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+
+  itemContainer: {
+    paddingHorizontal: 16,
   },
 
   statusCode: {

@@ -11,7 +11,7 @@ import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
-import { csvWriter, getCSVfromArray } from '../Utils/helpers';
+import { csvWriter, getCSVfromArray, mergeArrays, compare } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
@@ -51,23 +51,6 @@ export const Main = (props: IProps) => {
       setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
-
-  const mergeArrays = (...arrays: Array<ILog[]>) => {
-    return [...arrays.flat()];
-  };
-
-  const compare = (a: ILog, b: ILog) => {
-    const startTimeA = a.startTime;
-    const startTimeB = b.startTime;
-
-    let comparison = 0;
-    if (startTimeA > startTimeB) {
-      comparison = 1;
-    } else if (startTimeA < startTimeB) {
-      comparison = -1;
-    }
-    return comparison;
-  };
 
   const filteredRequests = (): Array<any> =>
     requests.slice(0, props.maxRequests).filter(request => {
@@ -180,7 +163,7 @@ export const Main = (props: IProps) => {
         />
 
         <TouchableOpacity
-          testID="showDetailsButton"
+          testID="showSettingsButton"
           style={[
             styles.button,
             {
@@ -215,6 +198,7 @@ export const Main = (props: IProps) => {
         <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
         <FlatList
+          testID="itemsList"
           maintainVisibleContentPosition={{
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,

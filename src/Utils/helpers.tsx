@@ -1,4 +1,4 @@
-import { EnumStatus } from '../types';
+import { EnumStatus, ILog } from '../types';
 import RNFS from 'react-native-fs';
 import {
   getBrand,
@@ -178,4 +178,19 @@ export const getCSVfromArray = (array: any, showLabel: boolean = true, showDevic
   }
 
   return _result.join('\n');
+};
+
+export const mergeArrays = (...arrays: Array<ILog[]>) => [...arrays.flat()];
+
+export const compare = (a: ILog, b: ILog) => {
+  const startTimeA = a.startTime;
+  const startTimeB = b.startTime;
+
+  let comparison = 0;
+  if (startTimeA > startTimeB) {
+    comparison = 1;
+  } else if (startTimeA < startTimeB) {
+    comparison = -1;
+  }
+  return comparison;
 };

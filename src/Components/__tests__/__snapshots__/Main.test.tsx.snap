@@ -1,199 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main test suite should render properly & Delete 1`] = `
-<Fragment>
-  <ForwardRef(withTheme(Appbar.Header))
-    style={
-      Array [
-        Object {
-          "elevation": 0,
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-        },
-        Object {
-          "backgroundColor": "#111827",
-        },
-      ]
-    }
-  >
-    <ForwardRef
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftWidth": 0,
-          },
-        ]
-      }
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#FFF"
-        name="x"
-        onPress={[Function]}
-        size={24}
-      />
-    </ForwardRef>
-    <ForwardRef(withTheme(Appbar.Content))
-      color="#06B6D4"
-      title="Netwatch"
-      titleStyle={
-        Object {
-          "fontSize": 18,
-        }
-      }
-    />
-    <ForwardRef
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftWidth": 0,
-          },
-        ]
-      }
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#FFF"
-        name="download"
-        onPress={[Function]}
-        size={24}
-      />
-    </ForwardRef>
-  </ForwardRef(withTheme(Appbar.Header))>
-  <Component
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 56,
-        },
-        Object {
-          "backgroundColor": "#1F2937",
-        },
-      ]
-    }
-  >
-    <ForwardRef(withTheme(undefined))
-      iconColor="#6B7280"
-      inputStyle={
-        Object {
-          "color": "#9CA3AF",
-        }
-      }
-      onChangeText={[Function]}
-      placeholder="Search"
-      placeholderTextColor="#9CA3AF"
-      style={
-        Array [
-          Object {
-            "elevation": 0,
-            "flex": 1,
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-          },
-          Object {
-            "backgroundColor": "#1F2937",
-          },
-        ]
-      }
-      value=""
-    />
-    <ForwardRef
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "backgroundColor": "#1F2937",
-            "borderLeftColor": "#111827",
-          },
-        ]
-      }
-      testID="showDetailsButton"
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#D1D5DB"
-        name="filter"
-        size={24}
-      />
-    </ForwardRef>
-    <ForwardRef
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftColor": "#111827",
-          },
-        ]
-      }
-      testID="deleteListButton"
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#D1D5DB"
-        name="trash-2"
-        size={24}
-      />
-    </ForwardRef>
-  </Component>
-  <FlatList
-    data={Array []}
-    disableVirtualization={false}
-    horizontal={false}
-    initialNumToRender={10}
-    keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
-    numColumns={1}
-    onEndReachedThreshold={2}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    style={
-      Object {
-        "backgroundColor": "#1F2937",
-      }
-    }
-    updateCellsBatchingPeriod={50}
-    windowSize={21}
-  />
-</Fragment>
-`;
-
 exports[`Main test suite should render properly 1`] = `
 <Fragment>
   <ForwardRef(withTheme(Appbar.Header))
@@ -230,8 +36,7 @@ exports[`Main test suite should render properly 1`] = `
       }
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="x"
         onPress={[Function]}
         size={24}
@@ -263,8 +68,7 @@ exports[`Main test suite should render properly 1`] = `
       }
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         onPress={[Function]}
         size={24}
@@ -292,7 +96,9 @@ exports[`Main test suite should render properly 1`] = `
           "color": "#9CA3AF",
         }
       }
+      onChange={[Function]}
       onChangeText={[Function]}
+      onFocus={[Function]}
       placeholder="Search"
       placeholderTextColor="#9CA3AF"
       style={
@@ -330,10 +136,9 @@ exports[`Main test suite should render properly 1`] = `
           },
         ]
       }
-      testID="showDetailsButton"
+      testID="showSettingsButton"
     >
       <Icon
-        allowFontScaling={false}
         color="#D1D5DB"
         name="filter"
         size={24}
@@ -358,7 +163,6 @@ exports[`Main test suite should render properly 1`] = `
       testID="deleteListButton"
     >
       <Icon
-        allowFontScaling={false}
         color="#D1D5DB"
         name="trash-2"
         size={24}
@@ -371,6 +175,12 @@ exports[`Main test suite should render properly 1`] = `
     horizontal={false}
     initialNumToRender={10}
     keyExtractor={[Function]}
+    maintainVisibleContentPosition={
+      Object {
+        "autoscrollToTopThreshold": 10,
+        "minIndexForVisible": 1,
+      }
+    }
     maxToRenderPerBatch={10}
     numColumns={1}
     onEndReachedThreshold={2}
@@ -382,6 +192,405 @@ exports[`Main test suite should render properly 1`] = `
         "backgroundColor": "#1F2937",
       }
     }
+    testID="itemsList"
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Fragment>
+`;
+
+exports[`Main test suite should render properly and delete list 1`] = `
+<Fragment>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="x"
+        onPress={[Function]}
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="download"
+        onPress={[Function]}
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 56,
+        },
+        Object {
+          "backgroundColor": "#1F2937",
+        },
+      ]
+    }
+  >
+    <ForwardRef(withTheme(undefined))
+      iconColor="#6B7280"
+      inputStyle={
+        Object {
+          "color": "#9CA3AF",
+        }
+      }
+      onChange={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Search"
+      placeholderTextColor="#9CA3AF"
+      style={
+        Array [
+          Object {
+            "elevation": 0,
+            "flex": 1,
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+          },
+          Object {
+            "backgroundColor": "#1F2937",
+          },
+        ]
+      }
+      value=""
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "backgroundColor": "#1F2937",
+            "borderLeftColor": "#111827",
+          },
+        ]
+      }
+      testID="showSettingsButton"
+    >
+      <Icon
+        color="#D1D5DB"
+        name="filter"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftColor": "#111827",
+          },
+        ]
+      }
+      testID="deleteListButton"
+    >
+      <Icon
+        color="#D1D5DB"
+        name="trash-2"
+        size={24}
+      />
+    </ForwardRef>
+  </Component>
+  <FlatList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maintainVisibleContentPosition={
+      Object {
+        "autoscrollToTopThreshold": 10,
+        "minIndexForVisible": 1,
+      }
+    }
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+    testID="itemsList"
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Fragment>
+`;
+
+exports[`Main test suite should render properly and showSettings 1`] = `
+<Fragment>
+  <ForwardRef(withTheme(Appbar.Header))
+    style={
+      Array [
+        Object {
+          "elevation": 0,
+          "shadowOffset": Object {
+            "height": 0,
+            "width": 0,
+          },
+          "shadowOpacity": 0,
+        },
+        Object {
+          "backgroundColor": "#111827",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="x"
+        onPress={[Function]}
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef(withTheme(Appbar.Content))
+      color="#06B6D4"
+      title="Netwatch"
+      titleStyle={
+        Object {
+          "fontSize": 18,
+        }
+      }
+    />
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="download"
+        onPress={[Function]}
+        size={24}
+      />
+    </ForwardRef>
+  </ForwardRef(withTheme(Appbar.Header))>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 56,
+        },
+        Object {
+          "backgroundColor": "#1F2937",
+        },
+      ]
+    }
+  >
+    <ForwardRef(withTheme(undefined))
+      iconColor="#6B7280"
+      inputStyle={
+        Object {
+          "color": "#9CA3AF",
+        }
+      }
+      onChange={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Search"
+      placeholderTextColor="#9CA3AF"
+      style={
+        Array [
+          Object {
+            "elevation": 0,
+            "flex": 1,
+            "shadowOffset": Object {
+              "height": 0,
+              "width": 0,
+            },
+            "shadowOpacity": 0,
+          },
+          Object {
+            "backgroundColor": "#1F2937",
+          },
+        ]
+      }
+      value=""
+    />
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "backgroundColor": "#1F2937",
+            "borderLeftColor": "#111827",
+          },
+        ]
+      }
+      testID="showSettingsButton"
+    >
+      <Icon
+        color="#D1D5DB"
+        name="filter"
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef
+      onPress={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftColor": "#111827",
+          },
+        ]
+      }
+      testID="deleteListButton"
+    >
+      <Icon
+        color="#D1D5DB"
+        name="trash-2"
+        size={24}
+      />
+    </ForwardRef>
+  </Component>
+  <FlatList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maintainVisibleContentPosition={
+      Object {
+        "autoscrollToTopThreshold": 10,
+        "minIndexForVisible": 1,
+      }
+    }
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+    testID="itemsList"
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />
