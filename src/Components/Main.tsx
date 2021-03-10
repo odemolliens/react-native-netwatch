@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect, useContext, useRef } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Share, Keyboard } from 'react-native';
+import { useState, useEffect, useContext } from 'react';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
+import Share from 'react-native-share';
 import { Appbar, Searchbar } from 'react-native-paper';
 import Item from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,13 +11,13 @@ import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
+import { csvWriter, getCSVfromArray, mergeArrays, compare } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
   onPress: Function;
   onPressClose: (value: boolean) => void;
   onPressDetail: (value: boolean) => void;
-  visible?: boolean;
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
   nRequests: NRequest[];
@@ -24,12 +25,8 @@ export interface IProps {
   maxRequests?: number;
 }
 
-const _positionFlatList = 0;
-
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
-  const refFlatList = useRef<FlatList<any>>(null);
-  const [flatListLastOffset, setFlatListLastOffset] = useState<number>(0);
   const [requests, setRequests] = useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
@@ -53,38 +50,7 @@ export const Main = (props: IProps) => {
     } else {
       setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
-
-    // TODO: Keep the same color after update for each items
-    // TODO: We can add many items during one loop -> we must set the offset to handle that
-    // TODO: What if we filtering -> scroll to 0 ?
-    if (_positionFlatList > 55) {
-      setFlatListLastOffset(_positionFlatList);
-    }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
-
-  useEffect(() => {
-    refFlatList?.current?.scrollToOffset({
-      animated: false,
-      offset: flatListLastOffset + 60 * 1,
-    });
-  }, [flatListLastOffset]);
-
-  const mergeArrays = (...arrays: Array<ILog[]>) => {
-    return [...arrays.flat()];
-  };
-
-  const compare = (a: ILog, b: ILog) => {
-    const startTimeA = a.startTime;
-    const startTimeB = b.startTime;
-
-    let comparison = 0;
-    if (startTimeA > startTimeB) {
-      comparison = 1;
-    } else if (startTimeA < startTimeB) {
-      comparison = -1;
-    }
-    return comparison;
-  };
 
   const filteredRequests = (): Array<any> =>
     requests.slice(0, props.maxRequests).filter(request => {
@@ -94,24 +60,13 @@ export const Main = (props: IProps) => {
         }
       }
       if (request instanceof RNRequest || request instanceof NRequest) {
-        if (request.type === EnumSourceType.ReactNativeRequest) {
-          if (filter === request.method || filter === EnumFilterType.All) {
-            return (
-              request.type === EnumSourceType.ReactNativeRequest &&
-              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                request.status === parseInt(searchQuery, 10) ||
-                request.method.toLowerCase() === searchQuery.toLowerCase())
-            );
-          }
-        } else {
-          if (filter === request.method || filter === EnumFilterType.All) {
-            return (
-              request.type === EnumSourceType.Nativerequest &&
-              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                request.status === parseInt(searchQuery, 10) ||
-                request.method.toLowerCase() === searchQuery.toLowerCase())
-            );
-          }
+        if (filter === request.method || filter === EnumFilterType.All) {
+          return (
+            (request.type === EnumSourceType.ReactNativeRequest || request.type === EnumSourceType.Nativerequest) &&
+            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              request.status === parseInt(searchQuery, 10) ||
+              request.method.toLowerCase() === searchQuery.toLowerCase())
+          );
         }
       }
       return false;
@@ -122,20 +77,19 @@ export const Main = (props: IProps) => {
     setRequests([]);
   };
 
-  const formatSharedMessage = (array: Array<ILog>): string => {
-    const _report = array.map(item => {
-      return Object.values(item).flat().join(';');
-    });
-    return _report.join('\n');
-  };
-
-  const onShare = async (): Promise<void> => {
+  const onShare = async () => {
+    const message = getCSVfromArray(requests);
+    if (message.length === 0) return;
     try {
-      await Share.share({
-        message: formatSharedMessage(requests),
+      const path = await csvWriter(message);
+      await Share.open({
+        title: 'Export calls to CSV',
+        url: `file://${path}`,
+        type: 'text/csv',
+        // excludedActivityTypes: []
       });
     } catch (error) {
-      Alert.alert('Error', error.message);
+      console.error(error.message);
     }
   };
 
@@ -159,28 +113,28 @@ export const Main = (props: IProps) => {
           props.onPress(_props.item);
           props.onPressDetail(true);
         }}
-        color={theme.gray800}
+        color={theme.secondaryColor}
       />
     );
   };
 
   return (
     <>
-      <Appbar.Header style={[styles.header, { backgroundColor: theme.gray900 }]}>
+      <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
         <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
           <FeatherIcon
             name="x"
-            color={theme.white}
+            color={theme.textColorOne}
             size={24}
             onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
           />
         </TouchableOpacity>
-        <Appbar.Content color={theme.blue500} title="Netwatch" titleStyle={{ fontSize: 18 }} />
+        <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
         <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon name="download" color={theme.white} size={24} onPress={onShare} />
+          <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={onShare} />
         </TouchableOpacity>
       </Appbar.Header>
-      <View style={[styles.options, { backgroundColor: theme.gray800 }]}>
+      <View style={[styles.options, { backgroundColor: theme.secondaryColor }]}>
         <Searchbar
           onFocus={() => {
             setSettingsVisible(false);
@@ -188,22 +142,22 @@ export const Main = (props: IProps) => {
           onChange={() => {
             setSettingsVisible(false);
           }}
-          placeholderTextColor={theme.gray400}
-          iconColor={theme.gray500}
-          inputStyle={{ color: theme.gray400 }}
-          style={[styles.searchBar, { backgroundColor: theme.gray800 }]}
+          placeholderTextColor={theme.textColorThree}
+          iconColor={theme.textColorFour}
+          inputStyle={{ color: theme.textColorThree }}
+          style={[styles.searchBar, { backgroundColor: theme.secondaryColor }]}
           placeholder={'Search'}
           onChangeText={onChangeSearch}
           value={searchQuery}
         />
 
         <TouchableOpacity
-          testID="showDetailsButton"
+          testID="showSettingsButton"
           style={[
             styles.button,
             {
-              borderLeftColor: theme.gray900,
-              backgroundColor: settingsVisible ? theme.gray900 : theme.gray800,
+              borderLeftColor: theme.secondaryDarkColor,
+              backgroundColor: settingsVisible ? theme.secondaryDarkColor : theme.secondaryColor,
             },
           ]}
           onPress={() => {
@@ -213,17 +167,19 @@ export const Main = (props: IProps) => {
         >
           <FeatherIcon
             name="filter"
-            color={filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.blue500 : theme.gray300}
+            color={
+              filter !== EnumFilterType.All || source !== EnumSourceType.All ? theme.primaryColor : theme.textColorTwo
+            }
             size={24}
           />
         </TouchableOpacity>
 
         <TouchableOpacity
           testID="deleteListButton"
-          style={[styles.button, { borderLeftColor: theme.gray900 }]}
+          style={[styles.button, { borderLeftColor: theme.secondaryDarkColor }]}
           onPress={onDelete}
         >
-          <FeatherIcon name="trash-2" color={theme.gray300} size={24} />
+          <FeatherIcon name="trash-2" color={theme.textColorTwo} size={24} />
         </TouchableOpacity>
       </View>
 
@@ -231,12 +187,12 @@ export const Main = (props: IProps) => {
         <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
         <FlatList
-          ref={refFlatList}
+          testID="itemsList"
           maintainVisibleContentPosition={{
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,
           }}
-          style={{ backgroundColor: theme.gray800 }}
+          style={{ backgroundColor: theme.secondaryColor }}
           renderItem={_renderItems}
           keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
           data={filteredRequests()}

@@ -4,6 +4,10 @@ import { Main, IProps } from '../Main';
 import ReduxAction from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 describe('Main test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
@@ -11,6 +15,17 @@ describe('Main test suite', () => {
   const onPressClose = jest.fn();
   const onPressDetail = jest.fn();
   const clearAll = jest.fn();
+  const setRequests = jest.fn();
+  const setSearchQuery = jest.fn();
+  const setSource = jest.fn();
+  const setFilter = jest.fn();
+  const setSettingsVisible = jest.fn();
+  const setDeleteVisible = jest.fn();
+
+  jest.mock('react', () => ({
+    ...jest.requireActual('react'),
+    useState: jest.fn(),
+  }));
 
   it('should render properly', () => {
     givenProps();
@@ -18,13 +33,26 @@ describe('Main test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should render properly & Delete', () => {
+  it('should render properly and showSettings', () => {
+    const useStateMock: any = (source: any) => [source, setSettingsVisible];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps();
     givenComponent();
     expect(component).toMatchSnapshot();
+    whenPressingButton('showSettingsButton');
+    expect(setSettingsVisible).toHaveBeenCalledTimes(1);
+    expect(setSettingsVisible).toHaveBeenCalledWith(true);
+  });
 
-    whenPressingButton('deleteListButton');
-    expect(component.find(`[testID="MainScreen"]`).prop('ReduxAction')).toEqual([]);
+  it('should render properly and delete list', () => {
+    const useStateMock: any = (source: any) => [source, setDeleteVisible];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps();
+    givenComponent();
+    expect(component).toMatchSnapshot();
+    whenPressingButton('showSettingsButton');
+    expect(setDeleteVisible).toHaveBeenCalledTimes(1);
+    expect(setDeleteVisible).toHaveBeenCalledWith(true);
   });
 
   // UTILITIES
@@ -39,7 +67,7 @@ describe('Main test suite', () => {
 
   function givenProps(visible: boolean = true) {
     props = {
-      testID: 'MainScreen',
+      testId: 'MainScreen',
       onPress,
       onPressClose,
       onPressDetail,
@@ -47,7 +75,7 @@ describe('Main test suite', () => {
       rnRequests: mockRequests,
       nRequests: mockRequests,
       clearAll,
-      visible,
+      maxRequests: 50,
     };
   }
 
@@ -56,13 +84,13 @@ describe('Main test suite', () => {
       _id: 73,
       startTime: 100,
       type: 'REDUX',
-      action: { type: '__ERROR:UNDEFINED__', action: '' },
+      action: { type: '__ERROR:UNDEFINED__', payload: '' },
     },
   ];
 
   const mockRequests: RNRequest[] = [
     {
-      _id: 73,
+      _id: 74,
       dataSent: 'dataSent',
       endTime: 1613477575757,
       method: 'GET',

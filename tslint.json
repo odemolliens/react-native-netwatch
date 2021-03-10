@@ -56,7 +56,6 @@
       }
     ],
     "no-empty": false,
-    "arrow-parens": false,
     "semicolon": [
       true,
       "always",

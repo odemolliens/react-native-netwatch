@@ -7,8 +7,8 @@ interface IAction {
 
 export class ReduxAction implements ILog {
   _id: number = -1;
-  startTime: number = Date.now();
   type: LogType = 'REDUX';
+  startTime: number = Date.now();
   action: IAction = { type: '__ERROR:UNDEFINED__', payload: '' };
 
   constructor(attributes?: any) {

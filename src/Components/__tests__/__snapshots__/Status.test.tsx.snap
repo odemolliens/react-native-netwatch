@@ -14,9 +14,7 @@ exports[`Status test suite should render properly redux action 1`] = `
     ]
   }
 >
-  <Text
-    testID="statusMethod"
-  >
+  <Text>
     REDUX
   </Text>
   <Component
@@ -63,9 +61,7 @@ exports[`Status test suite should render properly request 1`] = `
     ]
   }
 >
-  <Text
-    testID="statusMethod"
-  />
+  <Text />
   <Component
     style={
       Array [
@@ -85,11 +81,15 @@ exports[`Status test suite should render properly request 1`] = `
   >
     <Text
       style={
-        Object {
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
       }
-      testID="statusCode-500"
     >
       500
     </Text>
@@ -111,9 +111,7 @@ exports[`Status test suite should render properly request with method 1`] = `
     ]
   }
 >
-  <Text
-    testID="statusMethod"
-  >
+  <Text>
     GET
   </Text>
   <Component
@@ -135,11 +133,15 @@ exports[`Status test suite should render properly request with method 1`] = `
   >
     <Text
       style={
-        Object {
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
       }
-      testID="statusCode-200"
     >
       200
     </Text>
@@ -161,9 +163,7 @@ exports[`Status test suite should render properly request with method post and w
     ]
   }
 >
-  <Text
-    testID="statusMethod"
-  >
+  <Text>
     POST
   </Text>
   <Component
@@ -185,11 +185,15 @@ exports[`Status test suite should render properly request with method post and w
   >
     <Text
       style={
-        Object {
-          "textAlign": "center",
-        }
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
       }
-      testID="statusCode-302"
     >
       302
     </Text>

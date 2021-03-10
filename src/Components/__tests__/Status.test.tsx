@@ -3,10 +3,21 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Status, IProps } from '../Status';
 import ReduxAction from '../../Core/Objects/ReduxAction';
 import RNRequest from '../../Core/Objects/RNRequest';
+import { render, waitFor } from '@testing-library/react-native';
 
 describe('Status test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
+
+  it('should set showDetails at true', async () => {
+    givenProps(mockAction);
+    const { getByTestId } = render(<Status {...props} />);
+
+    const screen = await waitFor(() => getByTestId('statusCodeColor'));
+    console.log(screen);
+    // fireEvent(screen, 'onPressDetail', true);
+    expect(screen).toMatchSnapshot();
+  });
 
   it('should render properly redux action', () => {
     givenProps(mockAction);

@@ -48,8 +48,7 @@ exports[`Details test suite should render Redux action properly & press copybutt
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -82,8 +81,7 @@ exports[`Details test suite should render Redux action properly & press copybutt
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -256,6 +254,16 @@ exports[`Details test suite should render Redux action properly & press copybutt
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -307,8 +315,7 @@ exports[`Details test suite should render Redux action properly & press sharebut
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -341,8 +348,7 @@ exports[`Details test suite should render Redux action properly & press sharebut
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -515,6 +521,16 @@ exports[`Details test suite should render Redux action properly & press sharebut
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -566,8 +582,7 @@ exports[`Details test suite should render Redux action properly 1`] = `
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -600,8 +615,7 @@ exports[`Details test suite should render Redux action properly 1`] = `
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -774,6 +788,16 @@ exports[`Details test suite should render Redux action properly 1`] = `
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -825,8 +849,7 @@ exports[`Details test suite should render Request properly 1`] = `
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -859,8 +882,7 @@ exports[`Details test suite should render Request properly 1`] = `
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -932,11 +954,15 @@ exports[`Details test suite should render Request properly 1`] = `
         >
           <Text
             style={
-              Object {
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#F9FAFB",
+                },
+              ]
             }
-            testID="statusCode-200"
           >
             200
           </Text>
@@ -989,7 +1015,7 @@ exports[`Details test suite should render Request properly 1`] = `
           Started at : 
         </Text>
         <Text>
-          16/02/2021 - 12:12:54
+          16/02/2021 - 12:12:54   ( 1015ms )
         </Text>
       </Component>
       <Subheading
@@ -1149,23 +1175,6 @@ exports[`Details test suite should render Request properly 1`] = `
           ]
         }
       >
-        Request Headers
-      </Subheading>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
         Request Data
       </Subheading>
       <Component
@@ -1181,23 +1190,6 @@ exports[`Details test suite should render Request properly 1`] = `
           dataSent
         </Text>
       </Component>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Response Headers
-      </Subheading>
       <Subheading
         style={
           Array [
@@ -1272,6 +1264,16 @@ exports[`Details test suite should render Request properly 1`] = `
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -1323,8 +1325,7 @@ exports[`Details test suite should render properly with request with headers 1`]
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -1357,8 +1358,7 @@ exports[`Details test suite should render properly with request with headers 1`]
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -1430,11 +1430,15 @@ exports[`Details test suite should render properly with request with headers 1`]
         >
           <Text
             style={
-              Object {
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#F9FAFB",
+                },
+              ]
             }
-            testID="statusCode-200"
           >
             200
           </Text>
@@ -1487,7 +1491,7 @@ exports[`Details test suite should render properly with request with headers 1`]
           Started at : 
         </Text>
         <Text>
-          16/02/2021 - 12:12:54
+          16/02/2021 - 12:12:54   ( 1015ms )
         </Text>
       </Component>
       <Subheading
@@ -2000,6 +2004,16 @@ exports[`Details test suite should render properly with request with headers 1`]
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -2051,8 +2065,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -2085,8 +2098,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -2158,11 +2170,15 @@ exports[`Details test suite should render properly with request without headers 
         >
           <Text
             style={
-              Object {
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#F9FAFB",
+                },
+              ]
             }
-            testID="statusCode-200"
           >
             200
           </Text>
@@ -2215,7 +2231,7 @@ exports[`Details test suite should render properly with request without headers 
           Started at : 
         </Text>
         <Text>
-          16/02/2021 - 12:12:54
+          16/02/2021 - 12:12:54   ( 1015ms )
         </Text>
       </Component>
       <Subheading
@@ -2375,23 +2391,6 @@ exports[`Details test suite should render properly with request without headers 
           ]
         }
       >
-        Request Headers
-      </Subheading>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
         Request Data
       </Subheading>
       <Component
@@ -2407,23 +2406,6 @@ exports[`Details test suite should render properly with request without headers 
           dataSent
         </Text>
       </Component>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Response Headers
-      </Subheading>
       <Subheading
         style={
           Array [
@@ -2498,6 +2480,16 @@ exports[`Details test suite should render properly with request without headers 
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -2549,8 +2541,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -2583,8 +2574,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -2656,11 +2646,15 @@ exports[`Details test suite should render properly with request without headers 
         >
           <Text
             style={
-              Object {
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#F9FAFB",
+                },
+              ]
             }
-            testID="statusCode-200"
           >
             200
           </Text>
@@ -2713,7 +2707,7 @@ exports[`Details test suite should render properly with request without headers 
           Started at : 
         </Text>
         <Text>
-          16/02/2021 - 12:12:54
+          16/02/2021 - 12:12:54   ( 1015ms )
         </Text>
       </Component>
       <Subheading
@@ -2873,23 +2867,6 @@ exports[`Details test suite should render properly with request without headers 
           ]
         }
       >
-        Request Headers
-      </Subheading>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
         Request Data
       </Subheading>
       <Component
@@ -2905,23 +2882,6 @@ exports[`Details test suite should render properly with request without headers 
           dataSent
         </Text>
       </Component>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Response Headers
-      </Subheading>
       <Subheading
         style={
           Array [
@@ -2996,6 +2956,16 @@ exports[`Details test suite should render properly with request without headers 
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;
 
@@ -3047,8 +3017,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonBackToMainScreen"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="arrow-left"
         size={24}
       />
@@ -3081,8 +3050,7 @@ exports[`Details test suite should render properly with request without headers 
       testID="buttonShare"
     >
       <Icon
-        allowFontScaling={false}
-        color="#FFF"
+        color="#F9FAFB"
         name="download"
         size={24}
       />
@@ -3154,11 +3122,15 @@ exports[`Details test suite should render properly with request without headers 
         >
           <Text
             style={
-              Object {
-                "textAlign": "center",
-              }
+              Array [
+                Object {
+                  "textAlign": "center",
+                },
+                Object {
+                  "color": "#F9FAFB",
+                },
+              ]
             }
-            testID="statusCode-200"
           >
             200
           </Text>
@@ -3211,7 +3183,7 @@ exports[`Details test suite should render properly with request without headers 
           Started at : 
         </Text>
         <Text>
-          16/02/2021 - 12:12:54
+          16/02/2021 - 12:12:54   ( 1015ms )
         </Text>
       </Component>
       <Subheading
@@ -3371,23 +3343,6 @@ exports[`Details test suite should render properly with request without headers 
           ]
         }
       >
-        Request Headers
-      </Subheading>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
         Request Data
       </Subheading>
       <Component
@@ -3403,23 +3358,6 @@ exports[`Details test suite should render properly with request without headers 
           dataSent
         </Text>
       </Component>
-      <Subheading
-        style={
-          Array [
-            Object {
-              "marginBottom": 10,
-              "paddingHorizontal": 16,
-              "paddingVertical": 8,
-            },
-            Object {
-              "backgroundColor": "#374151",
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Response Headers
-      </Subheading>
       <Subheading
         style={
           Array [
@@ -3494,5 +3432,15 @@ exports[`Details test suite should render properly with request without headers 
       </Component>
     </Component>
   </Component>
+  <ForwardRef(withTheme(Snackbar))
+    duration={3000}
+    onDismiss={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#F9FAFB",
+      }
+    }
+    visible={false}
+  />
 </Component>
 `;

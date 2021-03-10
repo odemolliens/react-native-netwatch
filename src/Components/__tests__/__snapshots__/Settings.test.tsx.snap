@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Settings test suite should render properly All Item & press all radio 1`] = `
+exports[`Settings test suite should render properly and DELETE filter radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -23,293 +23,301 @@ exports[`Settings test suite should render properly All Item & press all radio 1
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="ALL"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="GET"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
-        value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -346,7 +354,7 @@ exports[`Settings test suite should render properly All Item & press all radio 1
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & all button 1`] = `
+exports[`Settings test suite should render properly and GET filter radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -369,293 +377,301 @@ exports[`Settings test suite should render properly Nativerequest Item & all but
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="GET"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
-        value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -692,7 +708,7 @@ exports[`Settings test suite should render properly Nativerequest Item & all but
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & delete button 1`] = `
+exports[`Settings test suite should render properly and POST filter radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -715,293 +731,301 @@ exports[`Settings test suite should render properly Nativerequest Item & delete 
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="PUT"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
-        value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="DELETE"
-      />
-    </RadioButton.Group>
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -1038,7 +1062,7 @@ exports[`Settings test suite should render properly Nativerequest Item & delete 
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & get button 1`] = `
+exports[`Settings test suite should render properly and PUT filter radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -1061,293 +1085,301 @@ exports[`Settings test suite should render properly Nativerequest Item & get but
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="ALL"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
-        value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -1384,7 +1416,7 @@ exports[`Settings test suite should render properly Nativerequest Item & get but
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & post button 1`] = `
+exports[`Settings test suite should render properly and all filter radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -1407,293 +1439,301 @@ exports[`Settings test suite should render properly Nativerequest Item & post bu
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="DELETE"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -1730,7 +1770,7 @@ exports[`Settings test suite should render properly Nativerequest Item & post bu
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & press Nativerequest filter 1`] = `
+exports[`Settings test suite should render properly and all source radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -1753,293 +1793,301 @@ exports[`Settings test suite should render properly Nativerequest Item & press N
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
-        value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="GET"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -2076,7 +2124,7 @@ exports[`Settings test suite should render properly Nativerequest Item & press N
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & put button 1`] = `
+exports[`Settings test suite should render properly and native request source radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -2099,293 +2147,301 @@ exports[`Settings test suite should render properly Nativerequest Item & put but
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="POST"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -2422,7 +2478,7 @@ exports[`Settings test suite should render properly Nativerequest Item & put but
 </Component>
 `;
 
-exports[`Settings test suite should render properly Nativerequest Item & reset button 1`] = `
+exports[`Settings test suite should render properly and react native request source radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -2445,293 +2501,301 @@ exports[`Settings test suite should render properly Nativerequest Item & reset b
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="NR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
-        value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="PUT"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -2768,7 +2832,7 @@ exports[`Settings test suite should render properly Nativerequest Item & reset b
 </Component>
 `;
 
-exports[`Settings test suite should render properly ReactNativeRequest Item & press ReactNativeRequest filter 1`] = `
+exports[`Settings test suite should render properly and redux source radio pressed 1`] = `
 <Component
   style={
     Array [
@@ -2791,293 +2855,144 @@ exports[`Settings test suite should render properly ReactNativeRequest Item & pr
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="RNR"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
-        value="NR"
-      />
-    </RadioButton.Group>
-    <Title
-      style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      Type:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="GET"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="ALL"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioAllMethod"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="GET"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioGet"
-        uncheckedColor="#06B6D4"
-        value="GET"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="POST"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioPost"
-        uncheckedColor="#06B6D4"
-        value="POST"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="PUT"
-        labelStyle={
-          Array [
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
           }
-        }
-        testID="RadioPut"
-        uncheckedColor="#06B6D4"
-        value="PUT"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="DELETE"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
           }
-        }
-        testID="RadioDelete"
-        uncheckedColor="#06B6D4"
-        value="DELETE"
-      />
-    </RadioButton.Group>
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
@@ -3114,7 +3029,7 @@ exports[`Settings test suite should render properly ReactNativeRequest Item & pr
 </Component>
 `;
 
-exports[`Settings test suite should render properly Redux Item & press Redux filter 1`] = `
+exports[`Settings test suite should render properly and reset button pressed 1`] = `
 <Component
   style={
     Array [
@@ -3137,136 +3052,301 @@ exports[`Settings test suite should render properly Redux Item & press Redux fil
       }
     }
   >
-    <Title
+    <Component
       style={
-        Array [
-          Object {
-            "fontSize": 16,
-            "marginBottom": 10,
-            "marginTop": 24,
-            "paddingLeft": 24,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
+        Object {
+          "flex": 1,
+        }
       }
     >
-      Display:
-    </Title>
-    <RadioButton.Group
-      onValueChange={[Function]}
-      value="REDUX"
-    >
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="All Requests and Actions"
-        labelStyle={
+      <Title
+        style={
           Array [
             Object {
-              "fontSize": 14,
-              "marginLeft": 8,
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
             },
             Object {
               "color": "#F9FAFB",
             },
           ]
         }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioAllSource"
-        uncheckedColor="#06B6D4"
-        value="ALL"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Redux Action"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="checked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRedux"
-        uncheckedColor="#06B6D4"
-        value="REDUX"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="React Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioRNR"
-        uncheckedColor="#06B6D4"
-        value="RNR"
-      />
-      <ForwardRef(withTheme(RadioButton.Item))
-        color="#06B6D4"
-        label="Native Requests"
-        labelStyle={
-          Array [
-            Object {
-              "fontSize": 14,
-              "marginLeft": 8,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-        mode="android"
-        onPress={[Function]}
-        status="unchecked"
-        style={
-          Object {
-            "flexDirection": "row-reverse",
-            "height": 42,
-          }
-        }
-        testID="RadioNR"
-        uncheckedColor="#06B6D4"
+      >
+        Display:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
         value="NR"
-      />
-    </RadioButton.Group>
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="All Requests and Actions"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllSource"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Redux Action"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRedux"
+          uncheckedColor="#06B6D4"
+          value="REDUX"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="React Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioRNR"
+          uncheckedColor="#06B6D4"
+          value="RNR"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="Native Requests"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioNR"
+          uncheckedColor="#06B6D4"
+          value="NR"
+        />
+      </RadioButton.Group>
+      <Title
+        style={
+          Array [
+            Object {
+              "fontSize": 16,
+              "marginBottom": 10,
+              "marginTop": 24,
+              "paddingLeft": 24,
+            },
+            Object {
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Type:
+      </Title>
+      <RadioButton.Group
+        onValueChange={[Function]}
+        value="PUT"
+      >
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="ALL"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioAllMethod"
+          uncheckedColor="#06B6D4"
+          value="ALL"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="GET"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioGet"
+          uncheckedColor="#06B6D4"
+          value="GET"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="POST"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPost"
+          uncheckedColor="#06B6D4"
+          value="POST"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="PUT"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="checked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioPut"
+          uncheckedColor="#06B6D4"
+          value="PUT"
+        />
+        <ForwardRef(withTheme(RadioButton.Item))
+          color="#06B6D4"
+          label="DELETE"
+          labelStyle={
+            Array [
+              Object {
+                "fontSize": 14,
+                "marginLeft": 8,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+          mode="android"
+          onPress={[Function]}
+          status="unchecked"
+          style={
+            Object {
+              "flexDirection": "row-reverse",
+              "height": 42,
+            }
+          }
+          testID="RadioDelete"
+          uncheckedColor="#06B6D4"
+          value="DELETE"
+        />
+      </RadioButton.Group>
+    </Component>
   </Component>
   <Component>
     <ForwardRef
