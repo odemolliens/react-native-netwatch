@@ -329,6 +329,11 @@ export const Details: React.FC<IProps> = props => {
         onDismiss={() => setSnackBarVisibility(false)}
         duration={3000}
         style={{ backgroundColor: theme.textColorOne }}
+        theme={{
+          colors: {
+            surface: theme.textColorFour,
+          },
+        }}
       >
         {snackBarMessage}
       </Snackbar>

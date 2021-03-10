@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
-import { Provider } from 'react-native-paper';
 import {
   reduxLoggerMiddleware,
   setCallback as setReduxActionsCallback,
@@ -145,29 +144,27 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [visible]);
 
   return (
-    <Provider>
-      <ThemeContext.Provider value={_theme}>
-        <SafeAreaView>
-          <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
-            {showDetails ? (
-              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-            ) : (
-              <Main
-                maxRequests={props.maxRequests}
-                testId="mainScreen"
-                onPressClose={() => setVisible(false)}
-                onPressDetail={setShowDetails}
-                onPress={setItem}
-                reduxActions={reduxActions}
-                rnRequests={rnRequests}
-                nRequests={nRequests}
-                clearAll={clearAll}
-              />
-            )}
-          </Modal>
-        </SafeAreaView>
-      </ThemeContext.Provider>
-    </Provider>
+    <ThemeContext.Provider value={_theme}>
+      <SafeAreaView>
+        <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
+          {showDetails ? (
+            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+          ) : (
+            <Main
+              maxRequests={props.maxRequests}
+              testId="mainScreen"
+              onPressClose={() => setVisible(false)}
+              onPressDetail={setShowDetails}
+              onPress={setItem}
+              reduxActions={reduxActions}
+              rnRequests={rnRequests}
+              nRequests={nRequests}
+              clearAll={clearAll}
+            />
+          )}
+        </Modal>
+      </SafeAreaView>
+    </ThemeContext.Provider>
   );
 };
 
