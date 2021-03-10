@@ -3,7 +3,6 @@ import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
 import { Dispatch } from 'redux';
-import { Provider as PaperProvider } from 'react-native-paper';
 import { Text, TouchableHighlight, StyleSheet, View, NativeModules } from 'react-native';
 import { makeRequestInContinue } from './utils/requestGenerator';
 
@@ -17,46 +16,44 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <PaperProvider>
-        <ConnectedComponent
-          enabled={netwatchEnabled}
-          visible={netwatchVisible}
-          onPressClose={() => setNetwatchVisible(false)}
-          onShake={() => setNetwatchVisible(true)}
-          theme="dark"
-        />
-        <View style={styles.container}>
-          <Text style={styles.title}>react-native-netwatch</Text>
-          <TouchableHighlight
-            style={styles.openButton}
-            onPress={() => {
-              setNetwatchVisible(!netwatchVisible);
-            }}
-            testID="buttonDisplayNetwatch"
-          >
-            <Text style={styles.textStyle}>Display Netwatch</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.enableButton}
-            onPress={() => {
-              setNetwatchEnabled(!netwatchEnabled);
-            }}
-            testID="buttonDisabledNetwatch"
-          >
-            <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.enableButton}
-            onPress={() => {
-              ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
-            }}
-            testID="buttonSendNativeRequest"
-          >
-            <Text style={styles.textStyle}>Send a Native request</Text>
-          </TouchableHighlight>
-          <ConnectedButton />
-        </View>
-      </PaperProvider>
+      <ConnectedComponent
+        enabled={netwatchEnabled}
+        visible={netwatchVisible}
+        onPressClose={() => setNetwatchVisible(false)}
+        onShake={() => setNetwatchVisible(true)}
+        theme="dark"
+      />
+      <View style={styles.container}>
+        <Text style={styles.title}>react-native-netwatch</Text>
+        <TouchableHighlight
+          style={styles.openButton}
+          onPress={() => {
+            setNetwatchVisible(!netwatchVisible);
+          }}
+          testID="buttonDisplayNetwatch"
+        >
+          <Text style={styles.textStyle}>Display Netwatch</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.enableButton}
+          onPress={() => {
+            setNetwatchEnabled(!netwatchEnabled);
+          }}
+          testID="buttonDisabledNetwatch"
+        >
+          <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.enableButton}
+          onPress={() => {
+            ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
+          }}
+          testID="buttonSendNativeRequest"
+        >
+          <Text style={styles.textStyle}>Send a Native request</Text>
+        </TouchableHighlight>
+        <ConnectedButton />
+      </View>
     </Provider>
   );
 };
