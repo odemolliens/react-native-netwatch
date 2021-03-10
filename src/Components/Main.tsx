@@ -60,24 +60,13 @@ export const Main = (props: IProps) => {
         }
       }
       if (request instanceof RNRequest || request instanceof NRequest) {
-        if (request.type === EnumSourceType.ReactNativeRequest) {
-          if (filter === request.method || filter === EnumFilterType.All) {
-            return (
-              request.type === EnumSourceType.ReactNativeRequest &&
-              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                request.status === parseInt(searchQuery, 10) ||
-                request.method.toLowerCase() === searchQuery.toLowerCase())
-            );
-          }
-        } else {
-          if (filter === request.method || filter === EnumFilterType.All) {
-            return (
-              request.type === EnumSourceType.Nativerequest &&
-              (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                request.status === parseInt(searchQuery, 10) ||
-                request.method.toLowerCase() === searchQuery.toLowerCase())
-            );
-          }
+        if (filter === request.method || filter === EnumFilterType.All) {
+          return (
+            (request.type === EnumSourceType.ReactNativeRequest || request.type === EnumSourceType.Nativerequest) &&
+            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              request.status === parseInt(searchQuery, 10) ||
+              request.method.toLowerCase() === searchQuery.toLowerCase())
+          );
         }
       }
       return false;
