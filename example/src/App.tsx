@@ -18,13 +18,19 @@ const App = () => {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} onPressClose={setNetwatchVisible} />
+        <ConnectedComponent
+          enabled={netwatchEnabled}
+          visible={netwatchVisible}
+          onPressClose={() => setNetwatchVisible(false)}
+          onShake={() => setNetwatchVisible(true)}
+          theme="dark"
+        />
         <View style={styles.container}>
           <Text style={styles.title}>react-native-netwatch</Text>
           <TouchableHighlight
             style={styles.openButton}
             onPress={() => {
-              setNetwatchVisible(true);
+              setNetwatchVisible(!netwatchVisible);
             }}
             testID="buttonDisplayNetwatch"
           >
@@ -118,6 +124,6 @@ if (__DEV__) {
   !isStarted &&
     setTimeout(() => {
       makeRequestInContinue();
-    }, 2000);
+    }, 500);
   isStarted = true;
 }

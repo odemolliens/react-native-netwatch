@@ -26,10 +26,10 @@ export const Settings = (props: IProps) => {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.gray900 }]}>
+    <View style={[styles.container, { backgroundColor: theme.secondaryDarkColor }]}>
       <ScrollView style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <Title style={[styles.title, { color: theme.gray50 }]}>Display:</Title>
+          <Title style={[styles.title, { color: theme.textColorOne }]}>Display:</Title>
           <RadioButton.Group onValueChange={value => props.onSetSource(value)} value={props.source}>
             <RadioButton.Item
               value={EnumSourceType.All}
@@ -39,9 +39,9 @@ export const Settings = (props: IProps) => {
               label="All Requests and Actions"
               mode="android"
               style={styles.radioButton}
-              labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
-              color={theme.blue500}
-              uncheckedColor={theme.blue500}
+              labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
+              color={theme.primaryColor}
+              uncheckedColor={theme.primaryColor}
             />
 
             <RadioButton.Item
@@ -52,9 +52,9 @@ export const Settings = (props: IProps) => {
               label="Redux Action"
               mode="android"
               style={styles.radioButton}
-              labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
-              color={theme.blue500}
-              uncheckedColor={theme.blue500}
+              labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
+              color={theme.primaryColor}
+              uncheckedColor={theme.primaryColor}
             />
 
             <RadioButton.Item
@@ -63,11 +63,11 @@ export const Settings = (props: IProps) => {
               onPress={() => setCheckedSource(EnumSourceType.ReactNativeRequest)}
               testID={'RadioRNR'}
               label="React Native Requests"
-              labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
+              labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
               mode="android"
               style={styles.radioButton}
-              color={theme.blue500}
-              uncheckedColor={theme.blue500}
+              color={theme.primaryColor}
+              uncheckedColor={theme.primaryColor}
             />
 
             <RadioButton.Item
@@ -76,17 +76,17 @@ export const Settings = (props: IProps) => {
               onPress={() => setCheckedSource(EnumSourceType.Nativerequest)}
               testID={'RadioNR'}
               label="Native Requests"
-              labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
+              labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
               mode="android"
               style={styles.radioButton}
-              color={theme.blue500}
-              uncheckedColor={theme.blue500}
+              color={theme.primaryColor}
+              uncheckedColor={theme.primaryColor}
             />
           </RadioButton.Group>
 
           {!disabledFilter && (
             <>
-              <Title style={[styles.title, { color: theme.gray50 }]}>Type:</Title>
+              <Title style={[styles.title, { color: theme.textColorOne }]}>Type:</Title>
               <RadioButton.Group
                 onValueChange={value => props.onSetFilter(value as EnumFilterType)}
                 value={props.filter}
@@ -99,9 +99,9 @@ export const Settings = (props: IProps) => {
                   label="ALL"
                   mode="android"
                   style={styles.radioButton}
-                  labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
-                  color={theme.blue500}
-                  uncheckedColor={theme.blue500}
+                  labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
+                  color={theme.primaryColor}
+                  uncheckedColor={theme.primaryColor}
                 />
 
                 <RadioButton.Item
@@ -112,9 +112,9 @@ export const Settings = (props: IProps) => {
                   label="GET"
                   mode="android"
                   style={styles.radioButton}
-                  labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
-                  color={theme.blue500}
-                  uncheckedColor={theme.blue500}
+                  labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
+                  color={theme.primaryColor}
+                  uncheckedColor={theme.primaryColor}
                 />
 
                 <RadioButton.Item
@@ -123,11 +123,11 @@ export const Settings = (props: IProps) => {
                   onPress={() => setCheckedFilter(EnumFilterType.Post)}
                   testID={'RadioPost'}
                   label="POST"
-                  labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
+                  labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
                   mode="android"
                   style={styles.radioButton}
-                  color={theme.blue500}
-                  uncheckedColor={theme.blue500}
+                  color={theme.primaryColor}
+                  uncheckedColor={theme.primaryColor}
                 />
 
                 <RadioButton.Item
@@ -136,11 +136,11 @@ export const Settings = (props: IProps) => {
                   onPress={() => setCheckedFilter(EnumFilterType.Put)}
                   testID={'RadioPut'}
                   label="PUT"
-                  labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
+                  labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
                   mode="android"
                   style={styles.radioButton}
-                  color={theme.blue500}
-                  uncheckedColor={theme.blue500}
+                  color={theme.primaryColor}
+                  uncheckedColor={theme.primaryColor}
                 />
 
                 <RadioButton.Item
@@ -149,11 +149,11 @@ export const Settings = (props: IProps) => {
                   onPress={() => setCheckedFilter(EnumFilterType.Delete)}
                   testID={'RadioDelete'}
                   label="DELETE"
-                  labelStyle={[styles.radioButtonLabel, { color: theme.gray50 }]}
+                  labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
                   mode="android"
                   style={styles.radioButton}
-                  color={theme.blue500}
-                  uncheckedColor={theme.blue500}
+                  color={theme.primaryColor}
+                  uncheckedColor={theme.primaryColor}
                 />
               </RadioButton.Group>
             </>
@@ -163,10 +163,10 @@ export const Settings = (props: IProps) => {
       <View>
         <TouchableOpacity
           testID={'ResetButton'}
-          style={[styles.applyFilterButton, { backgroundColor: theme.blue500 }]}
+          style={[styles.applyFilterButton, { backgroundColor: theme.primaryColor }]}
           onPress={resetFilters}
         >
-          <Title style={[{ color: theme.gray900 }]}>Reset filters</Title>
+          <Title style={[{ color: theme.secondaryDarkColor }]}>Reset filters</Title>
         </TouchableOpacity>
       </View>
     </View>

@@ -23,7 +23,8 @@
   "include": [
     "src/**/*",
     "declarations.d.ts",
-    "libs.d.ts"
+    "libs.d.ts",
+    "react-native.config.js"
   ],
   "exclude": ["node_modules", "**/__tests__/*", "coverage", "babel.config.js"]
 }

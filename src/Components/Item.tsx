@@ -37,14 +37,14 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   return (
     <TouchableOpacity
       onPress={() => props.onPress()}
-      style={[styles.container, { backgroundColor: theme.gray700 }, { backgroundColor: props.color }]}
+      style={[styles.container, { backgroundColor: theme.secondaryLightColor }, { backgroundColor: props.color }]}
       testID={`itemTouchable-${props.item._id}`}
     >
       <Status item={props.item} />
       <View style={styles.main}>
         <View style={styles.line}>
           <TextSecondaryColor numberOfLines={1}>{_line1}</TextSecondaryColor>
-          <TextSecondaryColor style={[styles.time, { color: theme.gray400 }]}>
+          <TextSecondaryColor style={[styles.time, { color: theme.textColorThree }]}>
             {getTime(props.item.startTime)}
           </TextSecondaryColor>
         </View>

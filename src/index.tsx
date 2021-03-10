@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter } from 'react-native';
+import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import { Provider } from 'react-native-paper';
@@ -17,16 +17,18 @@ import { NRequest } from './Core/Objects/NRequest';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
-  onPressClose: (visible: boolean) => void;
-  visible?: boolean;
+  onPressClose: () => void;
+  onShake?: () => void;
+  visible: boolean;
   enabled?: boolean;
+  shake?: boolean;
   maxRequests?: number;
+  theme?: string;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
 
 const { RNNetwatch } = NativeModules;
-const MAX_REQUESTS: number = 50;
 let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
 
@@ -34,11 +36,35 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
-  const [showDetails, setShowDetails] = useState(false);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const [item, setItem] = useState(new ReduxAction());
+  const [visible, setVisible] = useState(false);
+
+  const colorScheme = props.theme ? props.theme : useColorScheme();
+  // At this time, if it's not light, that will be dark. No other possibility
+  const _theme = colorScheme === 'light' ? themes.light : themes.dark;
+
+  useEffect(() => {
+    setVisible(props.visible);
+  }, [props.visible]);
+
+  const handleShake = () => {
+    if (props.shake && props.onShake) props.onShake();
+  };
+
+  useEffect(() => {
+    DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    return () => {
+      DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
+    };
+  }, [handleShake]);
+
+  const handleBack = () => {
+    showDetails ? setShowDetails(false) : props.onPressClose();
+  };
 
   const startNativeLoop = () => {
-    if (!nativeLoopStarted) {
+    if (props.enabled && !nativeLoopStarted) {
       nativeLoopStarted = true;
       nativeLoop = setInterval(() => {
         getNativeRequests();
@@ -108,7 +134,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       startNativeLoop();
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
-      setReduxMaxActions(props.maxRequests || MAX_REQUESTS);
+      setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
     }
   }, [props.enabled]);
@@ -117,33 +143,39 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     RNNetwatch.startNetwatch();
     !props.visible ? stopNativeLoop() : startNativeLoop();
   }, [props.visible]);
-  useEffect(() => {
-    DeviceEventEmitter.addListener('NetwatchShakeEvent', () => {
-      // Will be trigger when user will shake device
-    });
-  }, []);
 
   return (
     <Provider>
-      <ThemeContext.Provider value={themes.dark}>
+      <ThemeContext.Provider value={_theme}>
         <SafeAreaView>
-          <Modal animationType="slide" visible={props.visible}>
-            <Main
-              maxRequests={props.maxRequests || MAX_REQUESTS}
-              testId="mainScreen"
-              visible={props.visible}
-              onPressClose={props.onPressClose}
-              onPressDetail={setShowDetails}
-              onPress={setItem}
-              reduxActions={reduxActions}
-              rnRequests={rnRequests}
-              nRequests={nRequests}
-              clearAll={clearAll}
-            />
-            {showDetails && <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />}
+          <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
+            {showDetails ? (
+              <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+            ) : (
+              <Main
+                maxRequests={props.maxRequests}
+                testId="mainScreen"
+                onPressClose={() => props.onPressClose()}
+                onPressDetail={setShowDetails}
+                onPress={setItem}
+                reduxActions={reduxActions}
+                rnRequests={rnRequests}
+                nRequests={nRequests}
+                clearAll={clearAll}
+              />
+            )}
           </Modal>
         </SafeAreaView>
       </ThemeContext.Provider>
     </Provider>
   );
+};
+
+Netwatch.defaultProps = {
+  onShake: () => {},
+  visible: false,
+  enabled: true,
+  shake: true,
+  maxRequests: 100,
+  theme: undefined,
 };

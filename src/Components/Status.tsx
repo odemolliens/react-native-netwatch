@@ -18,38 +18,41 @@ export interface IProps {
   backgroundColor?: string;
 }
 
-export const tag = (color: string, text: string) => (
-  <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
-    <Text style={styles.text}>{text}</Text>
-  </View>
-);
+export const tag = (color: string, text: string) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <View testID="statusCodeColor" style={[styles.status, { backgroundColor: color }]}>
+      <Text style={[styles.text, { color: theme.textColorOne }]}>{text}</Text>
+    </View>
+  );
+};
 
 export const reduxTag = () => {
   const theme = useContext(ThemeContext);
   return (
     <View
       testID="statusCodeColor"
-      style={[styles.status, { backgroundColor: theme.violet700 }, { paddingHorizontal: 8 }]}
+      style={[styles.status, { backgroundColor: theme.reduxColor }, { paddingHorizontal: 8 }]}
     >
-      <Fontisto name="redux" color={theme.gray50} size={12} />
+      <Fontisto name="redux" color={theme.textColorOne} size={12} />
     </View>
   );
 };
 
 export const Status: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
-  let _color: string = theme.gray50;
+  let _color: string = theme.textColorOne;
   let _line1: string = '';
   let _line2: string = '';
 
   if (props.item instanceof ReduxAction) {
-    _color = theme.violet700;
+    _color = theme.reduxColor;
     _line1 = 'REDUX';
   } else {
     const _temp = getStatus(props.item.status);
-    if (_temp === EnumStatus.Success) _color = theme.green700;
-    if (_temp === EnumStatus.Warning) _color = theme.orange700;
-    if (_temp === EnumStatus.Failed) _color = theme.red700;
+    if (_temp === EnumStatus.Success) _color = theme.successColor;
+    if (_temp === EnumStatus.Warning) _color = theme.warningColor;
+    if (_temp === EnumStatus.Failed) _color = theme.failedColor;
     _line1 = props.item.method;
     _line2 = props.item.status?.toString() || '500';
   }

@@ -14,7 +14,7 @@ export const Text = (props: IProps) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <RNPText style={[styles.text, { color: theme.gray50 }, props.style]} {...props}>
+    <RNPText style={[styles.text, { color: theme.textColorOne }, props.style]} {...props}>
       {props.children}
     </RNPText>
   );
@@ -24,7 +24,7 @@ export const TextSecondaryColor = (props: IProps) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <RNPText style={[styles.text, { color: theme.gray300 }, props.style]} {...props}>
+    <RNPText style={[styles.text, { color: theme.textColorTwo }, props.style]} {...props}>
       {props.children}
     </RNPText>
   );
@@ -34,7 +34,7 @@ export const Title = (props: IProps) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <RNPText style={[styles.text, styles.text, { color: theme.gray50 }, props.style]} {...props}>
+    <RNPText style={[styles.text, styles.text, { color: theme.textColorOne }, props.style]} {...props}>
       {props.children}
     </RNPText>
   );
