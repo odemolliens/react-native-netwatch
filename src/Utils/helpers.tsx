@@ -117,7 +117,7 @@ const _icon = (value: number) => {
 };
 
 export const getCSVfromArray = (array: any, showLabel: boolean = true, showDeviceInfo: boolean = true): string => {
-  const excludedAttributes = ['_id', 'readyState'];
+  const excludedAttributes = ['_id', 'readyState', 'shortUrl', 'stringifiedAction'];
 
   let deviceInfo = {};
   try {

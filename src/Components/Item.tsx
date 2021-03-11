@@ -25,10 +25,13 @@ export const Item: React.FC<IProps> = (props: IProps) => {
 
   if (props.item instanceof ReduxAction) {
     _line1 = 'redux action';
-    _line2 = JSON.stringify(props.item.action);
+    _line2 = props.item.stringifiedAction;
   } else {
-    if ((props.item instanceof RNRequest || props.item instanceof NRequest) && props.item.url) {
-      const urlObject = url.parse(props.item.url);
+    if (
+      (props.item instanceof RNRequest || props.item instanceof NRequest) &&
+      (props.item.url || props.item.shortUrl)
+    ) {
+      const urlObject = props.item.shortUrl ? url.parse(props.item.shortUrl) : url.parse(props.item.url);
       _line1 = (urlObject.host !== null && urlObject?.host) || '';
       _line2 = (urlObject.path !== null && urlObject?.path) || '';
     }

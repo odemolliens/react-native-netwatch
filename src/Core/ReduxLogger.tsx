@@ -33,6 +33,7 @@ export const getStoredActions = (): number => actions.length;
 export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: any) => {
   const _action = new ReduxAction({
     _id: currentId++,
+    stringifiedAction: JSON.stringify(action).slice(0, 253),
     action,
   });
 
