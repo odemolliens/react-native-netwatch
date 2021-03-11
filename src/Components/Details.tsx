@@ -157,6 +157,14 @@ export const Details: React.FC<IProps> = props => {
   };
 
   if (props.item instanceof ReduxAction) {
+    // props.item.action should only contains 2 elements, a type and a payload (not necessary called payload).
+    // In consequence, if it's not the type, that could be the payload
+    let _infos = Object.entries(props.item.action).filter(value => value[0] !== 'type');
+    const _reduxAction = {
+      label: (_infos.length > 0 && _infos[0][0]) || undefined,
+      payload: (_infos.length > 0 && _infos[0][1]) || undefined,
+    };
+
     _action = () => _onShareReduxAction(props.item as ReduxAction);
     _content = (
       <View style={{ flex: 1, width: '100%' }}>
@@ -183,8 +191,12 @@ export const Details: React.FC<IProps> = props => {
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.textColorFour }}>Payload : </Text>
-          <Text>{JSON.stringify(props.item.action?.payload, null, 2)}</Text>
+          {_reduxAction.label && (
+            <Text style={{ color: theme.textColorFour }}>{`${_reduxAction.label
+              .charAt(0)
+              .toUpperCase()}${_reduxAction.label.slice(1)} :`}</Text>
+          )}
+          {_reduxAction.payload && <Text>{JSON.stringify(_reduxAction.payload, null, 2)}</Text>}
         </View>
       </View>
     );
