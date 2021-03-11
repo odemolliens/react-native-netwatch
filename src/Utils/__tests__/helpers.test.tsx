@@ -19,10 +19,9 @@ jest.mock('react-native-fs', () => ({
   DocumentDirectoryPath: 'my_directory',
 }));
 
-
 describe('Helpers tests', () => {
   const consoleError = jest.spyOn(console, 'error');
-  
+
   beforeAll(() => {
     consoleError.mockImplementation(() => {});
     // Create a spy on console (console.log in this case) and provide some mocked implementation
