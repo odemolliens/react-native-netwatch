@@ -39,6 +39,12 @@ Before install, you must have these dependancies in your react-native project
 - react-native-paper
 - react-native-share
 
+NOTA: Used fonts :
+
+- Fontisto
+- Feather
+- MaterialCommunityIcons 
+
 ### Installation
 
 ```bash

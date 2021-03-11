@@ -8,70 +8,35 @@ describe('Details test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
   const back = jest.fn();
-  const share = jest.fn();
-  const copy = jest.fn();
 
-  it('should render Request properly', () => {
-    givenProps(mockRequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
+  describe('Test Redux item', () => {
+    it('should render Redux action properly', () => {
+      givenProps(mockAction);
+      givenComponent();
+      expect(component).toMatchSnapshot();
+    });
   });
 
-  it('should render Redux action properly', () => {
-    givenProps(mockAction);
-    givenComponent();
-    expect(component).toMatchSnapshot();
+  describe('Test Request item', () => {
+    it('should render Request properly', () => {
+      givenProps(mockRequest);
+      givenComponent();
+      expect(component).toMatchSnapshot();
+    });
 
-    whenPressingButton('buttonBackToMainScreen');
-    expect(back).toHaveBeenCalledTimes(1);
-  });
+    it('should render properly with request with headers', () => {
+      givenProps(mockRequestWithHeaders);
+      givenComponent();
+      expect(component).toMatchSnapshot();
+    });
 
-  it('should render properly with request without headers & press backbutton', () => {
-    givenProps(mockRequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-
-    whenPressingButton('buttonBackToMainScreen');
-    expect(back).toHaveBeenCalledTimes(1);
-  });
-
-  it('should render properly with request without headers & press sharebutton', () => {
-    givenProps(mockRequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-
-    whenPressingButton('buttonShare');
-    expect(share).toHaveBeenCalledTimes(1);
-  });
-
-  it('should render Redux action properly & press sharebutton', () => {
-    givenProps(mockAction);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-
-    whenPressingButton('buttonShare');
-    expect(share).toHaveBeenCalledTimes(1);
-  });
-
-  it('should render properly with request without headers & press copybutton', () => {
-    givenProps(mockRequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-
-    whenPressingButton('buttonCopyToClipboard');
-    expect(copy).toHaveBeenCalledTimes(1);
-  });
-
-  it('should render Redux action properly & press copybutton', () => {
-    givenProps(mockAction);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should render properly with request with headers', () => {
-    givenProps(mockRequestWithHeaders);
-    givenComponent();
-    expect(component).toMatchSnapshot();
+    it('should render properly with request without headers & press backbutton', () => {
+      givenProps(mockRequest);
+      givenComponent();
+      expect(component).toMatchSnapshot();
+      whenPressingButton('buttonBackToMainScreen');
+      expect(back).toHaveBeenCalledTimes(1);
+    });
   });
 
   // GIVEN

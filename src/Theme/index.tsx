@@ -6,7 +6,7 @@ export const themes = {
     textColorOne: '#111827', // Text and also background snackbar
     textColorTwo: '#1F2937', // First line of item in the main screen
     textColorThree: '#374151', // Color time of item in the main screen
-    textColorFour: '#4B5563', // Section name in details screen
+    textColorFour: '#4B5563', // Section name in details screen, searchbar icon and separator in main screen
     // Used for widgets
     primaryColor: '#005ECB', // Appbar text/ Copy text in details screen
     // User to color large surface

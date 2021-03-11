@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
+import { Modal, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
@@ -145,25 +145,23 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   return (
     <ThemeContext.Provider value={_theme}>
-      <SafeAreaView>
-        <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
-          {showDetails ? (
-            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-          ) : (
-            <Main
-              maxRequests={props.maxRequests}
-              testId="mainScreen"
-              onPressClose={() => setVisible(false)}
-              onPressDetail={setShowDetails}
-              onPress={setItem}
-              reduxActions={reduxActions}
-              rnRequests={rnRequests}
-              nRequests={nRequests}
-              clearAll={clearAll}
-            />
-          )}
-        </Modal>
-      </SafeAreaView>
+      <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
+        {showDetails ? (
+          <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+        ) : (
+          <Main
+            maxRequests={props.maxRequests}
+            testId="mainScreen"
+            onPressClose={() => setVisible(false)}
+            onPressDetail={setShowDetails}
+            onPress={setItem}
+            reduxActions={reduxActions}
+            rnRequests={rnRequests}
+            nRequests={nRequests}
+            clearAll={clearAll}
+          />
+        )}
+      </Modal>
     </ThemeContext.Provider>
   );
 };

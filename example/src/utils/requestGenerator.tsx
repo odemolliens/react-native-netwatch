@@ -68,10 +68,10 @@ export const makeRequestInContinue = (): void => {
         break;
     }
     //console.log(url);
-    fetch(url, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).catch((e) => console.log(e));
+    // fetch(url, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // }).catch((e) => console.log(e));
   }, 5000);
 };

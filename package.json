@@ -27,13 +27,13 @@
     "testu": "TZ=UTC node_modules/.bin/jest --updateSnapshot"
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.7.0",
     "url": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@babel/runtime": "^7.11.2",
-    "@react-native-clipboard/clipboard": "^1.7.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/react-native": "^7.2.0",
     "@types/enzyme": "^3.10.8",
@@ -111,6 +111,12 @@
         "branches": 100,
         "functions": 100,
         "lines": 100
+      },
+      "./src/Core/RNLogger.tsx": {
+        "statements": 80,
+        "branches": 80,
+        "functions": 80,
+        "lines": 80
       }
     },
     "snapshotSerializers": [

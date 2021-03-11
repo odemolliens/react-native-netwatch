@@ -1,154 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index test suite should render properly 1`] = `
-<Provider>
-  <ContextProvider
-    value={
-      Object {
-        "black": "#000",
-        "blue300": "#67E8F9",
-        "blue500": "#06B6D4",
-        "blue700": "#0E7490",
-        "gray100": "#F3F4F6",
-        "gray200": "#E5E7EB",
-        "gray300": "#D1D5DB",
-        "gray400": "#9CA3AF",
-        "gray50": "#F9FAFB",
-        "gray500": "#6B7280",
-        "gray600": "#4B5563",
-        "gray700": "#374151",
-        "gray800": "#1F2937",
-        "gray900": "#111827",
-        "green700": "#4D7C0F",
-        "orange700": "#D97706",
-        "red700": "#B91C1C",
-        "violet700": "#764ABC",
-        "white": "#FFF",
-      }
+<ContextProvider
+  value={
+    Object {
+      "black": "#000",
+      "failedColor": "#FF5252",
+      "primaryColor": "#005ECB",
+      "reduxColor": "#B47CFF",
+      "secondaryColor": "#F3F4F6",
+      "secondaryDarkColor": "#E5E7EB",
+      "secondaryLightColor": "#F9FAFB",
+      "successColor": "#69F0AE",
+      "textColorFour": "#4B5563",
+      "textColorOne": "#111827",
+      "textColorThree": "#374151",
+      "textColorTwo": "#1F2937",
+      "warningColor": "#FFAB40",
+      "white": "#FFF",
     }
-  >
-    <ForwardRef(SafeAreaView)>
-      <Component
-        animationType="slide"
-        hardwareAccelerated={false}
-        visible={false}
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={50}
-          nRequests={Array []}
-          onPress={[Function]}
-          onPressClose={[MockFunction]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
-          testId="mainScreen"
-          visible={false}
-        />
-      </Component>
-    </ForwardRef(SafeAreaView)>
-  </ContextProvider>
-</Provider>
+  }
+>
+  <ForwardRef(SafeAreaView)>
+    <Component
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
+    >
+      <Main
+        clearAll={[Function]}
+        maxRequests={100}
+        nRequests={Array []}
+        onPress={[Function]}
+        onPressClose={[Function]}
+        onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+      />
+    </Component>
+  </ForwardRef(SafeAreaView)>
+</ContextProvider>
 `;
 
 exports[`Index test suite should render properly visible and enabled 1`] = `
-<Provider>
-  <ContextProvider
-    value={
-      Object {
-        "black": "#000",
-        "blue300": "#67E8F9",
-        "blue500": "#06B6D4",
-        "blue700": "#0E7490",
-        "gray100": "#F3F4F6",
-        "gray200": "#E5E7EB",
-        "gray300": "#D1D5DB",
-        "gray400": "#9CA3AF",
-        "gray50": "#F9FAFB",
-        "gray500": "#6B7280",
-        "gray600": "#4B5563",
-        "gray700": "#374151",
-        "gray800": "#1F2937",
-        "gray900": "#111827",
-        "green700": "#4D7C0F",
-        "orange700": "#D97706",
-        "red700": "#B91C1C",
-        "violet700": "#764ABC",
-        "white": "#FFF",
-      }
+<ContextProvider
+  value={
+    Object {
+      "black": "#000",
+      "failedColor": "#FF5252",
+      "primaryColor": "#005ECB",
+      "reduxColor": "#B47CFF",
+      "secondaryColor": "#F3F4F6",
+      "secondaryDarkColor": "#E5E7EB",
+      "secondaryLightColor": "#F9FAFB",
+      "successColor": "#69F0AE",
+      "textColorFour": "#4B5563",
+      "textColorOne": "#111827",
+      "textColorThree": "#374151",
+      "textColorTwo": "#1F2937",
+      "warningColor": "#FFAB40",
+      "white": "#FFF",
     }
-  >
-    <ForwardRef(SafeAreaView)>
-      <Component
-        animationType="slide"
-        hardwareAccelerated={false}
-        visible={true}
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={50}
-          nRequests={Array []}
-          onPress={[Function]}
-          onPressClose={[MockFunction]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
-          testId="mainScreen"
-          visible={true}
-        />
-      </Component>
-    </ForwardRef(SafeAreaView)>
-  </ContextProvider>
-</Provider>
+  }
+>
+  <ForwardRef(SafeAreaView)>
+    <Component
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
+    >
+      <Main
+        clearAll={[Function]}
+        maxRequests={100}
+        nRequests={Array []}
+        onPress={[Function]}
+        onPressClose={[Function]}
+        onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+      />
+    </Component>
+  </ForwardRef(SafeAreaView)>
+</ContextProvider>
 `;
 
 exports[`Index test suite should render properly visible, enabled and maxRequest 1`] = `
-<Provider>
-  <ContextProvider
-    value={
-      Object {
-        "black": "#000",
-        "blue300": "#67E8F9",
-        "blue500": "#06B6D4",
-        "blue700": "#0E7490",
-        "gray100": "#F3F4F6",
-        "gray200": "#E5E7EB",
-        "gray300": "#D1D5DB",
-        "gray400": "#9CA3AF",
-        "gray50": "#F9FAFB",
-        "gray500": "#6B7280",
-        "gray600": "#4B5563",
-        "gray700": "#374151",
-        "gray800": "#1F2937",
-        "gray900": "#111827",
-        "green700": "#4D7C0F",
-        "orange700": "#D97706",
-        "red700": "#B91C1C",
-        "violet700": "#764ABC",
-        "white": "#FFF",
-      }
+<ContextProvider
+  value={
+    Object {
+      "black": "#000",
+      "failedColor": "#FF5252",
+      "primaryColor": "#005ECB",
+      "reduxColor": "#B47CFF",
+      "secondaryColor": "#F3F4F6",
+      "secondaryDarkColor": "#E5E7EB",
+      "secondaryLightColor": "#F9FAFB",
+      "successColor": "#69F0AE",
+      "textColorFour": "#4B5563",
+      "textColorOne": "#111827",
+      "textColorThree": "#374151",
+      "textColorTwo": "#1F2937",
+      "warningColor": "#FFAB40",
+      "white": "#FFF",
     }
-  >
-    <ForwardRef(SafeAreaView)>
-      <Component
-        animationType="slide"
-        hardwareAccelerated={false}
-        visible={true}
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={20}
-          nRequests={Array []}
-          onPress={[Function]}
-          onPressClose={[MockFunction]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
-          testId="mainScreen"
-          visible={true}
-        />
-      </Component>
-    </ForwardRef(SafeAreaView)>
-  </ContextProvider>
-</Provider>
+  }
+>
+  <ForwardRef(SafeAreaView)>
+    <Component
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
+    >
+      <Main
+        clearAll={[Function]}
+        maxRequests={20}
+        nRequests={Array []}
+        onPress={[Function]}
+        onPressClose={[Function]}
+        onPressDetail={[Function]}
+        reduxActions={Array []}
+        rnRequests={Array []}
+        testId="mainScreen"
+      />
+    </Component>
+  </ForwardRef(SafeAreaView)>
+</ContextProvider>
 `;
