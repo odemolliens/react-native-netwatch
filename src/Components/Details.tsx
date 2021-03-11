@@ -159,7 +159,7 @@ export const Details: React.FC<IProps> = props => {
   if (props.item instanceof ReduxAction) {
     // props.item.action should only contains 2 elements, a type and a payload (not necessary called payload).
     // In consequence, if it's not the type, that could be the payload
-    let _infos = Object.entries(props.item.action).filter(value => value[0] !== 'type');
+    const _infos = Object.entries(props.item.action).filter(value => value[0] !== 'type');
     const _reduxAction = {
       label: (_infos.length > 0 && _infos[0][0]) || undefined,
       payload: (_infos.length > 0 && _infos[0][1]) || undefined,
