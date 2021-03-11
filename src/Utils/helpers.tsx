@@ -2,7 +2,6 @@ import { EnumStatus, ILog } from '../types';
 import RNFS from 'react-native-fs';
 import {
   getBrand,
-  getBaseOsSync,
   getSystemVersion,
   getApiLevelSync,
   getApplicationName,
@@ -12,7 +11,6 @@ import {
 
 interface IDeviceInfo {
   brand: string;
-  os: string;
   systemVersion: string;
   apiLevel: number;
   appName: string;
@@ -22,7 +20,6 @@ interface IDeviceInfo {
 
 const _getDeviceInfo = (): IDeviceInfo => {
   const _brand = getBrand();
-  const _os = getBaseOsSync();
   const _systemVersion = getSystemVersion();
   const _apiLevel = getApiLevelSync();
   const _appName = getApplicationName();
@@ -31,7 +28,6 @@ const _getDeviceInfo = (): IDeviceInfo => {
 
   return {
     brand: _brand,
-    os: _os,
     systemVersion: _systemVersion,
     apiLevel: _apiLevel,
     appName: _appName,
