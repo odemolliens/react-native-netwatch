@@ -91,12 +91,11 @@ export class RNLogger {
     this.requestId++;
     xhr._index = this.requestId;
 
-    // 253 = max characters of domain name
     const _request: RNRequest = new RNRequest({
       _id: this.requestId,
       readyState: xhr.readyState,
       url,
-      shortUrl: url.slice(0, 253),
+      shortUrl: url.slice(0, 50),
       method,
     });
     this.queue.set(xhr._index, _request);
