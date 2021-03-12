@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity, Image } from 'react-native';
 import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
 import { getStatus, getTime, getShortDate, duration } from '../Utils/helpers';
@@ -147,15 +147,33 @@ export const Details: React.FC<IProps> = props => {
       .filter((item: Array<string>) => item.length > 1) // To be sure that item has at least two element
       .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
       .filter((item: Array<string>) => item[1] && item[1].length > 0)
-      .map((item: Array<string>, index: number) => (
-        <View style={styles.itemContainer} key={index}>
-          <View style={styles.attribute}>
-            <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
-            {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
+      .map((item: Array<string>, index: number) => {
+        return (
+          <View style={styles.itemContainer} key={index}>
+            {item[1].startsWith('data:image/') ? (
+              _renderImage(item[1])
+            ) : (
+              <View style={styles.attribute}>
+                <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
+                {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
+              </View>
+            )}
+            <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.textColorOne }]}>{item[1]}</Text>
           </View>
-          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.textColorOne }]}>{item[1]}</Text>
-        </View>
-      ));
+        );
+      });
+  };
+
+  const _renderImage = (source: string) => {
+    return (
+      <View style={{ justifyContent: 'center', alignContent: 'center', height: 200, width: 200 }}>
+        <Image
+          source={{ uri: source }}
+          style={{ width: 50, height: 50, borderWidth: 1, borderColor: 'red' }}
+          resizeMode="contain"
+        />
+      </View>
+    );
   };
 
   if (props.item instanceof ReduxAction) {
