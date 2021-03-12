@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
-import { Appbar, Searchbar } from 'react-native-paper';
+import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
 import Item from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
@@ -33,6 +33,7 @@ export const Main = (props: IProps) => {
   const [filter, setFilter] = useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState<boolean>(false);
+  const [loadingCSV, setloadingCSV] = useState<boolean>(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
   const hideDialogAndDelete = () => {
     clearList();
@@ -51,6 +52,10 @@ export const Main = (props: IProps) => {
       setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
     }
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
+
+  useEffect(() => {
+    if (loadingCSV) onShare();
+  }, [loadingCSV]);
 
   const filteredRequests = (): Array<any> =>
     requests.slice(0, props.maxRequests).filter(request => {
@@ -82,6 +87,7 @@ export const Main = (props: IProps) => {
     if (message.length === 0) return;
     try {
       const path = await csvWriter(message);
+      setloadingCSV(false);
       await Share.open({
         title: 'Export calls to CSV',
         url: `file://${path}`,
@@ -89,6 +95,8 @@ export const Main = (props: IProps) => {
         // excludedActivityTypes: []
       });
     } catch (error) {
+      // if user dismiss sharing
+      setloadingCSV(false);
       console.error(error.message);
     }
   };
@@ -130,9 +138,17 @@ export const Main = (props: IProps) => {
           />
         </TouchableOpacity>
         <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
-        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={onShare} />
-        </TouchableOpacity>
+        {loadingCSV ? (
+          <ActivityIndicator
+            animating={true}
+            color={theme.primaryColor}
+            style={[styles.button, { borderLeftWidth: 0 }]}
+          />
+        ) : (
+          <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
+            <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={() => setloadingCSV(true)} />
+          </TouchableOpacity>
+        )}
       </Appbar.Header>
       <View style={[styles.options, { backgroundColor: theme.secondaryColor }]}>
         <Searchbar
