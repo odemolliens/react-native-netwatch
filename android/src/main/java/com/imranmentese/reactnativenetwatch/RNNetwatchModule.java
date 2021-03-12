@@ -103,11 +103,6 @@ public class RNNetwatchModule extends ReactContextBaseJavaModule {
         sharedPrefs.edit().clear().apply();
     }
 
-    // Specific to iOS, nothing to do on android side
-    @SuppressWarnings("unused")
-    @ReactMethod
-    public void startNetwatch() { }
-
     private void sendEvent(ReactContext reactContext,
                            String eventName,
                            @Nullable WritableMap params) {
