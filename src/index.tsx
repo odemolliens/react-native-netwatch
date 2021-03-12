@@ -20,7 +20,7 @@ export interface IProps {
   enabled: boolean;
   disableShake?: boolean;
   maxRequests?: number;
-  theme?: string;
+  theme?: 'dark' | 'light';
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -170,5 +170,5 @@ Netwatch.defaultProps = {
   enabled: true,
   disableShake: false,
   maxRequests: 100,
-  theme: undefined,
+  theme: 'dark',
 };

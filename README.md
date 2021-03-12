@@ -13,14 +13,14 @@ Includes an interface to see http traffic from RN and native side
 
 ## Features
 
-- Log react-native networks requests on iOS and Android
-- Log native networks requests on iOS and Android
-- Log redux-actions on iOS and Android
-- Individually view detaisl of each requests
+- Log network requests coming from React Native side
+- Log network requests coming from the native side (iOS and Android) (optional)
+- Log Redux actions (optional)
+- View details of each request/action
 - Export list of requests/actions in CSV
-- Copy URl or response
+- Shake the device to display the tool
 
-## Screenshots
+## Example app
 
 <p float="left" align="center">
 
@@ -34,7 +34,6 @@ Includes an interface to see http traffic from RN and native side
 
 Before install, you must have these dependancies in your react-native project
 
-- @react-native-clipboard/clipboard
 - react-native-fs
 - react-native-paper
 - react-native-share
@@ -73,7 +72,7 @@ cd ios && pod install && ..
 
 ### Using Netwatch component
 
-if you want add Network traffic in your project, just import 'react-native-netwatch'</br>
+If you want add Network traffic in your project, just import 'react-native-netwatch'</br>
 and add the Netwatch component in the most higher position in the tree of components.</br>
 For example, just after your store provider or your root component
 
@@ -163,27 +162,63 @@ const store = createStore(
 export default store;
 
 ```
+Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/src/redux/store.ts#L23)
+
+### Using Netwatch to intercept and display native requests
+
+#### iOS
+
+To be able to intercept requests from iOS side and display them into Netwatch</br>
+You have to put in place the code below in your application 
+
+```objective-c
+'Bridging-Header.h'
+
+#import <NetwatchInterceptor.h>
+```
+Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/example-Bridging-Header.h#L8)
+
+```swift
+'AppDelegate.swift'
+
+let defaultSession = URLSession(configuration: .default)
+if (defaultSession.configuration.protocolClasses != nil) {
+    defaultSession.configuration.protocolClasses?.append(NetwatchInterceptor.self)
+}
+URLProtocol.registerClass(NetwatchInterceptor.self)
+```
+
+Or
+
+```objective-c
+'AppDelegate.m'
+
+NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+if (configuration.protocolClasses != nil ) {
+    configuration.protocolClasses = @[[NetwatchInterceptor class]];
+}
+[NSURLProtocol registerClass:[NetwatchInterceptor class]];
+
+```
+Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/AppDelegate.swift#L31)
+
+#### Android
+
+To be able to intercept requests from Android side and display them into Netwatch</br>
+You have to add to your OkHttp client Netwatch interceptor 
+
+```java
+okHttpClient.addInterceptor(new NetwatchInterceptor(context));
+```
+
+Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/android/app/src/main/java/com/example/ExampleModule.java#L24)
 
 ## Props
 
 |   Params    |  Type   | Default | Mandatory ? | Description                                              |
 | :---------: | :-----: | :-----: | :---------: | :------------------------------------------------------- |
-|   visible   | Boolean |  false  |     yes     | Show the main screen                                     |
-|   enabled   | Boolean |  true   |     no      | Enabled/Disabled logger to intercept request and actions |
-|    shake    | Boolean |  true   |     no      | Enabled/Disabled shake gesture to open the main screen   |
+|   enabled   | Boolean |  true   |     yes     | Enabled/Disabled logger to intercept request and actions |
+|   visible   | Boolean |  false  |     no      | Show the main screen                                      |
+| disableShake| Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch |
 | maxRequests | Number  |   100   |     no      | Maximum requests displayed                               |
 |    theme    | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                    |
-
-## Methods
-
-#### onShake(action)
-
-| Params |   Type   | Description                           |
-| :----: | :------: | :------------------------------------ |
-| action | Function | action executed when device is shaked |
-
-#### onPressClose(action)
-
-| Params |   Type   | Mandatory ? | Description                                          |
-| :----: | :------: | :---------: | :--------------------------------------------------- |
-| action | Function |     yes     | action executed when cross is pressed on main screen |
