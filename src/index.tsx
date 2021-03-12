@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
+import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
@@ -100,6 +100,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               _id: element._id,
               readyState: 4,
               url: element.url,
+              shortUrl: element.url.slice(0, 50),
               method: element.method,
               status: element.status,
               startTime: element.startTime,
@@ -146,21 +147,24 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   return (
     <ThemeContext.Provider value={_theme}>
       <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
-        {showDetails ? (
-          <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-        ) : (
-          <Main
-            maxRequests={props.maxRequests}
-            testId="mainScreen"
-            onPressClose={() => setVisible(false)}
-            onPressDetail={setShowDetails}
-            onPress={setItem}
-            reduxActions={reduxActions}
-            rnRequests={rnRequests}
-            nRequests={nRequests}
-            clearAll={clearAll}
-          />
-        )}
+        <View style={{ flex: 1 }}>
+          <View style={{ height: showDetails ? 0 : '100%' }}>
+            <Main
+              maxRequests={props.maxRequests}
+              testId="mainScreen"
+              onPressClose={() => setVisible(false)}
+              onPressDetail={setShowDetails}
+              onPress={setItem}
+              reduxActions={reduxActions}
+              rnRequests={rnRequests}
+              nRequests={nRequests}
+              clearAll={clearAll}
+            />
+          </View>
+          <View style={{ height: showDetails ? '100%' : 0 }}>
+            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+          </View>
+        </View>
       </Modal>
     </ThemeContext.Provider>
   );

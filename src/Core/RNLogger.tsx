@@ -95,6 +95,7 @@ export class RNLogger {
       _id: this.requestId,
       readyState: xhr.readyState,
       url,
+      shortUrl: url.slice(0, 50),
       method,
     });
     this.queue.set(xhr._index, _request);

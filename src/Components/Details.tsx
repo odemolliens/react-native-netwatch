@@ -37,6 +37,8 @@ const excludedAttributes: Array<string> = [
   'responseSize',
   'responseType',
   'responseContentType',
+  'stringifiedAction',
+  'shortUrl',
 ];
 
 const stringifyData = (array: Array<string[]>): string => {
