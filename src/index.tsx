@@ -20,7 +20,7 @@ export interface IProps {
   enabled: boolean;
   disableShake?: boolean;
   maxRequests?: number;
-  theme?: string;
+  theme?: 'dark' | 'light';
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -140,7 +140,6 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.enabled]);
 
   useEffect(() => {
-    RNNetwatch.startNetwatch();
     !visible ? stopNativeLoop() : startNativeLoop();
   }, [visible]);
 
@@ -175,5 +174,5 @@ Netwatch.defaultProps = {
   enabled: true,
   disableShake: false,
   maxRequests: 100,
-  theme: undefined,
+  theme: 'dark',
 };
