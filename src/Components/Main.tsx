@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
-import Item from './Item';
+import Item, { ITEM_HEIGHT } from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
@@ -41,41 +41,52 @@ export const Main = (props: IProps) => {
   };
 
   useEffect(() => {
+    let _requests: ILog[] = [];
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
-      setRequests(props.reduxActions);
+      _requests = props.reduxActions;
     } else if (source === EnumSourceType.ReactNativeRequest) {
-      setRequests(props.rnRequests);
+      _requests = props.rnRequests;
     } else if (source === EnumSourceType.Nativerequest) {
-      setRequests(props.nRequests.sort(compare).reverse());
+      _requests = props.nRequests.sort(compare).reverse();
     } else {
-      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
+      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.nRequests)
+        .sort(compare)
+        .reverse()
+        .slice(0, props.maxRequests);
     }
-  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
+
+    let _filteredRequests: ILog[] = _requests;
+    if (filter !== EnumFilterType.All) {
+      _filteredRequests = _requests.filter((request: ILog) => {
+        return (request instanceof RNRequest || request instanceof NRequest) && filter === request.method;
+      });
+    }
+
+    let _searchedRequests: ILog[] = _filteredRequests;
+    if (searchQuery !== '') {
+      _searchedRequests = _filteredRequests.filter((request: ILog) => {
+        if (request instanceof RNRequest || request instanceof NRequest) {
+          return (
+            request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            request.status === parseInt(searchQuery, 10) ||
+            request.method.toLowerCase() === searchQuery.toLowerCase()
+          );
+        }
+
+        if (request instanceof ReduxAction) {
+          return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
+        }
+        return false;
+      });
+    }
+
+    setRequests(_searchedRequests);
+  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter, searchQuery]);
 
   useEffect(() => {
     if (loadingCSV) onShare();
   }, [loadingCSV]);
-
-  const filteredRequests = (): Array<any> =>
-    requests.slice(0, props.maxRequests).filter(request => {
-      if (filter === EnumFilterType.All) {
-        if (request instanceof ReduxAction) {
-          return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
-        }
-      }
-      if (request instanceof RNRequest || request instanceof NRequest) {
-        if (filter === request.method || filter === EnumFilterType.All) {
-          return (
-            (request.type === EnumSourceType.ReactNativeRequest || request.type === EnumSourceType.Nativerequest) &&
-            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              request.status === parseInt(searchQuery, 10) ||
-              request.method.toLowerCase() === searchQuery.toLowerCase())
-          );
-        }
-      }
-      return false;
-    });
 
   const clearList = () => {
     props.clearAll();
@@ -112,7 +123,7 @@ export const Main = (props: IProps) => {
     ]);
   };
 
-  const _renderItems = (_props: { item: ReduxAction | RNRequest | NRequest; index: number }) => {
+  const _renderItems = (_props: { item: ILog; index: number }) => {
     return (
       <Item
         testID={`${_props.index}`}
@@ -125,6 +136,10 @@ export const Main = (props: IProps) => {
       />
     );
   };
+
+  const _keyExtractor = (item: ILog) => `${item._id.toString()}${item.startTime}${item.type}`;
+
+  const _getItemLayout = (_data: any, index: number) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index });
 
   return (
     <>
@@ -208,10 +223,15 @@ export const Main = (props: IProps) => {
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,
           }}
+          getItemLayout={_getItemLayout}
           style={{ backgroundColor: theme.secondaryColor }}
           renderItem={_renderItems}
-          keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
-          data={filteredRequests()}
+          keyExtractor={_keyExtractor}
+          data={requests}
+          initialNumToRender={20}
+          maxToRenderPerBatch={30}
+          updateCellsBatchingPeriod={70}
+          removeClippedSubviews
         />
       )}
     </>

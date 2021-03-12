@@ -9,11 +9,12 @@ import url from 'url';
 import { Text, TextSecondaryColor } from '../Components/Text';
 import { useContext } from 'react';
 import { ThemeContext } from '../Theme';
+import { ILog } from '../types';
 
 export const ITEM_HEIGHT = 60;
 export interface IProps {
   testID?: string;
-  item: RNRequest | NRequest | ReduxAction;
+  item: ILog;
   onPress: () => void;
   color: string;
 }
@@ -67,10 +68,11 @@ export default Item;
 
 const styles = StyleSheet.create({
   container: {
-    height: ITEM_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
+    height: ITEM_HEIGHT,
     maxHeight: ITEM_HEIGHT,
+    minHeight: ITEM_HEIGHT,
     borderBottomWidth: 0.5,
   },
   main: {

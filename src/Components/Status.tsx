@@ -9,9 +9,10 @@ import { ThemeContext } from '../Theme';
 import { EnumStatus } from '../types';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import { Text } from '../Components/Text';
+import { ILog } from '../types';
 
 export interface IProps {
-  item: RNRequest | ReduxAction | NRequest;
+  item: ILog;
   text?: string;
   subText?: string;
   textColor?: Object;
@@ -48,13 +49,15 @@ export const Status: React.FC<IProps> = (props: IProps) => {
   if (props.item instanceof ReduxAction) {
     _color = theme.reduxColor;
     _line1 = 'REDUX';
-  } else {
+  } else if (props.item instanceof NRequest || props.item instanceof RNRequest) {
     const _temp = getStatus(props.item.status);
     if (_temp === EnumStatus.Success) _color = theme.successColor;
     if (_temp === EnumStatus.Warning) _color = theme.warningColor;
     if (_temp === EnumStatus.Failed) _color = theme.failedColor;
     _line1 = props.item.method;
     _line2 = props.item.status?.toString() || '500';
+  } else {
+    return null;
   }
 
   return (
