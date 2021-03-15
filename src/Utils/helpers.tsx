@@ -136,7 +136,7 @@ const _icon = (value: number) => {
   return '❌';
 };
 
-export const formatDatas = (array: any): string => {
+export const formatDatas = (array: any): [] => {
   const excludedAttributes = ['_id', 'readyState', 'shortUrl', 'stringifiedAction'];
 
   // Loop 1: Iterate on every requests
