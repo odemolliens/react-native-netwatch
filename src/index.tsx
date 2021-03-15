@@ -100,7 +100,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               _id: element._id,
               readyState: 4,
               url: element.url,
-              shortUrl: element.url.slice(0, 50),
+              shortUrl: element.url.slice(0, 100),
               method: element.method,
               status: element.status,
               startTime: element.startTime,

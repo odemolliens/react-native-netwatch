@@ -42,7 +42,7 @@ export const Title = (props: IProps) => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: 20,
   },
   textBold: {

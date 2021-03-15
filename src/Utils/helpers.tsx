@@ -1,7 +1,7 @@
 import { EnumStatus, ILog } from '../types';
 import RNFS from 'react-native-fs';
 import {
-  getBrand,
+  getDeviceId,
   getSystemVersion,
   getApiLevelSync,
   getApplicationName,
@@ -20,7 +20,7 @@ interface IDeviceInfo {
 }
 
 const _getDeviceInfo = (): IDeviceInfo => {
-  const _brand = getBrand();
+  const _brand = getDeviceId();
   const _systemVersion = getSystemVersion();
   const _apiLevel = getApiLevelSync();
   const _appName = getApplicationName();
