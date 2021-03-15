@@ -11,7 +11,7 @@ import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
-import { csvWriter, getCSVfromArray, mergeArrays, compare } from '../Utils/helpers';
+import { xlsxWriter, formatDatas, mergeArrays, compare } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
@@ -94,10 +94,10 @@ export const Main = (props: IProps) => {
   };
 
   const onShare = async () => {
-    const message = getCSVfromArray(requests);
+    const message = formatDatas(requests);
     if (message.length === 0) return;
     try {
-      const path = await csvWriter(message);
+      const path = await xlsxWriter(message);
       setloadingCSV(false);
       await Share.open({
         title: 'Export calls to CSV',
