@@ -23,7 +23,7 @@ Includes an interface to see http traffic from RN and native side
 ## Example app
 
 <p float="left" align="center">
-
+  <img src="assets/ios_netwatch.gif" width="300" />
 </p>
 
 ---
@@ -42,7 +42,7 @@ NOTA: Used fonts :
 
 - Fontisto
 - Feather
-- MaterialCommunityIcons 
+- MaterialCommunityIcons
 
 ### Installation
 
@@ -162,6 +162,7 @@ const store = createStore(
 export default store;
 
 ```
+
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/src/redux/store.ts#L23)
 
 ### Using Netwatch to intercept and display native requests
@@ -169,13 +170,14 @@ Example in our demo application [here](https://github.com/odemolliens/react-nati
 #### iOS
 
 To be able to intercept requests from iOS side and display them into Netwatch</br>
-You have to put in place the code below in your application 
+You have to put in place the code below in your application
 
 ```objective-c
 'Bridging-Header.h'
 
 #import <NetwatchInterceptor.h>
 ```
+
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/example-Bridging-Header.h#L8)
 
 ```swift
@@ -200,12 +202,13 @@ if (configuration.protocolClasses != nil ) {
 [NSURLProtocol registerClass:[NetwatchInterceptor class]];
 
 ```
+
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/AppDelegate.swift#L31)
 
 #### Android
 
 To be able to intercept requests from Android side and display them into Netwatch</br>
-You have to add to your OkHttp client Netwatch interceptor 
+You have to add to your OkHttp client Netwatch interceptor
 
 ```java
 okHttpClient.addInterceptor(new NetwatchInterceptor(context));
@@ -215,10 +218,10 @@ Example in our demo application [here](https://github.com/odemolliens/react-nati
 
 ## Props
 
-|   Params    |  Type   | Default | Mandatory ? | Description                                              |
-| :---------: | :-----: | :-----: | :---------: | :------------------------------------------------------- |
-|   enabled   | Boolean |  true   |     yes     | Enabled/Disabled logger to intercept request and actions |
-|   visible   | Boolean |  false  |     no      | Show the main screen                                      |
-| disableShake| Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch |
-| maxRequests | Number  |   100   |     no      | Maximum requests displayed                               |
-|    theme    | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                    |
+|    Params    |  Type   | Default | Mandatory ? | Description                                              |
+| :----------: | :-----: | :-----: | :---------: | :------------------------------------------------------- |
+|   enabled    | Boolean |  true   |     yes     | Enabled/Disabled logger to intercept request and actions |
+|   visible    | Boolean |  false  |     no      | Show the main screen                                     |
+| disableShake | Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch |
+| maxRequests  | Number  |   100   |     no      | Maximum requests displayed                               |
+|    theme     | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                    |
