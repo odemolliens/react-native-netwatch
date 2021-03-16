@@ -363,9 +363,9 @@ export const Details: React.FC<IProps> = props => {
         duration={3000}
         style={{ backgroundColor: theme.textColorOne }}
         theme={{
-          colors:{
-            surface: theme.textColorFour
-          }
+          colors: {
+            surface: theme.textColorFour,
+          },
         }}
       >
         {snackBarMessage}
