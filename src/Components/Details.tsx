@@ -83,6 +83,7 @@ const formatSharedMessage = (
 export const Details: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
+  const [onErrorImage, setOnErrorImage] = useState<boolean>(false);
   const [snackBarMessage, setSnackBarMessage] = useState<string>('');
   let _content = null;
   let _color: string = theme.reduxColor;
@@ -153,26 +154,39 @@ export const Details: React.FC<IProps> = props => {
             {item[1].startsWith('data:image/') ? (
               _renderImage(item[1])
             ) : (
-              <View style={styles.attribute}>
-                <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
-                {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
-              </View>
+              <>
+                <View style={styles.attribute}>
+                  <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
+                  {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
+                </View>
+                <Text style={[{ width: '100%' }, { color: theme.textColorOne }]}>{item[1]}</Text>
+              </>
             )}
-            <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.textColorOne }]}>{item[1]}</Text>
           </View>
         );
       });
   };
 
+  const _renderErrorMessage = () => {
+    return <Text>An error occur, cannot load the image</Text>;
+  };
+
   const _renderImage = (source: string) => {
     return (
-      <View style={{ justifyContent: 'center', alignContent: 'center', height: 200, width: 200 }}>
-        <Image
-          source={{ uri: source }}
-          style={{ width: 50, height: 50, borderWidth: 1, borderColor: 'red' }}
-          resizeMode="contain"
-        />
-      </View>
+      <>
+        {onErrorImage ? (
+          _renderErrorMessage()
+        ) : (
+          <View style={{ minHeight: 100, justifyContent: 'center', alignItems: 'center' }}>
+            <Image
+              source={{ uri: source }}
+              style={{ width: '80%', height: '100%' }}
+              resizeMode="contain"
+              onError={() => setOnErrorImage(true)}
+            />
+          </View>
+        )}
+      </>
     );
   };
 
@@ -398,6 +412,7 @@ const styles = StyleSheet.create({
 
   itemContainer: {
     paddingHorizontal: 16,
+    marginBottom: 10,
   },
 
   statusCode: {
