@@ -5,12 +5,12 @@ import {
   getDate,
   getStatus,
   duration,
-  getCSVfromArray,
+  formatDatas,
   mergeArrays,
   compare,
-  csvWriter,
+  xlsxWriter,
 } from '../helpers';
-import RNFS, { writeFile } from 'react-native-fs';
+import RNFS from 'react-native-fs';
 
 jest.mock('react-native-fs', () => ({
   exists: jest.fn(),
@@ -19,10 +19,9 @@ jest.mock('react-native-fs', () => ({
   DocumentDirectoryPath: 'my_directory',
 }));
 
-
 describe('Helpers tests', () => {
   const consoleError = jest.spyOn(console, 'error');
-  
+
   beforeAll(() => {
     consoleError.mockImplementation(() => {});
     // Create a spy on console (console.log in this case) and provide some mocked implementation
@@ -125,14 +124,127 @@ describe('Helpers tests', () => {
     });
   });
 
-  describe('CSV formatter', () => {
+  describe('Formatter', () => {
     //Test array conversion to CSV format
-    it('should return myRequests in CSV format with ; as separator', () => {
-      expect(getCSVfromArray(myRequests)).toBe(myCSV);
-    });
-
-    it('should return myCSVwithoutInfo in CSV format with ; as separator without label and device info', () => {
-      expect(getCSVfromArray(myRequests, false, false)).toBe(myCSVwithoutInfo);
+    it('should return myRequests formatted to be used with XLSX lib', () => {
+      expect(formatDatas(myRequests)).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "action": "",
+            "dataSent": "dataSent",
+            "endTime": "Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time)",
+            "icon": "✅",
+            "method": "GET",
+            "requestHeaders": "{\\"Content-Type\\":\\"application/json\\"}",
+            "response": "response",
+            "responseContentType": "application/json",
+            "responseHeaders": "{\\"Content-Length\\":\\"0\\",\\"Content-Type\\":\\"application/json: charset=UTF-8\\",\\"Date\\":\\"Tue, 16 Feb 2021 12:12:55 GMT\\",\\"Sozu-Id\\":\\"51989c0c-ebe7-4574-913d-443477875da7\\"}",
+            "responseSize": "",
+            "responseType": "blob",
+            "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+            "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
+            "status": 200,
+            "timeout": "",
+            "type": "REACT NATIVE REQUEST",
+            "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          },
+          Object {
+            "action": "",
+            "dataSent": "dataSent",
+            "endTime": "Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time)",
+            "icon": "✅",
+            "method": "GET",
+            "requestHeaders": "{\\"Content-Type\\":\\"application/json\\"}",
+            "response": "response",
+            "responseContentType": "application/json",
+            "responseHeaders": "{\\"Content-Length\\":\\"0\\",\\"Content-Type\\":\\"application/json: charset=UTF-8\\",\\"Date\\":\\"Tue, 16 Feb 2021 12:12:55 GMT\\",\\"Sozu-Id\\":\\"51989c0c-ebe7-4574-913d-443477875da7\\"}",
+            "responseSize": "",
+            "responseType": "blob",
+            "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+            "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
+            "status": 200,
+            "timeout": "",
+            "type": "NATIVE REQUEST",
+            "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          },
+          Object {
+            "action": "",
+            "dataSent": "dataSent",
+            "endTime": "Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time)",
+            "icon": "⚠️",
+            "method": "POST",
+            "requestHeaders": "{\\"Content-Type\\":\\"application/json\\"}",
+            "response": "response",
+            "responseContentType": "application/json",
+            "responseHeaders": "{\\"Content-Length\\":\\"0\\",\\"Content-Type\\":\\"application/json: charset=UTF-8\\",\\"Date\\":\\"Tue, 16 Feb 2021 12:12:55 GMT\\",\\"Sozu-Id\\":\\"51989c0c-ebe7-4574-913d-443477875da7\\"}",
+            "responseSize": "",
+            "responseType": "blob",
+            "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+            "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
+            "status": 301,
+            "timeout": "",
+            "type": "NATIVE REQUEST",
+            "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          },
+          Object {
+            "action": "",
+            "dataSent": "dataSent",
+            "endTime": "Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time)",
+            "icon": "❌",
+            "method": "PUT",
+            "requestHeaders": "{\\"Content-Type\\":\\"application/json\\"}",
+            "response": "response",
+            "responseContentType": "application/json",
+            "responseHeaders": "{\\"Content-Length\\":\\"0\\",\\"Content-Type\\":\\"application/json: charset=UTF-8\\",\\"Date\\":\\"Tue, 16 Feb 2021 12:12:55 GMT\\",\\"Sozu-Id\\":\\"51989c0c-ebe7-4574-913d-443477875da7\\"}",
+            "responseSize": "",
+            "responseType": "blob",
+            "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+            "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
+            "status": 500,
+            "timeout": "",
+            "type": "NATIVE REQUEST",
+            "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+          },
+          Object {
+            "action": "{\\"type\\":\\"__ERROR:UNDEFINED__\\",\\"payload\\":\\"test\\"}",
+            "dataSent": "",
+            "endTime": "",
+            "icon": "❌",
+            "method": "",
+            "requestHeaders": "",
+            "response": "",
+            "responseContentType": "",
+            "responseHeaders": "",
+            "responseSize": "",
+            "responseType": "",
+            "responseURL": "",
+            "startTime": "Thu Jan 01 1970 00:00:00 GMT+0000 (Coordinated Universal Time)",
+            "status": "",
+            "timeout": "",
+            "type": "REDUX",
+            "url": "",
+          },
+          Object {
+            "action": "",
+            "dataSent": "",
+            "endTime": "",
+            "icon": "❌",
+            "method": "",
+            "requestHeaders": "",
+            "response": "",
+            "responseContentType": "",
+            "responseHeaders": "",
+            "responseSize": "",
+            "responseType": "",
+            "responseURL": "",
+            "startTime": "",
+            "status": "",
+            "timeout": "",
+            "type": "",
+            "url": "",
+          },
+        ]
+      `);
     });
   });
 
@@ -175,11 +287,18 @@ describe('Helpers tests', () => {
       RNFS.writeFile = jest.fn().mockImplementation((path, text, encoding) => Promise.resolve({}));
       RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
 
-      let file = await csvWriter();
+      let file = await xlsxWriter();
       expect(RNFS.exists).toBeCalledTimes(1);
       expect(RNFS.unlink).not.toBeCalled();
       expect(RNFS.writeFile).toBeCalledTimes(1);
       expect(file).not.toBeUndefined();
+    });
+
+    it('should throw an error if param for xlsxWriter is not an array of object', () => {
+      RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
+      // @ts-ignore
+      expect(() => xlsxWriter({})).rejects.toThrowErrorMatchingInlineSnapshot(`"js.forEach is not a function"`);
+      expect(RNFS.exists).toBeCalledTimes(1);
     });
 
     it('should replace an existing file ', async () => {
@@ -188,7 +307,7 @@ describe('Helpers tests', () => {
 
       // Create a first file
       RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
-      let file = await csvWriter('mytest', '/my/path', 'utf-8');
+      let file = await xlsxWriter(myDatas, 'utf-8', '/my/path', false);
       expect(RNFS.exists).toBeCalledTimes(1);
       expect(RNFS.unlink).not.toBeCalled();
       expect(RNFS.writeFile).toBeCalledTimes(1);
@@ -196,7 +315,7 @@ describe('Helpers tests', () => {
 
       RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(true));
       // Try to replace with another file with the same path
-      let newfile = await csvWriter('mynewtest', '/my/path', 'utf-8');
+      let newfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
       expect(RNFS.exists).toBeCalledTimes(1);
       expect(RNFS.unlink).toBeCalledTimes(1);
       expect(RNFS.writeFile).toBeCalledTimes(2);
@@ -207,7 +326,7 @@ describe('Helpers tests', () => {
       RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
       RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Error unexpected' }));
 
-      let errorfile = await csvWriter('myerrortest', '/my/path', 'utf8');
+      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
       expect(consoleError).toHaveBeenCalledTimes(1);
       expect(errorfile).toBeUndefined();
     });
@@ -217,7 +336,7 @@ describe('Helpers tests', () => {
       RNFS.unlink = jest.fn().mockImplementation(() => Promise.reject({ error: 'Error unexpected' }));
       RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Cannot write this file' }));
 
-      let errorfile = await csvWriter('myerrortest', '/my/path', 'utf8');
+      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
       expect(consoleError).toHaveBeenCalledTimes(1);
       expect(errorfile).toBeUndefined();
     });
@@ -338,8 +457,9 @@ const myRequests = [
   {},
 ];
 
-const myCSV =
-  'icon;type;method;status;url;action;startTime;endTime;timeout;dataSent;requestHeaders;responseHeaders;responseContentType;responseSize;responseType;responseURL;response\nbrand,;os,;systemVersion,;apiLevel,;appName,;appVersion,;appBuild,\n✅;REACT NATIVE REQUEST;GET;200;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n✅;NATIVE REQUEST;GET;200;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n⚠️;NATIVE REQUEST;POST;301;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n❌;NATIVE REQUEST;PUT;500;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n❌;REDUX;;;;{"type":"__ERROR:UNDEFINED__","payload":"test"};Thu Jan 01 1970 00:00:00 GMT+0000 (Coordinated Universal Time);;;;;;;;;;\n❌;;;;;;;;;;;;;;;;';
-
-const myCSVwithoutInfo =
-  '✅;REACT NATIVE REQUEST;GET;200;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n✅;NATIVE REQUEST;GET;200;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n⚠️;NATIVE REQUEST;POST;301;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n❌;NATIVE REQUEST;PUT;500;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;;Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time);Tue Feb 16 2021 12:12:55 GMT+0000 (Coordinated Universal Time);;dataSent;{"Content-Type":"application/json"};{"Content-Length":"0","Content-Type":"application/json: charset=UTF-8","Date":"Tue, 16 Feb 2021 12:12:55 GMT","Sozu-Id":"51989c0c-ebe7-4574-913d-443477875da7"};application/json;;blob;https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9;response\n❌;REDUX;;;;{"type":"__ERROR:UNDEFINED__","payload":"test"};Thu Jan 01 1970 00:00:00 GMT+0000 (Coordinated Universal Time);;;;;;;;;;\n❌;;;;;;;;;;;;;;;;';
+const myDatas: Array<any> = [
+  {
+    id: 1,
+    name: 'test',
+  },
+];

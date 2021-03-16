@@ -1,6 +1,6 @@
 {
   "name": "react-native-netwatch",
-  "version": "1.0.0",
+  "version": "0.0.2-beta11",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "src/index.tsx",
@@ -27,13 +27,14 @@
     "testu": "TZ=UTC node_modules/.bin/jest --updateSnapshot"
   },
   "dependencies": {
-    "url": "^0.11.0"
+    "@react-native-clipboard/clipboard": "^1.7.0",
+    "url": "^0.11.0",
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@babel/runtime": "^7.11.2",
-    "@react-native-clipboard/clipboard": "^1.7.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/react-native": "^7.2.0",
     "@types/enzyme": "^3.10.8",

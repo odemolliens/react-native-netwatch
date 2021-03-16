@@ -1,18 +1,17 @@
 import { EnumStatus, ILog } from '../types';
 import RNFS from 'react-native-fs';
 import {
-  getBrand,
-  getBaseOsSync,
+  getDeviceId,
   getSystemVersion,
   getApiLevelSync,
   getApplicationName,
   getVersion,
   getBuildNumber,
 } from 'react-native-device-info';
+import XLSX from 'xlsx';
 
 interface IDeviceInfo {
   brand: string;
-  os: string;
   systemVersion: string;
   apiLevel: number;
   appName: string;
@@ -21,8 +20,7 @@ interface IDeviceInfo {
 }
 
 const _getDeviceInfo = (): IDeviceInfo => {
-  const _brand = getBrand();
-  const _os = getBaseOsSync();
+  const _brand = getDeviceId();
   const _systemVersion = getSystemVersion();
   const _apiLevel = getApiLevelSync();
   const _appName = getApplicationName();
@@ -31,7 +29,6 @@ const _getDeviceInfo = (): IDeviceInfo => {
 
   return {
     brand: _brand,
-    os: _os,
     systemVersion: _systemVersion,
     apiLevel: _apiLevel,
     appName: _appName,
@@ -69,14 +66,33 @@ export const getStatus = (status: number = 500): string => {
 
 export const duration = (startTime: number, endTime: number): number => endTime - startTime;
 
-const _path = RNFS.DocumentDirectoryPath + '/export' + '.csv';
+const _path = RNFS.DocumentDirectoryPath + '/export' + '.xlsx';
 // write the file
-export const csvWriter = async (text = '', path = _path, encoding = 'utf8') => {
+export const xlsxWriter = async (text = [], encoding = 'ascii', path = _path, showDeviceInfo: boolean = true) => {
   if (await RNFS.exists(path)) {
     await deleteFile(path);
   }
 
-  return RNFS.writeFile(path, text, encoding)
+  // Generate a new workbook
+  const wb = XLSX.utils.book_new();
+  // Tranform Object into sheet format
+  const datas = XLSX.utils.json_to_sheet(text);
+  // Add the sheet in the work book
+  XLSX.utils.book_append_sheet(wb, datas, 'datas');
+
+  if (showDeviceInfo) {
+    try {
+      const _temp: Array<IDeviceInfo> = [_getDeviceInfo()];
+      const deviceInfos = XLSX.utils.json_to_sheet(_temp);
+      XLSX.utils.book_append_sheet(wb, deviceInfos, 'device_infos');
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  // Write the file
+  const xlsxFile = XLSX.write(wb, { type: 'binary', bookType: 'xlsx' });
+
+  return RNFS.writeFile(path, xlsxFile, encoding)
     .then(() => path)
     .catch(err => {
       console.error(err.message);
@@ -120,15 +136,8 @@ const _icon = (value: number) => {
   return '❌';
 };
 
-export const getCSVfromArray = (array: any, showLabel: boolean = true, showDeviceInfo: boolean = true): string => {
-  const excludedAttributes = ['_id', 'readyState'];
-
-  let deviceInfo = {};
-  try {
-    deviceInfo = _getDeviceInfo();
-  } catch (error) {
-    console.error(error.message);
-  }
+export const formatDatas = (array: any): [] => {
+  const excludedAttributes = ['_id', 'readyState', 'shortUrl', 'stringifiedAction'];
 
   // Loop 1: Iterate on every requests
   const rows = array.map((row: any) => {
@@ -138,7 +147,7 @@ export const getCSVfromArray = (array: any, showLabel: boolean = true, showDevic
       ...row,
     };
 
-    // Create a row as string
+    // Create formatted rows
     Object.entries(_row)
       .filter(item => !excludedAttributes.includes(item[0]))
       .map(value => {
@@ -162,22 +171,10 @@ export const getCSVfromArray = (array: any, showLabel: boolean = true, showDevic
           return;
         }
       });
-    return Object.values(_temp)
-      .join(';')
-      .replace(/(\r\n|\n|\r)/gm, '');
+    return _temp;
   });
 
-  let _result = rows;
-  if (showDeviceInfo) {
-    const _deviceInfo = Object.entries(deviceInfo).join(';');
-    _result = [_deviceInfo].concat(_result);
-  }
-  if (showLabel) {
-    const _headers = Object.keys(_getTemplate()).join(';');
-    _result = [_headers].concat(_result);
-  }
-
-  return _result.join('\n');
+  return rows;
 };
 
 export const mergeArrays = (...arrays: Array<ILog[]>) => [...arrays.flat()];

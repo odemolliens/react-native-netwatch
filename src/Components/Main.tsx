@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState, useEffect, useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
-import { Appbar, Searchbar } from 'react-native-paper';
-import Item from './Item';
+import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
+import Item, { ITEM_HEIGHT } from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
@@ -11,7 +11,7 @@ import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
-import { csvWriter, getCSVfromArray, mergeArrays, compare } from '../Utils/helpers';
+import { xlsxWriter, formatDatas, mergeArrays, compare } from '../Utils/helpers';
 
 export interface IProps {
   testId?: string;
@@ -33,6 +33,7 @@ export const Main = (props: IProps) => {
   const [filter, setFilter] = useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
   const [settingsVisible, setSettingsVisible] = useState(false);
   const [deleteVisible, setDeleteVisible] = useState<boolean>(false);
+  const [loadingCSV, setloadingCSV] = useState<boolean>(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
   const hideDialogAndDelete = () => {
     clearList();
@@ -40,37 +41,52 @@ export const Main = (props: IProps) => {
   };
 
   useEffect(() => {
+    let _requests: ILog[] = [];
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
-      setRequests(props.reduxActions);
+      _requests = props.reduxActions;
     } else if (source === EnumSourceType.ReactNativeRequest) {
-      setRequests(props.rnRequests);
+      _requests = props.rnRequests;
     } else if (source === EnumSourceType.Nativerequest) {
-      setRequests(props.nRequests.sort(compare).reverse());
+      _requests = props.nRequests.sort(compare).reverse();
     } else {
-      setRequests(mergeArrays(props.reduxActions, props.rnRequests, props.nRequests).sort(compare).reverse());
+      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.nRequests)
+        .sort(compare)
+        .reverse()
+        .slice(0, props.maxRequests);
     }
-  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter]);
 
-  const filteredRequests = (): Array<any> =>
-    requests.slice(0, props.maxRequests).filter(request => {
-      if (filter === EnumFilterType.All) {
+    let _filteredRequests: ILog[] = _requests;
+    if (filter !== EnumFilterType.All) {
+      _filteredRequests = _requests.filter((request: ILog) => {
+        return (request instanceof RNRequest || request instanceof NRequest) && filter === request.method;
+      });
+    }
+
+    let _searchedRequests: ILog[] = _filteredRequests;
+    if (searchQuery !== '') {
+      _searchedRequests = _filteredRequests.filter((request: ILog) => {
+        if (request instanceof RNRequest || request instanceof NRequest) {
+          return (
+            request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            request.status === parseInt(searchQuery, 10) ||
+            request.method.toLowerCase() === searchQuery.toLowerCase()
+          );
+        }
+
         if (request instanceof ReduxAction) {
           return JSON.stringify(request.action).toLowerCase().includes(searchQuery.toLowerCase());
         }
-      }
-      if (request instanceof RNRequest || request instanceof NRequest) {
-        if (filter === request.method || filter === EnumFilterType.All) {
-          return (
-            (request.type === EnumSourceType.ReactNativeRequest || request.type === EnumSourceType.Nativerequest) &&
-            (request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              request.status === parseInt(searchQuery, 10) ||
-              request.method.toLowerCase() === searchQuery.toLowerCase())
-          );
-        }
-      }
-      return false;
-    });
+        return false;
+      });
+    }
+
+    setRequests(_searchedRequests);
+  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter, searchQuery]);
+
+  useEffect(() => {
+    if (loadingCSV) onShare();
+  }, [loadingCSV]);
 
   const clearList = () => {
     props.clearAll();
@@ -78,10 +94,11 @@ export const Main = (props: IProps) => {
   };
 
   const onShare = async () => {
-    const message = getCSVfromArray(requests);
+    const message = formatDatas(requests);
     if (message.length === 0) return;
     try {
-      const path = await csvWriter(message);
+      const path = await xlsxWriter(message);
+      setloadingCSV(false);
       await Share.open({
         title: 'Export calls to CSV',
         url: `file://${path}`,
@@ -89,6 +106,8 @@ export const Main = (props: IProps) => {
         // excludedActivityTypes: []
       });
     } catch (error) {
+      // if user dismiss sharing
+      setloadingCSV(false);
       console.error(error.message);
     }
   };
@@ -104,7 +123,7 @@ export const Main = (props: IProps) => {
     ]);
   };
 
-  const _renderItems = (_props: { item: ReduxAction | RNRequest | NRequest; index: number }) => {
+  const _renderItems = (_props: { item: ILog; index: number }) => {
     return (
       <Item
         testID={`${_props.index}`}
@@ -118,6 +137,10 @@ export const Main = (props: IProps) => {
     );
   };
 
+  const _keyExtractor = (item: ILog) => `${item._id.toString()}${item.startTime}${item.type}`;
+
+  const _getItemLayout = (_data: any, index: number) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index });
+
   return (
     <>
       <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
@@ -130,9 +153,17 @@ export const Main = (props: IProps) => {
           />
         </TouchableOpacity>
         <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
-        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={onShare} />
-        </TouchableOpacity>
+        {loadingCSV ? (
+          <ActivityIndicator
+            animating={true}
+            color={theme.primaryColor}
+            style={[styles.button, { borderLeftWidth: 0 }]}
+          />
+        ) : (
+          <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
+            <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={() => setloadingCSV(true)} />
+          </TouchableOpacity>
+        )}
       </Appbar.Header>
       <View style={[styles.options, { backgroundColor: theme.secondaryColor }]}>
         <Searchbar
@@ -192,10 +223,15 @@ export const Main = (props: IProps) => {
             autoscrollToTopThreshold: 10,
             minIndexForVisible: 1,
           }}
+          getItemLayout={_getItemLayout}
           style={{ backgroundColor: theme.secondaryColor }}
           renderItem={_renderItems}
-          keyExtractor={item => `${item._id.toString()}${item.startTime}${item.type}`}
-          data={filteredRequests()}
+          keyExtractor={_keyExtractor}
+          data={requests}
+          initialNumToRender={20}
+          maxToRenderPerBatch={30}
+          updateCellsBatchingPeriod={70}
+          removeClippedSubviews
         />
       )}
     </>

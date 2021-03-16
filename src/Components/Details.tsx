@@ -37,6 +37,8 @@ const excludedAttributes: Array<string> = [
   'responseSize',
   'responseType',
   'responseContentType',
+  'stringifiedAction',
+  'shortUrl',
 ];
 
 const stringifyData = (array: Array<string[]>): string => {
@@ -157,6 +159,14 @@ export const Details: React.FC<IProps> = props => {
   };
 
   if (props.item instanceof ReduxAction) {
+    // props.item.action should only contains 2 elements, a type and a payload (not necessary called payload).
+    // In consequence, if it's not the type, that could be the payload
+    const _infos = Object.entries(props.item.action).filter(value => value[0] !== 'type');
+    const _reduxAction = {
+      label: (_infos.length > 0 && _infos[0][0]) || undefined,
+      payload: (_infos.length > 0 && _infos[0][1]) || undefined,
+    };
+
     _action = () => _onShareReduxAction(props.item as ReduxAction);
     _content = (
       <View style={{ flex: 1, width: '100%' }}>
@@ -183,8 +193,12 @@ export const Details: React.FC<IProps> = props => {
         </View>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.textColorFour }}>Payload : </Text>
-          <Text>{JSON.stringify(props.item.action?.payload, null, 2)}</Text>
+          {_reduxAction.label && (
+            <Text style={{ color: theme.textColorFour }}>{`${_reduxAction.label
+              .charAt(0)
+              .toUpperCase()}${_reduxAction.label.slice(1)} :`}</Text>
+          )}
+          {_reduxAction.payload && <Text>{JSON.stringify(_reduxAction.payload, null, 2)}</Text>}
         </View>
       </View>
     );
@@ -210,8 +224,9 @@ export const Details: React.FC<IProps> = props => {
     if (_temp === EnumStatus.Success) _color = theme.successColor;
     if (_temp === EnumStatus.Warning) _color = theme.warningColor;
     if (_temp === EnumStatus.Failed) _color = theme.failedColor;
-    const urlObject = url.parse(props.item.url);
+    const urlObject = url.parse(props.item.url, true);
     const hostname = urlObject.host || '';
+    const _params = Object.entries(urlObject.query);
 
     _content = (
       <View style={{ flex: 1, width: '100%' }}>
@@ -234,6 +249,13 @@ export const Details: React.FC<IProps> = props => {
           )}ms )`}</Text>
         </View>
 
+        {typeof props.item.timeout === 'number' && (
+          <View style={[styles.line]}>
+            <Text style={{ color: theme.textColorFour }}>Timeout : </Text>
+            <Text>{props.item?.timeout.toString()}</Text>
+          </View>
+        )}
+
         {_generalElements.length > 0 && (
           <>
             <Subheading
@@ -242,6 +264,17 @@ export const Details: React.FC<IProps> = props => {
               Request Info
             </Subheading>
             {_renderItems(_generalElements)}
+          </>
+        )}
+
+        {_params.length > 0 && (
+          <>
+            <Subheading
+              style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
+            >
+              Request Params
+            </Subheading>
+            {_renderItems(_params)}
           </>
         )}
 
@@ -256,7 +289,7 @@ export const Details: React.FC<IProps> = props => {
           </>
         )}
 
-        {props.item.dataSent?.length > 0 && (
+        {props.item.dataSent?.length > 0 && props.item.dataSent !== 'undefined' && props.item.dataSent !== 'null' && (
           <>
             <Subheading
               style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
@@ -280,7 +313,7 @@ export const Details: React.FC<IProps> = props => {
           </>
         )}
 
-        {props.item?.response?.length > 0 && (
+        {props.item?.response?.length > 0 && props.item.dataSent !== 'undefined' && props.item.dataSent !== 'null' && (
           <>
             <Subheading
               style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}

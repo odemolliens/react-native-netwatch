@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Modal, SafeAreaView, NativeModules, DeviceEventEmitter, useColorScheme } from 'react-native';
+import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
@@ -16,13 +16,11 @@ import { NRequest } from './Core/Objects/NRequest';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
-  onPressClose: () => void;
-  onShake?: () => void;
-  visible: boolean;
-  enabled?: boolean;
-  shake?: boolean;
+  visible?: boolean;
+  enabled: boolean;
+  disableShake?: boolean;
   maxRequests?: number;
-  theme?: string;
+  theme?: 'dark' | 'light';
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -44,22 +42,24 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const _theme = colorScheme === 'light' ? themes.light : themes.dark;
 
   useEffect(() => {
-    setVisible(props.visible);
+    if (props.visible !== undefined) {
+      setVisible(props.visible);
+    }
   }, [props.visible]);
 
   const handleShake = () => {
-    if (props.shake && props.onShake) props.onShake();
+    if (!props.disableShake) setVisible(true);
   };
 
   useEffect(() => {
-    DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    if (!props.disableShake) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
       DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
     };
   }, [handleShake]);
 
   const handleBack = () => {
-    showDetails ? setShowDetails(false) : props.onPressClose();
+    showDetails ? setShowDetails(false) : setVisible(false);
   };
 
   const startNativeLoop = () => {
@@ -100,6 +100,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               _id: element._id,
               readyState: 4,
               url: element.url,
+              shortUrl: element.url.slice(0, 100),
               method: element.method,
               status: element.status,
               startTime: element.startTime,
@@ -139,21 +140,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.enabled]);
 
   useEffect(() => {
-    RNNetwatch.startNetwatch();
-    !props.visible ? stopNativeLoop() : startNativeLoop();
-  }, [props.visible]);
+    !visible ? stopNativeLoop() : startNativeLoop();
+  }, [visible]);
 
   return (
     <ThemeContext.Provider value={_theme}>
-      <SafeAreaView>
-        <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
-          {showDetails ? (
-            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-          ) : (
+      <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
+        <View style={{ flex: 1 }}>
+          <View style={{ height: showDetails ? 0 : '100%' }}>
             <Main
               maxRequests={props.maxRequests}
               testId="mainScreen"
-              onPressClose={() => props.onPressClose()}
+              onPressClose={() => setVisible(false)}
               onPressDetail={setShowDetails}
               onPress={setItem}
               reduxActions={reduxActions}
@@ -161,18 +159,20 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               nRequests={nRequests}
               clearAll={clearAll}
             />
-          )}
-        </Modal>
-      </SafeAreaView>
+          </View>
+          <View style={{ height: showDetails ? '100%' : 0 }}>
+            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
+          </View>
+        </View>
+      </Modal>
     </ThemeContext.Provider>
   );
 };
 
 Netwatch.defaultProps = {
-  onShake: () => {},
   visible: false,
   enabled: true,
-  shake: true,
+  disableShake: false,
   maxRequests: 100,
-  theme: undefined,
+  theme: 'dark',
 };

@@ -28,6 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
     rootViewController.view = rootView
     window?.rootViewController = rootViewController
     window?.makeKeyAndVisible()
+    
+    
+    let defaultSession = URLSession(configuration: .default)
+    if (defaultSession.configuration.protocolClasses != nil) {
+        defaultSession.configuration.protocolClasses?.append(NetwatchInterceptor.self)
+    }
+    URLProtocol.registerClass(NetwatchInterceptor.self)
 
     return true
   }

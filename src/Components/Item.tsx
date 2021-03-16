@@ -9,11 +9,12 @@ import url from 'url';
 import { Text, TextSecondaryColor } from '../Components/Text';
 import { useContext } from 'react';
 import { ThemeContext } from '../Theme';
+import { ILog } from '../types';
 
 export const ITEM_HEIGHT = 60;
 export interface IProps {
   testID?: string;
-  item: RNRequest | NRequest | ReduxAction;
+  item: ILog;
   onPress: () => void;
   color: string;
 }
@@ -25,10 +26,13 @@ export const Item: React.FC<IProps> = (props: IProps) => {
 
   if (props.item instanceof ReduxAction) {
     _line1 = 'redux action';
-    _line2 = JSON.stringify(props.item.action);
+    _line2 = props.item.stringifiedAction;
   } else {
-    if ((props.item instanceof RNRequest || props.item instanceof NRequest) && props.item.url) {
-      const urlObject = url.parse(props.item.url);
+    if (
+      (props.item instanceof RNRequest || props.item instanceof NRequest) &&
+      (props.item.url || props.item.shortUrl)
+    ) {
+      const urlObject = props.item.shortUrl ? url.parse(props.item.shortUrl) : url.parse(props.item.url);
       _line1 = (urlObject.host !== null && urlObject?.host) || '';
       _line2 = (urlObject.path !== null && urlObject?.path) || '';
     }
@@ -37,7 +41,11 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   return (
     <TouchableOpacity
       onPress={() => props.onPress()}
-      style={[styles.container, { backgroundColor: theme.secondaryLightColor }, { backgroundColor: props.color }]}
+      style={[
+        styles.container,
+        { backgroundColor: theme.secondaryLightColor, borderBottomColor: theme.textColorFour },
+        { backgroundColor: props.color },
+      ]}
       testID={`itemTouchable-${props.item._id}`}
     >
       <Status item={props.item} />
@@ -60,9 +68,12 @@ export default Item;
 
 const styles = StyleSheet.create({
   container: {
-    height: ITEM_HEIGHT,
     flexDirection: 'row',
     alignItems: 'center',
+    height: ITEM_HEIGHT,
+    maxHeight: ITEM_HEIGHT,
+    minHeight: ITEM_HEIGHT,
+    borderBottomWidth: 0.5,
   },
   main: {
     flex: 1,

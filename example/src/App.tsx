@@ -52,21 +52,47 @@ const App = () => {
         >
           <Text style={styles.textStyle}>Send a Native request</Text>
         </TouchableHighlight>
-        <ConnectedButton />
+        <ConnectedButtonA />
+        <ConnectedButtonB />
+        <ConnectedButtonC />
       </View>
     </Provider>
   );
 };
 
-const Button = (props: any) => (
+const ButtonA = (props: any) => (
   <TouchableHighlight
     style={styles.enableButton}
     onPress={() => {
-      props.customAction({ type: 'todos/todoAdded', payload: 'Learn about actions' });
+      props.customAction({ type: 'action/withPayload', payload: 'Learn about actions' });
     }}
-    testID="buttonDispatchAction"
+    testID="buttonDispatchActionA"
   >
-    <Text style={styles.textStyle}>Dispatch Action</Text>
+    <Text style={styles.textStyle}>Dispatch Action (type/payload)</Text>
+  </TouchableHighlight>
+);
+
+const ButtonB = (props: any) => (
+  <TouchableHighlight
+    style={styles.enableButton}
+    onPress={() => {
+      props.customAction({ type: 'action/withPayloadNamedDifferent', credentials: 'Payload name is different' });
+    }}
+    testID="buttonDispatchActionB"
+  >
+    <Text style={styles.textStyle}>Dispatch Action (type/credentials)</Text>
+  </TouchableHighlight>
+);
+
+const ButtonC = (props: any) => (
+  <TouchableHighlight
+    style={styles.enableButton}
+    onPress={() => {
+      props.customAction({ type: 'action/withoutPayload'});
+    }}
+    testID="buttonDispatchActionC"
+  >
+    <Text style={styles.textStyle}>Dispatch Action (type/NO PAYLOAD)</Text>
   </TouchableHighlight>
 );
 
@@ -77,7 +103,9 @@ export function mapDispatchToProps(dispatch: Dispatch, props: any): any {
   };
 }
 
-const ConnectedButton = connect(null, mapDispatchToProps)(Button);
+const ConnectedButtonA = connect(null, mapDispatchToProps)(ButtonA);
+const ConnectedButtonB = connect(null, mapDispatchToProps)(ButtonB);
+const ConnectedButtonC = connect(null, mapDispatchToProps)(ButtonC);
 const ConnectedComponent = connect(null, mapDispatchToProps)(Netwatch);
 
 export default App;

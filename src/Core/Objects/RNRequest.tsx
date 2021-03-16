@@ -49,6 +49,7 @@ export class RNRequest implements ILog {
   startTime: number = Date.now();
   readyState: number = 0;
   url: string = '';
+  shortUrl?: string = '';
   method: string = '';
   status: number = -1;
   endTime: number = 0;
