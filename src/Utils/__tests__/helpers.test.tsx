@@ -295,6 +295,7 @@ describe('Helpers tests', () => {
     });
 
     it('should throw an error if param for xlsxWriter is not an array of object', () => {
+      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
       RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
       // @ts-ignore
       expect(() => xlsxWriter({})).rejects.toThrowErrorMatchingInlineSnapshot(`"js.forEach is not a function"`);
@@ -326,7 +327,7 @@ describe('Helpers tests', () => {
       RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
       RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Error unexpected' }));
 
-      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
+      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path', false);
       expect(consoleError).toHaveBeenCalledTimes(1);
       expect(errorfile).toBeUndefined();
     });
@@ -337,7 +338,7 @@ describe('Helpers tests', () => {
       RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Cannot write this file' }));
 
       let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
-      expect(consoleError).toHaveBeenCalledTimes(1);
+      expect(consoleError).toHaveBeenCalledTimes(2);
       expect(errorfile).toBeUndefined();
     });
   });

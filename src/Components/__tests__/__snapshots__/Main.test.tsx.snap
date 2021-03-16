@@ -172,8 +172,9 @@ exports[`Main test suite should render properly 1`] = `
   <FlatList
     data={Array []}
     disableVirtualization={false}
+    getItemLayout={[Function]}
     horizontal={false}
-    initialNumToRender={10}
+    initialNumToRender={20}
     keyExtractor={[Function]}
     maintainVisibleContentPosition={
       Object {
@@ -181,10 +182,10 @@ exports[`Main test suite should render properly 1`] = `
         "minIndexForVisible": 1,
       }
     }
-    maxToRenderPerBatch={10}
+    maxToRenderPerBatch={30}
     numColumns={1}
     onEndReachedThreshold={2}
-    removeClippedSubviews={false}
+    removeClippedSubviews={true}
     renderItem={[Function]}
     scrollEventThrottle={50}
     style={
@@ -193,7 +194,7 @@ exports[`Main test suite should render properly 1`] = `
       }
     }
     testID="itemsList"
-    updateCellsBatchingPeriod={50}
+    updateCellsBatchingPeriod={70}
     windowSize={21}
   />
 </Fragment>
@@ -371,8 +372,9 @@ exports[`Main test suite should render properly and delete list 1`] = `
   <FlatList
     data={Array []}
     disableVirtualization={false}
+    getItemLayout={[Function]}
     horizontal={false}
-    initialNumToRender={10}
+    initialNumToRender={20}
     keyExtractor={[Function]}
     maintainVisibleContentPosition={
       Object {
@@ -380,10 +382,10 @@ exports[`Main test suite should render properly and delete list 1`] = `
         "minIndexForVisible": 1,
       }
     }
-    maxToRenderPerBatch={10}
+    maxToRenderPerBatch={30}
     numColumns={1}
     onEndReachedThreshold={2}
-    removeClippedSubviews={false}
+    removeClippedSubviews={true}
     renderItem={[Function]}
     scrollEventThrottle={50}
     style={
@@ -392,7 +394,7 @@ exports[`Main test suite should render properly and delete list 1`] = `
       }
     }
     testID="itemsList"
-    updateCellsBatchingPeriod={50}
+    updateCellsBatchingPeriod={70}
     windowSize={21}
   />
 </Fragment>
@@ -570,8 +572,9 @@ exports[`Main test suite should render properly and showSettings 1`] = `
   <FlatList
     data={Array []}
     disableVirtualization={false}
+    getItemLayout={[Function]}
     horizontal={false}
-    initialNumToRender={10}
+    initialNumToRender={20}
     keyExtractor={[Function]}
     maintainVisibleContentPosition={
       Object {
@@ -579,10 +582,10 @@ exports[`Main test suite should render properly and showSettings 1`] = `
         "minIndexForVisible": 1,
       }
     }
-    maxToRenderPerBatch={10}
+    maxToRenderPerBatch={30}
     numColumns={1}
     onEndReachedThreshold={2}
-    removeClippedSubviews={false}
+    removeClippedSubviews={true}
     renderItem={[Function]}
     scrollEventThrottle={50}
     style={
@@ -591,7 +594,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
       }
     }
     testID="itemsList"
-    updateCellsBatchingPeriod={50}
+    updateCellsBatchingPeriod={70}
     windowSize={21}
   />
 </Fragment>

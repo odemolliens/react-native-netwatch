@@ -4,13 +4,14 @@ import { RNRequest } from '../Objects/RNRequest';
 
 jest.mock('react-native/Libraries/Blob/FileReader', () => ({}));
 jest.mock('react-native/Libraries/Network/XHRInterceptor', () => ({
-  isInterceptorEnabled: jest.fn(),
+  isInterceptorEnabled: jest.fn().mockReturnValue(true),
   setOpenCallback: jest.fn(),
   setRequestHeaderCallback: jest.fn(),
   setSendCallback: jest.fn(),
   setHeaderReceivedCallback: jest.fn(),
   setResponseCallback: jest.fn(),
   enableInterception: jest.fn(),
+  disableInterception: jest.fn(),
 }));
 
 beforeEach(() => {
@@ -25,23 +26,20 @@ describe('enableXHRInterception', () => {
     expect(logger.callback).toEqual(callback);
   });
 
-  // FIX: This test failed
-  it.skip('should disabled XHRInterceptor', () => {
+  it('should disabled XHRInterceptor', () => {
     const logger = new RNLogger();
+    logger.initialized = false; // Maybe should be false by default?
     logger.enableXHRInterception();
-    (XHRInterceptor.isInterceptorEnabled as jest.Mock).mockReturnValueOnce(true);
+    expect(XHRInterceptor.enableInterception).toHaveBeenCalledTimes(1);
     logger.disableXHRInterception();
-    expect(XHRInterceptor.isInterceptorEnabled).toHaveBeenCalledTimes(1);
+    expect(XHRInterceptor.disableInterception).toHaveBeenCalledTimes(1);
   });
 
-  it.skip('should do nothing if interceptor has already been enabled', () => {
+  it('should do nothing if interceptor has already been enabled', () => {
     const logger = new RNLogger();
-
-    (XHRInterceptor.isInterceptorEnabled as jest.Mock).mockReturnValueOnce(true);
-
-    expect(logger.enableXHRInterception()).toBeUndefined();
-    expect(XHRInterceptor.isInterceptorEnabled).toHaveBeenCalledTimes(1);
-    expect(XHRInterceptor.setOpenCallback).toHaveBeenCalledTimes(0);
+    logger.initialized = true; // Maybe should be false by default?
+    logger.enableXHRInterception();
+    expect(XHRInterceptor.isInterceptorEnabled).toHaveBeenCalledTimes(0);
   });
 
   it('should update the maxRequests if provided', () => {
@@ -94,8 +92,7 @@ describe('enableXHRInterception', () => {
     expect(XHRInterceptor.setResponseCallback).toHaveBeenCalledWith(expect.any(Function));
   });
 
-  // TODO: Fix this test
-  it.skip('should update an existing request in the queue', () => {
+  it('should update an existing request in the queue', () => {
     const logger = new RNLogger();
     const xhr = {
       _index: 1,
@@ -122,24 +119,27 @@ describe('enableXHRInterception', () => {
       _id: 1,
       type: 'RNR',
       startTime: 1614176044011,
-      readyState: 0,
+      readyState: 4,
       url: 'http://test.url',
+      shortUrl: 'http://test.url',
       method: 'POST',
       status: -1,
       endTime: 0,
       dataSent: '',
       response: '',
+      responseContentType: 'application/json',
+      responseSize: 0,
+      responseType: 'blob',
+      responseHeaders: {
+        'Content-Length': '0',
+        'Content-Type': 'application/json; charset=UTF-8',
+        Date: 'Tue, 16 Feb 2021 12:12:55 GMT',
+        'Sozu-Id': '51989c0c-ebe7-4574-913d-443477875da7',
+      },
     };
 
-    expect(logger.updaterequest(1, mockPartialRequest)).toEqual(expectRequest);
-  });
-
-  it.skip('should call enableInterception', () => {
-    const logger = new RNLogger();
-    logger.enableXHRInterception();
-
-    expect(XHRInterceptor.enableInterception).toHaveBeenCalledTimes(1);
-    expect(XHRInterceptor.enableInterception).toHaveBeenCalledWith();
+    logger.updaterequest(1, mockPartialRequest);
+    expect(logger.requests[0]).toEqual(expectRequest);
   });
 });
 
@@ -155,19 +155,14 @@ describe('getRequests', () => {
 });
 
 describe('clearRequests', () => {
-  it.skip('should clear the requests', () => {
+  it('should clear the requests', () => {
     const logger = new RNLogger();
-
-    logger.callback = jest.fn();
 
     // @ts-ignore
     logger.requests = ['test-request'];
-
+    expect(logger.getRequests()).toEqual(['test-request']);
     logger.clear();
-
     expect(logger.getRequests()).toEqual([]);
-    expect(logger.callback).toHaveBeenCalledTimes(1);
-    expect(logger.callback).toHaveBeenCalledWith([]);
   });
 });
 

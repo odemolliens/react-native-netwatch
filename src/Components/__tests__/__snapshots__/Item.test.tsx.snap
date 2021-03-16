@@ -7,11 +7,15 @@ exports[`Item test suite should render Action properly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -29,6 +33,7 @@ exports[`Item test suite should render Action properly 1`] = `
           "type": "__ERROR:UNDEFINED__",
         },
         "startTime": 100,
+        "stringifiedAction": "",
         "type": "REDUX",
       }
     }
@@ -79,9 +84,7 @@ exports[`Item test suite should render Action properly 1`] = `
     >
       <Text
         numberOfLines={1}
-      >
-        {"type":"__ERROR:UNDEFINED__","action":""}
-      </Text>
+      />
     </Component>
   </Component>
 </ForwardRef>
@@ -94,11 +97,15 @@ exports[`Item test suite should render Native Request properly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -120,6 +127,7 @@ exports[`Item test suite should render Native Request properly 1`] = `
         "responseSize": 0,
         "responseType": "blob",
         "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "shortUrl": "",
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
@@ -189,11 +197,15 @@ exports[`Item test suite should render Request properly 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -215,6 +227,7 @@ exports[`Item test suite should render Request properly 1`] = `
         "responseSize": 0,
         "responseType": "blob",
         "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "shortUrl": "",
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
@@ -284,11 +297,15 @@ exports[`Item test suite should render Request properly even bad URL passed in t
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -310,6 +327,7 @@ exports[`Item test suite should render Request properly even bad URL passed in t
         "responseSize": 0,
         "responseType": "blob",
         "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "shortUrl": "",
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
@@ -375,11 +393,15 @@ exports[`Item test suite should render Request properly even no URL passed in th
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -401,6 +423,7 @@ exports[`Item test suite should render Request properly even no URL passed in th
         "responseSize": 0,
         "responseType": "blob",
         "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "shortUrl": "",
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
@@ -466,11 +489,15 @@ exports[`Item test suite should render properly & press item 1`] = `
     Array [
       Object {
         "alignItems": "center",
+        "borderBottomWidth": 0.5,
         "flexDirection": "row",
         "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
       },
       Object {
         "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
       },
       Object {
         "backgroundColor": "red",
@@ -492,6 +519,7 @@ exports[`Item test suite should render properly & press item 1`] = `
         "responseSize": 0,
         "responseType": "blob",
         "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
+        "shortUrl": "",
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,

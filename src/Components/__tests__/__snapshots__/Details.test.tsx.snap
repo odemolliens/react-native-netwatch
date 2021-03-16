@@ -248,9 +248,8 @@ exports[`Details test suite Test Redux item should render Redux action properly 
             }
           }
         >
-          Payload : 
+          Action :
         </Text>
-        <Text />
       </Component>
     </Component>
   </Component>
@@ -489,6 +488,31 @@ exports[`Details test suite Test Request item should render Request properly 1`]
         </Text>
         <Text>
           16/02/2021 - 12:12:54   ( 1015ms )
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Timeout : 
+        </Text>
+        <Text>
+          0
         </Text>
       </Component>
       <Subheading
@@ -972,6 +996,31 @@ exports[`Details test suite Test Request item should render properly with reques
         </Text>
         <Text>
           16/02/2021 - 12:12:54   ( 1015ms )
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Timeout : 
+        </Text>
+        <Text>
+          0
         </Text>
       </Component>
       <Subheading
@@ -1719,6 +1768,31 @@ exports[`Details test suite Test Request item should render properly with reques
         </Text>
         <Text>
           16/02/2021 - 12:12:54   ( 1015ms )
+        </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#6B7280",
+            }
+          }
+        >
+          Timeout : 
+        </Text>
+        <Text>
+          0
         </Text>
       </Component>
       <Subheading
