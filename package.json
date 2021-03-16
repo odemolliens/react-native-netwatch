@@ -1,6 +1,6 @@
 {
   "name": "react-native-netwatch",
-  "version": "0.0.2-beta11",
+  "version": "1.0.0-rc1",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "lib/index.js",
