@@ -57,27 +57,6 @@ describe('enableXHRInterception', () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
-  // TODO: Fix this test startTime change every time!
-  it.skip('should dispatch Redux actions and can be retrieve with getReduxAction', () => {
-    clear();
-    initCurrentId();
-    setMaxActions(5);
-    const next = jest.fn();
-
-    const action1 = { type: 'CONNECT1' };
-    const action2 = { type: 'CONNECT2' };
-    const action3 = { type: 'CONNECT3' };
-    reduxLoggerMiddleware(store)(next)(action1);
-    reduxLoggerMiddleware(store)(next)(action2);
-    reduxLoggerMiddleware(store)(next)(action3);
-    // console.log(getReduxActions());
-    expect(getReduxActions()).toBe([
-      { _id: 1, startTime: 1614184734739, type: 'REDUX', action: { type: 'CONNECT1' } },
-      { _id: 2, startTime: 1614184734739, type: 'REDUX', action: { type: 'CONNECT2' } },
-      { _id: 3, startTime: 1614184734739, type: 'REDUX', action: { type: 'CONNECT3' } },
-    ]);
-  });
-
   it('should get how many actions stored', () => {
     clear();
     const next = jest.fn();

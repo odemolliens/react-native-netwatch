@@ -65,14 +65,6 @@ describe('getResponseBody', () => {
     const result = await getResponseBody('string', mockRequestWithMethod.response);
     expect(result).toMatchInlineSnapshot(`"response is a string"`);
   });
-
-  //FIX: This test doesn't work
-  it.skip('should return stringified data in consistent format', async () => {
-    const _data = { data: { a: 1 } };
-    mockRequestWithMethod.response = new Blob(_data, { type: 'application/json' });
-    const result = await getResponseBody('blob', mockRequestWithMethod.response);
-    expect(result).toMatchInlineSnapshot(`""`);
-  });
 });
 
 const mockRequestWithMethod: RNRequest = {

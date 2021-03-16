@@ -5,42 +5,80 @@ exports[`Index test suite should render properly 1`] = `
   value={
     Object {
       "black": "#000",
-      "failedColor": "#FF5252",
-      "primaryColor": "#005ECB",
-      "reduxColor": "#B47CFF",
-      "secondaryColor": "#F3F4F6",
-      "secondaryDarkColor": "#E5E7EB",
-      "secondaryLightColor": "#F9FAFB",
-      "successColor": "#69F0AE",
-      "textColorFour": "#4B5563",
-      "textColorOne": "#111827",
-      "textColorThree": "#374151",
-      "textColorTwo": "#1F2937",
-      "warningColor": "#FFAB40",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
       "white": "#FFF",
     }
   }
 >
-  <ForwardRef(SafeAreaView)>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
     <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      onRequestClose={[Function]}
-      visible={false}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
     >
-      <Main
-        clearAll={[Function]}
-        maxRequests={100}
-        nRequests={Array []}
-        onPress={[Function]}
-        onPressClose={[Function]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
-      />
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[Function]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={
+            ReduxAction {
+              "_id": -1,
+              "action": Object {
+                "payload": "",
+                "type": "__ERROR:UNDEFINED__",
+              },
+              "startTime": 1554632430000,
+              "stringifiedAction": "",
+              "type": "REDUX",
+            }
+          }
+          onPressBack={[Function]}
+          testId="detailScreen"
+        />
+      </Component>
     </Component>
-  </ForwardRef(SafeAreaView)>
+  </Component>
 </ContextProvider>
 `;
 
@@ -49,42 +87,80 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
   value={
     Object {
       "black": "#000",
-      "failedColor": "#FF5252",
-      "primaryColor": "#005ECB",
-      "reduxColor": "#B47CFF",
-      "secondaryColor": "#F3F4F6",
-      "secondaryDarkColor": "#E5E7EB",
-      "secondaryLightColor": "#F9FAFB",
-      "successColor": "#69F0AE",
-      "textColorFour": "#4B5563",
-      "textColorOne": "#111827",
-      "textColorThree": "#374151",
-      "textColorTwo": "#1F2937",
-      "warningColor": "#FFAB40",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
       "white": "#FFF",
     }
   }
 >
-  <ForwardRef(SafeAreaView)>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
     <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      onRequestClose={[Function]}
-      visible={false}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
     >
-      <Main
-        clearAll={[Function]}
-        maxRequests={100}
-        nRequests={Array []}
-        onPress={[Function]}
-        onPressClose={[Function]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
-      />
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[Function]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={
+            ReduxAction {
+              "_id": -1,
+              "action": Object {
+                "payload": "",
+                "type": "__ERROR:UNDEFINED__",
+              },
+              "startTime": 1554632430000,
+              "stringifiedAction": "",
+              "type": "REDUX",
+            }
+          }
+          onPressBack={[Function]}
+          testId="detailScreen"
+        />
+      </Component>
     </Component>
-  </ForwardRef(SafeAreaView)>
+  </Component>
 </ContextProvider>
 `;
 
@@ -93,41 +169,79 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
   value={
     Object {
       "black": "#000",
-      "failedColor": "#FF5252",
-      "primaryColor": "#005ECB",
-      "reduxColor": "#B47CFF",
-      "secondaryColor": "#F3F4F6",
-      "secondaryDarkColor": "#E5E7EB",
-      "secondaryLightColor": "#F9FAFB",
-      "successColor": "#69F0AE",
-      "textColorFour": "#4B5563",
-      "textColorOne": "#111827",
-      "textColorThree": "#374151",
-      "textColorTwo": "#1F2937",
-      "warningColor": "#FFAB40",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
       "white": "#FFF",
     }
   }
 >
-  <ForwardRef(SafeAreaView)>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
     <Component
-      animationType="slide"
-      hardwareAccelerated={false}
-      onRequestClose={[Function]}
-      visible={false}
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
     >
-      <Main
-        clearAll={[Function]}
-        maxRequests={20}
-        nRequests={Array []}
-        onPress={[Function]}
-        onPressClose={[Function]}
-        onPressDetail={[Function]}
-        reduxActions={Array []}
-        rnRequests={Array []}
-        testId="mainScreen"
-      />
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={20}
+          nRequests={Array []}
+          onPress={[Function]}
+          onPressClose={[Function]}
+          onPressDetail={[Function]}
+          reduxActions={Array []}
+          rnRequests={Array []}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={
+            ReduxAction {
+              "_id": -1,
+              "action": Object {
+                "payload": "",
+                "type": "__ERROR:UNDEFINED__",
+              },
+              "startTime": 1554632430000,
+              "stringifiedAction": "",
+              "type": "REDUX",
+            }
+          }
+          onPressBack={[Function]}
+          testId="detailScreen"
+        />
+      </Component>
     </Component>
-  </ForwardRef(SafeAreaView)>
+  </Component>
 </ContextProvider>
 `;
