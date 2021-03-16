@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity, Image } from 'react-native';
 import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
 import { getStatus, getTime, getShortDate, duration } from '../Utils/helpers';
@@ -83,6 +83,7 @@ const formatSharedMessage = (
 export const Details: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
+  const [onErrorImage, setOnErrorImage] = useState<boolean>(false);
   const [snackBarMessage, setSnackBarMessage] = useState<string>('');
   let _content = null;
   let _color: string = theme.reduxColor;
@@ -147,15 +148,46 @@ export const Details: React.FC<IProps> = props => {
       .filter((item: Array<string>) => item.length > 1) // To be sure that item has at least two element
       .filter((item: Array<string>) => !excludedAttributes.includes(item[0]))
       .filter((item: Array<string>) => item[1] && item[1].length > 0)
-      .map((item: Array<string>, index: number) => (
-        <View style={styles.itemContainer} key={index}>
-          <View style={styles.attribute}>
-            <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
-            {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
+      .map((item: Array<string>, index: number) => {
+        return (
+          <View style={styles.itemContainer} key={index}>
+            {item[1].startsWith('data:image/') ? (
+              _renderImage(item[1])
+            ) : (
+              <>
+                <View style={styles.attribute}>
+                  <Text style={[{ color: theme.textColorFour }]}>{item[0]}</Text>
+                  {item[0] === 'url' && _copyClipbutton(_copyToClipboard, item[1], 'URL has been copied to clipboard')}
+                </View>
+                <Text style={[{ width: '100%' }, { color: theme.textColorOne }]}>{item[1]}</Text>
+              </>
+            )}
           </View>
-          <Text style={[{ width: '100%', marginBottom: 10 }, { color: theme.textColorOne }]}>{item[1]}</Text>
-        </View>
-      ));
+        );
+      });
+  };
+
+  const _renderErrorMessage = () => {
+    return <Text>An error occur, cannot load the image</Text>;
+  };
+
+  const _renderImage = (source: string) => {
+    return (
+      <>
+        {onErrorImage ? (
+          _renderErrorMessage()
+        ) : (
+          <View style={{ minHeight: 100, justifyContent: 'center', alignItems: 'center' }}>
+            <Image
+              source={{ uri: source }}
+              style={{ width: '80%', height: '100%' }}
+              resizeMode="contain"
+              onError={() => setOnErrorImage(true)}
+            />
+          </View>
+        )}
+      </>
+    );
   };
 
   if (props.item instanceof ReduxAction) {
@@ -399,6 +431,7 @@ const styles = StyleSheet.create({
 
   itemContainer: {
     paddingHorizontal: 16,
+    marginBottom: 10,
   },
 
   statusCode: {
