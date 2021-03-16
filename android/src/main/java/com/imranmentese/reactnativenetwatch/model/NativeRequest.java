@@ -51,15 +51,13 @@ public class NativeRequest {
             }
             this.responseHeaders = mapResponseHeaders;
 
-            if (response.body() != null) {
-                try {
-                    this.response = response.body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            try {
+                String responseBody = response.peekBody(Long.MAX_VALUE).string();
+                if (responseBody != null) {
+                    this.response = responseBody;
                 }
-                if (response.body().contentType() != null) {
-                    responseContentType = response.body().contentType().toString();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         this._id = new Random().nextInt(10000);
