@@ -19,6 +19,8 @@ const XHR_COMPLETE_STATUS = 4;
 // _index has been added to identify each request (_requestId in xhr object cannot be used because null in openCallback)
 interface IXHR {
   _index: number;
+  _url: string;
+  _method: string;
   readyState: number;
   responseHeaders?: Headers;
   requestHeaders?: any;
@@ -141,6 +143,8 @@ export class RNLogger {
     this.updaterequest(xhr._index, {
       endTime: Date.now(),
       readyState: xhr.readyState,
+      method: xhr._method, // Fix for instabug request
+      url: xhr._url, // Fix for instabug request
       status,
       timeout,
       response: _response,
