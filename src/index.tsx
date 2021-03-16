@@ -49,11 +49,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.visible]);
 
   const handleShake = () => {
-    if (!props.disableShake) setVisible(true);
+    if (!props.disableShake && props.enabled) setVisible(true);
   };
 
   useEffect(() => {
-    if (!props.disableShake) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    if (!props.disableShake && props.enabled) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
       DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
     };
