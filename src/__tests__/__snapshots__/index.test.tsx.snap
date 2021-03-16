@@ -68,7 +68,7 @@ exports[`Index test suite should render properly 1`] = `
                 "payload": "",
                 "type": "__ERROR:UNDEFINED__",
               },
-              "startTime": 1615909019358,
+              "startTime": 1554632430000,
               "stringifiedAction": "",
               "type": "REDUX",
             }
@@ -150,7 +150,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
                 "payload": "",
                 "type": "__ERROR:UNDEFINED__",
               },
-              "startTime": 1615909019486,
+              "startTime": 1554632430000,
               "stringifiedAction": "",
               "type": "REDUX",
             }
@@ -232,7 +232,7 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
                 "payload": "",
                 "type": "__ERROR:UNDEFINED__",
               },
-              "startTime": 1615909019488,
+              "startTime": 1554632430000,
               "stringifiedAction": "",
               "type": "REDUX",
             }

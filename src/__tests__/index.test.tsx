@@ -6,6 +6,16 @@ describe('Index test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
 
+  const globalDateConstructor = Date.now;
+
+  beforeAll(() => {
+    global.Date.now = jest.fn(() => new Date('2019-04-07T10:20:30Z').getTime());
+  });
+
+  afterAll(() => {
+    global.Date.now = globalDateConstructor;
+  });
+
   it('should render properly', () => {
     givenProps();
     givenComponent();
