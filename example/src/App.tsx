@@ -16,13 +16,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <ConnectedComponent
-        enabled={netwatchEnabled}
-        visible={netwatchVisible}
-        onPressClose={() => setNetwatchVisible(false)}
-        onShake={() => setNetwatchVisible(true)}
-        theme="dark"
-      />
+      <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} interceptIOS={true} />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
         <TouchableHighlight
@@ -88,7 +82,7 @@ const ButtonC = (props: any) => (
   <TouchableHighlight
     style={styles.enableButton}
     onPress={() => {
-      props.customAction({ type: 'action/withoutPayload'});
+      props.customAction({ type: 'action/withoutPayload' });
     }}
     testID="buttonDispatchActionC"
   >

@@ -16,9 +16,9 @@ Includes an interface to see http traffic from RN and native side
 - Log network requests coming from React Native side
 - Log network requests coming from the native side (iOS and Android) (optional)
 - Log Redux actions (optional)
-- View details of each request/action
-- Export list of requests/actions in CSV
 - Shake the device to display the tool
+- View details of each request/action
+- Generate and share the list of requests/actions in Excel (XLSX) file
 
 ## Example app
 
@@ -34,8 +34,8 @@ Includes an interface to see http traffic from RN and native side
 
 Before install, you must have these dependancies in your react-native project
 
-- react-native-fs
 - react-native-paper
+- react-native-fs
 - react-native-share
 
 NOTA: Used fonts :
@@ -64,8 +64,6 @@ Inside your project, go to ios directory and execute pod install
 cd ios && pod install && ..
 ```
 
-### Android
-
 ---
 
 ## Usage
@@ -77,11 +75,9 @@ and add the Netwatch component in the most higher position in the tree of compon
 For example, just after your store provider or your root component
 
 ```javascript
-'use strict';
-import React, { useState } from 'react';
+{...}
+
 import { Netwatch } from 'react-native-netwatch';
-import store from './redux/store';
-import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
@@ -89,57 +85,20 @@ const App = () => {
   return (
     <Provider store={store}>
       <Netwatch
-        visible={netwatchVisible}
-        onPressClose={() => setNetwatchVisible(false)}
-        onShake={() => setNetwatchVisible(true)}
+        enabled={true}
+        interceptIOS={true}
       />
-      <View style={styles.container}>
-        <Text style={styles.title}>react-native-netwatch</Text>
-        <TouchableHighlight
-          style={styles.openButton}
-          onPress={() => {
-            setNetwatchVisible(true);
-          }}
-          testID="buttonDisplayNetwatch"
-        >
-          <Text style={styles.textStyle}>Display Netwatch</Text>
-        </TouchableHighlight>
-      </View>
+      <AppNavigator />
     </Provider>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-    paddingHorizontal: 60,
-    backgroundColor: '#111827',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#F9FAFB',
-    marginBottom: 16,
-  },
-  openButton: {
-    backgroundColor: '#67E8F9',
-    justifyContent: 'center',
-    width: '100%',
-    height: 48,
-    marginBottom: 16,
-  },
-  textStyle: {
-    color: '#111827',
-    textAlign: 'center',
-  },
-});
 ```
 
-### Using Netwatch as Redux middleware
+Now, when you will launch your application and shake the device, it will display automatically Netwatch.
+
+### Using Netwatch as Redux middleware (optional)
 
 You can add 'react-native-netwatch' as a middleware to catch Redux actions</br>
 To do that, just import reduxLogger from 'react-native-netwatch'</br>
@@ -167,45 +126,7 @@ Example in our demo application [here](https://github.com/odemolliens/react-nati
 
 ### Using Netwatch to intercept and display native requests
 
-#### iOS
-
-To be able to intercept requests from iOS side and display them into Netwatch</br>
-You have to put in place the code below in your application
-
-```objective-c
-'Bridging-Header.h'
-
-#import <NetwatchInterceptor.h>
-```
-
-Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/example-Bridging-Header.h#L8)
-
-```swift
-'AppDelegate.swift'
-
-let defaultSession = URLSession(configuration: .default)
-if (defaultSession.configuration.protocolClasses != nil) {
-    defaultSession.configuration.protocolClasses?.append(NetwatchInterceptor.self)
-}
-URLProtocol.registerClass(NetwatchInterceptor.self)
-```
-
-Or
-
-```objective-c
-'AppDelegate.m'
-
-NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-if (configuration.protocolClasses != nil ) {
-    configuration.protocolClasses = @[[NetwatchInterceptor class]];
-}
-[NSURLProtocol registerClass:[NetwatchInterceptor class]];
-
-```
-
-Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/ios/example/AppDelegate.swift#L31)
-
-#### Android
+#### Android (optional)
 
 To be able to intercept requests from Android side and display them into Netwatch</br>
 You have to add to your OkHttp client Netwatch interceptor
@@ -216,12 +137,35 @@ okHttpClient.addInterceptor(new NetwatchInterceptor(context));
 
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/android/app/src/main/java/com/example/ExampleModule.java#L24)
 
+
+#### iOS (optional)
+
+Nothing to do on native side for the iOS.</br>
+You have just to set `interceptIOS` to true and it will intercept requests which use `URLProtocol` on native side and display them into Netwatch</br>
+
+
+- To intercept request sent with Alamofire
+
+```objective-c
+'Bridging-Header.h'
+
+#import <NetwatchInterceptor.h>
+```
+
+```swift
+let configuration = URLSessionConfiguration.default
+configuration.protocolClasses?.insert(NetwatchInterceptor.self, at: 0)
+let sessionManager = Alamofire.SessionManager(configuration: configuration)
+sessionManager.request(...)
+```
+
 ## Props
 
-|    Params    |  Type   | Default | Mandatory ? | Description                                              |
-| :----------: | :-----: | :-----: | :---------: | :------------------------------------------------------- |
-|   enabled    | Boolean |  true   |     yes     | Enabled/Disabled logger to intercept request and actions |
-|   visible    | Boolean |  false  |     no      | Show the main screen                                     |
-| disableShake | Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch |
-| maxRequests  | Number  |   100   |     no      | Maximum requests displayed                               |
-|    theme     | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                    |
+|    Params    |  Type   | Default | Mandatory ? | Description                                                     |
+| :----------: | :-----: | :-----: | :---------: | :-------------------------------------------------------------- |
+|   enabled    | Boolean |  true   |   **yes**   | Enabled/Disabled logger to intercept request and actions        |
+|   visible    | Boolean |  false  |     no      | Show the main screen to display intercepted requests/actions    |
+| interceptIOS | Boolean |  false  |     no      | Intercept native iOS requests                                   |
+| disableShake | Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch        |
+| maxRequests  | Number  |   100   |     no      | Maximum requests displayed                                      |
+|    theme     | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                           |

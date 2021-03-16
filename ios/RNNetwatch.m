@@ -12,9 +12,17 @@
 
 RCT_EXPORT_MODULE(RNNetwatch);
 
+RCT_EXPORT_METHOD(startNetwatch) {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    if (configuration.protocolClasses != nil ) {
+        configuration.protocolClasses = @[[NetwatchInterceptor class]];
+    }
+    [NSURLProtocol registerClass:[NetwatchInterceptor class]];
+}
+
 RCT_EXPORT_METHOD(getNativeRequests : (RCTResponseSenderBlock)callback) {
     NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    
+
     if ([preferences objectForKey:kNetwatchUserDefault] == nil)
     {
         callback([self returnJSONValue:@""]);

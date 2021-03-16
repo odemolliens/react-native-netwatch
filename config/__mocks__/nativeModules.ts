@@ -122,7 +122,7 @@ export const mockNativeModules: any = {
     BridgeUserDataManager: jest.fn(),
     RNFirebase: {
       apps: {
-        name: 'myproximus',
+        name: 'example',
       },
     },
   },

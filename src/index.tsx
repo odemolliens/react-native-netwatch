@@ -19,6 +19,7 @@ export interface IProps {
   visible?: boolean;
   enabled: boolean;
   disableShake?: boolean;
+  interceptIOS?: boolean;
   maxRequests?: number;
   theme?: 'dark' | 'light';
 }
@@ -48,11 +49,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.visible]);
 
   const handleShake = () => {
-    if (!props.disableShake) setVisible(true);
+    if (!props.disableShake && props.enabled) setVisible(true);
   };
 
   useEffect(() => {
-    if (!props.disableShake) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    if (!props.disableShake && props.enabled) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
       DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
     };
@@ -131,6 +132,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       _RNLogger.disableXHRInterception();
       setReduxActionsCallback(() => {});
     } else {
+      if (props.interceptIOS) {
+        RNNetwatch.startNetwatch();
+      }
       startNativeLoop();
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
@@ -172,6 +176,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 Netwatch.defaultProps = {
   visible: false,
   enabled: true,
+  interceptIOS: false,
   disableShake: false,
   maxRequests: 100,
   theme: 'dark',
