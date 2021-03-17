@@ -98,6 +98,40 @@ export default App;
 
 Now, when you will launch your application and shake the device, it will display automatically Netwatch.
 
+If you want activate Netwatch with a button from your app, you **must** disable shake and instead pass the props onPressClose and visible.
+
+```javascript
+{...}
+
+import { Netwatch } from 'react-native-netwatch';
+
+const App = () => {
+  const [netwatchVisible, setNetwatchVisible] = useState(false);
+
+  return (
+    <Provider store={store}>
+      <Netwatch
+        enabled={true}
+        interceptIOS={true}
+        visible={netwatchVisible}
+        onPressClose={() => setNetwatchVisible(false)}
+        disableShake
+      />
+        <TouchableHighlight
+          style={styles.openButton}
+          onPress={() => setNetwatchVisible(true)}
+          testID="buttonDisplayNetwatch"
+        >
+          <Text style={styles.textStyle}>Display Netwatch</Text>
+        </TouchableHighlight>
+      <AppNavigator />
+    </Provider>
+  );
+};
+
+export default App;
+```
+
 ### Using Netwatch as Redux middleware (optional)
 
 You can add 'react-native-netwatch' as a middleware to catch Redux actions</br>
@@ -161,11 +195,12 @@ sessionManager.request(...)
 
 ## Props
 
-|    Params    |  Type   | Default | Mandatory ? | Description                                                     |
-| :----------: | :-----: | :-----: | :---------: | :-------------------------------------------------------------- |
-|   enabled    | Boolean |  true   |   **yes**   | Enabled/Disabled logger to intercept request and actions        |
-|   visible    | Boolean |  false  |     no      | Show the main screen to display intercepted requests/actions    |
-| interceptIOS | Boolean |  false  |     no      | Intercept native iOS requests                                   |
-| disableShake | Boolean |  false  |     no      | Set to true to disable shake feature to display Netwatch        |
-| maxRequests  | Number  |   100   |     no      | Maximum requests displayed                                      |
-|    theme     | String  | 'dark'  |     no      | Possible values are 'dark' or 'light'                           |
+|    Params    |   Type   |  Default  | Mandatory ? | Description                                                  |
+| :----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
+|   enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
+|   visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
+| onPressClose | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
+| interceptIOS | Boolean  |   false   |     no      | Intercept native iOS requests                                |
+| disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
+| maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
+|    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |

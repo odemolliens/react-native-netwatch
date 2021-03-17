@@ -17,6 +17,7 @@ import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
   visible?: boolean;
+  onPressClose?: () => void;
   enabled: boolean;
   disableShake?: boolean;
   interceptIOS?: boolean;
@@ -49,6 +50,13 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.visible]);
 
   const handleShake = () => {
+    if (!props.disableShake && props.onPressClose) {
+      console.warn(
+        'You cannot use button and shake at the same time to avoid inconsistant state. To remove this warning, you must explicitly set props disableShake to true or remove props onPressClose.',
+      );
+      return;
+    }
+
     if (!props.disableShake && props.enabled) setVisible(true);
   };
 
@@ -155,7 +163,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
             <Main
               maxRequests={props.maxRequests}
               testId="mainScreen"
-              onPressClose={() => setVisible(false)}
+              onPressClose={props.onPressClose || (() => setVisible(false)) }
               onPressDetail={setShowDetails}
               onPress={setItem}
               reduxActions={reduxActions}
@@ -175,6 +183,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
 Netwatch.defaultProps = {
   visible: false,
+  onPressClose: undefined,
   enabled: true,
   interceptIOS: false,
   disableShake: false,
