@@ -156,7 +156,7 @@
         "lines": 60
       },
       "./src/index.tsx": {
-        "statements": 35,
+        "statements": 30,
         "branches": 10,
         "functions": 5,
         "lines": 35
