@@ -31,12 +31,8 @@ export const JSONDetails: React.FC<IProps> = props => {
         <Appbar.Content color={theme.primaryColor} title={props.title || 'Netwatch'} titleStyle={{ fontSize: 18 }} />
       </Appbar.Header>
 
-      <ScrollView
-        horizontal
-        style={{ backgroundColor: theme.secondaryColor }}
-        contentContainerStyle={styles.scrollview}
-      >
-        <ScrollView nestedScrollEnabled>
+      <ScrollView horizontal style={{ backgroundColor: theme.secondaryColor }}>
+        <ScrollView nestedScrollEnabled style={styles.scrollview}>
           <JSONTree
             data={JSON.parse(props.data)}
             labelRenderer={([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>}
@@ -68,9 +64,8 @@ const styles = StyleSheet.create({
     left: 0,
   },
   scrollview: {
-    // flexWrap: 'wrap',
     paddingHorizontal: 16,
-    paddingTop: 26,
+    paddingTop: 20,
     paddingBottom: 20,
   },
   button: {
