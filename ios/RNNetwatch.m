@@ -13,10 +13,16 @@
 RCT_EXPORT_MODULE(RNNetwatch);
 
 RCT_EXPORT_METHOD(startNetwatch) {
+    // curent config
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    if (configuration.protocolClasses != nil ) {
-        configuration.protocolClasses = @[[NetwatchInterceptor class]];
-    }
+    NSArray *currentProtocolClasses = configuration.protocolClasses ?: @[];
+    
+    // add Netwatch interceptor
+    NSMutableArray *protocolClasses = [NSMutableArray arrayWithArray:currentProtocolClasses];
+    [protocolClasses insertObject:[NetwatchInterceptor class] atIndex:0];
+    
+    // inject new config
+    configuration.protocolClasses = protocolClasses;
     [NSURLProtocol registerClass:[NetwatchInterceptor class]];
 }
 

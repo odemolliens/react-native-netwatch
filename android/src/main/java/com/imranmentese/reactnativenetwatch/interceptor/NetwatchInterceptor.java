@@ -31,9 +31,11 @@ public class NetwatchInterceptor implements Interceptor {
 
     public NetwatchInterceptor(Context context) {
         super();
-        sharedPrefs = context.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
-        // clean SharedPref before first use
-        sharedPrefs.edit().clear().apply();
+        if (sharedPrefs == null && context != null) {
+            sharedPrefs = context.getSharedPreferences(MODULE_NAME, Context.MODE_PRIVATE);
+            // clean SharedPref before first use
+            sharedPrefs.edit().clear().apply();
+        }
     }
 
     @Override public Response intercept(Interceptor.Chain chain) throws IOException {
