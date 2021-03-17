@@ -163,7 +163,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
             <Main
               maxRequests={props.maxRequests}
               testId="mainScreen"
-              onPressClose={props.onPressClose || (() => setVisible(false)) }
+              onPressClose={props.onPressClose || (() => setVisible(false))}
               onPressDetail={setShowDetails}
               onPress={setItem}
               reduxActions={reduxActions}
