@@ -16,14 +16,18 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <ConnectedComponent enabled={netwatchEnabled} visible={netwatchVisible} interceptIOS={true} />
+      <ConnectedComponent
+        enabled={netwatchEnabled}
+        visible={netwatchVisible}
+        interceptIOS={true}
+        onPressClose={() => setNetwatchVisible(false)}
+        disableShake
+      />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
         <TouchableHighlight
           style={styles.openButton}
-          onPress={() => {
-            setNetwatchVisible(!netwatchVisible);
-          }}
+          onPress={() => setNetwatchVisible(true)}
           testID="buttonDisplayNetwatch"
         >
           <Text style={styles.textStyle}>Display Netwatch</Text>

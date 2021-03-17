@@ -238,6 +238,9 @@ exports[`Details test suite Test Redux item should render Redux action properly 
               "marginBottom": 10,
               "paddingHorizontal": 16,
             },
+            Object {
+              "alignItems": "baseline",
+            },
           ]
         }
       >
@@ -250,6 +253,22 @@ exports[`Details test suite Test Redux item should render Redux action properly 
         >
           Action :
         </Text>
+        <Component
+          style={
+            Array [
+              Object {
+                "justifyContent": "flex-start",
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              Object {
+                "flex": 1,
+                "paddingHorizontal": 0,
+                "paddingLeft": 6,
+              },
+            ]
+          }
+        />
       </Component>
     </Component>
   </Component>

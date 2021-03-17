@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.7.0",
+    "react-native-json-tree": "^1.2.0",
     "url": "^0.11.0",
     "xlsx": "^0.16.9"
   },
@@ -108,10 +109,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 100,
-        "branches": 90,
-        "functions": 100,
-        "lines": 100
+        "statements": 90,
+        "branches": 85,
+        "functions": 85,
+        "lines": 90
       },
       "./src/Utils/helpers.tsx": {
         "statements": 90,
@@ -151,9 +152,9 @@
       },
       "./src/Components/Details.tsx": {
         "statements": 55,
-        "branches": 65,
-        "functions": 35,
-        "lines": 60
+        "branches": 60,
+        "functions": 25,
+        "lines": 55
       },
       "./src/index.tsx": {
         "statements": 35,
