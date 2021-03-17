@@ -201,7 +201,7 @@ export const Details: React.FC<IProps> = props => {
       .map((item: Array<string>, index: number) => {
         return (
           <View style={styles.itemContainer} key={index}>
-            {item[1].startsWith('data:image/') ? (
+            {typeof item[1] === 'string' && item[1].startsWith('data:image/') ? (
               _renderImage(item[1])
             ) : (
               <>
