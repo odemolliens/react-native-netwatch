@@ -1,4 +1,5 @@
 import { configure } from 'enzyme';
+import * as React from 'react';
 import * as ReactNative from 'react-native';
 import { mockNativeModules } from './__mocks__/nativeModules';
 import Adapter from 'enzyme-adapter-react-16';
@@ -15,7 +16,19 @@ jest.doMock('react-native', () => {
   );
 });
 
-jest.mock('react-native-paper');
+// jest.mock('react-native-paper');
+jest.mock('react-native-paper',() => {
+  return {
+    Subheading: () => <></>,
+    Appbar: { 
+      Header: () => <></>,
+      Content: () => <></>,
+    },
+    Snackbar: () => <></>,
+    Text: () => <></>,
+    Icon: () => <></>,
+  };
+});
 
 jest.useFakeTimers();
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');

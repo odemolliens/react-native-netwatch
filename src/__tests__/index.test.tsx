@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
+import { render, act, waitFor } from '@testing-library/react-native';
+import { create } from 'react-test-renderer';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
@@ -22,6 +24,13 @@ describe('Index test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
+  test('it updates content on successful call', async () => {
+    let root;
+    await act(async () => {
+      root = render(<Netwatch enabled />);
+    });
+  });
+
   it('should render properly visible and enabled', () => {
     givenProps(true, true);
     givenComponent();
@@ -39,12 +48,21 @@ describe('Index test suite', () => {
     component = shallow(<Netwatch {...props} />);
   }
 
-  function givenProps(visible: boolean = false, enabled: boolean = false, maxRequests?: number) {
+  function givenProps(
+    visible: boolean = false,
+    enabled: boolean = false,
+    maxRequests?: number,
+    disableShake: boolean = false,
+    interceptIOS: boolean = true,
+    theme: 'dark' | 'light' = 'dark',
+  ) {
     props = {
       visible,
       enabled,
-      onPressClose: jest.fn(),
       maxRequests,
+      disableShake,
+      interceptIOS,
+      theme,
     };
   }
 });
