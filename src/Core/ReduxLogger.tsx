@@ -48,18 +48,3 @@ export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: an
 };
 
 export const getReduxActions = () => actions;
-
-if (__DEV__) {
-  console.log('Launch Redux actions simulator');
-  let counter = 0;
-  let testActions: Array<ReduxAction> = [];
-  setInterval(() => {
-    const _action: ReduxAction = new ReduxAction({
-      _id: counter++,
-      action: { payload: 'Learn about actions', type: 'todos/todoAdded' },
-    });
-    testActions = [_action].concat(testActions);
-    // callback(testActions);
-    testActions = [];
-  }, 6000);
-}
