@@ -345,7 +345,7 @@ export const Details: React.FC<IProps> = props => {
           </>
         )}
 
-        {props.item?.response?.length > 0 && props.item.dataSent !== 'undefined' && props.item.dataSent !== 'null' && (
+        {props.item?.response?.length > 0 && props.item.response !== 'undefined' && props.item.response !== 'null' && (
           <>
             <Subheading
               style={[styles.subheading, { backgroundColor: theme.secondaryLightColor, color: theme.textColorOne }]}
