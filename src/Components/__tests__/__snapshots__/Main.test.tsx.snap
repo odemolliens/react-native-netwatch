@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main test suite should render properly 1`] = `
+exports[`Main test suite Tests source should render properly 1`] = `
 <Fragment>
-  <ForwardRef(withTheme(Appbar.Header))
+  <Header
     style={
       Array [
         Object {
@@ -42,7 +42,7 @@ exports[`Main test suite should render properly 1`] = `
         size={24}
       />
     </ForwardRef>
-    <ForwardRef(withTheme(Appbar.Content))
+    <Content
       color="#06B6D4"
       title="Netwatch"
       titleStyle={
@@ -74,7 +74,7 @@ exports[`Main test suite should render properly 1`] = `
         size={24}
       />
     </ForwardRef>
-  </ForwardRef(withTheme(Appbar.Header))>
+  </Header>
   <Component
     style={
       Array [
@@ -89,207 +89,7 @@ exports[`Main test suite should render properly 1`] = `
       ]
     }
   >
-    <ForwardRef(withTheme(undefined))
-      iconColor="#6B7280"
-      inputStyle={
-        Object {
-          "color": "#9CA3AF",
-        }
-      }
-      onChange={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="Search"
-      placeholderTextColor="#9CA3AF"
-      style={
-        Array [
-          Object {
-            "elevation": 0,
-            "flex": 1,
-            "shadowOffset": Object {
-              "height": 0,
-              "width": 0,
-            },
-            "shadowOpacity": 0,
-          },
-          Object {
-            "backgroundColor": "#1F2937",
-          },
-        ]
-      }
-      value=""
-    />
-    <ForwardRef
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "backgroundColor": "#1F2937",
-            "borderLeftColor": "#111827",
-          },
-        ]
-      }
-      testID="showSettingsButton"
-    >
-      <Icon
-        color="#D1D5DB"
-        name="filter"
-        size={24}
-      />
-    </ForwardRef>
-    <ForwardRef
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftColor": "#111827",
-          },
-        ]
-      }
-      testID="deleteListButton"
-    >
-      <Icon
-        color="#D1D5DB"
-        name="trash-2"
-        size={24}
-      />
-    </ForwardRef>
-  </Component>
-  <FlatList
-    data={Array []}
-    disableVirtualization={false}
-    getItemLayout={[Function]}
-    horizontal={false}
-    initialNumToRender={20}
-    keyExtractor={[Function]}
-    maintainVisibleContentPosition={
-      Object {
-        "autoscrollToTopThreshold": 10,
-        "minIndexForVisible": 1,
-      }
-    }
-    maxToRenderPerBatch={30}
-    numColumns={1}
-    onEndReachedThreshold={2}
-    removeClippedSubviews={true}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    style={
-      Object {
-        "backgroundColor": "#1F2937",
-      }
-    }
-    testID="itemsList"
-    updateCellsBatchingPeriod={70}
-    windowSize={21}
-  />
-</Fragment>
-`;
-
-exports[`Main test suite should render properly and delete list 1`] = `
-<Fragment>
-  <ForwardRef(withTheme(Appbar.Header))
-    style={
-      Array [
-        Object {
-          "elevation": 0,
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 0,
-        },
-        Object {
-          "backgroundColor": "#111827",
-        },
-      ]
-    }
-  >
-    <ForwardRef
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftWidth": 0,
-          },
-        ]
-      }
-    >
-      <Icon
-        color="#F9FAFB"
-        name="x"
-        onPress={[Function]}
-        size={24}
-      />
-    </ForwardRef>
-    <ForwardRef(withTheme(Appbar.Content))
-      color="#06B6D4"
-      title="Netwatch"
-      titleStyle={
-        Object {
-          "fontSize": 18,
-        }
-      }
-    />
-    <ForwardRef
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderLeftWidth": 1,
-            "height": 56,
-            "justifyContent": "center",
-            "width": 56,
-          },
-          Object {
-            "borderLeftWidth": 0,
-          },
-        ]
-      }
-    >
-      <Icon
-        color="#F9FAFB"
-        name="download"
-        onPress={[Function]}
-        size={24}
-      />
-    </ForwardRef>
-  </ForwardRef(withTheme(Appbar.Header))>
-  <Component
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "height": 56,
-        },
-        Object {
-          "backgroundColor": "#1F2937",
-        },
-      ]
-    }
-  >
-    <ForwardRef(withTheme(undefined))
+    <Searchbar
       iconColor="#6B7280"
       inputStyle={
         Object {
@@ -402,7 +202,7 @@ exports[`Main test suite should render properly and delete list 1`] = `
 
 exports[`Main test suite should render properly and showSettings 1`] = `
 <Fragment>
-  <ForwardRef(withTheme(Appbar.Header))
+  <Header
     style={
       Array [
         Object {
@@ -442,7 +242,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
         size={24}
       />
     </ForwardRef>
-    <ForwardRef(withTheme(Appbar.Content))
+    <Content
       color="#06B6D4"
       title="Netwatch"
       titleStyle={
@@ -474,7 +274,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
         size={24}
       />
     </ForwardRef>
-  </ForwardRef(withTheme(Appbar.Header))>
+  </Header>
   <Component
     style={
       Array [
@@ -489,7 +289,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
       ]
     }
   >
-    <ForwardRef(withTheme(undefined))
+    <Searchbar
       iconColor="#6B7280"
       inputStyle={
         Object {

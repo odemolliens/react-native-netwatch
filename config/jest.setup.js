@@ -12,21 +12,27 @@ jest.doMock('react-native', () => {
     {
       ...mockNativeModules,
     },
-    ReactNative
+    ReactNative,
   );
 });
 
 // jest.mock('react-native-paper');
-jest.mock('react-native-paper',() => {
+jest.mock('react-native-paper', () => {
   return {
     Subheading: () => <></>,
-    Appbar: { 
+    Appbar: {
       Header: () => <></>,
       Content: () => <></>,
+    },
+    RadioButton: {
+      Group: () => <></>,
+      Item: () => <></>,
     },
     Snackbar: () => <></>,
     Text: () => <></>,
     Icon: () => <></>,
+    Searchbar: () => <></>,
+    ActivityIndicator: () => <></>
   };
 });
 
@@ -95,7 +101,7 @@ jest.mock('react-native-vector-icons', () => {
 });
 
 jest.mock('react-native-vector-icons/Feather', () => 'Icon');
-
+jest.mock('react-native-vector-icons/Fontisto', () => 'Icon');
 
 jest.mock('react-native-device-info', () => {
   return {
@@ -106,5 +112,5 @@ jest.mock('react-native-device-info', () => {
     getApplicationName: jest.fn(),
     getVersion: jest.fn(),
     getBuildNumber: jest.fn(),
-  }
-})
+  };
+});

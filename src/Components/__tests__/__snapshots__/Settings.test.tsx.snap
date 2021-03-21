@@ -47,11 +47,11 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -78,7 +78,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -105,7 +105,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -132,7 +132,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -159,7 +159,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -177,11 +177,11 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="PUT"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -208,7 +208,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -235,7 +235,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -262,7 +262,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -289,7 +289,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -316,7 +316,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -401,11 +401,11 @@ exports[`Settings test suite should render properly and GET filter radio pressed
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -432,7 +432,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -459,7 +459,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -486,7 +486,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -513,7 +513,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -531,11 +531,11 @@ exports[`Settings test suite should render properly and GET filter radio pressed
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="ALL"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -562,7 +562,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -589,7 +589,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -616,7 +616,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -643,7 +643,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -670,7 +670,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -755,11 +755,11 @@ exports[`Settings test suite should render properly and POST filter radio presse
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -786,7 +786,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -813,7 +813,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -840,7 +840,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -867,7 +867,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -885,11 +885,11 @@ exports[`Settings test suite should render properly and POST filter radio presse
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="DELETE"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -916,7 +916,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -943,7 +943,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -970,7 +970,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -997,7 +997,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -1024,7 +1024,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -1109,11 +1109,11 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -1140,7 +1140,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -1167,7 +1167,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -1194,7 +1194,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -1221,7 +1221,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -1239,11 +1239,11 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="POST"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -1270,7 +1270,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -1297,7 +1297,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -1324,7 +1324,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -1351,7 +1351,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -1378,7 +1378,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -1463,11 +1463,11 @@ exports[`Settings test suite should render properly and all filter radio pressed
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -1494,7 +1494,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -1521,7 +1521,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -1548,7 +1548,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -1575,7 +1575,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -1593,11 +1593,11 @@ exports[`Settings test suite should render properly and all filter radio pressed
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="GET"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -1624,7 +1624,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -1651,7 +1651,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -1678,7 +1678,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -1705,7 +1705,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -1732,7 +1732,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -1817,11 +1817,11 @@ exports[`Settings test suite should render properly and all source radio pressed
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="ALL"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -1848,7 +1848,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -1875,7 +1875,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -1902,7 +1902,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -1929,7 +1929,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -1947,11 +1947,11 @@ exports[`Settings test suite should render properly and all source radio pressed
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="GET"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -1978,7 +1978,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -2005,7 +2005,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -2032,7 +2032,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -2059,7 +2059,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -2086,7 +2086,7 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -2171,11 +2171,11 @@ exports[`Settings test suite should render properly and native request source ra
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -2202,7 +2202,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -2229,7 +2229,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -2256,7 +2256,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -2283,7 +2283,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -2301,11 +2301,11 @@ exports[`Settings test suite should render properly and native request source ra
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="GET"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -2332,7 +2332,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -2359,7 +2359,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -2386,7 +2386,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -2413,7 +2413,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -2440,7 +2440,7 @@ exports[`Settings test suite should render properly and native request source ra
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -2525,11 +2525,11 @@ exports[`Settings test suite should render properly and react native request sou
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="RNR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -2556,7 +2556,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -2583,7 +2583,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -2610,7 +2610,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -2637,7 +2637,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -2655,11 +2655,11 @@ exports[`Settings test suite should render properly and react native request sou
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="GET"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -2686,7 +2686,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -2713,7 +2713,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -2740,7 +2740,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -2767,7 +2767,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -2794,7 +2794,7 @@ exports[`Settings test suite should render properly and react native request sou
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -2879,11 +2879,11 @@ exports[`Settings test suite should render properly and redux source radio press
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="REDUX"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -2910,7 +2910,7 @@ exports[`Settings test suite should render properly and redux source radio press
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -2937,7 +2937,7 @@ exports[`Settings test suite should render properly and redux source radio press
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -2964,7 +2964,7 @@ exports[`Settings test suite should render properly and redux source radio press
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -2991,7 +2991,7 @@ exports[`Settings test suite should render properly and redux source radio press
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>
@@ -3076,11 +3076,11 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
       >
         Display:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="NR"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="All Requests and Actions"
           labelStyle={
@@ -3107,7 +3107,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Redux Action"
           labelStyle={
@@ -3134,7 +3134,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="REDUX"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="React Native Requests"
           labelStyle={
@@ -3161,7 +3161,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="Native Requests"
           labelStyle={
@@ -3188,7 +3188,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="NR"
         />
-      </RadioButton.Group>
+      </Group>
       <Title
         style={
           Array [
@@ -3206,11 +3206,11 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
       >
         Type:
       </Title>
-      <RadioButton.Group
+      <Group
         onValueChange={[Function]}
         value="PUT"
       >
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="ALL"
           labelStyle={
@@ -3237,7 +3237,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="ALL"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="GET"
           labelStyle={
@@ -3264,7 +3264,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="GET"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="POST"
           labelStyle={
@@ -3291,7 +3291,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="POST"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="PUT"
           labelStyle={
@@ -3318,7 +3318,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="PUT"
         />
-        <ForwardRef(withTheme(RadioButton.Item))
+        <Item
           color="#06B6D4"
           label="DELETE"
           labelStyle={
@@ -3345,7 +3345,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           uncheckedColor="#06B6D4"
           value="DELETE"
         />
-      </RadioButton.Group>
+      </Group>
     </Component>
   </Component>
   <Component>

@@ -126,12 +126,96 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
         <Main
           clearAll={[Function]}
           maxRequests={100}
-          nRequests={Array []}
-          onPress={[Function]}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Array [],
+                ],
+                Array [
+                  false,
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
           onPressClose={[Function]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Array [],
+                ],
+                Array [
+                  false,
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
           testId="mainScreen"
         />
       </Component>
@@ -143,19 +227,50 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
         }
       >
         <Details
-          item={
-            ReduxAction {
-              "_id": -1,
-              "action": Object {
-                "payload": "",
-                "type": "__ERROR:UNDEFINED__",
-              },
-              "startTime": 1554632430000,
-              "stringifiedAction": "",
-              "type": "REDUX",
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  Array [],
+                ],
+                Array [
+                  false,
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+                Array [
+                  Array [],
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
             }
           }
-          onPressBack={[Function]}
           testId="detailScreen"
         />
       </Component>
@@ -208,12 +323,12 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
         <Main
           clearAll={[Function]}
           maxRequests={20}
-          nRequests={Array []}
-          onPress={[Function]}
+          nRequests={false}
+          onPress={[MockFunction]}
           onPressClose={[Function]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
+          onPressDetail={[MockFunction]}
+          reduxActions={false}
+          rnRequests={false}
           testId="mainScreen"
         />
       </Component>
@@ -225,19 +340,8 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
         }
       >
         <Details
-          item={
-            ReduxAction {
-              "_id": -1,
-              "action": Object {
-                "payload": "",
-                "type": "__ERROR:UNDEFINED__",
-              },
-              "startTime": 1554632430000,
-              "stringifiedAction": "",
-              "type": "REDUX",
-            }
-          }
-          onPressBack={[Function]}
+          item={false}
+          onPressBack={[MockFunction]}
           testId="detailScreen"
         />
       </Component>

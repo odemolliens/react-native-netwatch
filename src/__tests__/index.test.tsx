@@ -1,12 +1,33 @@
 import * as React from 'react';
+import { FlatList, ListRenderItem, Modal, NativeModules} from 'react-native'
+import Item from '../Components/Item';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
-import { render, act, waitFor } from '@testing-library/react-native';
-import { create } from 'react-test-renderer';
+import { render, act, waitFor, fireEvent } from '@testing-library/react-native';
+import ReduxAction from '../Core/Objects/ReduxAction';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
+  let useEffect;
+  let mockUseEffect;
+  const setVisible = jest.fn();
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  beforeEach(() => {
+    useEffect = jest.spyOn(React, 'useEffect');
+    mockUseEffect = () => {
+      useEffect.mockImplementationOnce(f => f());
+    };
+
+    jest.mock('react', () => ({
+      ...jest.requireActual('react'),
+      useState: jest.fn(),
+    }));
+  });
 
   const globalDateConstructor = Date.now;
 
@@ -24,11 +45,62 @@ describe('Index test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
-  test('it updates content on successful call', async () => {
-    let root;
-    await act(async () => {
-      root = render(<Netwatch enabled />);
-    });
+  it('should set visible true', () => {
+    let useStateMock: any = (visible: any) => [false, setVisible];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(false);
+    mockUseEffect();
+    givenComponent();
+    // expect(component.find(Modal).prop('visible')).toBe(false);
+    // component.setProps({visible: true})
+    // Always false
+    // expect(component.find(Modal).prop('visible')).toBe(false);
+    // UseEffect
+    mockUseEffect();
+    expect(setVisible).toHaveBeenCalledTimes(1);
+    // component.update()
+    // Rerendered
+    // expect(component.find(Modal).prop('visible')).toBe(true)
+  });
+
+  it('should set launch intercept iOS', () => {
+    jest.mock('react-native', () => ({
+      ...jest.requireActual('react-native'),
+      NativeModules: {
+        RNNetwatch: {
+          getNativeRequests: jest.fn()
+        }
+      },
+    }));
+
+    let useStateMock: any = (visible: any) => [false, setVisible];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(true, true, 50, false, true);
+    givenComponent();
+    expect(NativeModules.RNNetwatch.getNativeRequests).toHaveBeenCalledTimes(1);
+  });
+
+  it('should contains the main screen with flatlist', async () => {
+    // @ts-ignore
+    const { getByTestId } = render(<Netwatch enabled visible reduxActions={[]} />);
+
+    waitFor(() => expect(getByTestId('mainScreen')).toBeDefined());
+    expect(getByTestId('itemsList')).toBeDefined();
+  });
+
+  it('should contains the details screen', async () => {
+    // @ts-ignore
+    const { getByTestId } = render(<Netwatch enabled reduxActions={[]} />);
+    waitFor(() => expect(getByTestId('detailsScreen')).toBeDefined());
+  });
+
+
+  it('should disable netwatch', async () => {
+    // @ts-ignore
+    const { getByTestId } = render(<Netwatch enabled={false} reduxActions={[]} />);
+
+    waitFor(() => expect(getByTestId('mainScreen')).toBeDefined());
+    expect(getByTestId('itemsList')).toBeDefined();
   });
 
   it('should render properly visible and enabled', () => {
