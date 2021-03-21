@@ -127,4 +127,3 @@ const mockRequestWithMethodPostFailed: RNRequest = new RNRequest({
   type: 'RNR',
   url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
 });
-

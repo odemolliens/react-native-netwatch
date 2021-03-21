@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FlatList, ListRenderItem, Modal, NativeModules} from 'react-native'
+import { FlatList, ListRenderItem, Modal, NativeModules } from 'react-native';
 import Item from '../Components/Item';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
@@ -68,8 +68,8 @@ describe('Index test suite', () => {
       ...jest.requireActual('react-native'),
       NativeModules: {
         RNNetwatch: {
-          getNativeRequests: jest.fn()
-        }
+          getNativeRequests: jest.fn(),
+        },
       },
     }));
 
@@ -93,7 +93,6 @@ describe('Index test suite', () => {
     const { getByTestId } = render(<Netwatch enabled reduxActions={[]} />);
     waitFor(() => expect(getByTestId('detailsScreen')).toBeDefined());
   });
-
 
   it('should disable netwatch', async () => {
     // @ts-ignore

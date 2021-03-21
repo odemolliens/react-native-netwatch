@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect, useContext } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard, } from 'react-native';
+import { useEffect, useContext } from 'react';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
 import Item, { ITEM_HEIGHT } from './Item';

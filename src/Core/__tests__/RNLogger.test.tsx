@@ -14,7 +14,6 @@ jest.mock('react-native/Libraries/Network/XHRInterceptor', () => ({
   disableInterception: jest.fn(),
 }));
 
-
 const globalDateConstructor = Date.now;
 
 beforeAll(() => {
@@ -61,7 +60,6 @@ describe('enableXHRInterception', () => {
     // default value
     expect(maxRequests).toBe(100);
   });
-
 
   it('should update the maxRequests if provided', () => {
     logger.enableXHRInterception({ maxRequests: 23 });
@@ -157,7 +155,6 @@ describe('enableXHRInterception', () => {
     expect(logger.requests[0]).toEqual(expectRequest);
   });
 
-
   it('should update an existing request in the queue with readyState = 1', () => {
     const xhr = {
       _index: 2,
@@ -167,7 +164,7 @@ describe('enableXHRInterception', () => {
     };
     logger.enableXHRInterception();
     logger.openCallback('POST', 'http://test.url', xhr);
-  
+
     const mockPartialRequest = {
       startTime: 1614176044011,
       responseContentType: 'application/json',
@@ -181,7 +178,7 @@ describe('enableXHRInterception', () => {
       },
       readyState: 1,
     };
-  
+
     const expectRequest = {
       _id: 2,
       type: 'RNR',
@@ -204,7 +201,7 @@ describe('enableXHRInterception', () => {
         'Sozu-Id': '51989c0c-ebe7-4574-913d-443477875da7',
       },
     };
-  
+
     logger.updaterequest(2, mockPartialRequest);
     expect(logger.queue.get(2)).toEqual(expectRequest);
   });
@@ -219,7 +216,7 @@ describe('enableXHRInterception', () => {
     logger.enableXHRInterception();
     logger.openCallback('POST', 'http://test.url', xhr);
     logger.sendCallback(JSON.stringify({ test: 'hello' }), xhr);
-    
+
     const expectRequest = {
       _id: 3,
       type: 'RNR',
@@ -231,13 +228,12 @@ describe('enableXHRInterception', () => {
       status: -1,
       endTime: 0,
       dataSent: '{\n  "test": "hello"\n}',
-      response: ''
-    }
-  
-    expect(logger.queue.get(3)).toEqual(expectRequest);
-  });  
-});
+      response: '',
+    };
 
+    expect(logger.queue.get(3)).toEqual(expectRequest);
+  });
+});
 
 describe('getRequests', () => {
   const logger = new RNLogger();
