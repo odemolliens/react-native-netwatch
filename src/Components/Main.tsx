@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useContext } from 'react';
-import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
+import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard, } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
 import Item, { ITEM_HEIGHT } from './Item';
@@ -27,13 +27,13 @@ export interface IProps {
 
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
-  const [requests, setRequests] = useState<Array<ILog>>([]);
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [source, setSource] = useState<SourceType | EnumSourceType>(EnumSourceType.All);
-  const [filter, setFilter] = useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
-  const [settingsVisible, setSettingsVisible] = useState(false);
-  const [deleteVisible, setDeleteVisible] = useState<boolean>(false);
-  const [loadingCSV, setloadingCSV] = useState<boolean>(false);
+  const [requests, setRequests] = React.useState<Array<ILog>>([]);
+  const [searchQuery, setSearchQuery] = React.useState<string>('');
+  const [source, setSource] = React.useState<SourceType | EnumSourceType>(EnumSourceType.All);
+  const [filter, setFilter] = React.useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
+  const [settingsVisible, setSettingsVisible] = React.useState(false);
+  const [deleteVisible, setDeleteVisible] = React.useState<boolean>(false);
+  const [loadingXLSX, setloadingXLSX] = React.useState<boolean>(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
   const hideDialogAndDelete = () => {
     clearList();
@@ -84,9 +84,9 @@ export const Main = (props: IProps) => {
     setRequests(_searchedRequests);
   }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter, searchQuery]);
 
-  useEffect(() => {
-    if (loadingCSV) onShare();
-  }, [loadingCSV]);
+  React.useEffect(() => {
+    if (loadingXLSX) onShare();
+  }, [loadingXLSX]);
 
   const clearList = () => {
     props.clearAll();
@@ -98,16 +98,16 @@ export const Main = (props: IProps) => {
     if (message.length === 0) return;
     try {
       const path = await xlsxWriter(message);
-      setloadingCSV(false);
+      setloadingXLSX(false);
       await Share.open({
-        title: 'Export calls to CSV',
+        title: 'Export calls to XLSX',
         url: `file://${path}`,
         type: 'text/csv',
         // excludedActivityTypes: []
       });
     } catch (error) {
       // if user dismiss sharing
-      setloadingCSV(false);
+      setloadingXLSX(false);
       console.error(error.message);
     }
   };
@@ -153,7 +153,7 @@ export const Main = (props: IProps) => {
           />
         </TouchableOpacity>
         <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
-        {loadingCSV ? (
+        {loadingXLSX ? (
           <ActivityIndicator
             animating={true}
             color={theme.primaryColor}
@@ -161,7 +161,7 @@ export const Main = (props: IProps) => {
           />
         ) : (
           <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-            <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={() => setloadingCSV(true)} />
+            <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={() => setloadingXLSX(true)} />
           </TouchableOpacity>
         )}
       </Appbar.Header>
