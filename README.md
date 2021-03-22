@@ -32,17 +32,19 @@ Includes an interface to see http traffic from RN and native side
 
 ### Dependencies
 
-Before install, you must have these dependancies in your react-native project
+To avoid to have too much dependencies and conflict versions, before install, you must have these dependancies in your react-native project.
 
 - react-native-paper
 - react-native-fs
 - react-native-share
 
-NOTA: Used fonts :
+Netwatch has react-native-vector-icons as dependency. Be sure that you have these fonts installed in your project:
 
 - Fontisto
 - Feather
 - MaterialCommunityIcons
+
+Please refer to this page for more details: <a href='https://github.com/oblador/react-native-vector-icons#ios'>Install fonts react-native-vector-icons</a>
 
 ### Installation
 
@@ -64,6 +66,12 @@ Inside your project, go to ios directory and execute pod install
 cd ios && pod install && ..
 ```
 
+OR simply
+
+```bash
+npx pod-install
+```
+
 ---
 
 ## Usage
@@ -74,6 +82,14 @@ If you want add Network traffic in your project, just import 'react-native-netwa
 and add the Netwatch component in the most higher position in the tree of components.</br>
 For example, just after your store provider or your root component
 
+Now, when you will launch your application and shake the device, it will display automatically Netwatch.
+
+### How to activate Netwatch
+
+You have two possibilities to activate Netwatch in your project. With a button from you app or by shaking your phone. If you want activate 
+Netwatch with a button from your app, you **must** disable shake and instead pass the props onPressClose and visible.
+
+#### Active Netwatch by shaking your phone
 ```javascript
 {...}
 
@@ -96,10 +112,7 @@ const App = () => {
 export default App;
 ```
 
-Now, when you will launch your application and shake the device, it will display automatically Netwatch.
-
-If you want activate Netwatch with a button from your app, you **must** disable shake and instead pass the props onPressClose and visible.
-
+#### Active Netwatch with a button
 ```javascript
 {...}
 
@@ -171,12 +184,10 @@ okHttpClient.addInterceptor(new NetwatchInterceptor(context));
 
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/android/app/src/main/java/com/example/ExampleModule.java#L24)
 
-
 #### iOS (optional)
 
 Nothing to do on native side for the iOS.</br>
 You have just to set `interceptIOS` to true and it will intercept requests which use `URLProtocol` on native side and display them into Netwatch</br>
-
 
 - To intercept request sent with Alamofire
 
