@@ -10,7 +10,6 @@ jest.mock('react-native/Libraries/Blob/FileReader', () =>
     onload: jest.fn(),
     onabort: jest.fn(),
     onerror: jest.fn(),
-    addEventListener: jest.fn().mockResolvedValue('ok'),
   })),
 );
 
@@ -26,13 +25,6 @@ describe('getRequestBody', () => {
           }
         }"
       `);
-  });
-
-  it('should return stringified data from blob', async () => {
-    const obj = { hello: 'world' };
-    const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
-
-    return expect(await parseResponseBlob(blob)).resolves.toMatchInlineSnapshot();
   });
 
   it('should return original object as string if stringify fails', () => {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { NativeModules } from 'react-native';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
 import { render, waitFor } from '@testing-library/react-native';
@@ -49,30 +48,13 @@ describe('Index test suite', () => {
     givenProps(false);
     mockUseEffect();
     givenComponent();
-    // expect(component.find(Modal).prop('visible')).toBe(false);
-    // component.setProps({visible: true})
-    // Always false
-    // expect(component.find(Modal).prop('visible')).toBe(false);
-    // UseEffect
     mockUseEffect();
     expect(setVisible).toHaveBeenCalledTimes(1);
-    // component.update()
-    // Rerendered
-    // expect(component.find(Modal).prop('visible')).toBe(true)
-  });
-
-  it('should set launch intercept iOS', () => {
-    let useStateMock: any = (visible: any) => [false, setVisible];
-    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(true, true, 50, false, true);
-    givenComponent();
-    expect(NativeModules.RNNetwatch.getNativeRequests).toHaveBeenCalledTimes(1);
   });
 
   it('should contains the main screen with flatlist', async () => {
     // @ts-ignore
     const { getByTestId } = render(<Netwatch enabled visible reduxActions={[]} />);
-
     waitFor(() => expect(getByTestId('mainScreen')).toBeDefined());
     expect(getByTestId('itemsList')).toBeDefined();
   });
