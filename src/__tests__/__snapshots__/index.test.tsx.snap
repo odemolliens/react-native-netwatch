@@ -141,93 +141,9 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
           clearAll={[Function]}
           maxRequests={100}
           nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Array [],
-                ],
-                Array [
-                  false,
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
+          onPress={[MockFunction]}
           onPressClose={[Function]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Array [],
-                ],
-                Array [
-                  false,
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
+          onPressDetail={[MockFunction]}
           reduxActions={false}
           rnRequests={false}
           testId="mainScreen"
@@ -242,49 +158,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
       >
         <Details
           item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  Array [],
-                ],
-                Array [
-                  false,
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-                Array [
-                  Array [],
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
+          onPressBack={[MockFunction]}
           testId="detailScreen"
         />
       </Component>
