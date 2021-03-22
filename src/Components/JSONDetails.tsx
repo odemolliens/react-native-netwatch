@@ -17,7 +17,7 @@ export interface IProps {
 export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
 
-  const _renderLabel = ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>
+  const _renderLabel = ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>;
 
   return (
     <View style={styles.container}>
@@ -34,12 +34,7 @@ export const JSONDetails: React.FC<IProps> = props => {
 
       <ScrollView horizontal style={{ backgroundColor: theme.secondaryColor }}>
         <ScrollView nestedScrollEnabled style={styles.scrollview}>
-          <JSONTree
-            data={JSON.parse(props.data)}
-            labelRenderer={_renderLabel}
-            theme={theme}
-            invertTheme={false}
-          />
+          <JSONTree data={JSON.parse(props.data)} labelRenderer={_renderLabel} theme={theme} invertTheme={false} />
         </ScrollView>
       </ScrollView>
     </View>
