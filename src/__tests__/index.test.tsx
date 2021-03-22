@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { FlatList, ListRenderItem, Modal, NativeModules } from 'react-native';
-import Item from '../Components/Item';
+import { NativeModules } from 'react-native';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
-import { render, act, waitFor, fireEvent } from '@testing-library/react-native';
-import ReduxAction from '../Core/Objects/ReduxAction';
+import { render, waitFor } from '@testing-library/react-native';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
@@ -64,15 +62,6 @@ describe('Index test suite', () => {
   });
 
   it('should set launch intercept iOS', () => {
-    jest.mock('react-native', () => ({
-      ...jest.requireActual('react-native'),
-      NativeModules: {
-        RNNetwatch: {
-          getNativeRequests: jest.fn(),
-        },
-      },
-    }));
-
     let useStateMock: any = (visible: any) => [false, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 50, false, true);
