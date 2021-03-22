@@ -38,7 +38,6 @@ exports[`Status test suite should render properly redux action 1`] = `
     testID="statusCodeColor"
   >
     <Icon
-      allowFontScaling={false}
       color="#F9FAFB"
       name="redux"
       size={12}
@@ -49,6 +48,158 @@ exports[`Status test suite should render properly redux action 1`] = `
 
 exports[`Status test suite should render properly request 1`] = `""`;
 
-exports[`Status test suite should render properly request with method 1`] = `""`;
+exports[`Status test suite should render properly request with method 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
+      },
+    ]
+  }
+>
+  <Text>
+    GET
+  </Text>
+  <Component
+    style={
+      Array [
+        Object {
+          "borderRadius": 4,
+          "fontSize": 12,
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#4D7C0F",
+        },
+      ]
+    }
+    testID="statusCodeColor"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      200
+    </Text>
+  </Component>
+</Component>
+`;
 
-exports[`Status test suite should render properly request with method post and warning 1`] = `""`;
+exports[`Status test suite should render properly request with method post and failed 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
+      },
+    ]
+  }
+>
+  <Text>
+    POST
+  </Text>
+  <Component
+    style={
+      Array [
+        Object {
+          "borderRadius": 4,
+          "fontSize": 12,
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#B91C1C",
+        },
+      ]
+    }
+    testID="statusCodeColor"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      -1
+    </Text>
+  </Component>
+</Component>
+`;
+
+exports[`Status test suite should render properly request with method post and warning 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": 60,
+        "justifyContent": "space-evenly",
+        "padding": 6,
+        "width": 60,
+      },
+    ]
+  }
+>
+  <Text>
+    POST
+  </Text>
+  <Component
+    style={
+      Array [
+        Object {
+          "borderRadius": 4,
+          "fontSize": 12,
+          "height": 22,
+          "justifyContent": "center",
+          "width": 30,
+        },
+        Object {
+          "backgroundColor": "#D97706",
+        },
+      ]
+    }
+    testID="statusCodeColor"
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      302
+    </Text>
+  </Component>
+</Component>
+`;

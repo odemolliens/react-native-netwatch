@@ -109,64 +109,10 @@
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 90,
-        "branches": 85,
-        "functions": 85,
-        "lines": 90
-      },
-      "./src/Utils/helpers.tsx": {
-        "statements": 90,
+        "statements": 80,
         "branches": 80,
         "functions": 80,
-        "lines": 85
-      },
-      "./src/Core/Objects/RNRequest.tsx": {
-        "statements": 75,
-        "branches": 70,
-        "functions": 60,
-        "lines": 75
-      },
-      "./src/Core/ReduxLogger.tsx": {
-        "statements": 90,
-        "branches": 85,
-        "functions": 80,
-        "lines": 90
-      },
-      "./src/Core/RNLogger.tsx": {
-        "statements": 80,
-        "branches": 65,
-        "functions": 60,
         "lines": 80
-      },
-      "./src/Components/Status.tsx": {
-        "statements": 65,
-        "branches": 35,
-        "functions": 100,
-        "lines": 75
-      },
-      "./src/Components/Main.tsx": {
-        "statements": 30,
-        "branches": 10,
-        "functions": 10,
-        "lines": 30
-      },
-      "./src/Components/Details.tsx": {
-        "statements": 55,
-        "branches": 60,
-        "functions": 25,
-        "lines": 55
-      },
-      "./src/Components/JSONDetails.tsx": {
-        "statements": 0,
-        "branches": 0,
-        "functions": 0,
-        "lines": 0
-      },
-      "./src/index.tsx": {
-        "statements": 35,
-        "branches": 10,
-        "functions": 5,
-        "lines": 35
       }
     },
     "snapshotSerializers": [
