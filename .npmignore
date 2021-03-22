@@ -1,4 +1,5 @@
 src/
+config/
 coverage/
 assets/
 build
@@ -13,6 +14,11 @@ example/
 .eslintignore
 .github
 .idea
+.prettierrc
+.eslintrc.json
+tsconfig.json
+tslint.json
+babel.config.js
 
 CHANGELOG.md
 CONTRIBUTING.md
