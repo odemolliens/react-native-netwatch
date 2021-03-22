@@ -9,7 +9,6 @@ import JSONTree from 'react-native-json-tree';
 import { ThemeContext } from '../Theme';
 
 export interface IProps {
-  testId?: string;
   onPressBack: (showJSONDetails: boolean) => void;
   data: any;
   title?: string;
@@ -18,13 +17,15 @@ export interface IProps {
 export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
 
+  const _renderLabel = ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>
+
   return (
     <View style={styles.container}>
       <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
         <TouchableOpacity
           style={[styles.button, { borderLeftWidth: 0 }]}
           onPress={() => props.onPressBack(false)}
-          testID="buttonBackToMainScreen"
+          testID="buttonBackToDetailsScreen"
         >
           <FeatherIcon name="arrow-left" color={theme.textColorOne} size={24} />
         </TouchableOpacity>
@@ -35,7 +36,7 @@ export const JSONDetails: React.FC<IProps> = props => {
         <ScrollView nestedScrollEnabled style={styles.scrollview}>
           <JSONTree
             data={JSON.parse(props.data)}
-            labelRenderer={([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>}
+            labelRenderer={_renderLabel}
             theme={theme}
             invertTheme={false}
           />
