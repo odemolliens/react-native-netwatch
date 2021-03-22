@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
@@ -42,7 +42,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   // At this time, if it's not light, that will be dark. No other possibility
   const _theme = colorScheme === 'light' ? themes.light : themes.dark;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (props.visible !== undefined) {
       setVisible(props.visible);
     }
@@ -52,7 +52,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     if (!props.disableShake && props.enabled) setVisible(true);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!props.disableShake && props.enabled) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
       DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
@@ -125,7 +125,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     });
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!props.enabled) {
       clearAll();
       stopNativeLoop();
@@ -143,7 +143,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     }
   }, [props.enabled]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     !visible ? stopNativeLoop() : startNativeLoop();
   }, [visible]);
 

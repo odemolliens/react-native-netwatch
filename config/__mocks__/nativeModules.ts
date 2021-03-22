@@ -101,25 +101,13 @@ export const mockNativeModules: any = {
     RNLocalize: {
       initialConstants: jest.fn(),
     },
-    BridgeApiManager: {
-      cleanProductsDetails: jest.fn(),
-    },
-    BridgeAppManager: {
-      logInCrashlitics: jest.fn(),
-      logInInstabug: jest.fn(),
-      logScreenInCrashlitics: jest.fn(),
-      logScreenInInstabug: jest.fn(),
-    },
     PlatformConstants: jest.fn(),
     RNCNetInfo: jest.fn(),
     FileReaderModule: jest.fn(),
-    StatusDataEmitter: jest.fn(),
-    BridgeDataManager: {
-      addNewPublicWifi: jest.fn(),
-      dataForService: jest.fn(),
-      displaySettingsPanel: jest.fn(),
+    RNNetwatch: {
+      getNativeRequests: jest.fn(),
+      startNetwatch: jest.fn(),
     },
-    BridgeUserDataManager: jest.fn(),
     RNFirebase: {
       apps: {
         name: 'example',

@@ -66,6 +66,11 @@ export const getStatus = (status: number = 500): string => {
 
 export const duration = (startTime: number, endTime: number): number => endTime - startTime;
 
+const _LIMIT = 100;
+export const isLongText = (value: string): boolean => value !== undefined && value.length > _LIMIT;
+export const addEllipsis = (value: string): string =>
+  isLongText(value) ? value.slice(0, _LIMIT).concat('...') : value;
+
 const _path = RNFS.DocumentDirectoryPath + '/export' + '.xlsx';
 // write the file
 export const xlsxWriter = async (text = [], encoding = 'ascii', path = _path, showDeviceInfo: boolean = true) => {
