@@ -1,17 +1,6 @@
 import RNRequest, { getRequestBody, getResponseBody, parseResponseBlob } from '../RNRequest';
-// import Blob from 'react-native/Libraries/Blob/FileReader';
-import Blob from 'react-native/Libraries/Blob/Blob';
 
 jest.mock('react-native/Libraries/Blob/Blob');
-
-jest.mock('react-native/Libraries/Blob/FileReader', () =>
-  jest.fn().mockImplementation(() => ({
-    readAsText: jest.fn(),
-    onload: jest.fn(),
-    onabort: jest.fn(),
-    onerror: jest.fn(),
-  })),
-);
 
 describe('getRequestBody', () => {
   it('should return stringified data in consistent format', () => {

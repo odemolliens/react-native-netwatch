@@ -31,6 +31,10 @@ describe('Details test suite', () => {
     }));
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Test Redux item', () => {
     it('should render Redux action properly', () => {
       givenProps(mockActionWithLongPayload);
