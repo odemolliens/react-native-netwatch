@@ -1,4 +1,5 @@
 import { configure } from 'enzyme';
+import * as React from 'react';
 import * as ReactNative from 'react-native';
 import { mockNativeModules } from './__mocks__/nativeModules';
 import Adapter from 'enzyme-adapter-react-16';
@@ -11,11 +12,29 @@ jest.doMock('react-native', () => {
     {
       ...mockNativeModules,
     },
-    ReactNative
+    ReactNative,
   );
 });
 
-jest.mock('react-native-paper');
+// jest.mock('react-native-paper');
+jest.mock('react-native-paper', () => {
+  return {
+    Subheading: () => <></>,
+    Appbar: {
+      Header: () => <></>,
+      Content: () => <></>,
+    },
+    RadioButton: {
+      Group: () => <></>,
+      Item: () => <></>,
+    },
+    Snackbar: () => <></>,
+    Text: () => <></>,
+    Icon: () => <></>,
+    Searchbar: () => <></>,
+    ActivityIndicator: () => <></>
+  };
+});
 
 jest.useFakeTimers();
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
@@ -82,7 +101,7 @@ jest.mock('react-native-vector-icons', () => {
 });
 
 jest.mock('react-native-vector-icons/Feather', () => 'Icon');
-
+jest.mock('react-native-vector-icons/Fontisto', () => 'Icon');
 
 jest.mock('react-native-device-info', () => {
   return {
@@ -93,5 +112,5 @@ jest.mock('react-native-device-info', () => {
     getApplicationName: jest.fn(),
     getVersion: jest.fn(),
     getBuildNumber: jest.fn(),
-  }
-})
+  };
+});

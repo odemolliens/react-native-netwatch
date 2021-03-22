@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import { StyleSheet, View, ScrollView, Share, Alert, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, ScrollView, Alert, TouchableOpacity, Image } from 'react-native';
+import Share from 'react-native-share';
 import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
 import { getStatus, getTime, getShortDate, duration } from '../Utils/helpers';
@@ -97,7 +98,7 @@ export const Details: React.FC<IProps> = props => {
     bodyResponse: string = '',
   ): Promise<void> => {
     try {
-      await Share.share({
+      await Share.open({
         message: formatSharedMessage(general, requestHeaders, postData, responseHeaders, bodyResponse),
       });
     } catch (error) {
@@ -109,7 +110,7 @@ export const Details: React.FC<IProps> = props => {
     const _type = item.action.type.toUpperCase();
     const _payload = JSON.stringify(item.action.payload, null, 2);
     try {
-      await Share.share({
+      await Share.open({
         message: `${_type}\n${_payload}`,
       });
     } catch (error) {

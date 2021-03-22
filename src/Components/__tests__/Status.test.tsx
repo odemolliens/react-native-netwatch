@@ -32,6 +32,12 @@ describe('Status test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
+  it('should render properly request with method post and failed', () => {
+    givenProps(mockRequestWithMethodPostFailed);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+  });
+
   // GIVEN
   function givenComponent() {
     component = shallow(<Status {...props} />);
@@ -68,7 +74,7 @@ describe('Status test suite', () => {
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
   };
 
-  const mockRequestWithMethod: RNRequest = {
+  const mockRequestWithMethod: RNRequest = new RNRequest({
     _id: 73,
     dataSent: 'dataSent',
     endTime: 1613477575757,
@@ -84,9 +90,9 @@ describe('Status test suite', () => {
     timeout: 0,
     type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  };
+  });
 
-  const mockRequestWithMethodPostWarning: RNRequest = {
+  const mockRequestWithMethodPostWarning: RNRequest = new RNRequest({
     _id: 73,
     dataSent: 'dataSent',
     endTime: 1613477575757,
@@ -102,5 +108,22 @@ describe('Status test suite', () => {
     timeout: 0,
     type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  };
+  });
+});
+
+const mockRequestWithMethodPostFailed: RNRequest = new RNRequest({
+  _id: 73,
+  dataSent: 'dataSent',
+  endTime: 1613477575757,
+  method: 'POST',
+  readyState: 4,
+  response: 'response',
+  responseContentType: 'application/json',
+  responseSize: 0,
+  responseType: 'blob',
+  responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+  startTime: 1613477574742,
+  timeout: 0,
+  type: 'RNR',
+  url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
 });
