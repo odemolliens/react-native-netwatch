@@ -68,7 +68,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [handleShake]);
 
   const handleBack = () => {
-    showDetails ? setShowDetails(false) : setVisible(false);
+    if (showDetails) return setShowDetails(false);
+    props.onPressClose ? props.onPressClose() : setVisible(false);
   };
 
   const startNativeLoop = () => {
