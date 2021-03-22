@@ -18,6 +18,14 @@ export const themes = {
     warningColor: '#FFAB40',
     successColor: '#69F0AE',
     reduxColor: '#B47CFF',
+    // JSON Tree
+    base00: '#F3F4F6', // secondaryColor
+    base03: '#005ECB', // primaryColor
+    base07: '#1F2937', // textColorTwo
+    base08: '#f92672', // failedColor
+    base09: '#FFAB40', // warningColor
+    base0B: '#69F0AE', // successColor
+    base0D: '#111827', // textColorOne
     // Others
     white: '#FFF',
     black: '#000',
@@ -35,6 +43,13 @@ export const themes = {
     warningColor: '#D97706',
     successColor: '#4D7C0F',
     reduxColor: '#764ABC',
+    base00: '#1F2937',
+    base03: '#06B6D4',
+    base07: '#D1D5DB',
+    base08: '#B91C1C',
+    base09: '#D97706',
+    base0B: '#4D7C0F',
+    base0D: '#F9FAFB',
     white: '#FFF',
     black: '#000',
   },

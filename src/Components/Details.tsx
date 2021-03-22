@@ -4,7 +4,7 @@ import { StyleSheet, View, ScrollView, Alert, TouchableOpacity, Image } from 're
 import Share from 'react-native-share';
 import { Appbar, Subheading, Snackbar } from 'react-native-paper';
 import { tag, reduxTag } from './Status';
-import { getStatus, getTime, getShortDate, duration } from '../Utils/helpers';
+import { getStatus, getTime, getShortDate, duration, isLongText, addEllipsis } from '../Utils/helpers';
 import { EnumStatus } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import NRequest from '../Core/Objects/NRequest';
@@ -15,6 +15,8 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { ThemeContext } from '../Theme';
 import { Text, Title } from './Text';
 import url from 'url';
+// @ts-ignore
+import JSONDetails from './JSONDetails';
 
 export interface IProps {
   testId?: string;
@@ -86,9 +88,42 @@ export const Details: React.FC<IProps> = props => {
   const [snackBarVisibility, setSnackBarVisibility] = useState<boolean>(false);
   const [onErrorImage, setOnErrorImage] = useState<boolean>(false);
   const [snackBarMessage, setSnackBarMessage] = useState<string>('');
+  const [showJSONResponseDetails, setShowJSONResponseDetails] = useState<boolean>(false);
+  const [showJSONRequestDetails, setShowJSONRequestDetails] = useState<boolean>(false);
+  const [showJSONActionDetails, setShowJSONActionDetails] = useState<boolean>(false);
   let _content = null;
   let _color: string = theme.reduxColor;
   let _action: any = () => {};
+
+  if (showJSONActionDetails && props.item instanceof ReduxAction) {
+    return (
+      <JSONDetails
+        title="Response details"
+        onPressBack={() => setShowJSONActionDetails(false)}
+        data={props.item?.action}
+      />
+    );
+  }
+
+  if (showJSONResponseDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
+    return (
+      <JSONDetails
+        title="Response details"
+        onPressBack={() => setShowJSONResponseDetails(false)}
+        data={props.item?.response}
+      />
+    );
+  }
+
+  if (showJSONRequestDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
+    return (
+      <JSONDetails
+        title="Request details"
+        onPressBack={() => setShowJSONRequestDetails(false)}
+        data={props.item?.dataSent}
+      />
+    );
+  }
 
   const _onShareRequest = async (
     general: Array<string[]>,
@@ -133,13 +168,28 @@ export const Details: React.FC<IProps> = props => {
           setSnackBarVisibility(true);
         }}
       >
+        <MaterialCommunityIcons name="clipboard-arrow-left-outline" color={theme.primaryColor} size={14} />
+        <Text style={[{ color: theme.primaryColor, marginLeft: 6 }]}>Copy</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const _viewMoreButton = (onPress: Function) => {
+    return (
+      <TouchableOpacity
+        testID="buttonViewMore"
+        style={[{ flexDirection: 'row', borderLeftWidth: 0, alignItems: 'center' }]}
+        onPress={() => {
+          onPress();
+        }}
+      >
+        <Text style={[{ color: theme.primaryColor, marginRight: 6 }]}>View more</Text>
         <MaterialCommunityIcons
-          name="clipboard-arrow-left-outline"
+          name="more"
           color={theme.primaryColor}
           size={14}
-          testID="buttonCopyToClipBoard"
+          style={{ transform: [{ rotateY: '180deg' }] }}
         />
-        <Text style={[{ color: theme.primaryColor, marginLeft: 6 }]}>Copy</Text>
       </TouchableOpacity>
     );
   };
@@ -225,13 +275,19 @@ export const Details: React.FC<IProps> = props => {
           <Text>{props.item.action.type}</Text>
         </View>
 
-        <View style={[styles.line]}>
+        <View style={[styles.line, { alignItems: 'baseline' }]}>
           {_reduxAction.label && (
             <Text style={{ color: theme.textColorFour }}>{`${_reduxAction.label
               .charAt(0)
               .toUpperCase()}${_reduxAction.label.slice(1)} :`}</Text>
           )}
-          {_reduxAction.payload && <Text>{JSON.stringify(_reduxAction.payload, null, 2)}</Text>}
+
+          <View style={[styles.attribtuesContainer, { flex: 1, paddingHorizontal: 0, paddingLeft: 6 }]}>
+            {_reduxAction.payload && <Text>{addEllipsis(JSON.stringify(_reduxAction.payload, null, 2))}</Text>}
+            {isLongText(addEllipsis(JSON.stringify(_reduxAction.payload, null, 2))) && (
+              <View style={{ alignItems: 'flex-end' }}>{_viewMoreButton(() => setShowJSONActionDetails(true))}</View>
+            )}
+          </View>
         </View>
       </View>
     );
@@ -330,7 +386,10 @@ export const Details: React.FC<IProps> = props => {
               Request Data
             </Subheading>
             <View style={styles.attribtuesContainer}>
-              <Text>{props.item?.dataSent}</Text>
+              <Text>{addEllipsis(props.item?.dataSent)}</Text>
+              {isLongText(props.item?.dataSent) && (
+                <View style={{ alignItems: 'flex-end' }}>{_viewMoreButton(() => setShowJSONRequestDetails(true))}</View>
+              )}
             </View>
           </>
         )}
@@ -357,7 +416,12 @@ export const Details: React.FC<IProps> = props => {
               {_copyClipbutton(_copyToClipboard, props.item?.response, 'Response has been copied to clipboard')}
             </View>
             <View style={styles.attribtuesContainer}>
-              <Text>{props.item?.response}</Text>
+              <Text>{addEllipsis(props.item?.response)}</Text>
+              {isLongText(props.item?.response) && (
+                <View style={{ alignItems: 'flex-end' }}>
+                  {_viewMoreButton(() => setShowJSONResponseDetails(true))}
+                </View>
+              )}
             </View>
           </>
         )}

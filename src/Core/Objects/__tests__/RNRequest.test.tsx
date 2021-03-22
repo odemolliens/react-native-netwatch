@@ -10,7 +10,6 @@ jest.mock('react-native/Libraries/Blob/FileReader', () =>
     onload: jest.fn(),
     onabort: jest.fn(),
     onerror: jest.fn(),
-    addEventListener: jest.fn().mockResolvedValue('ok'),
   })),
 );
 

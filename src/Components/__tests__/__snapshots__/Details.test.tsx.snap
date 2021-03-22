@@ -237,6 +237,9 @@ exports[`Details test suite Test Redux item should render Redux action properly 
               "marginBottom": 10,
               "paddingHorizontal": 16,
             },
+            Object {
+              "alignItems": "baseline",
+            },
           ]
         }
       >
@@ -247,8 +250,77 @@ exports[`Details test suite Test Redux item should render Redux action properly 
             }
           }
         >
-          Action :
+          Payload :
         </Text>
+        <Component
+          style={
+            Array [
+              Object {
+                "justifyContent": "flex-start",
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              Object {
+                "flex": 1,
+                "paddingHorizontal": 0,
+                "paddingLeft": 6,
+              },
+            ]
+          }
+        >
+          <Text>
+            "{\\"data\\":\\"This is a test with a long payload, more than 100\\",\\"next\\":\\"characters to check if t...
+          </Text>
+          <Component
+            style={
+              Object {
+                "alignItems": "flex-end",
+              }
+            }
+          >
+            <ForwardRef
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "borderLeftWidth": 0,
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+              testID="buttonViewMore"
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#06B6D4",
+                      "marginRight": 6,
+                    },
+                  ]
+                }
+              >
+                View more
+              </Text>
+              <Icon
+                allowFontScaling={false}
+                color="#06B6D4"
+                name="more"
+                size={14}
+                style={
+                  Object {
+                    "transform": Array [
+                      Object {
+                        "rotateY": "180deg",
+                      },
+                    ],
+                  }
+                }
+              />
+            </ForwardRef>
+          </Component>
+        </Component>
       </Component>
     </Component>
   </Component>
@@ -579,7 +651,6 @@ exports[`Details test suite Test Request item should render Request properly 1`]
               color="#06B6D4"
               name="clipboard-arrow-left-outline"
               size={14}
-              testID="buttonCopyToClipBoard"
             />
             <Text
               style={
@@ -671,6 +742,69 @@ exports[`Details test suite Test Request item should render Request properly 1`]
           ]
         }
       >
+        Request Headers
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "marginBottom": 10,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            Content-Type
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          application/json
+        </Text>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
         Request Data
       </Subheading>
       <Component
@@ -683,7 +817,257 @@ exports[`Details test suite Test Request item should render Request properly 1`]
         }
       >
         <Text>
-          dataSent
+          {"data":"This is a test with a long body, more than 100","next":"characters to check if the viewmore...
+        </Text>
+        <Component
+          style={
+            Object {
+              "alignItems": "flex-end",
+            }
+          }
+        >
+          <ForwardRef
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "borderLeftWidth": 0,
+                  "flexDirection": "row",
+                },
+              ]
+            }
+            testID="buttonViewMore"
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#06B6D4",
+                    "marginRight": 6,
+                  },
+                ]
+              }
+            >
+              View more
+            </Text>
+            <Icon
+              allowFontScaling={false}
+              color="#06B6D4"
+              name="more"
+              size={14}
+              style={
+                Object {
+                  "transform": Array [
+                    Object {
+                      "rotateY": "180deg",
+                    },
+                  ],
+                }
+              }
+            />
+          </ForwardRef>
+        </Component>
+      </Component>
+      <Subheading
+        style={
+          Array [
+            Object {
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+              "paddingVertical": 8,
+            },
+            Object {
+              "backgroundColor": "#374151",
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Response Headers
+      </Subheading>
+      <Component
+        key="0"
+        style={
+          Object {
+            "marginBottom": 10,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            Content-Length
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          0
+        </Text>
+      </Component>
+      <Component
+        key="1"
+        style={
+          Object {
+            "marginBottom": 10,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            Content-Type
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          application/json; charset=UTF-8
+        </Text>
+      </Component>
+      <Component
+        key="2"
+        style={
+          Object {
+            "marginBottom": 10,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            Date
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          Tue, 16 Feb 2021 12:12:55 GMT
+        </Text>
+      </Component>
+      <Component
+        key="3"
+        style={
+          Object {
+            "marginBottom": 10,
+            "paddingHorizontal": 16,
+          }
+        }
+      >
+        <Component
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginBottom": 10,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#6B7280",
+                },
+              ]
+            }
+          >
+            Sozu-Id
+          </Text>
+        </Component>
+        <Text
+          style={
+            Array [
+              Object {
+                "width": "100%",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          51989c0c-ebe7-4574-913d-443477875da7
         </Text>
       </Component>
       <Subheading
@@ -729,7 +1113,6 @@ exports[`Details test suite Test Request item should render Request properly 1`]
             color="#06B6D4"
             name="clipboard-arrow-left-outline"
             size={14}
-            testID="buttonCopyToClipBoard"
           />
           <Text
             style={
@@ -1087,7 +1470,6 @@ exports[`Details test suite Test Request item should render properly with reques
               color="#06B6D4"
               name="clipboard-arrow-left-outline"
               size={14}
-              testID="buttonCopyToClipBoard"
             />
             <Text
               style={
@@ -1237,7 +1619,6 @@ exports[`Details test suite Test Request item should render properly with reques
             color="#06B6D4"
             name="clipboard-arrow-left-outline"
             size={14}
-            testID="buttonCopyToClipBoard"
           />
           <Text
             style={
@@ -1690,7 +2071,6 @@ exports[`Details test suite Test Request item should render properly with reques
             color="#06B6D4"
             name="clipboard-arrow-left-outline"
             size={14}
-            testID="buttonCopyToClipBoard"
           />
           <Text
             style={
@@ -2143,7 +2523,6 @@ exports[`Details test suite Test Request item should render properly with reques
             color="#06B6D4"
             name="clipboard-arrow-left-outline"
             size={14}
-            testID="buttonCopyToClipBoard"
           />
           <Text
             style={
@@ -2501,7 +2880,6 @@ exports[`Details test suite Test Request item should render properly with reques
               color="#06B6D4"
               name="clipboard-arrow-left-outline"
               size={14}
-              testID="buttonCopyToClipBoard"
             />
             <Text
               style={
@@ -2651,7 +3029,6 @@ exports[`Details test suite Test Request item should render properly with reques
             color="#06B6D4"
             name="clipboard-arrow-left-outline"
             size={14}
-            testID="buttonCopyToClipBoard"
           />
           <Text
             style={

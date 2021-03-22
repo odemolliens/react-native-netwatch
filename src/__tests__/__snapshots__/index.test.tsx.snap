@@ -4,6 +4,13 @@ exports[`Index test suite should render properly 1`] = `
 <ContextProvider
   value={
     Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
       "black": "#000",
       "failedColor": "#B91C1C",
       "primaryColor": "#06B6D4",
@@ -86,6 +93,13 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
 <ContextProvider
   value={
     Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
       "black": "#000",
       "failedColor": "#B91C1C",
       "primaryColor": "#06B6D4",
@@ -283,6 +297,13 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
 <ContextProvider
   value={
     Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
       "black": "#000",
       "failedColor": "#B91C1C",
       "primaryColor": "#06B6D4",
