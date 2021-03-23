@@ -10,9 +10,11 @@ import {
   clear as clearReduxActions,
 } from './Core/ReduxLogger';
 import { RNLogger } from './Core/RNLogger';
+import { ConnectionLogger } from './Core/ConnectionLogger';
 import { RNRequest } from './Core/Objects/RNRequest';
 import { ReduxAction } from './Core/Objects/ReduxAction';
 import { NRequest } from './Core/Objects/NRequest';
+import { ConnectionInfo } from './Core/Objects/ConnectionInfo';
 import { ThemeContext, themes } from './Theme';
 
 export interface IProps {
@@ -26,10 +28,13 @@ export interface IProps {
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
+export const _ConnectionLogger = new ConnectionLogger();
 
 const { RNNetwatch } = NativeModules;
 let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
+let connectionLoopStarted = false;
+let connectionLoop: NodeJS.Timeout;
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   if (!props.enabled) return null;
@@ -37,6 +42,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
+  const [connections, setConnections] = useState<Array<ConnectionInfo>>([]);
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [item, setItem] = useState(new ReduxAction());
   const [visible, setVisible] = useState(false);
@@ -79,7 +85,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       nativeLoopStarted = true;
       nativeLoop = setInterval(() => {
         getNativeRequests();
-      }, 3000);
+      }, 1500);
+    }
+  };
+
+  const startConnectionLoop = () => {
+    if (props.enabled && !connectionLoopStarted) {
+      connectionLoopStarted = true;
+      connectionLoop = setInterval(() => {
+        if (_ConnectionLogger.getConnectionEvents() && _ConnectionLogger.getConnectionEvents().length > 0) {
+          setConnections(_ConnectionLogger.getConnectionEvents());
+        }
+      }, 800);
     }
   };
 
@@ -88,12 +105,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     clearInterval(nativeLoop);
   };
 
+  const stopConnectionLoop = () => {
+    connectionLoopStarted = false;
+    clearInterval(connectionLoop);
+  };
+
   const clearAll = () => {
     _RNLogger.clear();
     clearReduxActions();
     setReduxActions([]);
     setRnRequests([]);
     setnRequests([]);
+    setConnections([]);
   };
 
   // Extract data from shared pref and passed the result to the UI
@@ -155,7 +178,13 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   }, [props.enabled]);
 
   React.useEffect(() => {
-    !visible ? stopNativeLoop() : startNativeLoop();
+    if (!visible) {
+      stopNativeLoop();
+      stopConnectionLoop();
+      return;
+    }
+    startNativeLoop();
+    startConnectionLoop();
   }, [visible]);
 
   return (
@@ -172,6 +201,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               reduxActions={reduxActions}
               rnRequests={rnRequests}
               nRequests={nRequests}
+              connections={connections}
               clearAll={clearAll}
             />
           </View>

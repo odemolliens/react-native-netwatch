@@ -3,6 +3,7 @@ import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { NRequest } from '../Core/Objects/NRequest';
 import { ReduxAction } from '../Core/Objects/ReduxAction';
+import { ConnectionInfo } from '../Core/Objects/ConnectionInfo';
 import { Status } from './Status';
 import { getTime } from '../Utils/helpers';
 import url from 'url';
@@ -27,6 +28,9 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   if (props.item instanceof ReduxAction) {
     _line1 = 'redux action';
     _line2 = props.item.stringifiedAction;
+  } else if (props.item instanceof ConnectionInfo) {
+    _line1 = `connection type : ${props.item.connection?.type}`;
+    _line2 = props.item.connection?.isConnected ? 'You are connected' : 'You are disconnected';
   } else {
     if (
       (props.item instanceof RNRequest || props.item instanceof NRequest) &&

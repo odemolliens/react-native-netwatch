@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.7.0",
+    "@react-native-community/netinfo": "^6.0.0",
     "react": "^16.13.1",
     "react-native": "^0.63.2",
     "react-native-device-info": "^8.0.2",
