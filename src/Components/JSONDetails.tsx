@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { Appbar } from 'react-native-paper';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // @ts-ignore
 import JSONTree from 'react-native-json-tree';
@@ -16,6 +17,7 @@ export interface IProps {
 
 export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
+  const [viewJSON, setViewJSON] = useState<boolean>(false);
 
   const _renderLabel = ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>;
 
@@ -30,11 +32,26 @@ export const JSONDetails: React.FC<IProps> = props => {
           <FeatherIcon name="arrow-left" color={theme.textColorOne} size={24} />
         </TouchableOpacity>
         <Appbar.Content color={theme.primaryColor} title={props.title || 'Netwatch'} titleStyle={{ fontSize: 18 }} />
+        <TouchableOpacity
+          testID="buttonSwitchJSON"
+          style={[styles.button, { borderLeftWidth: 0 }]}
+          onPress={() => setViewJSON(!viewJSON)}
+        >
+          <MaterialCommunityIcons
+            name="code-json"
+            color={viewJSON ? theme.primaryColor : theme.textColorOne}
+            size={24}
+          />
+        </TouchableOpacity>
       </Appbar.Header>
 
       <ScrollView horizontal style={{ backgroundColor: theme.secondaryColor }}>
         <ScrollView nestedScrollEnabled style={styles.scrollview}>
-          <JSONTree data={JSON.parse(props.data)} labelRenderer={_renderLabel} theme={theme} invertTheme={false} />
+          {viewJSON ? (
+            <JSONTree data={JSON.parse(props.data)} labelRenderer={_renderLabel} theme={theme} invertTheme={false} />
+          ) : (
+            <Text style={{ color: theme.textColorOne }}>{props.data}</Text>
+          )}
         </ScrollView>
       </ScrollView>
     </View>

@@ -3,11 +3,18 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { JSONDetails, IProps } from '../JSONDetails';
 // Need to use this lib to render child correctly
 import { render } from '@testing-library/react-native';
+import JSONTree from 'react-native-json-tree';
+import { Text } from 'react-native';
 
 describe('Main test suite', () => {
   let component: ShallowWrapper;
   let props: IProps;
   const onPressBack = jest.fn();
+  const setViewJSON = jest.fn();
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('should render properly without title', () => {
     givenProps(stringData);
@@ -15,11 +22,59 @@ describe('Main test suite', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render properly', () => {
+  it('should render properly in raw', () => {
     givenProps(stringData, 'JSONDetails');
     givenProps(stringData);
     const { toJSON } = render(<JSONDetails {...props} />);
     expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render properly in JSON', () => {
+    const useStateMock: any = (viewJSON: any) => [true, setViewJSON];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(stringData, 'JSONDetails');
+    givenProps(stringData);
+    const { toJSON } = render(<JSONDetails {...props} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should called setViewJSON', () => {
+    const useStateMock: any = (viewJSON: any) => [viewJSON, setViewJSON];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(stringData);
+    givenComponent();
+    whenPressingButton('buttonSwitchJSON');
+    expect(setViewJSON).toHaveBeenCalledTimes(1);
+  });
+
+  it('should display raw Text if viewJSON is false', () => {
+    const useStateMock: any = (viewJSON: any) => [false, setViewJSON];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(stringData);
+    givenComponent();
+    expect(component.find(Text)).toHaveLength(1);
+    expect(component.find(JSONTree)).toHaveLength(0);
+  });
+
+  it('should display raw JSONTree if viewJSON is true', () => {
+    const useStateMock: any = (viewJSON: any) => [true, setViewJSON];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(stringData);
+    givenComponent();
+    expect(component.find(Text)).toHaveLength(0);
+    expect(component.find(JSONTree)).toHaveLength(1);
+  });
+
+  it('should called setViewJSON', () => {
+    const useStateMock: any = (viewJSON: any) => [viewJSON, setViewJSON];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(stringData);
+    givenComponent();
+    whenPressingButton('buttonSwitchJSON');
+    expect(setViewJSON).toHaveBeenCalledTimes(1);
+    component.update();
+    expect(component.find(Text)).toHaveLength(1);
+    expect(component.find(JSONTree)).toHaveLength(0);
   });
 
   it('should render properly and go back', () => {
