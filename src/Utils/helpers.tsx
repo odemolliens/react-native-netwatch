@@ -56,7 +56,8 @@ export const getShortDate = (date: number | string): string => {
   return `${_day}/${_month}/${_year}`;
 };
 
-export const getDate = (date: number | string): string => new Date(Number(date)).toString();
+export const getDate = (date: number | string): string =>
+  typeof date === 'string' ? new Date(Number.parseInt(date, 10)).toString() : new Date(date).toString();
 
 export const getStatus = (status: number = 500): string => {
   if (status >= 200 && status < 300) return EnumStatus.Success;
@@ -148,7 +149,7 @@ export const formatDatas = (array: any): [] => {
   const rows = array.map((row: any) => {
     const _temp = _getTemplate();
     const _row = {
-      icon: _icon(row.status),
+      icon: row.status ? _icon(row.status) : 'ℹ',
       ...row,
     };
 
@@ -161,7 +162,10 @@ export const formatDatas = (array: any): [] => {
             if (value[1] !== 'NR' && value[1] !== 'RNR') _temp[value[0]] = value[1];
             if (value[1] === 'NR') _temp[value[0]] = 'NATIVE REQUEST';
             if (value[1] === 'RNR') _temp[value[0]] = 'REACT NATIVE REQUEST';
-          } else if ((value[0] === 'startTime' || value[0] === 'endTime') && typeof value[1] === 'number') {
+          } else if (
+            (value[0] === 'startTime' || value[0] === 'endTime') &&
+            (typeof value[1] === 'number' || typeof value[1] === 'string')
+          ) {
             _temp[value[0]] = getDate(value[1]);
           } else if (value[0] === 'responseContentType' && typeof value[1] === 'string') {
             _temp[value[0]] = value[1].replace(/(;)/gm, ':');
