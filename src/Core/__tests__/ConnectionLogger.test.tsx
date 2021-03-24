@@ -46,7 +46,8 @@ describe('Connection Logger tests suite', () => {
   });
 
   it('should get last connection event', () => {
-    expect(logger.getLastConnectionEvent()).toEqual(events[3]);
+    // events[0] because last entry is added on the first place
+    expect(logger.getLastConnectionEvent()).toEqual(events[0]);
   });
 
   it('should clear connection events', () => {

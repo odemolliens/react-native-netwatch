@@ -23,14 +23,27 @@ export class ConnectionLogger {
           connection: state,
         }),
       );
-      this.callback(this.getConnectionEvents());
     });
   }
 
   addEvent = (_action: ConnectionInfo) => {
-    this.connectionEvents = [_action].concat(this.connectionEvents);
-    if (this.getConnectionEvents().length > this.maxConnections) {
-      this.connectionEvents = [...this.connectionEvents.slice(0, this.getConnectionEvents().length - 1)];
+    const _add = () => {
+      this.connectionEvents = [_action].concat(this.connectionEvents);
+      if (this.getConnectionEvents().length > this.maxConnections) {
+        this.connectionEvents = [...this.connectionEvents.slice(0, this.getConnectionEvents().length - 1)];
+      }
+      this.callback(this.getConnectionEvents());
+    };
+
+    if (this.getLastConnectionEvent() === undefined) {
+      return _add();
+    }
+
+    if (
+      this.getLastConnectionEvent().connection?.type !== _action.connection?.type ||
+      this.getLastConnectionEvent().connection?.isConnected !== _action.connection?.isConnected
+    ) {
+      return _add();
     }
   };
 
@@ -42,7 +55,7 @@ export class ConnectionLogger {
 
   getConnectionEvents = () => this.connectionEvents;
 
-  getLastConnectionEvent = () => this.connectionEvents[this.connectionEvents.length - 1];
+  getLastConnectionEvent = () => this.connectionEvents[0];
 }
 
 export default ConnectionLogger;

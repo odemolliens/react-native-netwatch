@@ -14,6 +14,7 @@ Includes an interface to see http traffic from RN and native side
 ## Features
 
 - Log network requests coming from React Native side
+- Log connectivity change
 - Log network requests coming from the native side (iOS and Android) (optional)
 - Log Redux actions (optional)
 - Shake the device to display the tool

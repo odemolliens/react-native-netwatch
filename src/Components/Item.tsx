@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     maxHeight: ITEM_HEIGHT,
     minHeight: ITEM_HEIGHT,
     borderBottomWidth: 0.5,
+    paddingBottom: 0.5,
   },
   main: {
     flex: 1,
