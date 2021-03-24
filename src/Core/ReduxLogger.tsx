@@ -1,6 +1,13 @@
 // This is a middleware for redux
 import { ReduxAction } from './Objects/ReduxAction';
 
+let iconMapper: any = {};
+try {
+  iconMapper = require('../config/config.json').reduxTypeMapper;
+} catch (error) {
+  console.error('Config file does not exists');
+}
+
 let actions: Array<ReduxAction> = [];
 let currentId: number = 0;
 let callback: Function = () => {};
@@ -33,6 +40,7 @@ export const getStoredActions = (): number => actions.length;
 export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: any) => {
   const _action = new ReduxAction({
     _id: currentId++,
+    icon: iconMapper[action.type] || '',
     stringifiedAction: JSON.stringify(action).slice(0, 100),
     action,
   });
@@ -43,7 +51,6 @@ export const reduxLoggerMiddleware = (_store: any) => (next: any) => (action: an
   }
 
   callback(getReduxActions());
-  // actions = []
   return next(action);
 };
 

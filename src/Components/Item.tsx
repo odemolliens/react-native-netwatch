@@ -25,7 +25,7 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   let _line2: string = '';
 
   if (props.item instanceof ReduxAction) {
-    _line1 = 'redux action';
+    _line1 = `redux action ${props.item.icon}`;
     _line2 = props.item.stringifiedAction;
   } else {
     if (

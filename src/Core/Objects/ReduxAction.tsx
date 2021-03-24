@@ -10,6 +10,7 @@ export class ReduxAction implements ILog {
   type: LogType = 'REDUX';
   startTime: number = Date.now();
   stringifiedAction: string = '';
+  icon: string = '';
   action: IAction = { type: '__ERROR:UNDEFINED__', payload: '' };
 
   constructor(attributes?: any) {

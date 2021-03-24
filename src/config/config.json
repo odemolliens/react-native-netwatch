@@ -1,0 +1,7 @@
+{
+    "reduxTypeMapper": {
+        "action/withPayload": "👨",
+        "action/withPayloadNamedDifferent": "👩",
+        "action/withoutPayload": "∅"
+    }
+}
