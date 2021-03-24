@@ -33,8 +33,6 @@ export const _ConnectionLogger = new ConnectionLogger();
 const { RNNetwatch } = NativeModules;
 let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
-let connectionLoopStarted = false;
-let connectionLoop: NodeJS.Timeout;
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
   if (!props.enabled) return null;
@@ -89,29 +87,14 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     }
   };
 
-  const startConnectionLoop = () => {
-    if (props.enabled && !connectionLoopStarted) {
-      connectionLoopStarted = true;
-      connectionLoop = setInterval(() => {
-        if (_ConnectionLogger.getConnectionEvents() && _ConnectionLogger.getConnectionEvents().length > 0) {
-          setConnections(_ConnectionLogger.getConnectionEvents());
-        }
-      }, 800);
-    }
-  };
-
   const stopNativeLoop = () => {
     nativeLoopStarted = false;
     clearInterval(nativeLoop);
   };
 
-  const stopConnectionLoop = () => {
-    connectionLoopStarted = false;
-    clearInterval(connectionLoop);
-  };
-
   const clearAll = () => {
     _RNLogger.clear();
+    _ConnectionLogger.clearConnectionEvents();
     clearReduxActions();
     setReduxActions([]);
     setRnRequests([]);
@@ -164,6 +147,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       clearAll();
       stopNativeLoop();
       _RNLogger.disableXHRInterception();
+      _ConnectionLogger.resetCallback();
       setReduxActionsCallback(() => {});
     } else {
       if (props.interceptIOS) {
@@ -172,6 +156,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       startNativeLoop();
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
+      _ConnectionLogger.setCallback(setConnections);
       setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
     }
@@ -180,11 +165,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   React.useEffect(() => {
     if (!visible) {
       stopNativeLoop();
-      stopConnectionLoop();
       return;
     }
     startNativeLoop();
-    startConnectionLoop();
   }, [visible]);
 
   return (

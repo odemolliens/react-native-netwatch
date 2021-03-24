@@ -42,6 +42,35 @@ export const Item: React.FC<IProps> = (props: IProps) => {
     }
   }
 
+  const _content = (
+    <View style={styles.main}>
+      <View style={styles.line}>
+        <TextSecondaryColor numberOfLines={1}>{_line1}</TextSecondaryColor>
+        <TextSecondaryColor style={[styles.time, { color: theme.textColorThree }]}>
+          {getTime(props.item.startTime)}
+        </TextSecondaryColor>
+      </View>
+      <View style={styles.line}>
+        <Text numberOfLines={1}>{_line2}</Text>
+      </View>
+    </View>
+  );
+
+  if (props.item instanceof ConnectionInfo) {
+    return (
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: theme.secondaryLightColor, borderBottomColor: theme.textColorFour },
+          { backgroundColor: props.color },
+        ]}
+        testID={`itemStatic-${props.item._id}`}
+      >
+        {_content}
+      </View>
+    );
+  }
+
   return (
     <TouchableOpacity
       onPress={() => props.onPress()}
@@ -53,17 +82,7 @@ export const Item: React.FC<IProps> = (props: IProps) => {
       testID={`itemTouchable-${props.item._id}`}
     >
       <Status item={props.item} />
-      <View style={styles.main}>
-        <View style={styles.line}>
-          <TextSecondaryColor numberOfLines={1}>{_line1}</TextSecondaryColor>
-          <TextSecondaryColor style={[styles.time, { color: theme.textColorThree }]}>
-            {getTime(props.item.startTime)}
-          </TextSecondaryColor>
-        </View>
-        <View style={styles.line}>
-          <Text numberOfLines={1}>{_line2}</Text>
-        </View>
-      </View>
+      {_content}
     </TouchableOpacity>
   );
 };
