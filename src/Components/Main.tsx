@@ -10,6 +10,7 @@ import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from 
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
+import ConnectionInfo from '../Core/Objects/ConnectionInfo';
 import { ThemeContext } from '../Theme';
 import { xlsxWriter, formatDatas, mergeArrays, compare } from '../Utils/helpers';
 
@@ -21,6 +22,7 @@ export interface IProps {
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
   nRequests: NRequest[];
+  connections: ConnectionInfo[];
   clearAll: Function;
   maxRequests?: number;
 }
@@ -50,7 +52,7 @@ export const Main = (props: IProps) => {
     } else if (source === EnumSourceType.Nativerequest) {
       _requests = props.nRequests.sort(compare).reverse();
     } else {
-      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.nRequests)
+      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.nRequests, props.connections)
         .sort(compare)
         .reverse()
         .slice(0, props.maxRequests);
@@ -82,7 +84,7 @@ export const Main = (props: IProps) => {
     }
 
     setRequests(_searchedRequests);
-  }, [props.rnRequests, props.reduxActions, props.nRequests, source, filter, searchQuery]);
+  }, [props.rnRequests, props.reduxActions, props.nRequests, props.connections, source, filter, searchQuery]);
 
   React.useEffect(() => {
     if (loadingXLSX) onShare();

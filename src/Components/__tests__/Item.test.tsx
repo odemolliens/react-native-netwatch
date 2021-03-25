@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Item, IProps } from '../Item';
-import ReduxAction from '../../Core/Objects/ReduxAction';
+import { ReduxAction } from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
 import { NRequest } from '../../Core/Objects/NRequest';
+import { ConnectionInfo } from '../../Core/Objects/ConnectionInfo';
 
 describe('Item test suite', () => {
   let component: ShallowWrapper;
@@ -49,6 +50,23 @@ describe('Item test suite', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
+  it('should render Connection properly', () => {
+    givenProps(mockConnection);
+    givenComponent();
+    expect(component.find(`[testID="itemStatic-81"]`)).toHaveLength(1);
+    expect(component.find(`[testID="itemTouchable-81"]`)).toHaveLength(0);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should render Connection disconnected properly', () => {
+    givenProps(mockConnectionDisconnected);
+    givenComponent();
+    expect(component.find(`[testID="itemStatic-81"]`)).toHaveLength(1);
+    expect(component.find({ children: 'You are disconnected' })).toHaveLength(1);
+    expect(component.find(`[testID="itemTouchable-81"]`)).toHaveLength(0);
+    expect(component).toMatchSnapshot();
+  });
+
   // GIVEN
   function givenComponent() {
     component = shallow(<Item {...props} />);
@@ -73,6 +91,20 @@ describe('Item test suite', () => {
     startTime: 100,
     type: 'REDUX',
     action: { type: '__ERROR:UNDEFINED__', action: '' },
+  });
+
+  const mockConnection: ConnectionInfo = new ConnectionInfo({
+    _id: 81,
+    startTime: 1000,
+    type: 'CONNECT',
+    connection: { type: 'wifi', isConnected: true },
+  });
+
+  const mockConnectionDisconnected: ConnectionInfo = new ConnectionInfo({
+    _id: 81,
+    startTime: 1000,
+    type: 'CONNECT',
+    connection: { type: 'wifi', isConnected: false },
   });
 
   const mockRequest: RNRequest = new RNRequest({
