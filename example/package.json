@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "android": "adb reverse tcp:8082 tcp:8082 && react-native run-android",
-    "clean:android": "rm -rf android/.gradle android/build android/.idea android/*.iml",
+    "clean:android": "rm -rf android/.gradle android/build android/.idea android/*.iml && ./android/gradlew clean -p ./android/",
     "compile": "tsc -p .",
     "ios": "react-native run-ios",
     "lint": "eslint .",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.7.0",
-    "@react-native-community/netinfo": "^6.0.0",
+    "@react-native-community/netinfo": "4.7.0",
     "react": "^16.13.1",
     "react-native": "^0.63.2",
     "react-native-device-info": "^8.0.2",
