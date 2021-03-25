@@ -12,6 +12,7 @@ exports[`Item test suite should render Action properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -101,6 +102,7 @@ exports[`Item test suite should render Connection disconnected properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -178,6 +180,7 @@ exports[`Item test suite should render Connection properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -256,6 +259,7 @@ exports[`Item test suite should render Native Request properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -356,6 +360,7 @@ exports[`Item test suite should render Request properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -456,6 +461,7 @@ exports[`Item test suite should render Request properly even bad URL passed in t
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -552,6 +558,7 @@ exports[`Item test suite should render Request properly even no URL passed in th
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -648,6 +655,7 @@ exports[`Item test suite should render properly & press item 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
