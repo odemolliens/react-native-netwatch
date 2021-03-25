@@ -38,6 +38,7 @@ To avoid to have too much dependencies and conflict versions, before install, yo
 - react-native-paper
 - react-native-fs
 - react-native-share
+- @react-native-community/netinfo
 
 Netwatch has react-native-vector-icons as dependency. Be sure that you have these fonts installed in your project:
 

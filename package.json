@@ -74,6 +74,7 @@
   },
   "peerDependencies": {
     "@react-native-clipboard/clipboard": "*",
+    "@react-native-community/netinfo": "*",
     "react": "*",
     "react-native": "*",
     "react-native-device-info": "*",
