@@ -12,6 +12,7 @@ exports[`Item test suite should render Action properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -91,6 +92,162 @@ exports[`Item test suite should render Action properly 1`] = `
 </ForwardRef>
 `;
 
+exports[`Item test suite should render Connection disconnected properly 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderBottomWidth": 0.5,
+        "flexDirection": "row",
+        "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
+        "paddingBottom": 0.5,
+      },
+      Object {
+        "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="itemStatic-81"
+>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <TextSecondaryColor
+        numberOfLines={1}
+      >
+        connection type : wifi
+      </TextSecondaryColor>
+      <TextSecondaryColor
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
+        }
+      >
+        00:00:01
+      </TextSecondaryColor>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+      >
+        You are disconnected
+      </Text>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Item test suite should render Connection properly 1`] = `
+<Component
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderBottomWidth": 0.5,
+        "flexDirection": "row",
+        "height": 60,
+        "maxHeight": 60,
+        "minHeight": 60,
+        "paddingBottom": 0.5,
+      },
+      Object {
+        "backgroundColor": "#374151",
+        "borderBottomColor": "#6B7280",
+      },
+      Object {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="itemStatic-81"
+>
+  <Component
+    style={
+      Object {
+        "flex": 1,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <TextSecondaryColor
+        numberOfLines={1}
+      >
+        connection type : wifi
+      </TextSecondaryColor>
+      <TextSecondaryColor
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "#9CA3AF",
+            },
+          ]
+        }
+      >
+        00:00:01
+      </TextSecondaryColor>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <Text
+        numberOfLines={1}
+      >
+        You are connected
+      </Text>
+    </Component>
+  </Component>
+</Component>
+`;
+
 exports[`Item test suite should render Native Request properly 1`] = `
 <ForwardRef
   onPress={[Function]}
@@ -103,6 +260,7 @@ exports[`Item test suite should render Native Request properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -203,6 +361,7 @@ exports[`Item test suite should render Request properly 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -303,6 +462,7 @@ exports[`Item test suite should render Request properly even bad URL passed in t
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -399,6 +559,7 @@ exports[`Item test suite should render Request properly even no URL passed in th
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",
@@ -495,6 +656,7 @@ exports[`Item test suite should render properly & press item 1`] = `
         "height": 60,
         "maxHeight": 60,
         "minHeight": 60,
+        "paddingBottom": 0.5,
       },
       Object {
         "backgroundColor": "#374151",

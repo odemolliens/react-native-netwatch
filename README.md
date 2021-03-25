@@ -14,6 +14,7 @@ Includes an interface to see http traffic from RN and native side
 ## Features
 
 - Log network requests coming from React Native side
+- Log connectivity change
 - Log network requests coming from the native side (iOS and Android) (optional)
 - Log Redux actions (optional)
 - Shake the device to display the tool
@@ -37,6 +38,7 @@ To avoid to have too much dependencies and conflict versions, before install, yo
 - react-native-paper
 - react-native-fs
 - react-native-share
+- @react-native-community/netinfo
 
 Netwatch has react-native-vector-icons as dependency. Be sure that you have these fonts installed in your project:
 

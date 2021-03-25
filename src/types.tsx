@@ -15,7 +15,7 @@ export enum EnumStatus {
   Failed = 'FAILED',
 }
 
-export type LogType = 'REDUX' | 'RNR' | 'NR';
+export type LogType = 'REDUX' | 'RNR' | 'NR' | 'CONNECT';
 export type SourceType = 'ALL' | 'RNR' | 'NR' | 'REDUX';
 
 export enum EnumSourceType {
@@ -23,6 +23,7 @@ export enum EnumSourceType {
   ReactNativeRequest = 'RNR',
   Nativerequest = 'NR',
   Redux = 'REDUX',
+  Connection = 'CONNECTION',
 }
 
 export interface ISourceType {
