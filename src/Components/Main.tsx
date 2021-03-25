@@ -6,12 +6,13 @@ import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
 import Item, { ITEM_HEIGHT } from './Item';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { Settings } from './Settings';
-import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType } from '../types';
+import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType, EnumStatus } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import NRequest from '../Core/Objects/NRequest';
 import { ThemeContext } from '../Theme';
-import { xlsxWriter, formatDatas, mergeArrays, compare } from '../Utils/helpers';
+import { xlsxWriter, formatDatas, mergeArrays, compare, getStatus } from '../Utils/helpers';
+import { Indicator } from './Indicator';
 
 export interface IProps {
   testId?: string;
@@ -25,12 +26,23 @@ export interface IProps {
   maxRequests?: number;
 }
 
+interface IStats {
+  success: number;
+  warning: number;
+  failed: number;
+}
+
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
   const [requests, setRequests] = React.useState<Array<ILog>>([]);
   const [searchQuery, setSearchQuery] = React.useState<string>('');
   const [source, setSource] = React.useState<SourceType | EnumSourceType>(EnumSourceType.All);
   const [filter, setFilter] = React.useState<RequestMethod | EnumFilterType>(EnumFilterType.All);
+  const [stats, setStats] = React.useState<IStats>({
+    success: 100,
+    warning: 0,
+    failed: 0,
+  });
   const [settingsVisible, setSettingsVisible] = React.useState(false);
   const [deleteVisible, setDeleteVisible] = React.useState<boolean>(false);
   const [loadingXLSX, setloadingXLSX] = React.useState<boolean>(false);
@@ -87,6 +99,38 @@ export const Main = (props: IProps) => {
   React.useEffect(() => {
     if (loadingXLSX) onShare();
   }, [loadingXLSX]);
+
+  React.useEffect(() => {
+    let _global = 0;
+    let _success = 0;
+    let _warning = 0;
+    let _failed = 0;
+
+    requests.map(item => {
+      if (item instanceof RNRequest || item instanceof NRequest) {
+        switch (getStatus(item.status)) {
+          case EnumStatus.Success:
+            _success++;
+            break;
+          case EnumStatus.Warning:
+            _warning++;
+            break;
+          default:
+            _failed++;
+            break;
+        }
+      }
+    });
+
+    _global = _success + _warning + _failed;
+    const result = {
+      success: (_success * 100) / _global,
+      warning: (_warning * 100) / _global,
+      failed: (_failed * 100) / _global,
+    };
+
+    setStats(result);
+  }, [requests]);
 
   const clearList = () => {
     props.clearAll();
@@ -217,22 +261,25 @@ export const Main = (props: IProps) => {
       {settingsVisible ? (
         <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
-        <FlatList
-          testID="itemsList"
-          maintainVisibleContentPosition={{
-            autoscrollToTopThreshold: 10,
-            minIndexForVisible: 1,
-          }}
-          getItemLayout={_getItemLayout}
-          style={{ backgroundColor: theme.secondaryColor }}
-          renderItem={_renderItems}
-          keyExtractor={_keyExtractor}
-          data={requests}
-          initialNumToRender={20}
-          maxToRenderPerBatch={30}
-          updateCellsBatchingPeriod={70}
-          removeClippedSubviews
-        />
+        <>
+          <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
+          <FlatList
+            testID="itemsList"
+            maintainVisibleContentPosition={{
+              autoscrollToTopThreshold: 10,
+              minIndexForVisible: 1,
+            }}
+            getItemLayout={_getItemLayout}
+            style={{ backgroundColor: theme.secondaryColor }}
+            renderItem={_renderItems}
+            keyExtractor={_keyExtractor}
+            data={requests}
+            initialNumToRender={20}
+            maxToRenderPerBatch={30}
+            updateCellsBatchingPeriod={70}
+            removeClippedSubviews
+          />
+        </>
       )}
     </>
   );

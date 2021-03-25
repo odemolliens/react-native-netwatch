@@ -1,5 +1,883 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Index test suite should contains the details screen - style={{ height: "100%"}} 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={true}
+          onPress={[MockFunction]}
+          onPressClose={[Function]}
+          onPressDetail={[MockFunction]}
+          reduxActions={true}
+          rnRequests={true}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Details
+          item={true}
+          onPressBack={[MockFunction]}
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should contains the details screen 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={true}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={true}
+          onPress={[MockFunction]}
+          onPressClose={[Function]}
+          onPressDetail={[MockFunction]}
+          reduxActions={true}
+          rnRequests={true}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Details
+          item={true}
+          onPressBack={[MockFunction]}
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should contains the main screen with flatlist - style={{ height: "100%"}} 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[Function]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should contains the main screen with flatlist 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[Function]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should have Netwatch disabled 1`] = `""`;
+
+exports[`Index test suite should have Netwatch disabledShake 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={50}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[Function]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should have Netwatch visible 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={100}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[Function]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should have Netwatch warning if not disabledShake but onPressClose 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#1F2937",
+      "base03": "#06B6D4",
+      "base07": "#D1D5DB",
+      "base08": "#B91C1C",
+      "base09": "#D97706",
+      "base0B": "#4D7C0F",
+      "base0D": "#F9FAFB",
+      "black": "#000",
+      "failedColor": "#B91C1C",
+      "primaryColor": "#06B6D4",
+      "reduxColor": "#764ABC",
+      "secondaryColor": "#1F2937",
+      "secondaryDarkColor": "#111827",
+      "secondaryLightColor": "#374151",
+      "successColor": "#4D7C0F",
+      "textColorFour": "#6B7280",
+      "textColorOne": "#F9FAFB",
+      "textColorThree": "#9CA3AF",
+      "textColorTwo": "#D1D5DB",
+      "warningColor": "#D97706",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={50}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[MockFunction]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
+exports[`Index test suite should have Netwatch with light theme 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "base00": "#F3F4F6",
+      "base03": "#005ECB",
+      "base07": "#1F2937",
+      "base08": "#f92672",
+      "base09": "#FFAB40",
+      "base0B": "#69F0AE",
+      "base0D": "#111827",
+      "black": "#000",
+      "failedColor": "#FF5252",
+      "primaryColor": "#005ECB",
+      "reduxColor": "#B47CFF",
+      "secondaryColor": "#F3F4F6",
+      "secondaryDarkColor": "#E5E7EB",
+      "secondaryLightColor": "#F9FAFB",
+      "successColor": "#69F0AE",
+      "textColorFour": "#4B5563",
+      "textColorOne": "#111827",
+      "textColorThree": "#374151",
+      "textColorTwo": "#1F2937",
+      "warningColor": "#FFAB40",
+      "white": "#FFF",
+    }
+  }
+>
+  <Component
+    animationType="slide"
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    visible={false}
+  >
+    <Component
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "height": "100%",
+          }
+        }
+      >
+        <Main
+          clearAll={[Function]}
+          maxRequests={50}
+          nRequests={false}
+          onPress={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onPressClose={[MockFunction]}
+          onPressDetail={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          reduxActions={false}
+          rnRequests={false}
+          testId="mainScreen"
+        />
+      </Component>
+      <Component
+        style={
+          Object {
+            "height": 0,
+          }
+        }
+      >
+        <Details
+          item={false}
+          onPressBack={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  false,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          testId="detailScreen"
+        />
+      </Component>
+    </Component>
+  </Component>
+</ContextProvider>
+`;
+
 exports[`Index test suite should render properly 1`] = `
 <ContextProvider
   value={
@@ -121,7 +999,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
-    visible={false}
+    visible={true}
   >
     <Component
       style={
@@ -133,31 +1011,31 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
       <Component
         style={
           Object {
-            "height": "100%",
+            "height": 0,
           }
         }
       >
         <Main
           clearAll={[Function]}
           maxRequests={100}
-          nRequests={false}
+          nRequests={true}
           onPress={[MockFunction]}
           onPressClose={[Function]}
           onPressDetail={[MockFunction]}
-          reduxActions={false}
-          rnRequests={false}
+          reduxActions={true}
+          rnRequests={true}
           testId="mainScreen"
         />
       </Component>
       <Component
         style={
           Object {
-            "height": 0,
+            "height": "100%",
           }
         }
       >
         <Details
-          item={false}
+          item={true}
           onPressBack={[MockFunction]}
           testId="detailScreen"
         />
@@ -199,7 +1077,7 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
-    visible={false}
+    visible={true}
   >
     <Component
       style={
@@ -211,31 +1089,31 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
       <Component
         style={
           Object {
-            "height": "100%",
+            "height": 0,
           }
         }
       >
         <Main
           clearAll={[Function]}
           maxRequests={20}
-          nRequests={false}
+          nRequests={true}
           onPress={[MockFunction]}
           onPressClose={[Function]}
           onPressDetail={[MockFunction]}
-          reduxActions={false}
-          rnRequests={false}
+          reduxActions={true}
+          rnRequests={true}
           testId="mainScreen"
         />
       </Component>
       <Component
         style={
           Object {
-            "height": 0,
+            "height": "100%",
           }
         }
       >
         <Details
-          item={false}
+          item={true}
           onPressBack={[MockFunction]}
           testId="detailScreen"
         />

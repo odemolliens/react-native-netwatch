@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { IProps, Netwatch } from '../index';
 import { Main } from '../Components/Main';
 import { Modal } from 'react-native';
-import { render, waitFor } from '@testing-library/react-native';
+import NRequest from '../Core/Objects/NRequest';
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
@@ -56,17 +56,59 @@ describe('Index test suite', () => {
     expect(setVisible).toHaveBeenCalledTimes(1);
   });
 
-  it('should contains the main screen with flatlist', async () => {
-    // @ts-ignore
-    const { getByTestId } = render(<Netwatch enabled visible reduxActions={[]} />);
-    waitFor(() => expect(getByTestId('mainScreen')).toBeDefined());
-    expect(getByTestId('itemsList')).toBeDefined();
+  it('should have Netwatch disabled', () => {
+    givenProps(true, true);
+    mockUseEffect();
+    mockUseEffect();
+    givenProps(true, false);
+    givenComponent();
+    mockUseEffect();
+    mockUseEffect();
+    expect(component).toMatchSnapshot();
   });
 
-  it('should contains the details screen', async () => {
-    // @ts-ignore
-    const { getByTestId } = render(<Netwatch enabled reduxActions={[]} />);
-    waitFor(() => expect(getByTestId('detailsScreen')).toBeDefined());
+  it('should have Netwatch visible', () => {
+    givenProps(false, true);
+    mockUseEffect();
+    givenProps(true, true);
+    mockUseEffect();
+    givenComponent();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should have Netwatch warning if not disabledShake but onPressClose', () => {
+    mockUseEffect();
+    givenProps(false, true, 50, false, true, 'dark', onPressClose);
+    givenComponent();
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should have Netwatch with light theme', () => {
+    givenProps(false, true, 50, true, true, 'light', onPressClose);
+    givenComponent();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should contains the main screen with flatlist - style={{ height: "100%"}}', () => {
+    givenProps(true, false);
+    mockUseEffect();
+    givenProps(true, true);
+    mockUseEffect();
+    givenComponent();
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should contains the details screen - style={{ height: "100%"}}', () => {
+    let useStateMock: any = (showDetails: any) => [true, setShowDetails];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(true, true);
+    givenComponent();
+    mockUseEffect();
+    expect(component).toMatchSnapshot();
   });
 
   it('should disable netwatch', async () => {
@@ -153,3 +195,23 @@ describe('Index test suite', () => {
     };
   }
 });
+
+const mockNRequests: NRequest[] = [
+  new NRequest({
+    _id: 75,
+    dataSent: 'dataSent',
+    endTime: 1613477575757,
+    method: 'GET',
+    readyState: 4,
+    response: 'response',
+    responseContentType: 'application/json',
+    responseSize: 0,
+    responseType: 'blob',
+    responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+    startTime: 1613477574742,
+    status: 200,
+    timeout: 0,
+    type: 'RNR',
+    url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
+  }),
+];
