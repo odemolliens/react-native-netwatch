@@ -4,6 +4,17 @@ import { IProps, Netwatch } from '../index';
 import { Main } from '../Components/Main';
 import { Modal } from 'react-native';
 import NRequest from '../Core/Objects/NRequest';
+import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
+import RCTDeviceEventEmitter from 'react-native/Libraries/EventEmitter/RCTDeviceEventEmitter';
+
+/**
+ * Mock the NativeEventEmitter as a normal JS EventEmitter.
+ */
+class NativeEventEmitter extends EventEmitter {
+  constructor() {
+    super(RCTDeviceEventEmitter.sharedSubscriber);
+  }
+}
 
 describe('Index test suite', () => {
   let component: ShallowWrapper;
@@ -77,12 +88,14 @@ describe('Index test suite', () => {
   });
 
   it('should have Netwatch warning if not disabledShake but onPressClose', () => {
+    jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
+    const nativeEmitter = new NativeEventEmitter();
     mockUseEffect();
     givenProps(false, true, 50, false, true, 'dark', onPressClose);
+    mockUseEffect();
     givenComponent();
-    mockUseEffect();
-    mockUseEffect();
-    mockUseEffect();
+    // @ts-ignore
+    nativeEmitter.emit('NetwatchShakeEvent');
     mockUseEffect();
     expect(component).toMatchSnapshot();
   });

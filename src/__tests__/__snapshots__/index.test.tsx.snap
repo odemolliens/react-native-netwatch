@@ -78,84 +78,6 @@ exports[`Index test suite should contains the details screen - style={{ height: 
 </ContextProvider>
 `;
 
-exports[`Index test suite should contains the details screen 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "base00": "#1F2937",
-      "base03": "#06B6D4",
-      "base07": "#D1D5DB",
-      "base08": "#B91C1C",
-      "base09": "#D97706",
-      "base0B": "#4D7C0F",
-      "base0D": "#F9FAFB",
-      "black": "#000",
-      "failedColor": "#B91C1C",
-      "primaryColor": "#06B6D4",
-      "reduxColor": "#764ABC",
-      "secondaryColor": "#1F2937",
-      "secondaryDarkColor": "#111827",
-      "secondaryLightColor": "#374151",
-      "successColor": "#4D7C0F",
-      "textColorFour": "#6B7280",
-      "textColorOne": "#F9FAFB",
-      "textColorThree": "#9CA3AF",
-      "textColorTwo": "#D1D5DB",
-      "warningColor": "#D97706",
-      "white": "#FFF",
-    }
-  }
->
-  <Component
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={true}
-  >
-    <Component
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
-    >
-      <Component
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={100}
-          nRequests={true}
-          onPress={[MockFunction]}
-          onPressClose={[Function]}
-          onPressDetail={[MockFunction]}
-          reduxActions={true}
-          rnRequests={true}
-          testId="mainScreen"
-        />
-      </Component>
-      <Component
-        style={
-          Object {
-            "height": "100%",
-          }
-        }
-      >
-        <Details
-          item={true}
-          onPressBack={[MockFunction]}
-          testId="detailScreen"
-        />
-      </Component>
-    </Component>
-  </Component>
-</ContextProvider>
-`;
-
 exports[`Index test suite should contains the main screen with flatlist - style={{ height: "100%"}} 1`] = `
 <ContextProvider
   value={
@@ -276,247 +198,7 @@ exports[`Index test suite should contains the main screen with flatlist - style=
 </ContextProvider>
 `;
 
-exports[`Index test suite should contains the main screen with flatlist 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "base00": "#1F2937",
-      "base03": "#06B6D4",
-      "base07": "#D1D5DB",
-      "base08": "#B91C1C",
-      "base09": "#D97706",
-      "base0B": "#4D7C0F",
-      "base0D": "#F9FAFB",
-      "black": "#000",
-      "failedColor": "#B91C1C",
-      "primaryColor": "#06B6D4",
-      "reduxColor": "#764ABC",
-      "secondaryColor": "#1F2937",
-      "secondaryDarkColor": "#111827",
-      "secondaryLightColor": "#374151",
-      "successColor": "#4D7C0F",
-      "textColorFour": "#6B7280",
-      "textColorOne": "#F9FAFB",
-      "textColorThree": "#9CA3AF",
-      "textColorTwo": "#D1D5DB",
-      "warningColor": "#D97706",
-      "white": "#FFF",
-    }
-  }
->
-  <Component
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <Component
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
-    >
-      <Component
-        style={
-          Object {
-            "height": "100%",
-          }
-        }
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={100}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          onPressClose={[Function]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          reduxActions={false}
-          rnRequests={false}
-          testId="mainScreen"
-        />
-      </Component>
-      <Component
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </Component>
-    </Component>
-  </Component>
-</ContextProvider>
-`;
-
 exports[`Index test suite should have Netwatch disabled 1`] = `""`;
-
-exports[`Index test suite should have Netwatch disabledShake 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "base00": "#1F2937",
-      "base03": "#06B6D4",
-      "base07": "#D1D5DB",
-      "base08": "#B91C1C",
-      "base09": "#D97706",
-      "base0B": "#4D7C0F",
-      "base0D": "#F9FAFB",
-      "black": "#000",
-      "failedColor": "#B91C1C",
-      "primaryColor": "#06B6D4",
-      "reduxColor": "#764ABC",
-      "secondaryColor": "#1F2937",
-      "secondaryDarkColor": "#111827",
-      "secondaryLightColor": "#374151",
-      "successColor": "#4D7C0F",
-      "textColorFour": "#6B7280",
-      "textColorOne": "#F9FAFB",
-      "textColorThree": "#9CA3AF",
-      "textColorTwo": "#D1D5DB",
-      "warningColor": "#D97706",
-      "white": "#FFF",
-    }
-  }
->
-  <Component
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <Component
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
-    >
-      <Component
-        style={
-          Object {
-            "height": "100%",
-          }
-        }
-      >
-        <Main
-          clearAll={[Function]}
-          maxRequests={50}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          onPressClose={[Function]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          reduxActions={false}
-          rnRequests={false}
-          testId="mainScreen"
-        />
-      </Component>
-      <Component
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </Component>
-    </Component>
-  </Component>
-</ContextProvider>
-`;
 
 exports[`Index test suite should have Netwatch visible 1`] = `
 <ContextProvider
@@ -696,8 +378,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                 Array [
                   false,
                 ],
+                Array [
+                  true,
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -712,8 +401,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                 Array [
                   false,
                 ],
+                Array [
+                  true,
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
@@ -741,8 +437,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                 Array [
                   false,
                 ],
+                Array [
+                  true,
+                ],
               ],
               "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
                 Object {
                   "type": "return",
                   "value": undefined,
