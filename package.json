@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.7.0",
-    "@react-native-community/netinfo": "^6.0.0",
     "react-native-json-tree": "^1.2.0",
     "url": "^0.11.0",
     "xlsx": "^0.16.9"
@@ -38,6 +37,7 @@
     "@babel/preset-typescript": "^7.12.7",
     "@babel/runtime": "^7.11.2",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@react-native-community/netinfo": "4.7.0",
     "@testing-library/react-native": "^7.2.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
@@ -74,7 +74,6 @@
   },
   "peerDependencies": {
     "@react-native-clipboard/clipboard": "*",
-    "@react-native-community/netinfo": "*",
     "react": "*",
     "react-native": "*",
     "react-native-device-info": "*",
