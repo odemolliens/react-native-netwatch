@@ -265,7 +265,7 @@ export const Main = (props: IProps) => {
       ) : (
         <>
           {source === EnumSourceType.Redux ? (
-            <View style={[styles.indicatorPlaceholder, { backgroundColor: theme.reduxColor }]}></View>
+            <View style={[styles.indicatorPlaceholder, { backgroundColor: theme.reduxColor }]} />
           ) : (
             <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
           )}

@@ -50,6 +50,7 @@ exports[`Index test suite should contains the details screen - style={{ height: 
       >
         <Main
           clearAll={[Function]}
+          connections={true}
           maxRequests={100}
           nRequests={true}
           onPress={[MockFunction]}
@@ -128,6 +129,7 @@ exports[`Index test suite should contains the main screen with flatlist - style=
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={100}
           nRequests={false}
           onPress={
@@ -250,6 +252,7 @@ exports[`Index test suite should have Netwatch visible 1`] = `
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={100}
           nRequests={false}
           onPress={
@@ -370,6 +373,7 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={50}
           nRequests={false}
           onPress={
@@ -511,6 +515,7 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={50}
           nRequests={false}
           onPress={
@@ -721,7 +726,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
       >
         <Main
           clearAll={[Function]}
-          connections={false}
+          connections={true}
           maxRequests={100}
           nRequests={true}
           onPress={[MockFunction]}
@@ -800,7 +805,7 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
       >
         <Main
           clearAll={[Function]}
-          connections={false}
+          connections={true}
           maxRequests={20}
           nRequests={true}
           onPress={[MockFunction]}
