@@ -1,17 +1,17 @@
 // This is a middleware for redux
 import { ReduxAction } from './Objects/ReduxAction';
 
-let iconMapper: any = {};
-try {
-  iconMapper = require('../config/config.json').reduxTypeMapper;
-} catch (error) {
-  console.error('Config file does not exists');
+export interface IReduxConfig {
+  [propName: string]: string;
 }
 
+let iconMapper: IReduxConfig = {};
 let actions: Array<ReduxAction> = [];
 let currentId: number = 0;
 let callback: Function = () => {};
 let maxActions = 100;
+
+export const setConfig = (config: any) => (iconMapper = config);
 
 export const initCurrentId = () => (currentId = 0);
 

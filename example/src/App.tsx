@@ -9,6 +9,11 @@ import { makeRequestInContinue } from './utils/requestGenerator';
 const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
+const reduxConfigExample = {
+  "action/withPayload": "👨 - Extra info",
+  "action/withPayloadNamedDifferent": "👩 - Extra info",
+  "action/withoutPayload": "🔑 - Extra info Logged"
+}
 
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
@@ -22,6 +27,7 @@ const App = () => {
         interceptIOS={true}
         onPressClose={() => setNetwatchVisible(false)}
         disableShake
+        reduxConfig={reduxConfigExample}
       />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
