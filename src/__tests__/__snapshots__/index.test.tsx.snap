@@ -631,6 +631,7 @@ exports[`Index test suite should render properly 1`] = `
       >
         <Main
           clearAll={[Function]}
+          connections={Array []}
           maxRequests={100}
           nRequests={Array []}
           onPress={[Function]}
@@ -720,6 +721,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={100}
           nRequests={true}
           onPress={[MockFunction]}
@@ -798,6 +800,7 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
       >
         <Main
           clearAll={[Function]}
+          connections={false}
           maxRequests={20}
           nRequests={true}
           onPress={[MockFunction]}

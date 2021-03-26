@@ -122,6 +122,8 @@ const _getTemplate = (): any => ({
   method: '',
   status: '',
   url: '',
+  connectionType: '',
+  isConnected: '',
   action: '',
   startTime: '',
   endTime: '',

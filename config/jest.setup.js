@@ -114,3 +114,23 @@ jest.mock('react-native-device-info', () => {
     getBuildNumber: jest.fn(),
   };
 });
+
+jest.mock('@react-native-community/netinfo', () => ({
+  isConnected: {
+    addEventListener: jest.fn(),
+  },
+  getConnectionInfo: jest.fn().mockReturnValue({ type: 'test' }),
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  NetInfoStateType: {
+    unknown: 'unknown',
+    none: 'none',
+    cellular: 'cellular',
+    wifi: 'wifi',
+    bluetooth: 'bluetooth',
+    ethernet: 'ethernet',
+    wimax: 'wimax',
+    vpn: 'vpn',
+    other: 'other',
+  },
+}));
