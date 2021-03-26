@@ -76,7 +76,7 @@ exports[`Index test suite should render properly 1`] = `
                 "payload": "",
                 "type": "__ERROR:UNDEFINED__",
               },
-              "icon": "",
+              "extra": "",
               "startTime": 1554632430000,
               "stringifiedAction": "",
               "type": "REDUX",

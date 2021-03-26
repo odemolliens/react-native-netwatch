@@ -33,7 +33,7 @@ exports[`Item test suite should render Action properly 1`] = `
           "action": "",
           "type": "__ERROR:UNDEFINED__",
         },
-        "icon": "",
+        "extra": "",
         "startTime": 100,
         "stringifiedAction": "",
         "type": "REDUX",
@@ -59,7 +59,7 @@ exports[`Item test suite should render Action properly 1`] = `
       <TextSecondaryColor
         numberOfLines={1}
       >
-        redux action 
+        redux action
       </TextSecondaryColor>
       <TextSecondaryColor
         style={

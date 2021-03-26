@@ -207,5 +207,6 @@ Netwatch.defaultProps = {
   interceptIOS: false,
   disableShake: false,
   maxRequests: 100,
+  reduxConfig: {},
   theme: 'dark',
 };

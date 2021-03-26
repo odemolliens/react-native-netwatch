@@ -177,44 +177,6 @@ export default store;
 
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/src/redux/store.ts#L23)
 
-If you need, you can add extra datas the redux items.
-To do that, you must passed to Netwatch a props called reduxConfig. This is an object where each key correspond to a redux action in your project.
-
-```javascript
-{...}
-
-import { Netwatch } from 'react-native-netwatch';
-
-const reduxConfigExample = {
-  "action/withPayload": "👨 - Extra info",
-  "action/withPayloadNamedDifferent": "👩 - Extra info",
-  "action/withoutPayload": "🔑 - Extra info Logged"
-}
-
-const App = () => {
-  const [netwatchVisible, setNetwatchVisible] = useState(false);
-
-  return (
-    <Provider store={store}>
-      <Netwatch
-        enabled={true}
-        interceptIOS={true}
-        reduxConfig={reduxConfigExample}
-      />
-      <AppNavigator />
-    </Provider>
-  );
-};
-
-export default App;
-```
-
-You will see something like that:
-
-<p float="left" align="center">
-  <img src="assets/redux_extras_netwatch.png" width="300" />
-</p>
-
 ### Using Netwatch to intercept and display native requests
 
 #### Android (optional)
@@ -248,6 +210,45 @@ let sessionManager = Alamofire.SessionManager(configuration: configuration)
 sessionManager.request(...)
 ```
 
+### Add extra informations into Redux Action items (optional)
+
+If you want, you can add extra datas in the redux items to have more visual information. Instead of just see 'redux action' as label, your own text will be displayed.
+To do that, you must passed to Netwatch a props called reduxConfig. This is an object where each key correspond to a redux action in your project.
+All values **must** be string.
+
+```javascript
+{...}
+
+import { Netwatch } from 'react-native-netwatch';
+
+const reduxConfigExample = {
+  DOWNLOAD_APP_TRANSLATIONS_SUCCESS: "👨 - Extra info",
+}
+
+const App = () => {
+  const [netwatchVisible, setNetwatchVisible] = useState(false);
+
+  return (
+    <Provider store={store}>
+      <Netwatch
+        enabled={true}
+        interceptIOS={true}
+        reduxConfig={reduxConfigExample}
+      />
+      <AppNavigator />
+    </Provider>
+  );
+};
+
+export default App;
+```
+
+You will see something like that:
+
+<p float="left" align="center">
+  <img src="assets/redux_extras_netwatch.png" width="300" />
+</p>
+
 ## Props
 
 |    Params    |   Type   |  Default  | Mandatory ? | Description                                                  |
@@ -258,5 +259,5 @@ sessionManager.request(...)
 | interceptIOS | Boolean  |   false   |     no      | Intercept native iOS requests                                |
 | disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
 | maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
-| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action                                 |
+| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
 |    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
