@@ -2,7 +2,7 @@
   <img src="assets/lib_asset.png" width="60%">
 </p>
 
-[![Build Status](https://travis-ci.org/imranMnts/react-native-netwatch.svg?branch=develop)](https://travis-ci.org/imranMnts/react-native-netwatch)
+[![Build Status](https://travis-ci.org/odemolliens/react-native-netwatch.svg?branch=develop)](https://travis-ci.org/odemolliens/react-native-netwatch)
 ![npm](https://img.shields.io/npm/v/react-native-netwatch.svg)
 ![GitHub](https://img.shields.io/github/license/odemolliens/react-native-netwatch.svg)
 
@@ -14,12 +14,12 @@ Includes an interface to see http traffic from RN and native side
 ## Features
 
 - Log network requests coming from React Native side
-- Log connectivity change
 - Log network requests coming from the native side (iOS and Android) (optional)
 - Log Redux actions (optional)
 - Shake the device to display the tool
 - View details of each request/action
 - Generate and share the list of requests/actions in Excel (XLSX) file
+- Log connectivity change
 
 ## Example app
 
@@ -39,6 +39,8 @@ To avoid to have too much dependencies and conflict versions, before install, yo
 - react-native-fs
 - react-native-share
 - @react-native-community/netinfo
+
+#### Fonts
 
 Netwatch has react-native-vector-icons as dependency. Be sure that you have these fonts installed in your project:
 
