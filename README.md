@@ -20,6 +20,7 @@ Includes an interface to see http traffic from RN and native side
 - View details of each request/action
 - Generate and share the list of requests/actions in Excel (XLSX) file
 - Log connectivity change
+- Show stats between success/warning/failure requests
 
 ## Example app
 
@@ -207,6 +208,21 @@ configuration.protocolClasses?.insert(NetwatchInterceptor.self, at: 0)
 let sessionManager = Alamofire.SessionManager(configuration: configuration)
 sessionManager.request(...)
 ```
+
+### Show stats
+
+You can have statistics and see how many requests are succeeded or failed. By default, the indicator is closed. If you want the percentage, just press the indactor to opened it. Press again to close.
+
+<p float="left" align="center">
+  <img src="assets/stats.png" width="300" />
+  <img src="assets/stats_opened.png" width="300" />
+</p>
+
+If you have applied a filter, stats are updated for current filtered view. If you have filtered to see Redux Action, the indicator is not interactive and just show a purple indicator.
+
+<p float="left" align="center">
+  <img src="assets/stats_redux.png" width="300" />
+</p>
 
 ## Props
 

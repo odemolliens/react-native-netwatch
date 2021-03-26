@@ -264,7 +264,11 @@ export const Main = (props: IProps) => {
         <Settings source={source} onSetSource={setSource} filter={filter} onSetFilter={setFilter} />
       ) : (
         <>
-          <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
+          {source === EnumSourceType.Redux ? (
+            <View style={[styles.indicatorPlaceholder, { backgroundColor: theme.reduxColor }]}></View>
+          ) : (
+            <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
+          )}
           <FlatList
             testID="itemsList"
             maintainVisibleContentPosition={{
@@ -316,5 +320,9 @@ const styles = StyleSheet.create({
     height: 56,
     width: 56,
     borderLeftWidth: 1,
+  },
+  indicatorPlaceholder: {
+    height: 6,
+    width: '100%',
   },
 });
