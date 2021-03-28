@@ -35,8 +35,6 @@ let nativeLoopStarted = false;
 let nativeLoop: NodeJS.Timeout;
 
 export const Netwatch: React.FC<IProps> = (props: IProps) => {
-  if (!props.enabled) return null;
-
   const [reduxActions, setReduxActions] = useState<Array<ReduxAction>>([]);
   const [rnRequests, setRnRequests] = useState<Array<RNRequest>>([]);
   const [nRequests, setnRequests] = useState<Array<NRequest>>([]);
@@ -169,6 +167,8 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     }
     startNativeLoop();
   }, [visible]);
+
+  if (!props.enabled) return null;
 
   return (
     <ThemeContext.Provider value={_theme}>
