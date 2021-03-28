@@ -26,7 +26,7 @@ export const Item: React.FC<IProps> = (props: IProps) => {
   let _line2: string = '';
 
   if (props.item instanceof ReduxAction) {
-    _line1 = 'redux action';
+    _line1 = props.item.extra && props.item.extra.length > 0 ? props.item.extra : 'redux action';
     _line2 = props.item.stringifiedAction;
   } else if (props.item instanceof ConnectionInfo) {
     _line1 = `connection type : ${props.item.connection?.type}`;

@@ -90,10 +90,11 @@ Now, when you will launch your application and shake the device, it will display
 
 ### How to activate Netwatch
 
-You have two possibilities to activate Netwatch in your project. With a button from you app or by shaking your phone. If you want activate 
+You have two possibilities to activate Netwatch in your project. With a button from you app or by shaking your phone. If you want activate
 Netwatch with a button from your app, you **must** disable shake and instead pass the props onPressClose and visible.
 
 #### Active Netwatch by shaking your phone
+
 ```javascript
 {...}
 
@@ -117,6 +118,7 @@ export default App;
 ```
 
 #### Active Netwatch with a button
+
 ```javascript
 {...}
 
@@ -208,6 +210,45 @@ let sessionManager = Alamofire.SessionManager(configuration: configuration)
 sessionManager.request(...)
 ```
 
+### Add extra informations into Redux Action items (optional)
+
+If you want, you can add extra datas in the redux items to have more visual information. Instead of just see 'redux action' as label, your own text will be displayed.
+To do that, you must passed to Netwatch a props called reduxConfig. This is an object where each key correspond to a redux action in your project.
+All values **must** be string.
+
+```javascript
+{...}
+
+import { Netwatch } from 'react-native-netwatch';
+
+const reduxConfigExample = {
+  DOWNLOAD_APP_TRANSLATIONS_SUCCESS: "👨 - Extra info",
+}
+
+const App = () => {
+  const [netwatchVisible, setNetwatchVisible] = useState(false);
+
+  return (
+    <Provider store={store}>
+      <Netwatch
+        enabled={true}
+        interceptIOS={true}
+        reduxConfig={reduxConfigExample}
+      />
+      <AppNavigator />
+    </Provider>
+  );
+};
+
+export default App;
+```
+
+You will see something like that:
+
+<p float="left" align="center">
+  <img src="assets/redux_extras_netwatch.png" width="300" />
+</p>
+
 ## Props
 
 |    Params    |   Type   |  Default  | Mandatory ? | Description                                                  |
@@ -218,4 +259,5 @@ sessionManager.request(...)
 | interceptIOS | Boolean  |   false   |     no      | Intercept native iOS requests                                |
 | disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
 | maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
+| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
 |    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |

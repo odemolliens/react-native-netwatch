@@ -5,6 +5,7 @@ import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
   reduxLoggerMiddleware,
+  setConfig as setReduxConfig,
   setCallback as setReduxActionsCallback,
   setMaxActions as setReduxMaxActions,
   clear as clearReduxActions,
@@ -24,6 +25,7 @@ export interface IProps {
   disableShake?: boolean;
   interceptIOS?: boolean;
   maxRequests?: number;
+  reduxConfig?: any;
   theme?: 'dark' | 'light';
 }
 export const reduxLogger = reduxLoggerMiddleware;
@@ -155,6 +157,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
       _ConnectionLogger.setCallback(setConnections);
+      if (props.reduxConfig) setReduxConfig(props.reduxConfig);
       setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
     }
@@ -204,5 +207,6 @@ Netwatch.defaultProps = {
   interceptIOS: false,
   disableShake: false,
   maxRequests: 100,
+  reduxConfig: {},
   theme: 'dark',
 };
