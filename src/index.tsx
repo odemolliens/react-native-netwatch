@@ -27,7 +27,7 @@ export interface IProps {
   maxRequests?: number;
   reduxConfig?: any;
   theme?: 'dark' | 'light';
-  showStats?: boolean;
+  showStats: boolean;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -190,7 +190,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               nRequests={nRequests}
               connections={connections}
               clearAll={clearAll}
-              showStats={props.showStats ? true : false}
+              showStats={props.showStats}
             />
           </View>
           <View style={{ height: showDetails ? '100%' : 0 }}>
