@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
@@ -26,6 +26,7 @@ export interface IProps {
   connections: ConnectionInfo[];
   clearAll: Function;
   maxRequests?: number;
+  showStats: boolean;
 }
 
 interface IStats {
@@ -45,7 +46,7 @@ export const Main = (props: IProps) => {
     warning: 0,
     failed: 0,
   });
-  const [settingsVisible, setSettingsVisible] = React.useState(false);
+  const [settingsVisible, setSettingsVisible] = React.useState<boolean>(false);
   const [deleteVisible, setDeleteVisible] = React.useState<boolean>(false);
   const [loadingXLSX, setloadingXLSX] = React.useState<boolean>(false);
   const onChangeSearch = (query: string) => setSearchQuery(query);
@@ -54,7 +55,7 @@ export const Main = (props: IProps) => {
     if (deleteVisible) setDeleteVisible(false);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let _requests: ILog[] = [];
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
@@ -103,10 +104,11 @@ export const Main = (props: IProps) => {
   }, [loadingXLSX]);
 
   React.useEffect(() => {
-    let _global = 0;
-    let _success = 0;
-    let _warning = 0;
-    let _failed = 0;
+    if (!props.showStats) return;
+    let _global: number = 0;
+    let _success: number = 0;
+    let _warning: number = 0;
+    let _failed: number = 0;
 
     requests.map(item => {
       if (item instanceof RNRequest || item instanceof NRequest) {
@@ -125,6 +127,7 @@ export const Main = (props: IProps) => {
     });
 
     _global = _success + _warning + _failed;
+    if (_global === 0) return;
     const result = {
       success: (_success * 100) / _global,
       warning: (_warning * 100) / _global,
@@ -267,7 +270,7 @@ export const Main = (props: IProps) => {
           {source === EnumSourceType.Redux ? (
             <View style={[styles.indicatorPlaceholder, { backgroundColor: theme.reduxColor }]} />
           ) : (
-            <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
+            props.showStats && <Indicator success={stats.success} warning={stats.warning} failed={stats.failed} />
           )}
           <FlatList
             testID="itemsList"

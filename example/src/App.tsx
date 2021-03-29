@@ -10,10 +10,10 @@ const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 const reduxConfigExample = {
-  "action/withPayload": "👨 - Extra info",
-  "action/withPayloadNamedDifferent": "👩 - Extra info",
-  "action/withoutPayload": "🔑 - Extra info Logged"
-}
+  'action/withPayload': '👨 - Extra info',
+  'action/withPayloadNamedDifferent': '👩 - Extra info',
+  'action/withoutPayload': '🔑 - Extra info Logged',
+};
 
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
@@ -28,6 +28,7 @@ const App = () => {
         onPressClose={() => setNetwatchVisible(false)}
         disableShake
         reduxConfig={reduxConfigExample}
+        showStats={true}
       />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
