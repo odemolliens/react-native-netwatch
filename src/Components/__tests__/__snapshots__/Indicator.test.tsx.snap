@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Indicator test suite Tests source should called setIsOpened 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+  testID="openStatsButton"
+>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="success"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D7C0F",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "34%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="warning"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D97706",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "33%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="failure"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#B91C1C",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "33%",
+      }
+    }
+  />
+</ForwardRef>
+`;
+
+exports[`Indicator test suite Tests source should render properly 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+  testID="openStatsButton"
+>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="success"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D7C0F",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "34%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="warning"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D97706",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "33%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="failure"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#B91C1C",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "33%",
+      }
+    }
+  />
+</ForwardRef>
+`;
+
+exports[`Indicator test suite Tests source should show full indicator with many failed 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+  testID="openStatsButton"
+>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="success"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D7C0F",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "5%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="warning"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D97706",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "5%",
+      }
+    }
+  />
+  <ForwardRef(AnimatedComponentWrapper)
+    key="failure"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#B91C1C",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "90%",
+      }
+    }
+  >
+    <Title
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      90%
+    </Title>
+  </ForwardRef(AnimatedComponentWrapper)>
+</ForwardRef>
+`;
+
+exports[`Indicator test suite Tests source should show full indicator with many success 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "flexDirection": "row",
+    }
+  }
+  testID="openStatsButton"
+>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="success"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#4D7C0F",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "75%",
+      }
+    }
+  >
+    <Title
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      75%
+    </Title>
+  </ForwardRef(AnimatedComponentWrapper)>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="warning"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D97706",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "20%",
+      }
+    }
+  >
+    <Title
+      style={
+        Array [
+          Object {
+            "fontSize": 16,
+            "fontWeight": "bold",
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      20%
+    </Title>
+  </ForwardRef(AnimatedComponentWrapper)>
+  <ForwardRef(AnimatedComponentWrapper)
+    key="failure"
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#B91C1C",
+        "height": Object {
+          "interpolate": [Function],
+          "setValue": [Function],
+        },
+        "justifyContent": "center",
+        "width": "5%",
+      }
+    }
+  />
+</ForwardRef>
+`;
