@@ -58,6 +58,7 @@ exports[`Index test suite should contains the details screen - style={{ height: 
           onPressDetail={[MockFunction]}
           reduxActions={true}
           rnRequests={true}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -165,6 +166,7 @@ exports[`Index test suite should contains the main screen with flatlist - style=
           }
           reduxActions={false}
           rnRequests={false}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -288,6 +290,7 @@ exports[`Index test suite should have Netwatch visible 1`] = `
           }
           reduxActions={false}
           rnRequests={false}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -423,6 +426,7 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
           }
           reduxActions={false}
           rnRequests={false}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -551,6 +555,7 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
           }
           reduxActions={false}
           rnRequests={false}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -644,6 +649,7 @@ exports[`Index test suite should render properly 1`] = `
           onPressDetail={[Function]}
           reduxActions={Array []}
           rnRequests={Array []}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -735,6 +741,7 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
           onPressDetail={[MockFunction]}
           reduxActions={true}
           rnRequests={true}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>
@@ -814,6 +821,7 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
           onPressDetail={[MockFunction]}
           reduxActions={true}
           rnRequests={true}
+          showStats={true}
           testId="mainScreen"
         />
       </Component>

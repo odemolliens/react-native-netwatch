@@ -169,11 +169,6 @@ exports[`Main test suite Tests source should render properly 1`] = `
       />
     </ForwardRef>
   </Component>
-  <Indicator
-    failed={0}
-    success={100}
-    warning={0}
-  />
   <FlatList
     data={Array []}
     disableVirtualization={false}
@@ -374,11 +369,6 @@ exports[`Main test suite should render properly and showSettings 1`] = `
       />
     </ForwardRef>
   </Component>
-  <Indicator
-    failed={0}
-    success={100}
-    warning={0}
-  />
   <FlatList
     data={Array []}
     disableVirtualization={false}
