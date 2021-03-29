@@ -9,6 +9,8 @@ import {
   getBuildNumber,
 } from 'react-native-device-info';
 import XLSX from 'xlsx';
+import { NRequest } from '../Core/Objects/NRequest';
+import { RNRequest } from '../Core/Objects/RNRequest';
 
 interface IDeviceInfo {
   brand: string;
@@ -201,4 +203,71 @@ export const compare = (a: ILog, b: ILog) => {
     comparison = -1;
   }
   return comparison;
+};
+
+export const getGeneralElementsAsArray = (item: NRequest | RNRequest) => (item && Object.entries(item)) || [];
+
+export const getRequestHeadersElementsAsArray = (item: NRequest | RNRequest) =>
+  (item?.requestHeaders && Object.entries(item.requestHeaders)) || [];
+
+export const getResponseHeadersElementsAsArray = (item: NRequest | RNRequest) =>
+  (item?.responseHeaders && Object.entries(item.responseHeaders)) || [];
+
+export const stringifyData = (array: Array<string[]>): string => {
+  const _string = '';
+  const _result = array
+    .filter((item: Array<string>) => !excludedAttributesForExport.includes(item[0]))
+    .map((item: Array<string>) => {
+      return _string.concat(item[0], ': ', item[1], '\n');
+    });
+  return _result.join('\n');
+};
+
+// These attribute will not be added in the details scrollview because always displayed in the other components
+export const excludedAttributesForExport: Array<string> = [
+  '_id',
+  'type',
+  'readyState',
+  'method',
+  'status',
+  'startTime',
+  'endTime',
+  'dataSent',
+  'requestHeaders',
+  'responseHeaders',
+  'response',
+  'responseSize',
+  'responseType',
+  'responseContentType',
+  'stringifiedAction',
+  'shortUrl',
+];
+
+export const formatSharedMessage = (
+  general: Array<string[]>,
+  requestHeaders: Array<string[]>,
+  postData: string,
+  responseHeaders: Array<string[]>,
+  bodyResponse: string,
+): string => {
+  const _general = stringifyData(general);
+  const _requestHeaders = stringifyData(requestHeaders);
+  const _responseHeaders = stringifyData(responseHeaders);
+  const _report = ''.concat(
+    'GENERAL\n',
+    _general,
+    '\n',
+    'REQUEST HEADERS\n',
+    _requestHeaders,
+    '\n',
+    'REQUEST DATA\n',
+    postData,
+    '\n',
+    'RESPONSE HEADERS\n',
+    _responseHeaders,
+    '\n',
+    'RESPONSE BODY\n',
+    bodyResponse,
+  );
+  return _report;
 };

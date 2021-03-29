@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
@@ -42,7 +42,7 @@ export const Main = (props: IProps) => {
     if (deleteVisible) setDeleteVisible(false);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let _requests: ILog[] = [];
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
