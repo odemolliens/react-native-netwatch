@@ -266,9 +266,9 @@ You will see something like that:
 
 ### ⚠️ Using Netwatch with Reactotron
 
-There is a known incompatibility between Netwatch and Reactotron. If you want to redirect the requests into Reactotron, you should set the props useReactotron = true. After that, don't forget to reload your app. To go back to netwatch revert the props to false and reload again.
+There is a known incompatibility between Netwatch and Reactotron. If you want to redirect the requests into Reactotron, you should set the props `useReactotron` to **true** (have to reload the app if you edit its value). To go back to netwatch revert the props to false and reload again.
 
-At this moment, it is not possible to display requests into Netwatch and Reactotron at the same time. You **must** chosse between these tools.
+At this moment, it is not possible to display requests into Netwatch and Reactotron at the same time. You **must** choose between these tools.
 
 ## Props
 
@@ -284,3 +284,4 @@ At this moment, it is not possible to display requests into Netwatch and Reactot
 |  reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
 | useReactotron | Boolean  |   false   |     no      | Redirect requests to Reactotron instead of Netwatch          |
 |     theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
+

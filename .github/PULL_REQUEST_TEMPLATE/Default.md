@@ -19,4 +19,4 @@ This checklist is here to help you check that you followed the
 ### Feature/Bug checklist
 - [ ] I tested my code on `Android` AND `iOS`.
 
-**Only when all the boxes are ticked you can remove the `DRAFT`/`WIP` flag and submit your merge request!**
+**Only when all the boxes are ticked you can remove the `DRAFT`/`WIP` flag and submit your pull request!**
