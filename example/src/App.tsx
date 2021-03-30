@@ -15,6 +15,11 @@ const reduxConfigExample = {
   'action/withoutPayload': '🔑 - Extra info Logged',
 };
 
+if (__DEV__) {
+  // @ts-ignore
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
+}
+
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
   const [netwatchEnabled, setNetwatchEnabled] = useState(true);
@@ -29,6 +34,7 @@ const App = () => {
         disableShake
         reduxConfig={reduxConfigExample}
         showStats={true}
+        useReactotron={false}
       />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
