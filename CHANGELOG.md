@@ -1,6 +1,6 @@
-# Changelog (Current version: 1.2.0)
+# Changelog (Current version: 1.2.1)
 
-### Version 1.2.0
+### Version 1.2.1
 
 News
 - Show stats between success/warning/failure requests

@@ -28,7 +28,7 @@ export interface IProps {
   reduxConfig?: any;
   theme?: 'dark' | 'light';
   showStats: boolean;
-  useReactotron: boolean;
+  useReactotron?: boolean;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
