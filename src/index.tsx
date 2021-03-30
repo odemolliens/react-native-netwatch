@@ -27,7 +27,7 @@ export interface IProps {
   maxRequests?: number;
   reduxConfig?: any;
   theme?: 'dark' | 'light';
-  showStats: boolean;
+  showStats?: boolean;
   useReactotron?: boolean;
 }
 export const reduxLogger = reduxLoggerMiddleware;
@@ -206,7 +206,7 @@ Netwatch.defaultProps = {
   visible: false,
   onPressClose: undefined,
   enabled: true,
-  interceptIOS: false,
+  interceptIOS: true,
   disableShake: false,
   maxRequests: 100,
   reduxConfig: {},
