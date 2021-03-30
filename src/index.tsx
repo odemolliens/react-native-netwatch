@@ -28,6 +28,7 @@ export interface IProps {
   reduxConfig?: any;
   theme?: 'dark' | 'light';
   showStats: boolean;
+  useReactotron: boolean;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -144,10 +145,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   };
 
   React.useEffect(() => {
-    if (!props.enabled) {
+    if (!props.enabled || props.useReactotron) {
       clearAll();
       stopNativeLoop();
-      _RNLogger.disableXHRInterception();
       _ConnectionLogger.resetCallback();
       setReduxActionsCallback(() => {});
     } else {
@@ -212,4 +212,5 @@ Netwatch.defaultProps = {
   reduxConfig: {},
   theme: 'dark',
   showStats: true,
+  useReactotron: false,
 };
