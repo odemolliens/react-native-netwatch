@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "adb reverse tcp:8082 tcp:8082 && react-native run-android",
+    "android": "adb reverse tcp:8082 tcp:8082 && adb reverse tcp:9090 tcp:9090 && react-native run-android",
     "clean:android": "rm -rf android/.gradle android/build android/.idea android/*.iml && ./android/gradlew clean -p ./android/",
     "compile": "tsc -p .",
     "ios": "react-native run-ios",

@@ -264,16 +264,23 @@ You will see something like that:
   <img src="assets/redux_extras_netwatch.png" width="300" />
 </p>
 
+### ⚠️ Using Netwatch with Reactotron
+
+There is a known incompatibility between Netwatch and Reactotron. If you want to redirect the requests into Reactotron, you should set the props useReactotron = true. After that, don't forget to reload your app. To go back to netwatch revert the props to false and reload again.
+
+At this moment, it is not possible to display requests into Netwatch and Reactotron at the same time. You **must** chosse between these tools.
+
 ## Props
 
-|    Params    |   Type   |  Default  | Mandatory ? | Description                                                  |
-| :----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
-|   enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
-|   visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
-| onPressClose | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
-| interceptIOS | Boolean  |   false   |     no      | Intercept native iOS requests                                |
-| disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
-| maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
-|  showStats   | Boolean  |   true    |     no      | Show stats indicator                                         |
-| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as values  |
-|    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
+|    Params     |   Type   |  Default  | Mandatory ? | Description                                                  |
+| :-----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
+|    enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
+|    visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
+| onPressClose  | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
+| interceptIOS  | Boolean  |   false   |     no      | Intercept native iOS requests                                |
+| disableShake  | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
+|  maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
+|   showStats   | Boolean  |   true    |     no      | Show stats indicator                                         |
+|  reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
+| useReactotron | Boolean  |   false   |     no      | Redirect requests to Reactotron instead of Netwatch          |
+|     theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
