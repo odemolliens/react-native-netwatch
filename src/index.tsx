@@ -144,10 +144,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   };
 
   React.useEffect(() => {
-    if (!props.enabled) {
+    if (!props.enabled || props.useReactotron === true) {
       clearAll();
       stopNativeLoop();
-      _RNLogger.disableXHRInterception();
       _ConnectionLogger.resetCallback();
       setReduxActionsCallback(() => {});
     } else {

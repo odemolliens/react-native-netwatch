@@ -275,5 +275,5 @@ You will see something like that:
 | disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
 | maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
 |  showStats   | Boolean  |   true    |     no      | Show stats indicator                                         |
-| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
+| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as values  |
 |    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
