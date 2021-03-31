@@ -157,7 +157,6 @@ export const Main = (props: IProps) => {
     } catch (error) {
       // if user dismiss sharing
       setloadingXLSX(false);
-      console.error(error.message);
     }
   };
 
