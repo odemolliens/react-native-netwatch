@@ -20,6 +20,7 @@ Includes an interface to see http traffic from RN and native side
 - View details of each request/action
 - Generate and share the list of requests/actions in Excel (XLSX) file
 - Log connectivity change
+- Show stats between success/warning/failure requests
 
 ## Example app
 
@@ -210,6 +211,20 @@ let sessionManager = Alamofire.SessionManager(configuration: configuration)
 sessionManager.request(...)
 ```
 
+### Show stats
+
+You can have statistics and see how many requests are succeeded or failed. By default, the indicator is closed. If you want the percentage, just press the indactor to opened it. Press again to close.
+
+<p float="left" align="center">
+  <img src="assets/stats.png" width="300" />
+  <img src="assets/stats_opened.png" width="300" />
+</p>
+
+If you have applied a filter, stats are updated for current filtered view. If you have filtered to see Redux Action, the indicator is not interactive and just show a purple indicator.
+
+<p float="left" align="center">
+  <img src="assets/stats_redux.png" width="300" />
+
 ### Add extra informations into Redux Action items (optional)
 
 If you want, you can add extra datas in the redux items to have more visual information. Instead of just see 'redux action' as label, your own text will be displayed.
@@ -249,15 +264,24 @@ You will see something like that:
   <img src="assets/redux_extras_netwatch.png" width="300" />
 </p>
 
+### ⚠️ Using Netwatch with Reactotron
+
+There is a known incompatibility between Netwatch and Reactotron. If you want to redirect the requests into Reactotron, you should set the props `useReactotron` to **true** (have to reload the app if you edit its value). To go back to netwatch revert the props to false and reload again.
+
+At this moment, it is not possible to display requests into Netwatch and Reactotron at the same time. You **must** choose between these tools.
+
 ## Props
 
-|    Params    |   Type   |  Default  | Mandatory ? | Description                                                  |
-| :----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
-|   enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
-|   visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
-| onPressClose | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
-| interceptIOS | Boolean  |   false   |     no      | Intercept native iOS requests                                |
-| disableShake | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
-| maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
-| reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
-|    theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
+|    Params     |   Type   |  Default  | Mandatory ? | Description                                                  |
+| :-----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
+|    enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
+|    visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
+| onPressClose  | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
+| interceptIOS  | Boolean  |   false   |     no      | Intercept native iOS requests                                |
+| disableShake  | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
+|  maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
+|   showStats   | Boolean  |   true    |     no      | Show stats indicator                                         |
+|  reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
+| useReactotron | Boolean  |   false   |     no      | Redirect requests to Reactotron instead of Netwatch          |
+|     theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
+

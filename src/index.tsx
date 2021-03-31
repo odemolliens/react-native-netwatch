@@ -27,6 +27,8 @@ export interface IProps {
   maxRequests?: number;
   reduxConfig?: any;
   theme?: 'dark' | 'light';
+  showStats?: boolean;
+  useReactotron?: boolean;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -143,10 +145,9 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   };
 
   React.useEffect(() => {
-    if (!props.enabled) {
+    if (!props.enabled || props.useReactotron) {
       clearAll();
       stopNativeLoop();
-      _RNLogger.disableXHRInterception();
       _ConnectionLogger.resetCallback();
       setReduxActionsCallback(() => {});
     } else {
@@ -189,6 +190,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
               nRequests={nRequests}
               connections={connections}
               clearAll={clearAll}
+              showStats={props.showStats}
             />
           </View>
           <View style={{ height: showDetails ? '100%' : 0 }}>
@@ -204,9 +206,11 @@ Netwatch.defaultProps = {
   visible: false,
   onPressClose: undefined,
   enabled: true,
-  interceptIOS: false,
+  interceptIOS: true,
   disableShake: false,
   maxRequests: 100,
   reduxConfig: {},
   theme: 'dark',
+  showStats: true,
+  useReactotron: false,
 };

@@ -10,9 +10,14 @@ const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 const reduxConfigExample = {
-  "action/withPayload": "👨 - Extra info",
-  "action/withPayloadNamedDifferent": "👩 - Extra info",
-  "action/withoutPayload": "🔑 - Extra info Logged"
+  'action/withPayload': '👨 - Extra info',
+  'action/withPayloadNamedDifferent': '👩 - Extra info',
+  'action/withoutPayload': '🔑 - Extra info Logged',
+};
+
+if (__DEV__) {
+  // @ts-ignore
+  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
 }
 
 const App = () => {
@@ -28,6 +33,8 @@ const App = () => {
         onPressClose={() => setNetwatchVisible(false)}
         disableShake
         reduxConfig={reduxConfigExample}
+        showStats={true}
+        useReactotron={false}
       />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
@@ -80,7 +87,14 @@ const ButtonB = (props: any) => (
   <TouchableHighlight
     style={styles.enableButton}
     onPress={() => {
-      props.customAction({ type: 'action/withPayloadNamedDifferent', credentials: 'Payload name is different' });
+      props.customAction({
+        type: 'action/withPayloadNamedDifferent',
+        credentials: {
+          first: 'Payload name is different',
+          second: 'try to do a test for a big',
+          third: 'payload and see if it crash or not',
+        },
+      });
     }}
     testID="buttonDispatchActionB"
   >

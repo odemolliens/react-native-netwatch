@@ -4,7 +4,7 @@ import { JSONDetails, IProps } from '../JSONDetails';
 // Need to use this lib to render child correctly
 import { render } from '@testing-library/react-native';
 import JSONTree from 'react-native-json-tree';
-import { Text } from 'react-native';
+import { Text } from '../Text';
 
 describe('Main test suite', () => {
   let component: ShallowWrapper;
@@ -45,6 +45,9 @@ describe('Main test suite', () => {
     givenComponent();
     whenPressingButton('buttonSwitchJSON');
     expect(setViewJSON).toHaveBeenCalledTimes(1);
+    component.update();
+    expect(component.find(Text)).toHaveLength(1);
+    expect(component.find(JSONTree)).toHaveLength(0);
   });
 
   it('should display raw Text if viewJSON is false', () => {

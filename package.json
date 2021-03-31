@@ -1,9 +1,9 @@
 {
   "name": "react-native-netwatch",
-  "version": "1.1.0",
+  "version": "1.2.2",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
-  "main": "lib/index.js",
+  "main": "src/index.tsx",
   "types": "lib/index.d.ts",
   "author": "Imran Mentese <imran.mentese@gmail.com>",
   "license": "MIT",

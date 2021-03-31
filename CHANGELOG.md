@@ -1,4 +1,15 @@
-# Changelog
+# Changelog (Current version: 1.2.2)
+
+### Version 1.2.2
+
+News
+- Show stats between success/warning/failure requests
+- Log connectivity change
+- Can customize redux action to view them easily on Netwatch
+
+New props:
+- `showStats`: to display/hide stats indicator
+- `reduxConfig`: to customize redux cells on Netwatch
 
 ### Version 1.1.0
 
