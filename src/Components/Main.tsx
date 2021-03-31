@@ -26,7 +26,7 @@ export interface IProps {
   connections: ConnectionInfo[];
   clearAll: Function;
   maxRequests?: number;
-  showStats: boolean;
+  showStats?: boolean;
 }
 
 interface IStats {
