@@ -19,7 +19,7 @@ export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [viewJSON, setViewJSON] = useState<boolean>(false);
 
-  const _renderLabel = ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>;
+  const _renderLabel = viewJSON ? ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text> : '';
 
   return (
     <View style={styles.container}>
@@ -48,9 +48,16 @@ export const JSONDetails: React.FC<IProps> = props => {
       <ScrollView horizontal style={{ backgroundColor: theme.secondaryColor }}>
         <ScrollView nestedScrollEnabled style={styles.scrollview}>
           {viewJSON ? (
-            <JSONTree data={JSON.parse(props.data)} labelRenderer={_renderLabel} theme={theme} invertTheme={false} />
+            <JSONTree
+              data={typeof props.data === 'string' ? JSON.parse(props.data) : props.data}
+              labelRenderer={_renderLabel}
+              theme={theme}
+              invertTheme={false}
+            />
           ) : (
-            <Text style={{ color: theme.textColorOne }}>{props.data}</Text>
+            <Text style={{ color: theme.textColorOne }}>
+              {typeof props.data !== 'string' ? JSON.stringify(props.data, null, 2) : props.data}
+            </Text>
           )}
         </ScrollView>
       </ScrollView>
