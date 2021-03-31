@@ -41,18 +41,21 @@ export const ActionDetails: React.FC<IProps> = (props: IProps) => {
       </Subheading>
 
       <View style={[styles.line]}>
-        <Text style={{ color: theme.textColorFour }}>Type : </Text>
+        <Text style={{ color: theme.textColorFour }}>Type</Text>
+      </View>
+      <View style={[styles.line]}>
         <Text>{props.item.action.type}</Text>
       </View>
 
-      <View style={[styles.line, { alignItems: 'baseline' }]}>
+      <View style={[styles.line]}>
         {props.reduxAction.label && (
           <Text style={{ color: theme.textColorFour }}>{`${props.reduxAction.label
             .charAt(0)
             .toUpperCase()}${props.reduxAction.label.slice(1)} :`}</Text>
         )}
-
-        <View style={[styles.attribtuesContainer, { flex: 1, paddingHorizontal: 0, paddingLeft: 6 }]}>
+      </View>
+      <View style={[styles.line]}>
+        <View style={[styles.attribtuesContainer, { flex: 1, paddingHorizontal: 0 }]}>
           {props.reduxAction.payload && <Text>{addEllipsis(JSON.stringify(props.reduxAction.payload, null, 2))}</Text>}
           {isLongText(addEllipsis(JSON.stringify(props.reduxAction.payload, null, 2))) && (
             <View style={{ alignItems: 'flex-end' }}>

@@ -36,6 +36,9 @@ export interface IProps {
   setSnackBarVisibility: (value: boolean) => void;
 }
 
+// This component is specif to request (React-Native or Native).
+// If you need the componant which handle the Redux action, see
+// ActionDetails.tsx
 export const RequestDetails: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
   const [onErrorImage, setOnErrorImage] = useState<boolean>(false);
@@ -52,6 +55,10 @@ export const RequestDetails: React.FC<IProps> = (props: IProps) => {
   const _requestHeadersElements = getRequestHeadersElementsAsArray(props.item);
   const _responseHeadersElements = getResponseHeadersElementsAsArray(props.item);
 
+  // The elements are generated here for _generalElements, _requestHeadersElements and _responseHeadersElements
+  // There is a filter with excludedAttributesForExport to avoid duplicate elements
+  // For example, status is present in the root of props.item but also in _requestHeadersElements
+  // that's why status is listed in excludedAttributesForExport
   const _renderItems = (listOfItems: Array<[string, any]>) => {
     return listOfItems
       .filter((item: Array<string>) => item.length > 1) // To be sure that item has at least two element
@@ -76,6 +83,7 @@ export const RequestDetails: React.FC<IProps> = (props: IProps) => {
       });
   };
 
+  // If an item contains a base64 image. This one will be displayed directly instead of plain text
   const _renderImage = (source: string) => {
     return (
       <>

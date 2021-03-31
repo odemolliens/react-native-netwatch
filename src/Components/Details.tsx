@@ -36,6 +36,8 @@ export const Details: React.FC<IProps> = props => {
   let _content = null;
   let _action: any = () => {};
 
+  // _onShareRequest and _onShareReduxAction open the share panel. The text format is
+  // plain text
   const _onShareRequest = async (item: RNRequest | NRequest): Promise<void> => {
     try {
       await Share.open({
@@ -64,6 +66,11 @@ export const Details: React.FC<IProps> = props => {
     }
   };
 
+  // To avoid heavy library such as react-navigation, the screen with JSON tree 
+  // is displayed by using the showJSON***Details state for the
+  // corresponding instance (Action or request). This screen can have five (5) differents views
+
+  // 1. We want to display the action Redux in a JSON Tree
   if (showJSONActionDetails && props.item instanceof ReduxAction) {
     return (
       <JSONDetails
@@ -74,6 +81,7 @@ export const Details: React.FC<IProps> = props => {
     );
   }
 
+  // 2. We want to display the a request RESPONSE BODY only in a JSON Tree
   if (showJSONResponseDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
     return (
       <JSONDetails
@@ -84,6 +92,7 @@ export const Details: React.FC<IProps> = props => {
     );
   }
 
+  // 3. We want to display the a request REQUEST BODY only in a JSON Tree
   if (showJSONRequestDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
     return (
       <JSONDetails
@@ -94,6 +103,9 @@ export const Details: React.FC<IProps> = props => {
     );
   }
 
+  // 4. We want to display ALL INFORMATIONS in a redux action
+  // At this time (for point 4 and 5), we store the result in _content variable
+  // to be showed later.
   if (props.item instanceof ReduxAction) {
     // props.item.action should only contains 2 elements, a type and a payload (not necessary called payload).
     // In consequence, if it's not the type, that could be the payload
@@ -113,6 +125,7 @@ export const Details: React.FC<IProps> = props => {
     );
   }
 
+  // 5. We want to display ALL INFORMATIONS in a request (React-Native or Native)
   if (props.item instanceof RNRequest || props.item instanceof NRequest) {
     _action = () => _onShareRequest(props.item as RNRequest | NRequest);
     _content = (
@@ -127,7 +140,7 @@ export const Details: React.FC<IProps> = props => {
   }
 
   // Appbar header is repeated here cause we use the absolute position in the style
-  // Put this directly in the index.tsx cause that the Appbar will be added
+  // Put this directly in the index.tsx cause that the Appbar will be added two times.
   return (
     <View style={styles.container}>
       <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>

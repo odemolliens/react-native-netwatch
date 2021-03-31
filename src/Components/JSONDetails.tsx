@@ -24,6 +24,8 @@ export const JSONDetails: React.FC<IProps> = props => {
     ? ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>
     : '';
   let _content = null;
+
+  // Handling crash of JSON tree if the JSON is malformed.
   try {
     _content = (
       <View style={[styles.container, { position: 'relative' }]}>

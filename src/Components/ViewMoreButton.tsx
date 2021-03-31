@@ -8,6 +8,7 @@ interface IProps {
   onPress: () => void;
 }
 
+// Button use in the details screens to go in the JSON tree view. It's just a button text.
 export const ViewMoreButton: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
 

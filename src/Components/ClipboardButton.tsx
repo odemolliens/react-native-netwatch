@@ -8,6 +8,7 @@ interface IProps {
   onPress: () => void;
 }
 
+// Button use in the details screens to copy to clipboard a text. It's just a button text.
 export const ClipboardButton: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
   return (
