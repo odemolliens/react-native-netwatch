@@ -87,7 +87,14 @@ const ButtonB = (props: any) => (
   <TouchableHighlight
     style={styles.enableButton}
     onPress={() => {
-      props.customAction({ type: 'action/withPayloadNamedDifferent', credentials: 'Payload name is different' });
+      props.customAction({
+        type: 'action/withPayloadNamedDifferent',
+        credentials: {
+          first: 'Payload name is different',
+          second: 'try to do a test for a big',
+          third: 'payload and see if it crash or not',
+        },
+      });
     }}
     testID="buttonDispatchActionB"
   >

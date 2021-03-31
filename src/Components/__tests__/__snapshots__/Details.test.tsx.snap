@@ -222,8 +222,21 @@ exports[`Details test suite Test Redux item should render Redux action properly 
             }
           }
         >
-          Type : 
+          Type
         </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
         <Text>
           __ERROR:UNDEFINED__
         </Text>
@@ -237,9 +250,6 @@ exports[`Details test suite Test Redux item should render Redux action properly 
               "marginBottom": 10,
               "paddingHorizontal": 16,
             },
-            Object {
-              "alignItems": "baseline",
-            },
           ]
         }
       >
@@ -252,6 +262,19 @@ exports[`Details test suite Test Redux item should render Redux action properly 
         >
           Payload :
         </Text>
+      </Component>
+      <Component
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginBottom": 10,
+              "paddingHorizontal": 16,
+            },
+          ]
+        }
+      >
         <Component
           style={
             Array [
@@ -263,7 +286,6 @@ exports[`Details test suite Test Redux item should render Redux action properly 
               Object {
                 "flex": 1,
                 "paddingHorizontal": 0,
-                "paddingLeft": 6,
               },
             ]
           }
