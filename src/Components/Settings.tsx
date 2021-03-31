@@ -14,6 +14,8 @@ export interface IProps {
   onSetFilter: (value: RequestMethod | EnumFilterType.All) => void;
 }
 
+// This is the page that appears when you click on the settings button
+// in the main screen
 export const Settings = (props: IProps) => {
   const theme = useContext(ThemeContext);
   const [checkedSource, setCheckedSource] = React.useState(props.source);

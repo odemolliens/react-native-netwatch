@@ -16,6 +16,8 @@ export interface IProps {
   title?: string;
 }
 
+// To access this view, you need to click on the button
+// 'view more' in the Details screen (after a response or a request body)
 export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [viewJSON, setViewJSON] = useState<boolean>(false);

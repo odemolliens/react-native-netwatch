@@ -192,6 +192,7 @@ export const formatDatas = (array: any): [] => {
 
 export const mergeArrays = (...arrays: Array<ILog[]>) => [...arrays.flat()];
 
+// This is used to sort the list of items in the Main screen
 export const compare = (a: ILog, b: ILog) => {
   const startTimeA = a.startTime;
   const startTimeB = b.startTime;
@@ -243,6 +244,8 @@ export const excludedAttributesForExport: Array<string> = [
   'shortUrl',
 ];
 
+// This function is used to export the information in the Details
+// screen in plain text format
 export const formatSharedMessage = (
   general: Array<string[]>,
   requestHeaders: Array<string[]>,
