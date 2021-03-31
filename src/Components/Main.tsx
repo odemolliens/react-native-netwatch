@@ -35,6 +35,9 @@ interface IStats {
   failed: number;
 }
 
+// The component have two screen. One screen is the main list and the second one
+// is the settings screen. To switch between these screens, we change the settingsVisible
+// state to show the good one.
 export const Main = (props: IProps) => {
   const theme = useContext(ThemeContext);
   const [requests, setRequests] = React.useState<Array<ILog>>([]);
@@ -55,8 +58,13 @@ export const Main = (props: IProps) => {
     if (deleteVisible) setDeleteVisible(false);
   };
 
+  // This is the main useEffect. Every time props.rnRequests, props.reduxActions,
+  // props.nRequests, props.connections, source, filter or searchQuery are modified
+  // the FlatList is updated. This update is made in three steps
   React.useEffect(() => {
     let _requests: ILog[] = [];
+    // 1. Made a first temporary list of requests. If there is a source which is defined
+    // we just take the right source.
     if (source === EnumSourceType.Redux) {
       if (filter !== EnumFilterType.All) setFilter(EnumFilterType.All);
       _requests = props.reduxActions;
@@ -71,6 +79,8 @@ export const Main = (props: IProps) => {
         .slice(0, props.maxRequests);
     }
 
+    // 2. We get our temporary requests list from step 1.
+    // If needed, we applied the filter choosen. We do that only for a request (Native or not but a request)
     let _filteredRequests: ILog[] = _requests;
     if (filter !== EnumFilterType.All) {
       _filteredRequests = _requests.filter((request: ILog) => {
@@ -78,6 +88,9 @@ export const Main = (props: IProps) => {
       });
     }
 
+    // 3. At last, we check if there if the user have typed somthing in the search bar
+    // For the requests, we search in the url, the status or method to find an item
+    // For a redux action, we search in the action (type and payload)
     let _searchedRequests: ILog[] = _filteredRequests;
     if (searchQuery !== '') {
       _searchedRequests = _filteredRequests.filter((request: ILog) => {
@@ -99,10 +112,14 @@ export const Main = (props: IProps) => {
     setRequests(_searchedRequests);
   }, [props.rnRequests, props.reduxActions, props.nRequests, props.connections, source, filter, searchQuery]);
 
+  // Open the share panel if the button 'share' is pressed
   React.useEffect(() => {
     if (loadingXLSX) onShare();
   }, [loadingXLSX]);
 
+  // This useEffect handle the stats indicator
+  // If you remove the Indicator, you can also remove this useEffect
+  // the useState with stats and setStats and the props showStats
   React.useEffect(() => {
     if (!props.showStats) return;
     let _global: number = 0;
