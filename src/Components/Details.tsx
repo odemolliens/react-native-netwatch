@@ -66,7 +66,7 @@ export const Details: React.FC<IProps> = props => {
     }
   };
 
-  // To avoid heavy library such as react-navigation, the screen with JSON tree 
+  // To avoid heavy library such as react-navigation, the screen with JSON tree
   // is displayed by using the showJSON***Details state for the
   // corresponding instance (Action or request). This screen can have five (5) differents views
 
