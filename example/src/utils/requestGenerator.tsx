@@ -41,6 +41,9 @@ export const makeRequestInContinue = (): void => {
   // Test long request - to see if request continue in background and correctly displayed when go back in the app
   fetch('https://www.mocky.io/v2/5185415ba171ea3a00704eed?mocky-delay=20s').catch((e) => console.error(e));
 
+  // Test malformed JSON request - to see if request is correctly parsed in Netwatch
+  fetch('https://run.mocky.io/v3/d58aaece-5ff7-4fc8-b465-001d33fe695a').catch((e) => console.error(e));
+
   // Send requests periodically
   setInterval(() => {
     const key: number = _getRndInteger(1, 4);
