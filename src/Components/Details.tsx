@@ -271,18 +271,21 @@ export const Details: React.FC<IProps> = props => {
         </Subheading>
 
         <View style={[styles.line]}>
-          <Text style={{ color: theme.textColorFour }}>Type : </Text>
+          <Text style={{ color: theme.textColorFour }}>Type</Text>
+        </View>
+        <View style={[styles.line]}>
           <Text>{props.item.action.type}</Text>
         </View>
 
-        <View style={[styles.line, { alignItems: 'baseline' }]}>
+        <View style={[styles.line]}>
           {_reduxAction.label && (
             <Text style={{ color: theme.textColorFour }}>{`${_reduxAction.label
               .charAt(0)
               .toUpperCase()}${_reduxAction.label.slice(1)} :`}</Text>
           )}
-
-          <View style={[styles.attribtuesContainer, { flex: 1, paddingHorizontal: 0, paddingLeft: 6 }]}>
+        </View>
+        <View style={[styles.line]}>
+          <View style={[styles.attribtuesContainer, { flex: 1, paddingHorizontal: 0 }]}>
             {_reduxAction.payload && <Text>{addEllipsis(JSON.stringify(_reduxAction.payload, null, 2))}</Text>}
             {isLongText(addEllipsis(JSON.stringify(_reduxAction.payload, null, 2))) && (
               <View style={{ alignItems: 'flex-end' }}>{_viewMoreButton(() => setShowJSONActionDetails(true))}</View>
