@@ -40,6 +40,9 @@ export const reduxTag = () => {
   );
 };
 
+// The status component represents the square on the left of each item
+// It indicate the status code and the method
+// or simply Redux and his icon when it's a Redux action.
 export const Status: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
   let _color: string = theme.textColorOne;

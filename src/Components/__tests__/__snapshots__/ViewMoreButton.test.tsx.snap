@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status test suite should render properly redux action 1`] = `
+<ForwardRef
+  onPress={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderLeftWidth": 0,
+      "flexDirection": "row",
+    }
+  }
+  testID="buttonViewMore"
+>
+  <Component
+    style={
+      Array [
+        Object {
+          "color": "#06B6D4",
+          "marginRight": 6,
+        },
+      ]
+    }
+  >
+    View more
+  </Component>
+  <Icon
+    allowFontScaling={false}
+    color="#06B6D4"
+    name="more"
+    size={14}
+    style={
+      Object {
+        "transform": Array [
+          Object {
+            "rotateY": "180deg",
+          },
+        ],
+      }
+    }
+  />
+</ForwardRef>
+`;

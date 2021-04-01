@@ -20,6 +20,7 @@ export interface IProps {
   color: string;
 }
 
+// This is the item used in the FlatList of the Main screen
 export const Item: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
   let _line1: string = '';

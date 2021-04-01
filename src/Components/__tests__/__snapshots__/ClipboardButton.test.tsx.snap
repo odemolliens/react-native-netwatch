@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status test suite should render properly redux action 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderLeftWidth": 0,
+      "flexDirection": "row",
+    }
+  }
+  testID="buttonCopyToClipboard"
+>
+  <Icon
+    allowFontScaling={false}
+    color="#06B6D4"
+    name="clipboard-arrow-left-outline"
+    size={14}
+  />
+  <Component
+    style={
+      Array [
+        Object {
+          "color": "#06B6D4",
+          "marginLeft": 6,
+        },
+      ]
+    }
+  >
+    Copy
+  </Component>
+</ForwardRef>
+`;

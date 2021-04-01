@@ -9,6 +9,11 @@ export interface IProps {
   failed: number;
 }
 
+// This component is a bar divided in three parts
+// A part to represent success request, a part for warning and a part
+// for requests failed.
+// It is possible to press on the indicator to expand it and displayed
+// a value in percent for each part.
 export const Indicator: React.FC<IProps> = (props: IProps) => {
   const theme = useContext(ThemeContext);
   const height = useRef(new Animated.Value(6)).current;

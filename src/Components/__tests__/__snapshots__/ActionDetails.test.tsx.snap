@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status test suite should execute props.onPressViewMore 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "width": "100%",
+    }
+  }
+>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Title
+      style={
+        Array [
+          Object {
+            "marginRight": 6,
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      REDUX
+    </Title>
+    <Component
+      style={
+        Array [
+          Object {
+            "borderRadius": 4,
+            "fontSize": 12,
+            "height": 22,
+            "justifyContent": "center",
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "#764ABC",
+          },
+          Object {
+            "paddingHorizontal": 8,
+          },
+        ]
+      }
+      testID="statusCodeColor"
+    >
+      <Icon
+        color="#F9FAFB"
+        name="redux"
+        size={12}
+      />
+    </Component>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      Started at : 
+    </Text>
+    <Text>
+      01/01/1970 - 00:00:00
+    </Text>
+  </Component>
+  <Subheading
+    style={
+      Array [
+        Object {
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        },
+        Object {
+          "backgroundColor": "#374151",
+          "color": "#F9FAFB",
+        },
+      ]
+    }
+  >
+    Content
+  </Subheading>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      Type
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text>
+      __ERROR:UNDEFINED__
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      __ERROR:UNDEFINED__ :
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          },
+          Object {
+            "flex": 1,
+            "paddingHorizontal": 0,
+          },
+        ]
+      }
+    >
+      <Text>
+        "This is a very long payload to be sure that we have more than 100 characters to explore all the bra...
+      </Text>
+      <Component
+        style={
+          Object {
+            "alignItems": "flex-end",
+          }
+        }
+      >
+        <ViewMoreButton
+          onPress={[Function]}
+        />
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;
+
+exports[`Status test suite should render properly redux action 1`] = `
+<Component
+  style={
+    Object {
+      "flex": 1,
+      "width": "100%",
+    }
+  }
+>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Title
+      style={
+        Array [
+          Object {
+            "marginRight": 6,
+          },
+          Object {
+            "color": "#F9FAFB",
+          },
+        ]
+      }
+    >
+      REDUX
+    </Title>
+    <Component
+      style={
+        Array [
+          Object {
+            "borderRadius": 4,
+            "fontSize": 12,
+            "height": 22,
+            "justifyContent": "center",
+            "width": 30,
+          },
+          Object {
+            "backgroundColor": "#764ABC",
+          },
+          Object {
+            "paddingHorizontal": 8,
+          },
+        ]
+      }
+      testID="statusCodeColor"
+    >
+      <Icon
+        color="#F9FAFB"
+        name="redux"
+        size={12}
+      />
+    </Component>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      Started at : 
+    </Text>
+    <Text>
+      01/01/1970 - 00:00:00
+    </Text>
+  </Component>
+  <Subheading
+    style={
+      Array [
+        Object {
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+          "paddingVertical": 8,
+        },
+        Object {
+          "backgroundColor": "#374151",
+          "color": "#F9FAFB",
+        },
+      ]
+    }
+  >
+    Content
+  </Subheading>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      Type
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text>
+      __ERROR:UNDEFINED__
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#6B7280",
+        }
+      }
+    >
+      __ERROR:UNDEFINED__ :
+    </Text>
+  </Component>
+  <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "marginBottom": 10,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <Component
+      style={
+        Array [
+          Object {
+            "justifyContent": "flex-start",
+            "paddingHorizontal": 16,
+            "paddingVertical": 8,
+          },
+          Object {
+            "flex": 1,
+            "paddingHorizontal": 0,
+          },
+        ]
+      }
+    >
+      <Text>
+        "This is a very long payload to be sure that we have more than 100 characters to explore all the bra...
+      </Text>
+      <Component
+        style={
+          Object {
+            "alignItems": "flex-end",
+          }
+        }
+      >
+        <ViewMoreButton
+          onPress={[Function]}
+        />
+      </Component>
+    </Component>
+  </Component>
+</Component>
+`;

@@ -16,6 +16,8 @@ export interface IProps {
   title?: string;
 }
 
+// To access this view, you need to click on the button
+// 'view more' in the Details screen (after a response or a request body)
 export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [viewJSON, setViewJSON] = useState<boolean>(false);
@@ -24,6 +26,8 @@ export const JSONDetails: React.FC<IProps> = props => {
     ? ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>
     : '';
   let _content = null;
+
+  // Handling crash of JSON tree if the JSON is malformed.
   try {
     _content = (
       <View style={[styles.container, { position: 'relative' }]}>
