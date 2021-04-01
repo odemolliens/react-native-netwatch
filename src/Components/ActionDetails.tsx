@@ -7,8 +7,6 @@ import { getTime, getShortDate, isLongText, addEllipsis } from '../Utils/helpers
 import { Text, Title } from './Text';
 import { ThemeContext } from '../Theme';
 import ReduxAction from '../Core/Objects/ReduxAction';
-// @ts-ignore
-import JSONDetails from './JSONDetails';
 import { ViewMoreButton } from './ViewMoreButton';
 
 export interface IProps {

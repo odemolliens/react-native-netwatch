@@ -9,7 +9,6 @@ import ReduxAction from '../Core/Objects/ReduxAction';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import { ThemeContext } from '../Theme';
 import { ActionDetails } from './ActionDetails';
-// @ts-ignore
 import JSONDetails from './JSONDetails';
 import {
   getGeneralElementsAsArray,
