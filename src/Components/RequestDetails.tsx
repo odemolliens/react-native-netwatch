@@ -21,8 +21,6 @@ import { NRequest } from '../Core/Objects/NRequest';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { EnumStatus } from '../types';
 import url from 'url';
-// @ts-ignore
-import JSONDetails from './JSONDetails';
 import { ViewMoreButton } from './ViewMoreButton';
 import Clipboard from '@react-native-clipboard/clipboard';
 import ClipboardButton from './ClipboardButton';

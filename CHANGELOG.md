@@ -1,4 +1,9 @@
-# Changelog (Current version: 1.2.2)
+# Changelog (Current version: 1.2.3)
+
+### Version 1.2.3
+
+News
+- Some bugfixes and code improvements
 
 ### Version 1.2.2
 
