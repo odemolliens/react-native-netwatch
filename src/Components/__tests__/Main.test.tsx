@@ -5,7 +5,7 @@ import ReduxAction from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
 import { EnumFilterType, EnumSourceType } from '../../types';
 import NRequest from '../../Core/Objects/NRequest';
-import { Alert } from 'react-native';
+import { Alert, TouchableOpacity } from 'react-native';
 import Share from 'react-native-share';
 
 describe('Main test suite', () => {
@@ -181,7 +181,8 @@ describe('Main test suite', () => {
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps();
     givenComponent();
-    component.find('[name="x"]').simulate('press');
+    // @ts-ignore
+    component.find(TouchableOpacity).first().props().onPress();
     expect(props.onPressClose).toHaveBeenCalledTimes(1);
     expect(props.onPressClose).toHaveBeenCalledWith(false);
   });

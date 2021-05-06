@@ -1,4 +1,9 @@
-# Changelog (Current version: 1.2.3)
+# Changelog (Current version: 1.2.4)
+
+### Version 1.2.4
+
+News
+- Fix close event not responding well
 
 ### Version 1.2.3
 
