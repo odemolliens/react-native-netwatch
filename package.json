@@ -1,6 +1,6 @@
 {
   "name": "react-native-netwatch",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "src/index.tsx",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.7.0",
-    "react-native-json-tree": "^1.2.0",
+    "react-native-json-tree": "^1.2.1",
     "url": "^0.11.0",
     "xlsx": "^0.16.9"
   },

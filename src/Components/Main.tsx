@@ -209,13 +209,11 @@ export const Main = (props: IProps) => {
   return (
     <>
       <Appbar.Header style={[styles.header, { backgroundColor: theme.secondaryDarkColor }]}>
-        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-          <FeatherIcon
-            name="x"
-            color={theme.textColorOne}
-            size={24}
-            onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
-          />
+        <TouchableOpacity
+          style={[styles.button, { borderLeftWidth: 0 }]}
+          onPress={() => (settingsVisible ? setSettingsVisible(false) : props.onPressClose(false))}
+        >
+          <FeatherIcon name="x" color={theme.textColorOne} size={24} />
         </TouchableOpacity>
         <Appbar.Content color={theme.primaryColor} title="Netwatch" titleStyle={{ fontSize: 18 }} />
         {loadingXLSX ? (

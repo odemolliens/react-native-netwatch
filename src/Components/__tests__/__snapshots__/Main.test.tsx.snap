@@ -20,6 +20,7 @@ exports[`Main test suite Tests source should render properly 1`] = `
     }
   >
     <ForwardRef
+      onPress={[Function]}
       style={
         Array [
           Object {
@@ -38,7 +39,6 @@ exports[`Main test suite Tests source should render properly 1`] = `
       <Icon
         color="#F9FAFB"
         name="x"
-        onPress={[Function]}
         size={24}
       />
     </ForwardRef>
@@ -220,6 +220,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
     }
   >
     <ForwardRef
+      onPress={[Function]}
       style={
         Array [
           Object {
@@ -238,7 +239,6 @@ exports[`Main test suite should render properly and showSettings 1`] = `
       <Icon
         color="#F9FAFB"
         name="x"
-        onPress={[Function]}
         size={24}
       />
     </ForwardRef>
