@@ -1,4 +1,9 @@
-# Changelog (Current version: 1.2.4)
+# Changelog (Current version: 1.2.5)
+
+### Version 1.2.5
+
+News
+- Fix issue linked to `react-native-json-tree` which appeared when the app use `inlineRequires` mode
 
 ### Version 1.2.4
 
