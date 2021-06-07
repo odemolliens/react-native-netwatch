@@ -12,6 +12,11 @@
 
 RCT_EXPORT_MODULE(RNNetwatch);
 
++ (BOOL)requiresMainQueueSetup
+{
+  return YES;
+}
+
 RCT_EXPORT_METHOD(startNetwatch) {
     // curent config
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];

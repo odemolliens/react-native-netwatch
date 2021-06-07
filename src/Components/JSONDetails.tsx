@@ -6,7 +6,6 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Text } from './Text';
 
-// @ts-ignore
 import JSONTree from 'react-native-json-tree';
 import { ThemeContext } from '../Theme';
 
@@ -22,10 +21,7 @@ export const JSONDetails: React.FC<IProps> = props => {
   const theme = useContext(ThemeContext);
   const [viewJSON, setViewJSON] = useState<boolean>(false);
 
-  const _renderLabel = viewJSON
-    ? ([raw]: string) => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>
-    : '';
-  let _content = null;
+  let _content;
 
   // Handling crash of JSON tree if the JSON is malformed.
   try {
@@ -36,7 +32,8 @@ export const JSONDetails: React.FC<IProps> = props => {
             {viewJSON ? (
               <JSONTree
                 data={typeof props.data === 'string' ? JSON.parse(props.data) : props.data}
-                labelRenderer={_renderLabel}
+                labelRenderer={raw => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${raw} : `}</Text>}
+                valueRenderer={raw => <Text style={{ fontSize: 14, color: theme.base0D }}>{`${String(raw)} : `}</Text>}
                 theme={theme}
                 invertTheme={false}
               />
