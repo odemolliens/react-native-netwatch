@@ -1,4 +1,10 @@
-# Changelog (Current version: 1.2.5)
+# Changelog (Current version: 1.2.6)
+
+### Version 1.2.6
+
+News
+- Support RN 0.64.1 and inlineRequires
+- Update sample/example app
 
 ### Version 1.2.5
 

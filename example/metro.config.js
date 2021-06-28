@@ -7,7 +7,7 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-const blacklist = require('metro-config/src/defaults/blacklist');
+const blacklist = require('metro-config/src/defaults/exclusionList');
 /* eslint-enable @typescript-eslint/no-var-requires */
 
 const moduleRoot = path.resolve(__dirname, '..');
@@ -28,7 +28,7 @@ module.exports = {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: false,
+        inlineRequires: true,
       },
     }),
   },
