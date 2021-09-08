@@ -15,7 +15,7 @@
     "@react-native-clipboard/clipboard": "^1.8.4",
     "@react-native-community/netinfo": "4.7.0",
     "react": "^16.13.1",
-    "react-native": "^0.64.2",
+    "react-native": "^0.65.0",
     "react-native-device-info": "^8.1.4",
     "react-native-fs": "^2.18.0",
     "react-native-paper": "^4.9.2",
