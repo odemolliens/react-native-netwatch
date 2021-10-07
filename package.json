@@ -30,7 +30,7 @@
     "@react-native-clipboard/clipboard": "^1.8.4",
     "react-native-json-tree": "^1.3.0",
     "url": "^0.11.0",
-    "xlsx": "^0.17.1"
+    "xlsx": "^0.17.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
