@@ -29,7 +29,7 @@ interface IXHR {
 export class RNLogger {
   static instance: RNLogger;
 
-  initialized: boolean = true;
+  initialized: boolean = false;
   maxRequests: number = 100;
   requestId: number = 0;
   requests: Array<RNRequest> = [];
