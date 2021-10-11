@@ -1,4 +1,10 @@
-# Changelog (Current version: 1.2.6)
+# Changelog (Current version: 1.2.7)
+
+### Version 1.2.7
+
+News
+- Fix #89 #54: Be able to intercept http request on some projects
+- Update `@react-native-clipboard/clipboard`
 
 ### Version 1.2.6
 
