@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View } from 'react-native';
+import {Modal, NativeModules, DeviceEventEmitter, useColorScheme, View, EmitterSubscription} from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
@@ -69,9 +69,10 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   };
 
   React.useEffect(() => {
-    if (!props.disableShake && props.enabled) DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    let subscription: EmitterSubscription | null = null;
+    if (!props.disableShake && props.enabled) subscription = DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
     return () => {
-      DeviceEventEmitter.removeListener('NetwatchShakeEvent', handleShake);
+      subscription?.remove?.();
     };
   }, [handleShake]);
 
