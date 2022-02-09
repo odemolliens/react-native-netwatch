@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import {Modal, NativeModules, DeviceEventEmitter, useColorScheme, View, EmitterSubscription} from 'react-native';
+import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View, EmitterSubscription } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
