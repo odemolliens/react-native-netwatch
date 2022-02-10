@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Status test suite should render NRequest properly 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -9,7 +9,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -35,7 +35,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
     >
       GET
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -66,9 +66,9 @@ exports[`Status test suite should render NRequest properly 1`] = `
       >
         500
       </Text>
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -92,8 +92,8 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <Text>
       run.mocky.io
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -117,8 +117,8 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <Text>
       16/02/2021 - 12:12:54   ( 1015ms )
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -142,7 +142,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <Text>
       0
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -160,7 +160,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
   >
     Request Info
   </Subheading>
-  <Component
+  <View
     key="0"
     style={
       Object {
@@ -169,7 +169,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -193,7 +193,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
       <ClipboardButton
         onPress={[Function]}
       />
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -208,8 +208,8 @@ exports[`Status test suite should render NRequest properly 1`] = `
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     key="1"
     style={
       Object {
@@ -218,7 +218,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -239,7 +239,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
       >
         responseURL
       </Text>
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -254,7 +254,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -272,7 +272,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
   >
     Request Data
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -284,7 +284,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <Text>
       dataSent
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -302,7 +302,7 @@ exports[`Status test suite should render NRequest properly 1`] = `
   >
     Response Body
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row-reverse",
@@ -313,8 +313,8 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <ClipboardButton
       onPress={[Function]}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -326,12 +326,12 @@ exports[`Status test suite should render NRequest properly 1`] = `
     <Text>
       response
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly with request with headers 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -339,7 +339,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -365,7 +365,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
     >
       GET
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -396,9 +396,9 @@ exports[`Status test suite should render properly with request with headers 1`] 
       >
         301
       </Text>
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -422,8 +422,8 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <Text>
       run.mocky.io
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -447,8 +447,8 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <Text>
       16/02/2021 - 12:12:54   ( 1015ms )
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -472,7 +472,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <Text>
       0
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -490,7 +490,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
   >
     Request Info
   </Subheading>
-  <Component
+  <View
     key="0"
     style={
       Object {
@@ -499,7 +499,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -523,7 +523,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
       <ClipboardButton
         onPress={[Function]}
       />
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -538,8 +538,8 @@ exports[`Status test suite should render properly with request with headers 1`] 
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     key="1"
     style={
       Object {
@@ -548,7 +548,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -569,7 +569,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
       >
         responseURL
       </Text>
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -584,7 +584,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -602,7 +602,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
   >
     Request Data
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -614,7 +614,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <Text>
       dataSent
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -632,7 +632,7 @@ exports[`Status test suite should render properly with request with headers 1`] 
   >
     Response Body
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row-reverse",
@@ -643,8 +643,8 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <ClipboardButton
       onPress={[Function]}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -656,12 +656,12 @@ exports[`Status test suite should render properly with request with headers 1`] 
     <Text>
       response
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly with request with image 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -669,7 +669,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -695,7 +695,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
     >
       GET
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -726,9 +726,9 @@ exports[`Status test suite should render properly with request with image 1`] = 
       >
         200
       </Text>
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -752,8 +752,8 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <Text>
       image
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -777,8 +777,8 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <Text>
       16/02/2021 - 12:12:54   ( 1015ms )
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -802,7 +802,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <Text>
       0
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -820,7 +820,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
   >
     Request Info
   </Subheading>
-  <Component
+  <View
     key="0"
     style={
       Object {
@@ -829,7 +829,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -838,7 +838,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
         }
       }
     >
-      <Component
+      <Image
         onError={[Function]}
         resizeMode="contain"
         source={
@@ -853,9 +853,9 @@ exports[`Status test suite should render properly with request with image 1`] = 
           }
         }
       />
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     key="1"
     style={
       Object {
@@ -864,7 +864,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -873,7 +873,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
         }
       }
     >
-      <Component
+      <Image
         onError={[Function]}
         resizeMode="contain"
         source={
@@ -888,8 +888,8 @@ exports[`Status test suite should render properly with request with image 1`] = 
           }
         }
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
   <Subheading
     style={
       Array [
@@ -907,7 +907,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
   >
     Request Data
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -919,7 +919,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <Text>
       dataSent
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -937,7 +937,7 @@ exports[`Status test suite should render properly with request with image 1`] = 
   >
     Response Body
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row-reverse",
@@ -948,8 +948,8 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <ClipboardButton
       onPress={[Function]}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -961,12 +961,12 @@ exports[`Status test suite should render properly with request with image 1`] = 
     <Text>
       response
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly with request with image 2`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -974,7 +974,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -1000,7 +1000,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
     >
       GET
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -1031,9 +1031,9 @@ exports[`Status test suite should render properly with request with image 2`] = 
       >
         200
       </Text>
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1057,8 +1057,8 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <Text>
       image
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1082,8 +1082,8 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <Text>
       16/02/2021 - 12:12:54   ( 1015ms )
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1107,7 +1107,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <Text>
       0
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -1125,7 +1125,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
   >
     Request Info
   </Subheading>
-  <Component
+  <View
     key="0"
     style={
       Object {
@@ -1134,7 +1134,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1143,7 +1143,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
         }
       }
     >
-      <Component
+      <Image
         onError={[Function]}
         resizeMode="contain"
         source={
@@ -1158,9 +1158,9 @@ exports[`Status test suite should render properly with request with image 2`] = 
           }
         }
       />
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     key="1"
     style={
       Object {
@@ -1169,7 +1169,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1178,7 +1178,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
         }
       }
     >
-      <Component
+      <Image
         onError={[Function]}
         resizeMode="contain"
         source={
@@ -1193,8 +1193,8 @@ exports[`Status test suite should render properly with request with image 2`] = 
           }
         }
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
   <Subheading
     style={
       Array [
@@ -1212,7 +1212,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
   >
     Request Data
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -1224,7 +1224,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <Text>
       dataSent
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -1242,7 +1242,7 @@ exports[`Status test suite should render properly with request with image 2`] = 
   >
     Response Body
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row-reverse",
@@ -1253,8 +1253,8 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <ClipboardButton
       onPress={[Function]}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -1266,12 +1266,12 @@ exports[`Status test suite should render properly with request with image 2`] = 
     <Text>
       response
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render request 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -1279,7 +1279,7 @@ exports[`Status test suite should render request 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -1305,7 +1305,7 @@ exports[`Status test suite should render request 1`] = `
     >
       GET
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -1336,9 +1336,9 @@ exports[`Status test suite should render request 1`] = `
       >
         200
       </Text>
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1362,8 +1362,8 @@ exports[`Status test suite should render request 1`] = `
     <Text>
       run.mocky.io
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1387,8 +1387,8 @@ exports[`Status test suite should render request 1`] = `
     <Text>
       16/02/2021 - 12:12:54   ( 1015ms )
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -1412,7 +1412,7 @@ exports[`Status test suite should render request 1`] = `
     <Text>
       0
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -1430,7 +1430,7 @@ exports[`Status test suite should render request 1`] = `
   >
     Request Info
   </Subheading>
-  <Component
+  <View
     key="0"
     style={
       Object {
@@ -1439,7 +1439,7 @@ exports[`Status test suite should render request 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1463,7 +1463,7 @@ exports[`Status test suite should render request 1`] = `
       <ClipboardButton
         onPress={[Function]}
       />
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -1478,8 +1478,8 @@ exports[`Status test suite should render request 1`] = `
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     key="1"
     style={
       Object {
@@ -1488,7 +1488,7 @@ exports[`Status test suite should render request 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "alignItems": "center",
@@ -1509,7 +1509,7 @@ exports[`Status test suite should render request 1`] = `
       >
         responseURL
       </Text>
-    </Component>
+    </View>
     <Text
       style={
         Array [
@@ -1524,7 +1524,7 @@ exports[`Status test suite should render request 1`] = `
     >
       https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -1542,7 +1542,7 @@ exports[`Status test suite should render request 1`] = `
   >
     Request Data
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -1554,7 +1554,7 @@ exports[`Status test suite should render request 1`] = `
     <Text>
       dataSent
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -1572,7 +1572,7 @@ exports[`Status test suite should render request 1`] = `
   >
     Response Body
   </Subheading>
-  <Component
+  <View
     style={
       Object {
         "flexDirection": "row-reverse",
@@ -1583,8 +1583,8 @@ exports[`Status test suite should render request 1`] = `
     <ClipboardButton
       onPress={[Function]}
     />
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Object {
         "justifyContent": "flex-start",
@@ -1596,6 +1596,6 @@ exports[`Status test suite should render request 1`] = `
     <Text>
       response
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;

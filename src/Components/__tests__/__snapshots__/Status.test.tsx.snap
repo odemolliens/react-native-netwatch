@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Status test suite should render properly redux action 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -17,7 +17,7 @@ exports[`Status test suite should render properly redux action 1`] = `
   <Text>
     REDUX
   </Text>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -42,14 +42,14 @@ exports[`Status test suite should render properly redux action 1`] = `
       name="redux"
       size={12}
     />
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly request 1`] = `""`;
 
 exports[`Status test suite should render properly request with method 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -65,7 +65,7 @@ exports[`Status test suite should render properly request with method 1`] = `
   <Text>
     GET
   </Text>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -96,12 +96,12 @@ exports[`Status test suite should render properly request with method 1`] = `
     >
       200
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly request with method post and failed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -117,7 +117,7 @@ exports[`Status test suite should render properly request with method post and f
   <Text>
     POST
   </Text>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -148,12 +148,12 @@ exports[`Status test suite should render properly request with method post and f
     >
       -1
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly request with method post and warning 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -169,7 +169,7 @@ exports[`Status test suite should render properly request with method post and w
   <Text>
     POST
   </Text>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -200,6 +200,6 @@ exports[`Status test suite should render properly request with method post and w
     >
       302
     </Text>
-  </Component>
-</Component>
+  </View>
+</View>
 `;

@@ -40,7 +40,7 @@ exports[`Item test suite should render Action properly 1`] = `
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -48,7 +48,7 @@ exports[`Item test suite should render Action properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -75,8 +75,8 @@ exports[`Item test suite should render Action properly 1`] = `
       >
         00:00:00
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -87,13 +87,13 @@ exports[`Item test suite should render Action properly 1`] = `
       <Text
         numberOfLines={1}
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;
 
 exports[`Item test suite should render Connection disconnected properly 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -116,7 +116,7 @@ exports[`Item test suite should render Connection disconnected properly 1`] = `
   }
   testID="itemStatic-81"
 >
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -124,7 +124,7 @@ exports[`Item test suite should render Connection disconnected properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -151,8 +151,8 @@ exports[`Item test suite should render Connection disconnected properly 1`] = `
       >
         00:00:01
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -165,13 +165,13 @@ exports[`Item test suite should render Connection disconnected properly 1`] = `
       >
         You are disconnected
       </Text>
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Item test suite should render Connection properly 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -194,7 +194,7 @@ exports[`Item test suite should render Connection properly 1`] = `
   }
   testID="itemStatic-81"
 >
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -202,7 +202,7 @@ exports[`Item test suite should render Connection properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -229,8 +229,8 @@ exports[`Item test suite should render Connection properly 1`] = `
       >
         00:00:01
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -243,9 +243,9 @@ exports[`Item test suite should render Connection properly 1`] = `
       >
         You are connected
       </Text>
-    </Component>
-  </Component>
-</Component>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Item test suite should render Native Request properly 1`] = `
@@ -295,7 +295,7 @@ exports[`Item test suite should render Native Request properly 1`] = `
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -303,7 +303,7 @@ exports[`Item test suite should render Native Request properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -330,8 +330,8 @@ exports[`Item test suite should render Native Request properly 1`] = `
       >
         12:12:54
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -344,8 +344,8 @@ exports[`Item test suite should render Native Request properly 1`] = `
       >
         /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;
 
@@ -396,7 +396,7 @@ exports[`Item test suite should render Request properly 1`] = `
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -404,7 +404,7 @@ exports[`Item test suite should render Request properly 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -431,8 +431,8 @@ exports[`Item test suite should render Request properly 1`] = `
       >
         12:12:54
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -445,8 +445,8 @@ exports[`Item test suite should render Request properly 1`] = `
       >
         /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;
 
@@ -497,7 +497,7 @@ exports[`Item test suite should render Request properly even bad URL passed in t
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -505,7 +505,7 @@ exports[`Item test suite should render Request properly even bad URL passed in t
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -530,8 +530,8 @@ exports[`Item test suite should render Request properly even bad URL passed in t
       >
         12:12:54
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -542,8 +542,8 @@ exports[`Item test suite should render Request properly even bad URL passed in t
       <Text
         numberOfLines={1}
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;
 
@@ -594,7 +594,7 @@ exports[`Item test suite should render Request properly even no URL passed in th
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -602,7 +602,7 @@ exports[`Item test suite should render Request properly even no URL passed in th
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -627,8 +627,8 @@ exports[`Item test suite should render Request properly even no URL passed in th
       >
         12:12:54
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -639,8 +639,8 @@ exports[`Item test suite should render Request properly even no URL passed in th
       <Text
         numberOfLines={1}
       />
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;
 
@@ -691,7 +691,7 @@ exports[`Item test suite should render properly & press item 1`] = `
       }
     }
   />
-  <Component
+  <View
     style={
       Object {
         "flex": 1,
@@ -699,7 +699,7 @@ exports[`Item test suite should render properly & press item 1`] = `
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -726,8 +726,8 @@ exports[`Item test suite should render properly & press item 1`] = `
       >
         12:12:54
       </TextSecondaryColor>
-    </Component>
-    <Component
+    </View>
+    <View
       style={
         Object {
           "flexDirection": "row",
@@ -740,7 +740,7 @@ exports[`Item test suite should render properly & press item 1`] = `
       >
         /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
       </Text>
-    </Component>
-  </Component>
+    </View>
+  </View>
 </ForwardRef>
 `;

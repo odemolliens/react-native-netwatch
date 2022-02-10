@@ -1,4 +1,10 @@
-# Changelog (Current version: 1.2.7)
+# Changelog (Current version: 1.2.8)
+
+### Version 1.2.8
+
+News
+- Fix #94: Remove deprecated method EventEmitter.removeListener
+- Update dependencies according to Snyk reports
 
 ### Version 1.2.7
 

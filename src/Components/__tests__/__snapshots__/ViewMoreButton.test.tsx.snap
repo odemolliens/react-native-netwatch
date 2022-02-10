@@ -12,7 +12,7 @@ exports[`Status test suite should render properly redux action 1`] = `
   }
   testID="buttonViewMore"
 >
-  <Component
+  <Text
     style={
       Array [
         Object {
@@ -23,7 +23,7 @@ exports[`Status test suite should render properly redux action 1`] = `
     }
   >
     View more
-  </Component>
+  </Text>
   <Icon
     allowFontScaling={false}
     color="#06B6D4"
