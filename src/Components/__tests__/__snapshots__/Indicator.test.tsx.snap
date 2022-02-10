@@ -10,7 +10,7 @@ exports[`Indicator test suite Tests source should called setIsOpened 1`] = `
   }
   testID="openStatsButton"
 >
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="success"
     style={
       Object {
@@ -25,7 +25,7 @@ exports[`Indicator test suite Tests source should called setIsOpened 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="warning"
     style={
       Object {
@@ -40,7 +40,7 @@ exports[`Indicator test suite Tests source should called setIsOpened 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="failure"
     style={
       Object {
@@ -68,7 +68,7 @@ exports[`Indicator test suite Tests source should render properly 1`] = `
   }
   testID="openStatsButton"
 >
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="success"
     style={
       Object {
@@ -83,7 +83,7 @@ exports[`Indicator test suite Tests source should render properly 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="warning"
     style={
       Object {
@@ -98,7 +98,7 @@ exports[`Indicator test suite Tests source should render properly 1`] = `
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="failure"
     style={
       Object {
@@ -126,7 +126,7 @@ exports[`Indicator test suite Tests source should show full indicator with many 
   }
   testID="openStatsButton"
 >
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="success"
     style={
       Object {
@@ -141,7 +141,7 @@ exports[`Indicator test suite Tests source should show full indicator with many 
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="warning"
     style={
       Object {
@@ -156,7 +156,7 @@ exports[`Indicator test suite Tests source should show full indicator with many 
       }
     }
   />
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="failure"
     style={
       Object {
@@ -186,7 +186,7 @@ exports[`Indicator test suite Tests source should show full indicator with many 
     >
       90%
     </Title>
-  </ForwardRef(AnimatedComponentWrapper)>
+  </Component>
 </ForwardRef>
 `;
 
@@ -200,7 +200,7 @@ exports[`Indicator test suite Tests source should show full indicator with many 
   }
   testID="openStatsButton"
 >
-  <ForwardRef(AnimatedComponentWrapper)
+  <Component
     key="success"
     style={
       Object {
@@ -230,8 +230,8 @@ exports[`Indicator test suite Tests source should show full indicator with many 
     >
       75%
     </Title>
-  </ForwardRef(AnimatedComponentWrapper)>
-  <ForwardRef(AnimatedComponentWrapper)
+  </Component>
+  <Component
     key="warning"
     style={
       Object {
@@ -261,8 +261,8 @@ exports[`Indicator test suite Tests source should show full indicator with many 
     >
       20%
     </Title>
-  </ForwardRef(AnimatedComponentWrapper)>
-  <ForwardRef(AnimatedComponentWrapper)
+  </Component>
+  <Component
     key="failure"
     style={
       Object {

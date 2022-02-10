@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Details test suite Test Redux item should render Redux action properly 1`] = `
-<Component
+<View
   style={
     Object {
       "height": "100%",
@@ -87,7 +87,7 @@ exports[`Details test suite Test Redux item should render Redux action properly 
       />
     </ForwardRef>
   </Header>
-  <Component
+  <ScrollView
     contentContainerStyle={
       Object {
         "paddingBottom": 20,
@@ -122,7 +122,7 @@ exports[`Details test suite Test Redux item should render Redux action properly 
         }
       }
     />
-  </Component>
+  </ScrollView>
   <Snackbar
     duration={3000}
     onDismiss={[Function]}
@@ -140,11 +140,11 @@ exports[`Details test suite Test Redux item should render Redux action properly 
     }
     visible={false}
   />
-</Component>
+</View>
 `;
 
 exports[`Details test suite Test Request item should render properly with request & press backbutton 1`] = `
-<Component
+<View
   style={
     Object {
       "height": "100%",
@@ -230,7 +230,7 @@ exports[`Details test suite Test Request item should render properly with reques
       />
     </ForwardRef>
   </Header>
-  <Component
+  <ScrollView
     contentContainerStyle={
       Object {
         "paddingBottom": 20,
@@ -278,7 +278,7 @@ exports[`Details test suite Test Request item should render properly with reques
       setSnackBarMessage={[Function]}
       setSnackBarVisibility={[Function]}
     />
-  </Component>
+  </ScrollView>
   <Snackbar
     duration={3000}
     onDismiss={[Function]}
@@ -296,5 +296,5 @@ exports[`Details test suite Test Request item should render properly with reques
     }
     visible={false}
   />
-</Component>
+</View>
 `;

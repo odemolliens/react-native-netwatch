@@ -75,7 +75,7 @@ exports[`Main test suite Tests source should render properly 1`] = `
       />
     </ForwardRef>
   </Header>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -168,7 +168,7 @@ exports[`Main test suite Tests source should render properly 1`] = `
         size={24}
       />
     </ForwardRef>
-  </Component>
+  </View>
   <FlatList
     data={Array []}
     disableVirtualization={false}
@@ -275,7 +275,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
       />
     </ForwardRef>
   </Header>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -368,7 +368,7 @@ exports[`Main test suite should render properly and showSettings 1`] = `
         size={24}
       />
     </ForwardRef>
-  </Component>
+  </View>
   <FlatList
     data={Array []}
     disableVirtualization={false}

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Settings test suite should render properly and DELETE filter radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -16,14 +16,14 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -317,9 +317,9 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -350,12 +350,12 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and GET filter radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -370,14 +370,14 @@ exports[`Settings test suite should render properly and GET filter radio pressed
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -671,9 +671,9 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -704,12 +704,12 @@ exports[`Settings test suite should render properly and GET filter radio pressed
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and POST filter radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -724,14 +724,14 @@ exports[`Settings test suite should render properly and POST filter radio presse
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -1025,9 +1025,9 @@ exports[`Settings test suite should render properly and POST filter radio presse
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -1058,12 +1058,12 @@ exports[`Settings test suite should render properly and POST filter radio presse
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and PUT filter radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -1078,14 +1078,14 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -1379,9 +1379,9 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -1412,12 +1412,12 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and all filter radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -1432,14 +1432,14 @@ exports[`Settings test suite should render properly and all filter radio pressed
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -1733,9 +1733,9 @@ exports[`Settings test suite should render properly and all filter radio pressed
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -1766,12 +1766,12 @@ exports[`Settings test suite should render properly and all filter radio pressed
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and all source radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -1786,14 +1786,14 @@ exports[`Settings test suite should render properly and all source radio pressed
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -2087,9 +2087,9 @@ exports[`Settings test suite should render properly and all source radio pressed
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -2120,12 +2120,12 @@ exports[`Settings test suite should render properly and all source radio pressed
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and native request source radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -2140,14 +2140,14 @@ exports[`Settings test suite should render properly and native request source ra
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -2441,9 +2441,9 @@ exports[`Settings test suite should render properly and native request source ra
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -2474,12 +2474,12 @@ exports[`Settings test suite should render properly and native request source ra
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and react native request source radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -2494,14 +2494,14 @@ exports[`Settings test suite should render properly and react native request sou
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -2795,9 +2795,9 @@ exports[`Settings test suite should render properly and react native request sou
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -2828,12 +2828,12 @@ exports[`Settings test suite should render properly and react native request sou
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and redux source radio pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -2848,14 +2848,14 @@ exports[`Settings test suite should render properly and redux source radio press
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -2992,9 +2992,9 @@ exports[`Settings test suite should render properly and redux source radio press
           value="NR"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -3025,12 +3025,12 @@ exports[`Settings test suite should render properly and redux source radio press
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;
 
 exports[`Settings test suite should render properly and reset button pressed 1`] = `
-<Component
+<View
   style={
     Array [
       Object {
@@ -3045,14 +3045,14 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
     ]
   }
 >
-  <Component
+  <ScrollView
     style={
       Object {
         "flex": 1,
       }
     }
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
@@ -3346,9 +3346,9 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           value="DELETE"
         />
       </Group>
-    </Component>
-  </Component>
-  <Component>
+    </View>
+  </ScrollView>
+  <View>
     <ForwardRef
       onPress={[Function]}
       style={
@@ -3379,6 +3379,6 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
         Reset filters
       </Title>
     </ForwardRef>
-  </Component>
-</Component>
+  </View>
+</View>
 `;

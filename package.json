@@ -90,6 +90,9 @@
     "setupFiles": [
       "./config/jest.setup.js"
     ],
+    "transformIgnorePatterns": [
+        "/node_modules/(?!native-base)/"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

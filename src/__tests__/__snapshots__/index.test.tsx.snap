@@ -28,20 +28,20 @@ exports[`Index test suite should contains the details screen - style={{ height: 
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={true}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": 0,
@@ -61,8 +61,8 @@ exports[`Index test suite should contains the details screen - style={{ height: 
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": "100%",
@@ -74,9 +74,9 @@ exports[`Index test suite should contains the details screen - style={{ height: 
           onPressBack={[MockFunction]}
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -108,20 +108,20 @@ exports[`Index test suite should contains the main screen with flatlist - style=
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={false}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": "100%",
@@ -169,8 +169,8 @@ exports[`Index test suite should contains the main screen with flatlist - style=
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": 0,
@@ -196,9 +196,9 @@ exports[`Index test suite should contains the main screen with flatlist - style=
           }
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -232,20 +232,20 @@ exports[`Index test suite should have Netwatch visible 1`] = `
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={false}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": "100%",
@@ -293,8 +293,8 @@ exports[`Index test suite should have Netwatch visible 1`] = `
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": 0,
@@ -320,9 +320,9 @@ exports[`Index test suite should have Netwatch visible 1`] = `
           }
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -354,20 +354,20 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={false}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": "100%",
@@ -429,8 +429,8 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": 0,
@@ -463,9 +463,9 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
           }
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -497,20 +497,20 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={false}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": "100%",
@@ -558,8 +558,8 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": 0,
@@ -585,9 +585,9 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
           }
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -619,20 +619,20 @@ exports[`Index test suite should render properly 1`] = `
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={false}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": "100%",
@@ -652,8 +652,8 @@ exports[`Index test suite should render properly 1`] = `
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": 0,
@@ -677,9 +677,9 @@ exports[`Index test suite should render properly 1`] = `
           onPressBack={[Function]}
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -711,20 +711,20 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={true}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": 0,
@@ -744,8 +744,8 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": "100%",
@@ -757,9 +757,9 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
           onPressBack={[MockFunction]}
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;
 
@@ -791,20 +791,20 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
     }
   }
 >
-  <Component
+  <Modal
     animationType="slide"
     hardwareAccelerated={false}
     onRequestClose={[Function]}
     visible={true}
   >
-    <Component
+    <View
       style={
         Object {
           "flex": 1,
         }
       }
     >
-      <Component
+      <View
         style={
           Object {
             "height": 0,
@@ -824,8 +824,8 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
           showStats={true}
           testId="mainScreen"
         />
-      </Component>
-      <Component
+      </View>
+      <View
         style={
           Object {
             "height": "100%",
@@ -837,8 +837,8 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
           onPressBack={[MockFunction]}
           testId="detailScreen"
         />
-      </Component>
-    </Component>
-  </Component>
+      </View>
+    </View>
+  </Modal>
 </ContextProvider>
 `;

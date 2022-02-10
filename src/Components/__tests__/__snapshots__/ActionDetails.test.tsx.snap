@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Status test suite should execute props.onPressViewMore 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -9,7 +9,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -35,7 +35,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     >
       REDUX
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -60,9 +60,9 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
         name="redux"
         size={12}
       />
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -86,7 +86,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     <Text>
       01/01/1970 - 00:00:00
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -104,7 +104,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
   >
     Content
   </Subheading>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -125,8 +125,8 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     >
       Type
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -141,8 +141,8 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     <Text>
       __ERROR:UNDEFINED__
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -163,8 +163,8 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
     >
       __ERROR:UNDEFINED__ :
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -176,7 +176,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -194,7 +194,7 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
       <Text>
         "This is a very long payload to be sure that we have more than 100 characters to explore all the bra...
       </Text>
-      <Component
+      <View
         style={
           Object {
             "alignItems": "flex-end",
@@ -204,14 +204,14 @@ exports[`Status test suite should execute props.onPressViewMore 1`] = `
         <ViewMoreButton
           onPress={[Function]}
         />
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </View>
+    </View>
+  </View>
+</View>
 `;
 
 exports[`Status test suite should render properly redux action 1`] = `
-<Component
+<View
   style={
     Object {
       "flex": 1,
@@ -219,7 +219,7 @@ exports[`Status test suite should render properly redux action 1`] = `
     }
   }
 >
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -245,7 +245,7 @@ exports[`Status test suite should render properly redux action 1`] = `
     >
       REDUX
     </Title>
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -270,9 +270,9 @@ exports[`Status test suite should render properly redux action 1`] = `
         name="redux"
         size={12}
       />
-    </Component>
-  </Component>
-  <Component
+    </View>
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -296,7 +296,7 @@ exports[`Status test suite should render properly redux action 1`] = `
     <Text>
       01/01/1970 - 00:00:00
     </Text>
-  </Component>
+  </View>
   <Subheading
     style={
       Array [
@@ -314,7 +314,7 @@ exports[`Status test suite should render properly redux action 1`] = `
   >
     Content
   </Subheading>
-  <Component
+  <View
     style={
       Array [
         Object {
@@ -335,8 +335,8 @@ exports[`Status test suite should render properly redux action 1`] = `
     >
       Type
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -351,8 +351,8 @@ exports[`Status test suite should render properly redux action 1`] = `
     <Text>
       __ERROR:UNDEFINED__
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -373,8 +373,8 @@ exports[`Status test suite should render properly redux action 1`] = `
     >
       __ERROR:UNDEFINED__ :
     </Text>
-  </Component>
-  <Component
+  </View>
+  <View
     style={
       Array [
         Object {
@@ -386,7 +386,7 @@ exports[`Status test suite should render properly redux action 1`] = `
       ]
     }
   >
-    <Component
+    <View
       style={
         Array [
           Object {
@@ -404,7 +404,7 @@ exports[`Status test suite should render properly redux action 1`] = `
       <Text>
         "This is a very long payload to be sure that we have more than 100 characters to explore all the bra...
       </Text>
-      <Component
+      <View
         style={
           Object {
             "alignItems": "flex-end",
@@ -414,8 +414,8 @@ exports[`Status test suite should render properly redux action 1`] = `
         <ViewMoreButton
           onPress={[Function]}
         />
-      </Component>
-    </Component>
-  </Component>
-</Component>
+      </View>
+    </View>
+  </View>
+</View>
 `;

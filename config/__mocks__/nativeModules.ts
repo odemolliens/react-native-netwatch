@@ -3,7 +3,6 @@ export const mockNativeModules: any = {
     alert: jest.fn(),
   },
   Animated: {
-    ...jest.requireActual('react-native/Libraries/Animated/src/Animated'),
     createAnimatedComponent: jest.fn(),
     loop: () => ({
       start: jest.fn(),
