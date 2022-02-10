@@ -11,6 +11,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache --port 8082",
     "test": "jest"
   },
+  "resolutions": {
+    "shell-quote": "^1.7.3"
+  },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.9.0",
     "@react-native-community/netinfo": "4.7.0",
