@@ -21,7 +21,7 @@
     "react-native": "0.68.0",
     "react-native-device-info": "^8.5.0",
     "react-native-fs": "^2.19.0",
-    "react-native-paper": "^4.11.2",
+    "react-native-paper": "^4.12.0",
     "react-native-share": "^5.2.1",
     "react-native-vector-icons": "^8.0.0",
     "react-redux": "^7.2.7",
