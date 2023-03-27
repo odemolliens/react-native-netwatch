@@ -81,7 +81,7 @@
     "react-native-fs": "*",
     "react-native-paper": "*",
     "react-native-share": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
   },
   "jest": {
     "verbose": true,
