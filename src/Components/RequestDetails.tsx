@@ -24,6 +24,8 @@ import url from 'url';
 import { ViewMoreButton } from './ViewMoreButton';
 import Clipboard from '@react-native-clipboard/clipboard';
 import ClipboardButton from './ClipboardButton';
+import { MockRequestButton } from './Mocking/MockRequestButton';
+import { MockResponse } from './Mocking/utils';
 
 export interface IProps {
   testId?: string;
@@ -32,6 +34,7 @@ export interface IProps {
   onPressViewMoreResponse: (value: boolean) => void;
   setSnackBarMessage: (value: string) => void;
   setSnackBarVisibility: (value: boolean) => void;
+  onEditMockResponse: (mockResponse: MockResponse, update: false) => void;
 }
 
 // This component is specif to request (React-Native or Native).
@@ -124,9 +127,25 @@ export const RequestDetails: React.FC<IProps> = (props: IProps) => {
   return (
     <View style={{ flex: 1, width: '100%' }}>
       {/* METHOD + STATUS CODE */}
-      <View style={[styles.line]}>
-        <Title style={[{ marginRight: 6 }, { color: theme.textColorOne }]}>{props.item.method}</Title>
-        {tag(_color, props.item.status.toString())}
+      <View style={[styles.line, { justifyContent: 'space-between' }]}>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Title style={[{ marginRight: 6 }, { color: theme.textColorOne }]}>{props.item.method}</Title>
+          {tag(_color, props.item.status.toString())}
+        </View>
+        <MockRequestButton
+          onPress={() =>
+            props.onEditMockResponse(
+              {
+                url: props.item.url,
+                method: props.item.method,
+                statusCode: props.item.status,
+                headers: JSON.stringify(props.item.responseHeaders),
+                response: props.item.response,
+              },
+              false,
+            )
+          }
+        />
       </View>
 
       <View style={[styles.line]}>
