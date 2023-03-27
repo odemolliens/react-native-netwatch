@@ -63,6 +63,7 @@
     "react-native-share": "^5.1.4",
     "react-native-vector-icons": "^8.0.0",
     "react-test-renderer": "^16.13.1",
+    "react-native-fs": "^2.20.0",
     "redux": "^4.0.5",
     "redux-mock-store": "^1.5.4",
     "ts-jest": "^26.4.4",
@@ -81,7 +82,8 @@
     "react-native-fs": "*",
     "react-native-paper": "*",
     "react-native-share": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "react-native-fs": "*"
   },
   "jest": {
     "verbose": true,

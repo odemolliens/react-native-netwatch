@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import { StyleSheet, View, ScrollView, Alert, TouchableOpacity } from 'react-native';
+import { Alert, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import Share from 'react-native-share';
 import { Appbar, Snackbar } from 'react-native-paper';
 import RNRequest from '../Core/Objects/RNRequest';
@@ -11,18 +11,20 @@ import { ThemeContext } from '../Theme';
 import { ActionDetails } from './ActionDetails';
 import JSONDetails from './JSONDetails';
 import {
+  formatSharedMessage,
   getGeneralElementsAsArray,
   getRequestHeadersElementsAsArray,
   getResponseHeadersElementsAsArray,
-  formatSharedMessage,
 } from '../Utils/helpers';
 import { RequestDetails } from './RequestDetails';
 import { ILog } from '../types';
+import { MockResponse } from './Mocking/utils';
 
 export interface IProps {
   testId?: string;
   onPressBack: (showDetails: boolean) => void;
   item: ILog;
+  onEditMockResponse: (mockResponse: MockResponse, update: false) => void;
 }
 
 export const Details: React.FC<IProps> = props => {
@@ -134,6 +136,7 @@ export const Details: React.FC<IProps> = props => {
         onPressViewMoreResponse={() => setShowJSONResponseDetails(true)}
         setSnackBarMessage={setSnackBarMessage}
         setSnackBarVisibility={setSnackBarVisibility}
+        onEditMockResponse={props.onEditMockResponse}
       />
     );
   }

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { Modal, NativeModules, DeviceEventEmitter, useColorScheme, View, EmitterSubscription } from 'react-native';
+import { useCallback, useState } from 'react';
+import { DeviceEventEmitter, EmitterSubscription, Modal, NativeModules, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
 import {
-  reduxLoggerMiddleware,
-  setConfig as setReduxConfig,
-  setCallback as setReduxActionsCallback,
-  setMaxActions as setReduxMaxActions,
   clear as clearReduxActions,
+  reduxLoggerMiddleware,
+  setCallback as setReduxActionsCallback,
+  setConfig as setReduxConfig,
+  setMaxActions as setReduxMaxActions,
 } from './Core/ReduxLogger';
 import { RNLogger } from './Core/RNLogger';
 import { ConnectionLogger } from './Core/ConnectionLogger';
@@ -17,6 +17,9 @@ import { ReduxAction } from './Core/Objects/ReduxAction';
 import { NRequest } from './Core/Objects/NRequest';
 import { ConnectionInfo } from './Core/Objects/ConnectionInfo';
 import { ThemeContext, themes } from './Theme';
+import { clearMockResponses, MockResponse, setupMocks } from './Components/Mocking/utils';
+import { MockingNavigator } from './Components/Mocking';
+import { Provider as PaperProvider, DarkTheme } from 'react-native-paper';
 
 export interface IProps {
   visible?: boolean;
@@ -46,67 +49,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
   const [item, setItem] = useState(new ReduxAction());
   const [visible, setVisible] = useState(false);
+  const [mockResponse, setMockResponse] = useState<MockResponse | undefined>();
+  const [update, setUpdate] = useState(false);
+  const [showMockNavigator, setShowMockNavigator] = useState<boolean>(false);
 
-  const colorScheme = props.theme ? props.theme : useColorScheme();
+  let colorScheme: any = useColorScheme();
+  colorScheme = props.theme ? props.theme : colorScheme;
+
   // At this time, if it's not light, that will be dark. No other possibility
   const _theme = colorScheme === 'light' ? themes.light : themes.dark;
 
-  React.useEffect(() => {
-    if (props.visible !== undefined) {
-      setVisible(props.visible);
-    }
-  }, [props.visible]);
-
-  const handleShake = () => {
-    if (!props.disableShake && props.onPressClose) {
-      console.warn(
-        'You cannot use button and shake at the same time to avoid inconsistant state. To remove this warning, you must explicitly set props disableShake to true or remove props onPressClose.',
-      );
-      return;
-    }
-
-    if (!props.disableShake && props.enabled) setVisible(true);
-  };
-
-  React.useEffect(() => {
-    let subscription: EmitterSubscription | null = null;
-    if (!props.disableShake && props.enabled) subscription = DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
-    return () => {
-      subscription?.remove?.();
-    };
-  }, [handleShake]);
-
-  const handleBack = () => {
-    if (showDetails) return setShowDetails(false);
-    props.onPressClose ? props.onPressClose() : setVisible(false);
-  };
-
-  const startNativeLoop = () => {
-    if (props.enabled && !nativeLoopStarted) {
-      nativeLoopStarted = true;
-      nativeLoop = setInterval(() => {
-        getNativeRequests();
-      }, 1500);
-    }
-  };
-
-  const stopNativeLoop = () => {
-    nativeLoopStarted = false;
-    clearInterval(nativeLoop);
-  };
-
-  const clearAll = () => {
-    _RNLogger.clear();
-    _ConnectionLogger.clearConnectionEvents();
-    clearReduxActions();
-    setReduxActions([]);
-    setRnRequests([]);
-    setnRequests([]);
-    setConnections([]);
-  };
-
   // Extract data from shared pref and passed the result to the UI
-  const getNativeRequests = (): void => {
+  const getNativeRequests = useCallback((): void => {
     RNNetwatch.getNativeRequests((response: any) => {
       try {
         let _temp;
@@ -143,10 +97,71 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         console.error(error.message);
       }
     });
+  }, [nRequests]);
+
+  React.useEffect(() => {
+    if (props.visible !== undefined) {
+      setVisible(props.visible);
+    }
+  }, [props.visible]);
+
+  const handleShake = useCallback(() => {
+    if (!props.disableShake && props.onPressClose) {
+      console.warn(
+        'You cannot use button and shake at the same time to avoid inconsistant state. To remove this warning, you must explicitly set props disableShake to true or remove props onPressClose.',
+      );
+      return;
+    }
+
+    if (!props.disableShake && props.enabled) {
+      setVisible(true);
+    }
+  }, [props.disableShake, props.enabled, props.onPressClose]);
+
+  React.useEffect(() => {
+    let subscription: EmitterSubscription | null = null;
+    if (!props.disableShake && props.enabled) {
+      subscription = DeviceEventEmitter.addListener('NetwatchShakeEvent', handleShake);
+    }
+    return () => {
+      subscription?.remove?.();
+    };
+  }, [handleShake, props.disableShake, props.enabled]);
+
+  const handleBack = () => {
+    if (showDetails) {
+      return setShowDetails(false);
+    }
+    props.onPressClose ? props.onPressClose() : setVisible(false);
+  };
+
+  const startNativeLoop = useCallback(() => {
+    if (props.enabled && !nativeLoopStarted) {
+      nativeLoopStarted = true;
+      nativeLoop = setInterval(() => {
+        getNativeRequests();
+      }, 1500);
+    }
+  }, [getNativeRequests, props.enabled]);
+
+  const stopNativeLoop = () => {
+    nativeLoopStarted = false;
+    clearInterval(nativeLoop);
+  };
+
+  const clearAll = () => {
+    _RNLogger.clear();
+    _ConnectionLogger.clearConnectionEvents();
+    clearReduxActions();
+    setReduxActions([]);
+    setRnRequests([]);
+    setnRequests([]);
+    setConnections([]);
   };
 
   React.useEffect(() => {
     if (!props.enabled || props.useReactotron) {
+      clearMockResponses();
       clearAll();
       stopNativeLoop();
       _ConnectionLogger.resetCallback();
@@ -159,11 +174,14 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       _RNLogger.enableXHRInterception();
       _RNLogger.setCallback(setRnRequests);
       _ConnectionLogger.setCallback(setConnections);
-      if (props.reduxConfig) setReduxConfig(props.reduxConfig);
+      if (props.reduxConfig) {
+        setReduxConfig(props.reduxConfig);
+      }
       setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
+      setupMocks(); // Setup mock responses AFTER everything else in setup
     }
-  }, [props.enabled]);
+  }, [props.enabled, props.interceptIOS, props.maxRequests, props.reduxConfig, props.useReactotron, startNativeLoop]);
 
   React.useEffect(() => {
     if (!visible) {
@@ -171,34 +189,63 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       return;
     }
     startNativeLoop();
-  }, [visible]);
+  }, [startNativeLoop, visible]);
 
-  if (!props.enabled) return null;
+  if (!props.enabled) {
+    return null;
+  }
 
   return (
     <ThemeContext.Provider value={_theme}>
-      <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
-        <View style={{ flex: 1 }}>
-          <View style={{ height: showDetails ? 0 : '100%' }}>
-            <Main
-              maxRequests={props.maxRequests}
-              testId="mainScreen"
-              onPressClose={props.onPressClose || (() => setVisible(false))}
-              onPressDetail={setShowDetails}
-              onPress={setItem}
-              reduxActions={reduxActions}
-              rnRequests={rnRequests}
-              nRequests={nRequests}
-              connections={connections}
-              clearAll={clearAll}
-              showStats={props.showStats}
-            />
+      <PaperProvider theme={DarkTheme}>
+        <Modal animationType="slide" visible={visible} onRequestClose={handleBack}>
+          <View style={{ flex: 1 }}>
+            <View style={{ height: showDetails ? 0 : '100%' }}>
+              <Main
+                maxRequests={props.maxRequests}
+                testId="mainScreen"
+                onPressClose={props.onPressClose || (() => setVisible(false))}
+                onPressDetail={setShowDetails}
+                onPress={setItem}
+                reduxActions={reduxActions}
+                rnRequests={rnRequests}
+                nRequests={nRequests}
+                connections={connections}
+                clearAll={clearAll}
+                showStats={props.showStats}
+                onShowMocksList={() => {
+                  setMockResponse(undefined);
+                  setShowMockNavigator(true);
+                }}
+              />
+            </View>
+            <View style={{ height: showDetails ? '100%' : 0 }}>
+              <Details
+                onEditMockResponse={(mr, u) => {
+                  setMockResponse(mr);
+                  setUpdate(u);
+                  setShowMockNavigator(true);
+                }}
+                testId="detailScreen"
+                onPressBack={setShowDetails}
+                item={item}
+              />
+            </View>
+            <Modal
+              animationType="slide"
+              visible={showMockNavigator}
+              statusBarTranslucent={true}
+              onRequestClose={() => setShowMockNavigator(true)}
+            >
+              <MockingNavigator
+                mockResponse={mockResponse}
+                update={update}
+                onPressBack={() => setShowMockNavigator(false)}
+              />
+            </Modal>
           </View>
-          <View style={{ height: showDetails ? '100%' : 0 }}>
-            <Details testId="detailScreen" onPressBack={setShowDetails} item={item} />
-          </View>
-        </View>
-      </Modal>
+        </Modal>
+      </PaperProvider>
     </ThemeContext.Provider>
   );
 };
