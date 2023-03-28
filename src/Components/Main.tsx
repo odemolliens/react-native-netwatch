@@ -27,6 +27,7 @@ export interface IProps {
   clearAll: Function;
   maxRequests?: number;
   showStats?: boolean;
+  onShowMocksList: () => void;
 }
 
 interface IStats {
@@ -227,6 +228,9 @@ export const Main = (props: IProps) => {
             <FeatherIcon name="download" color={theme.textColorOne} size={24} onPress={() => setloadingXLSX(true)} />
           </TouchableOpacity>
         )}
+        <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
+          <FeatherIcon name="align-justify" color={theme.textColorOne} size={24} onPress={props.onShowMocksList} />
+        </TouchableOpacity>
       </Appbar.Header>
       <View style={[styles.options, { backgroundColor: theme.secondaryColor }]}>
         <Searchbar
