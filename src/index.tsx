@@ -195,8 +195,6 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     return null;
   }
 
-  console.log(PaperProvider);
-
   return (
     <ThemeContext.Provider value={_theme}>
       <PaperProvider theme={DarkTheme}>
