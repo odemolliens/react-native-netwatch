@@ -18,45 +18,25 @@ exports[`Status test suite should render NRequest properly 1`] = `
           "marginBottom": 10,
           "paddingHorizontal": 16,
         },
+        Object {
+          "justifyContent": "space-between",
+        },
       ]
     }
   >
-    <Title
-      style={
-        Array [
-          Object {
-            "marginRight": 6,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      GET
-    </Title>
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 4,
-            "fontSize": 12,
-            "height": 22,
-            "justifyContent": "center",
-            "width": 30,
-          },
-          Object {
-            "backgroundColor": "#B91C1C",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
-      testID="statusCodeColor"
     >
-      <Text
+      <Title
         style={
           Array [
             Object {
-              "textAlign": "center",
+              "marginRight": 6,
             },
             Object {
               "color": "#F9FAFB",
@@ -64,9 +44,44 @@ exports[`Status test suite should render NRequest properly 1`] = `
           ]
         }
       >
-        500
-      </Text>
+        GET
+      </Title>
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 4,
+              "fontSize": 12,
+              "height": 22,
+              "justifyContent": "center",
+              "width": 30,
+            },
+            Object {
+              "backgroundColor": "#B91C1C",
+            },
+          ]
+        }
+        testID="statusCodeColor"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          500
+        </Text>
+      </View>
     </View>
+    <MockRequestButton
+      onPress={[Function]}
+    />
   </View>
   <View
     style={
@@ -348,45 +363,25 @@ exports[`Status test suite should render properly with request with headers 1`] 
           "marginBottom": 10,
           "paddingHorizontal": 16,
         },
+        Object {
+          "justifyContent": "space-between",
+        },
       ]
     }
   >
-    <Title
-      style={
-        Array [
-          Object {
-            "marginRight": 6,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      GET
-    </Title>
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 4,
-            "fontSize": 12,
-            "height": 22,
-            "justifyContent": "center",
-            "width": 30,
-          },
-          Object {
-            "backgroundColor": "#D97706",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
-      testID="statusCodeColor"
     >
-      <Text
+      <Title
         style={
           Array [
             Object {
-              "textAlign": "center",
+              "marginRight": 6,
             },
             Object {
               "color": "#F9FAFB",
@@ -394,9 +389,44 @@ exports[`Status test suite should render properly with request with headers 1`] 
           ]
         }
       >
-        301
-      </Text>
+        GET
+      </Title>
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 4,
+              "fontSize": 12,
+              "height": 22,
+              "justifyContent": "center",
+              "width": 30,
+            },
+            Object {
+              "backgroundColor": "#D97706",
+            },
+          ]
+        }
+        testID="statusCodeColor"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          301
+        </Text>
+      </View>
     </View>
+    <MockRequestButton
+      onPress={[Function]}
+    />
   </View>
   <View
     style={
@@ -678,45 +708,25 @@ exports[`Status test suite should render properly with request with image 1`] = 
           "marginBottom": 10,
           "paddingHorizontal": 16,
         },
+        Object {
+          "justifyContent": "space-between",
+        },
       ]
     }
   >
-    <Title
-      style={
-        Array [
-          Object {
-            "marginRight": 6,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      GET
-    </Title>
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 4,
-            "fontSize": 12,
-            "height": 22,
-            "justifyContent": "center",
-            "width": 30,
-          },
-          Object {
-            "backgroundColor": "#4D7C0F",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
-      testID="statusCodeColor"
     >
-      <Text
+      <Title
         style={
           Array [
             Object {
-              "textAlign": "center",
+              "marginRight": 6,
             },
             Object {
               "color": "#F9FAFB",
@@ -724,9 +734,44 @@ exports[`Status test suite should render properly with request with image 1`] = 
           ]
         }
       >
-        200
-      </Text>
+        GET
+      </Title>
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 4,
+              "fontSize": 12,
+              "height": 22,
+              "justifyContent": "center",
+              "width": 30,
+            },
+            Object {
+              "backgroundColor": "#4D7C0F",
+            },
+          ]
+        }
+        testID="statusCodeColor"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          200
+        </Text>
+      </View>
     </View>
+    <MockRequestButton
+      onPress={[Function]}
+    />
   </View>
   <View
     style={
@@ -983,45 +1028,25 @@ exports[`Status test suite should render properly with request with image 2`] = 
           "marginBottom": 10,
           "paddingHorizontal": 16,
         },
+        Object {
+          "justifyContent": "space-between",
+        },
       ]
     }
   >
-    <Title
-      style={
-        Array [
-          Object {
-            "marginRight": 6,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      GET
-    </Title>
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 4,
-            "fontSize": 12,
-            "height": 22,
-            "justifyContent": "center",
-            "width": 30,
-          },
-          Object {
-            "backgroundColor": "#4D7C0F",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
-      testID="statusCodeColor"
     >
-      <Text
+      <Title
         style={
           Array [
             Object {
-              "textAlign": "center",
+              "marginRight": 6,
             },
             Object {
               "color": "#F9FAFB",
@@ -1029,9 +1054,44 @@ exports[`Status test suite should render properly with request with image 2`] = 
           ]
         }
       >
-        200
-      </Text>
+        GET
+      </Title>
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 4,
+              "fontSize": 12,
+              "height": 22,
+              "justifyContent": "center",
+              "width": 30,
+            },
+            Object {
+              "backgroundColor": "#4D7C0F",
+            },
+          ]
+        }
+        testID="statusCodeColor"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          200
+        </Text>
+      </View>
     </View>
+    <MockRequestButton
+      onPress={[Function]}
+    />
   </View>
   <View
     style={
@@ -1288,45 +1348,25 @@ exports[`Status test suite should render request 1`] = `
           "marginBottom": 10,
           "paddingHorizontal": 16,
         },
+        Object {
+          "justifyContent": "space-between",
+        },
       ]
     }
   >
-    <Title
-      style={
-        Array [
-          Object {
-            "marginRight": 6,
-          },
-          Object {
-            "color": "#F9FAFB",
-          },
-        ]
-      }
-    >
-      GET
-    </Title>
     <View
       style={
-        Array [
-          Object {
-            "borderRadius": 4,
-            "fontSize": 12,
-            "height": 22,
-            "justifyContent": "center",
-            "width": 30,
-          },
-          Object {
-            "backgroundColor": "#4D7C0F",
-          },
-        ]
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
       }
-      testID="statusCodeColor"
     >
-      <Text
+      <Title
         style={
           Array [
             Object {
-              "textAlign": "center",
+              "marginRight": 6,
             },
             Object {
               "color": "#F9FAFB",
@@ -1334,9 +1374,44 @@ exports[`Status test suite should render request 1`] = `
           ]
         }
       >
-        200
-      </Text>
+        GET
+      </Title>
+      <View
+        style={
+          Array [
+            Object {
+              "borderRadius": 4,
+              "fontSize": 12,
+              "height": 22,
+              "justifyContent": "center",
+              "width": 30,
+            },
+            Object {
+              "backgroundColor": "#4D7C0F",
+            },
+          ]
+        }
+        testID="statusCodeColor"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          200
+        </Text>
+      </View>
     </View>
+    <MockRequestButton
+      onPress={[Function]}
+    />
   </View>
   <View
     style={

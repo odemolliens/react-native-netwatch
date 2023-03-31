@@ -74,6 +74,28 @@ exports[`Main test suite Tests source should render properly 1`] = `
         size={24}
       />
     </ForwardRef>
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="align-justify"
+        size={24}
+      />
+    </ForwardRef>
   </Header>
   <View
     style={
@@ -271,6 +293,29 @@ exports[`Main test suite should render properly and showSettings 1`] = `
         color="#F9FAFB"
         name="download"
         onPress={[Function]}
+        size={24}
+      />
+    </ForwardRef>
+    <ForwardRef
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderLeftWidth": 1,
+            "height": 56,
+            "justifyContent": "center",
+            "width": 56,
+          },
+          Object {
+            "borderLeftWidth": 0,
+          },
+        ]
+      }
+    >
+      <Icon
+        color="#F9FAFB"
+        name="align-justify"
+        onPress={[MockFunction]}
         size={24}
       />
     </ForwardRef>

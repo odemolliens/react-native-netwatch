@@ -16,6 +16,14 @@ jest.doMock('react-native', () => {
   );
 });
 
+// jest.mock('react-native', () => {
+//   return {
+//     ...jest.requireActual('react-native'),
+//     ...mockNativeModules,
+//     // useColorScheme: jest.fn().mockReturnValue('light'),
+//   };
+// });
+
 // jest.mock('react-native-paper');
 jest.mock('react-native-paper', () => {
   return {
@@ -32,7 +40,8 @@ jest.mock('react-native-paper', () => {
     Text: () => <></>,
     Icon: () => <></>,
     Searchbar: () => <></>,
-    ActivityIndicator: () => <></>
+    ActivityIndicator: () => <></>,
+    Provider: ({ children }) => children,
   };
 });
 

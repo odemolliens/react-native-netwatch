@@ -34,7 +34,10 @@ export function mockRequestWithResponse(mockResponse: MockResponse) {
   let found = false;
   for (let i = 0; i < mockResponses.length; i++) {
     if (mockResponses[i].url === mockResponse.url && mockResponses[i].method === mockResponse.method) {
-      mockResponses[i] = mockResponse;
+      mockResponses[i] = {
+        ...mockResponse,
+        active: true,
+      };
       found = true;
       break;
     }
@@ -48,17 +51,14 @@ export function mockRequestWithResponse(mockResponse: MockResponse) {
   RNFS.writeFile(FILE_PATH, JSON.stringify(mockResponses), 'utf8');
 }
 
-export function disableMockResponse(url: string, method?: string) {
-  const mockRequest = mockResponses.find(
-    mock => mock.url === extractURL(url) && (!mock.method || (mock.method && mock.method === method)),
-  );
-  if (mockRequest) {
-    mockRequest.active = false;
-  }
-}
-
 let originalSend: any;
 
+export function extractURL(url: string) {
+  const urlParts = url.split('?');
+  return urlParts[0];
+}
+
+// istanbul ignore next
 export function setupMocks() {
   RNFS.readFile(FILE_PATH, 'utf8')
     .then((mockResponsesString: string) => {
@@ -123,9 +123,4 @@ export function setupMocks() {
   } catch (e) {
     console.error(e);
   }
-}
-
-export function extractURL(url: string) {
-  const urlParts = url.split('?');
-  return urlParts[0];
 }

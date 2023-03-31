@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Mock List Screen should render properly 1`] = `
+<View
+  style={
+    Object {
+      "height": "100%",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <NavBar
+    icon="x"
+    onPressBack={[Function]}
+    rightComponent={
+      <NavbarRightSide
+        mockResponsesCopy={
+          Array [
+            Object {
+              "active": true,
+              "date": 0,
+              "headers": "",
+              "method": "GET",
+              "response": "",
+              "statusCode": 0,
+              "timeout": 0,
+              "url": "https://www.google.com",
+            },
+            Object {
+              "active": false,
+              "date": 0,
+              "headers": "",
+              "method": "GET",
+              "response": "",
+              "statusCode": 0,
+              "timeout": 0,
+              "url": "https://www.mendixxx.com",
+            },
+          ]
+        }
+        setMockResponsesCopy={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                undefined,
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+      />
+    }
+    title="Mock List"
+  />
+  <ScrollView
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#F9FAFB",
+              "flex": 1,
+            },
+            Object {
+              "fontWeight": "bold",
+              "margin": 10,
+              "minWidth": 50,
+            },
+          ]
+        }
+      >
+        URL
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontWeight": "bold",
+              "margin": 10,
+              "minWidth": 50,
+            },
+            Object {
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      >
+        Method
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontWeight": "bold",
+              "margin": 10,
+              "minWidth": 50,
+            },
+            Object {
+              "color": "#F9FAFB",
+            },
+          ]
+        }
+      />
+    </View>
+    <ForwardRef
+      key="mock-0"
+      onPress={[Function]}
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#06B6D4",
+                "flex": 1,
+              },
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+            ]
+          }
+        >
+          https://www.google.com
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+              Object {
+                "minWidth": 30,
+              },
+            ]
+          }
+        >
+          <Icon
+            color="#F9FAFB"
+            name="arrow-right"
+            size={24}
+          />
+        </View>
+      </View>
+      <Component />
+    </ForwardRef>
+    <ForwardRef
+      key="mock-1"
+      onPress={[Function]}
+    >
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "grey",
+                "flex": 1,
+              },
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+            ]
+          }
+        >
+          https://www.mendixxx.com
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+              Object {
+                "color": "#F9FAFB",
+              },
+            ]
+          }
+        >
+          GET
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "alignSelf": "flex-start",
+                "margin": 10,
+                "minWidth": 50,
+              },
+              Object {
+                "minWidth": 30,
+              },
+            ]
+          }
+        >
+          <Icon
+            color="#F9FAFB"
+            name="arrow-right"
+            size={24}
+          />
+        </View>
+      </View>
+      <Component />
+    </ForwardRef>
+  </ScrollView>
+</View>
+`;

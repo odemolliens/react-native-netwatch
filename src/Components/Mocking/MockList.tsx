@@ -1,6 +1,5 @@
 import { Button, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import * as React from 'react';
-import { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../Theme';
 import { NavBar } from '../NavBar';
 import { Divider } from 'react-native-paper';
@@ -10,13 +9,66 @@ import Share from 'react-native-share';
 import RNFS from 'react-native-fs';
 import Clipboard from '@react-native-clipboard/clipboard';
 
+export function NavbarRightSide(props: {
+  mockResponsesCopy: MockResponse[];
+  setMockResponsesCopy: (mockResponsesCopy: MockResponse[]) => void;
+}) {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <>
+      <TouchableOpacity
+        onPress={() => {
+          Clipboard.getString().then(responses => {
+            if (responses) {
+              resetMockResponses(responses);
+              props.setMockResponsesCopy(getMockResponses());
+            }
+          });
+        }}
+        style={[styles.button, { borderLeftWidth: 0 }]}
+      >
+        <FeatherIcon name="download" color={theme.textColorOne} size={24} />
+      </TouchableOpacity>
+      {props.mockResponsesCopy.length > 0 && (
+        <TouchableOpacity
+          style={[styles.button, { borderLeftWidth: 0 }]}
+          onPress={() => {
+            RNFS.copyFile(FILE_PATH, `${RNFS.DocumentDirectoryPath}/mocks-preset.json`)
+              .then(() => {
+                Share.open({
+                  title: 'Export Mock preset',
+                  url: `${RNFS.DocumentDirectoryPath}/mocks-preset.json`,
+                  type: 'text/plain',
+                  // excludedActivityTypes: []
+                }).then(() => {
+                  RNFS.unlink(`${RNFS.DocumentDirectoryPath}/mocks-preset.json`);
+                });
+              })
+              .catch(console.error);
+          }}
+        >
+          <FeatherIcon name="upload" color={theme.textColorOne} size={24} />
+        </TouchableOpacity>
+      )}
+      <Button
+        title={'Clear'}
+        onPress={() => {
+          clearMockResponses();
+          props.setMockResponsesCopy([]);
+        }}
+      />
+    </>
+  );
+}
+
 export function MockList(props: {
   showEdit: (mockResponse: MockResponse, update: boolean) => void;
   onPressBack: () => void;
 }) {
   const theme = useContext(ThemeContext);
 
-  const [mockResponsesCopy, setMockResponsesCopy] = React.useState<MockResponse[]>([]);
+  const [mockResponsesCopy, setMockResponsesCopy] = useState<MockResponse[]>([]);
 
   useEffect(() => {
     setMockResponsesCopy(getMockResponses());
@@ -29,53 +81,7 @@ export function MockList(props: {
         title={'Mock List'}
         onPressBack={props.onPressBack}
         rightComponent={
-          <>
-            <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-              <FeatherIcon
-                name="download"
-                color={theme.textColorOne}
-                size={24}
-                onPress={() => {
-                  Clipboard.getString().then(responses => {
-                    if (responses) {
-                      resetMockResponses(responses);
-                      setMockResponsesCopy(getMockResponses());
-                    }
-                  });
-                }}
-              />
-            </TouchableOpacity>
-            {mockResponsesCopy.length > 0 && (
-              <TouchableOpacity style={[styles.button, { borderLeftWidth: 0 }]}>
-                <FeatherIcon
-                  name="upload"
-                  color={theme.textColorOne}
-                  size={24}
-                  onPress={() => {
-                    RNFS.copyFile(FILE_PATH, `${RNFS.DocumentDirectoryPath}/mocks-preset.json`)
-                      .then(() => {
-                        Share.open({
-                          title: 'Export Mock preset',
-                          url: `${RNFS.DocumentDirectoryPath}/mocks-preset.json`,
-                          type: 'text/plain',
-                          // excludedActivityTypes: []
-                        }).then(() => {
-                          RNFS.unlink(`${RNFS.DocumentDirectoryPath}/mocks-preset.json`);
-                        });
-                      })
-                      .catch(console.error);
-                  }}
-                />
-              </TouchableOpacity>
-            )}
-            <Button
-              title={'Clear'}
-              onPress={() => {
-                clearMockResponses();
-                setMockResponsesCopy([]);
-              }}
-            />
-          </>
+          <NavbarRightSide mockResponsesCopy={mockResponsesCopy} setMockResponsesCopy={setMockResponsesCopy} />
         }
       />
 

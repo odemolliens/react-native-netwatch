@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { Main, IProps } from '../Main';
+import { IProps, Main } from '../Main';
 import ReduxAction from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
 import { EnumFilterType, EnumSourceType } from '../../types';
@@ -187,6 +187,16 @@ describe('Main test suite', () => {
     expect(props.onPressClose).toHaveBeenCalledWith(false);
   });
 
+  it('should show Mocks list when pressing far right button', function () {
+    const useStateMock: any = (source: any) => [EnumSourceType.All, setSource];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    mockUseEffect();
+    givenProps();
+    givenComponent();
+    component.find(TouchableOpacity).at(1).childAt(0).props().onPress();
+    expect(props.onShowMocksList).toHaveBeenCalledTimes(1);
+  });
+
   // UTILITIES
   function whenPressingButton(testId: string) {
     component.find(`[testID="${testId}"]`).simulate('press');
@@ -208,6 +218,7 @@ describe('Main test suite', () => {
       nRequests: mockNRequests,
       clearAll: jest.fn(),
       maxRequests: 50,
+      onShowMocksList: jest.fn(),
     };
   }
 });
