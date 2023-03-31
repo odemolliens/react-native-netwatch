@@ -1,0 +1,537 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Edit Mock Response Screen should render properly 1`] = `
+<KeyboardAvoidingView
+  behavior="padding"
+  enabled={true}
+  keyboardVerticalOffset={0}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <NavBar
+    onPressBack={[Function]}
+    rightComponent={
+      <Button
+        onPress={[Function]}
+        title="Save"
+      />
+    }
+    title="Edit Response Mock"
+  />
+  <ScrollView
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    keyboardDismissMode="on-drag"
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "margin": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#F9FAFB",
+            }
+          }
+        >
+          Leave blank entries to keep unchanged.
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#F9FAFB",
+              "flex": 1,
+              "fontSize": 14,
+              "marginBottom": 10,
+            }
+          }
+        >
+          Mock response active
+        </Text>
+        <Switch
+          onValueChange={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          value={true}
+        />
+      </View>
+      <Component
+        label="URL"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "https://www.google.com",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value="https://www.google.com"
+      />
+      <Component
+        keyboardType="numeric"
+        label="Response Code"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "0",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value={0}
+      />
+      <Component
+        keyboardType="numeric"
+        label="Timeout value"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "0",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value={0}
+      />
+      <Component
+        label="Response Method"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "GET",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value="GET"
+      />
+      <Component
+        label="Headers"
+        mode="flat"
+        multiline={true}
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "height": 200,
+            },
+          ]
+        }
+        value=""
+      />
+      <Component
+        label="Body"
+        mode="flat"
+        multiline={true}
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "height": 200,
+            },
+          ]
+        }
+        value=""
+      />
+    </View>
+  </ScrollView>
+</KeyboardAvoidingView>
+`;
+
+exports[`Test Edit Mock Response Screen should render properly when updating mock 1`] = `
+<KeyboardAvoidingView
+  behavior="padding"
+  enabled={true}
+  keyboardVerticalOffset={0}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <NavBar
+    onPressBack={[Function]}
+    rightComponent={
+      <Button
+        onPress={[Function]}
+        title="Save"
+      />
+    }
+    title="Edit Response Mock"
+  />
+  <ScrollView
+    contentContainerStyle={
+      Object {
+        "paddingBottom": 20,
+        "paddingTop": 26,
+      }
+    }
+    keyboardDismissMode="on-drag"
+    style={
+      Object {
+        "backgroundColor": "#1F2937",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "margin": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#F9FAFB",
+            }
+          }
+        >
+          Leave blank entries to keep unchanged.
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 15,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#F9FAFB",
+              "flex": 1,
+              "fontSize": 14,
+              "marginBottom": 10,
+            }
+          }
+        >
+          Mock response active
+        </Text>
+        <Switch
+          onValueChange={
+            [MockFunction] {
+              "calls": Array [
+                Array [
+                  true,
+                ],
+              ],
+              "results": Array [
+                Object {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          value={true}
+        />
+      </View>
+      <Component
+        label="URL"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "https://www.google.com",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value="https://www.google.com"
+      />
+      <Component
+        keyboardType="numeric"
+        label="Response Code"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "0",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value={0}
+      />
+      <Component
+        keyboardType="numeric"
+        label="Timeout value"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "0",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value={0}
+      />
+      <Component
+        label="Response Method"
+        mode="flat"
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "GET",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Object {
+            "margin": 10,
+          }
+        }
+        value="GET"
+      />
+      <Component
+        label="Headers"
+        mode="flat"
+        multiline={true}
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "height": 200,
+            },
+          ]
+        }
+        value=""
+      />
+      <Component
+        label="Body"
+        mode="flat"
+        multiline={true}
+        onChangeText={
+          [MockFunction] {
+            "calls": Array [
+              Array [
+                "",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": undefined,
+              },
+            ],
+          }
+        }
+        style={
+          Array [
+            Object {
+              "margin": 10,
+            },
+            Object {
+              "height": 200,
+            },
+          ]
+        }
+        value=""
+      />
+    </View>
+  </ScrollView>
+</KeyboardAvoidingView>
+`;

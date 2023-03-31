@@ -24,7 +24,6 @@ describe('Details test suite', () => {
   beforeEach(() => {
     jest.mock('react', () => ({
       ...jest.requireActual('react'),
-      useState: jest.fn(),
     }));
   });
 

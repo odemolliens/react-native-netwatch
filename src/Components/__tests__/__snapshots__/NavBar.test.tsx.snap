@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test NabBar componsnet should render properly 1`] = `
+<Header
+  style={
+    Array [
+      Object {
+        "elevation": 0,
+        "shadowOffset": Object {
+          "height": 0,
+          "width": 0,
+        },
+        "shadowOpacity": 0,
+      },
+      Object {
+        "backgroundColor": "#111827",
+      },
+    ]
+  }
+>
+  <ForwardRef
+    onPress={[Function]}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderLeftWidth": 1,
+          "height": 56,
+          "justifyContent": "center",
+          "width": 56,
+        },
+        Object {
+          "borderLeftWidth": 0,
+        },
+      ]
+    }
+    testID="buttonBackToMainScreen"
+  >
+    <Icon
+      color="#F9FAFB"
+      name="left"
+      size={24}
+    />
+  </ForwardRef>
+  <Content
+    color="#06B6D4"
+    title="title"
+    titleStyle={
+      Object {
+        "fontSize": 18,
+      }
+    }
+  />
+</Header>
+`;

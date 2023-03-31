@@ -7,6 +7,8 @@ import NRequest from '../Core/Objects/NRequest';
 import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 import RCTDeviceEventEmitter from 'react-native/Libraries/EventEmitter/RCTDeviceEventEmitter';
 
+jest.mock('../Components/Mocking/utils');
+
 /**
  * Mock the NativeEventEmitter as a normal JS EventEmitter.
  */
@@ -37,7 +39,7 @@ describe('Index test suite', () => {
 
     jest.mock('react', () => ({
       ...jest.requireActual('react'),
-      useState: jest.fn(),
+      useState: jest.fn().mockReturnValue([{ value: {} }, jest.fn()]),
     }));
   });
 
@@ -158,8 +160,8 @@ describe('Index test suite', () => {
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 20);
     givenComponent();
-    expect(component.find(Modal)).toHaveLength(1);
-    component.find(Modal).invoke('onRequestClose')();
+    expect(component.find(Modal)).toHaveLength(2);
+    component.find(Modal).at(0).invoke('onRequestClose')();
     expect(setVisible).toHaveBeenCalledTimes(1);
   });
 
@@ -167,8 +169,8 @@ describe('Index test suite', () => {
     // Case when button is actived and shake desactivated
     givenProps(true, true, 20, true, true, 'dark', onPressClose);
     givenComponent();
-    expect(component.find(Modal)).toHaveLength(1);
-    component.find(Modal).invoke('onRequestClose')();
+    expect(component.find(Modal)).toHaveLength(2);
+    component.find(Modal).at(0).invoke('onRequestClose')();
     expect(props.onPressClose).toHaveBeenCalledTimes(1);
   });
 
@@ -178,8 +180,8 @@ describe('Index test suite', () => {
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 20, true, true, 'dark', onPressClose);
     givenComponent();
-    expect(component.find(Modal)).toHaveLength(1);
-    component.find(Modal).invoke('onRequestClose')();
+    expect(component.find(Modal)).toHaveLength(2);
+    component.find(Modal).at(0).invoke('onRequestClose')();
     expect(setShowDetails).toHaveBeenCalledTimes(1);
   });
 

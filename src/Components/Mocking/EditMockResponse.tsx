@@ -1,7 +1,6 @@
 import { TextInput } from 'react-native-paper';
 import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
-import * as React from 'react';
-import { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../../Theme';
 import { NavBar } from '../NavBar';
 import { extractURL, mockRequestWithResponse, MockResponse } from './utils';
@@ -9,13 +8,13 @@ import { extractURL, mockRequestWithResponse, MockResponse } from './utils';
 export function EditMockResponse(props: { mockResponse: MockResponse; onPressBack: () => void; update: boolean }) {
   const theme = useContext(ThemeContext);
 
-  const [url, setUrl] = React.useState<string>();
-  const [method, setMethod] = React.useState<string>(); // [GET, POST, PUT, PATCH, DELETE
-  const [headers, setHeaders] = React.useState<string>();
-  const [body, setBody] = React.useState<string>();
-  const [code, setCode] = React.useState<string>();
-  const [active, setActive] = React.useState<boolean>(true);
-  const [to, setTo] = React.useState<string>();
+  const [url, setUrl] = useState<string>();
+  const [method, setMethod] = useState<string>(); // [GET, POST, PUT, PATCH, DELETE
+  const [headers, setHeaders] = useState<string>();
+  const [body, setBody] = useState<string>();
+  const [code, setCode] = useState<string>();
+  const [active, setActive] = useState<boolean>(true);
+  const [to, setTo] = useState<string>();
 
   useEffect(() => {
     setUrl(props.mockResponse.url);

@@ -53,7 +53,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
   const [update, setUpdate] = useState(false);
   const [showMockNavigator, setShowMockNavigator] = useState<boolean>(false);
 
-  let colorScheme: any = useColorScheme();
+  let colorScheme = useColorScheme() || 'light';
   colorScheme = props.theme ? props.theme : colorScheme;
 
   // At this time, if it's not light, that will be dark. No other possibility

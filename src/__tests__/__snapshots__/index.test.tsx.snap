@@ -28,55 +28,72 @@ exports[`Index test suite should contains the details screen - style={{ height: 
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={true}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={true}
     >
       <View
         style={
           Object {
-            "height": 0,
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={true}
-          maxRequests={100}
-          nRequests={true}
-          onPress={[MockFunction]}
-          onPressClose={[Function]}
-          onPressDetail={[MockFunction]}
-          reduxActions={true}
-          rnRequests={true}
-          showStats={true}
-          testId="mainScreen"
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "height": "100%",
+        <View
+          style={
+            Object {
+              "height": 0,
+            }
           }
-        }
-      >
-        <Details
-          item={true}
-          onPressBack={[MockFunction]}
-          testId="detailScreen"
-        />
+        >
+          <Main
+            clearAll={[Function]}
+            connections={true}
+            maxRequests={100}
+            nRequests={true}
+            onPress={[MockFunction]}
+            onPressClose={[Function]}
+            onPressDetail={[MockFunction]}
+            onShowMocksList={[Function]}
+            reduxActions={true}
+            rnRequests={true}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        >
+          <Details
+            item={true}
+            onEditMockResponse={[Function]}
+            onPressBack={[MockFunction]}
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={true}
+        >
+          <MockingNavigator
+            mockResponse={true}
+            onPressBack={[Function]}
+            update={true}
+          />
+        </Modal>
       </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -108,97 +125,114 @@ exports[`Index test suite should contains the main screen with flatlist - style=
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
     >
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={false}
-          maxRequests={100}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+        <View
+          style={
+            Object {
+              "height": "100%",
             }
           }
-          onPressClose={[Function]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
+        >
+          <Main
+            clearAll={[Function]}
+            connections={false}
+            maxRequests={100}
+            nRequests={false}
+            onPress={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
                 ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onPressClose={[Function]}
+            onPressDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onShowMocksList={[Function]}
+            reduxActions={false}
+            rnRequests={false}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
             }
           }
-          reduxActions={false}
-          rnRequests={false}
-          showStats={true}
-          testId="mainScreen"
-        />
+        >
+          <Details
+            item={false}
+            onEditMockResponse={[Function]}
+            onPressBack={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={false}
+        >
+          <MockingNavigator
+            mockResponse={false}
+            onPressBack={[Function]}
+            update={false}
+          />
+        </Modal>
       </View>
-      <View
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -232,97 +266,114 @@ exports[`Index test suite should have Netwatch visible 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
     >
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={false}
-          maxRequests={100}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+        <View
+          style={
+            Object {
+              "height": "100%",
             }
           }
-          onPressClose={[Function]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
+        >
+          <Main
+            clearAll={[Function]}
+            connections={false}
+            maxRequests={100}
+            nRequests={false}
+            onPress={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
                 ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onPressClose={[Function]}
+            onPressDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onShowMocksList={[Function]}
+            reduxActions={false}
+            rnRequests={false}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
             }
           }
-          reduxActions={false}
-          rnRequests={false}
-          showStats={true}
-          testId="mainScreen"
-        />
+        >
+          <Details
+            item={false}
+            onEditMockResponse={[Function]}
+            onPressBack={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={false}
+        >
+          <MockingNavigator
+            mockResponse={false}
+            onPressBack={[Function]}
+            update={false}
+          />
+        </Modal>
       </View>
-      <View
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -354,118 +405,135 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
     >
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={false}
-          maxRequests={50}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+        <View
+          style={
+            Object {
+              "height": "100%",
             }
           }
-          onPressClose={[MockFunction]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
+        >
+          <Main
+            clearAll={[Function]}
+            connections={false}
+            maxRequests={50}
+            nRequests={false}
+            onPress={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
+                  Array [
+                    true,
+                  ],
                 ],
-                Array [
-                  true,
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
                 ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+              }
+            }
+            onPressClose={[MockFunction]}
+            onPressDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onShowMocksList={[Function]}
+            reduxActions={false}
+            rnRequests={false}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
             }
           }
-          reduxActions={false}
-          rnRequests={false}
-          showStats={true}
-          testId="mainScreen"
-        />
+        >
+          <Details
+            item={false}
+            onEditMockResponse={[Function]}
+            onPressBack={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
+                  Array [
+                    true,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={false}
+        >
+          <MockingNavigator
+            mockResponse={false}
+            onPressBack={[Function]}
+            update={false}
+          />
+        </Modal>
       </View>
-      <View
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-                Array [
-                  true,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -497,97 +565,114 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
     >
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={false}
-          maxRequests={50}
-          nRequests={false}
-          onPress={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+        <View
+          style={
+            Object {
+              "height": "100%",
             }
           }
-          onPressClose={[MockFunction]}
-          onPressDetail={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
+        >
+          <Main
+            clearAll={[Function]}
+            connections={false}
+            maxRequests={50}
+            nRequests={false}
+            onPress={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
                 ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onPressClose={[MockFunction]}
+            onPressDetail={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            onShowMocksList={[Function]}
+            reduxActions={false}
+            rnRequests={false}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
             }
           }
-          reduxActions={false}
-          rnRequests={false}
-          showStats={true}
-          testId="mainScreen"
-        />
+        >
+          <Details
+            item={false}
+            onEditMockResponse={[Function]}
+            onPressBack={
+              [MockFunction] {
+                "calls": Array [
+                  Array [
+                    false,
+                  ],
+                ],
+                "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={false}
+        >
+          <MockingNavigator
+            mockResponse={false}
+            onPressBack={[Function]}
+            update={false}
+          />
+        </Modal>
       </View>
-      <View
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={false}
-          onPressBack={
-            [MockFunction] {
-              "calls": Array [
-                Array [
-                  false,
-                ],
-              ],
-              "results": Array [
-                Object {
-                  "type": "return",
-                  "value": undefined,
-                },
-              ],
-            }
-          }
-          testId="detailScreen"
-        />
-      </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -619,67 +704,83 @@ exports[`Index test suite should render properly 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={false}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={false}
     >
       <View
         style={
           Object {
-            "height": "100%",
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={Array []}
-          maxRequests={100}
-          nRequests={Array []}
-          onPress={[Function]}
-          onPressClose={[Function]}
-          onPressDetail={[Function]}
-          reduxActions={Array []}
-          rnRequests={Array []}
-          showStats={true}
-          testId="mainScreen"
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "height": 0,
-          }
-        }
-      >
-        <Details
-          item={
-            ReduxAction {
-              "_id": -1,
-              "action": Object {
-                "payload": "",
-                "type": "__ERROR:UNDEFINED__",
-              },
-              "extra": "",
-              "startTime": 1554632430000,
-              "stringifiedAction": "",
-              "type": "REDUX",
+        <View
+          style={
+            Object {
+              "height": "100%",
             }
           }
-          onPressBack={[Function]}
-          testId="detailScreen"
-        />
+        >
+          <Main
+            clearAll={[Function]}
+            connections={Array []}
+            maxRequests={100}
+            nRequests={Array []}
+            onPress={[Function]}
+            onPressClose={[Function]}
+            onPressDetail={[Function]}
+            onShowMocksList={[Function]}
+            reduxActions={Array []}
+            rnRequests={Array []}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": 0,
+            }
+          }
+        >
+          <Details
+            item={
+              ReduxAction {
+                "_id": -1,
+                "action": Object {
+                  "payload": "",
+                  "type": "__ERROR:UNDEFINED__",
+                },
+                "extra": "",
+                "startTime": 1554632430000,
+                "stringifiedAction": "",
+                "type": "REDUX",
+              }
+            }
+            onEditMockResponse={[Function]}
+            onPressBack={[Function]}
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={false}
+        >
+          <MockingNavigator
+            onPressBack={[Function]}
+            update={false}
+          />
+        </Modal>
       </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -711,55 +812,72 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={true}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={true}
     >
       <View
         style={
           Object {
-            "height": 0,
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={true}
-          maxRequests={100}
-          nRequests={true}
-          onPress={[MockFunction]}
-          onPressClose={[Function]}
-          onPressDetail={[MockFunction]}
-          reduxActions={true}
-          rnRequests={true}
-          showStats={true}
-          testId="mainScreen"
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "height": "100%",
+        <View
+          style={
+            Object {
+              "height": 0,
+            }
           }
-        }
-      >
-        <Details
-          item={true}
-          onPressBack={[MockFunction]}
-          testId="detailScreen"
-        />
+        >
+          <Main
+            clearAll={[Function]}
+            connections={true}
+            maxRequests={100}
+            nRequests={true}
+            onPress={[MockFunction]}
+            onPressClose={[Function]}
+            onPressDetail={[MockFunction]}
+            onShowMocksList={[Function]}
+            reduxActions={true}
+            rnRequests={true}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        >
+          <Details
+            item={true}
+            onEditMockResponse={[Function]}
+            onPressBack={[MockFunction]}
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={true}
+        >
+          <MockingNavigator
+            mockResponse={true}
+            onPressBack={[Function]}
+            update={true}
+          />
+        </Modal>
       </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;
 
@@ -791,54 +909,71 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
     }
   }
 >
-  <Modal
-    animationType="slide"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    visible={true}
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
+  <Provider>
+    <Modal
+      animationType="slide"
+      hardwareAccelerated={false}
+      onRequestClose={[Function]}
+      visible={true}
     >
       <View
         style={
           Object {
-            "height": 0,
+            "flex": 1,
           }
         }
       >
-        <Main
-          clearAll={[Function]}
-          connections={true}
-          maxRequests={20}
-          nRequests={true}
-          onPress={[MockFunction]}
-          onPressClose={[Function]}
-          onPressDetail={[MockFunction]}
-          reduxActions={true}
-          rnRequests={true}
-          showStats={true}
-          testId="mainScreen"
-        />
-      </View>
-      <View
-        style={
-          Object {
-            "height": "100%",
+        <View
+          style={
+            Object {
+              "height": 0,
+            }
           }
-        }
-      >
-        <Details
-          item={true}
-          onPressBack={[MockFunction]}
-          testId="detailScreen"
-        />
+        >
+          <Main
+            clearAll={[Function]}
+            connections={true}
+            maxRequests={20}
+            nRequests={true}
+            onPress={[MockFunction]}
+            onPressClose={[Function]}
+            onPressDetail={[MockFunction]}
+            onShowMocksList={[Function]}
+            reduxActions={true}
+            rnRequests={true}
+            showStats={true}
+            testId="mainScreen"
+          />
+        </View>
+        <View
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        >
+          <Details
+            item={true}
+            onEditMockResponse={[Function]}
+            onPressBack={[MockFunction]}
+            testId="detailScreen"
+          />
+        </View>
+        <Modal
+          animationType="slide"
+          hardwareAccelerated={false}
+          onRequestClose={[Function]}
+          statusBarTranslucent={true}
+          visible={true}
+        >
+          <MockingNavigator
+            mockResponse={true}
+            onPressBack={[Function]}
+            update={true}
+          />
+        </Modal>
       </View>
-    </View>
-  </Modal>
+    </Modal>
+  </Provider>
 </ContextProvider>
 `;

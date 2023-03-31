@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Mock navigator Screen should render Edit mock screen properly 1`] = `Object {}`;
+
+exports[`Test Mock navigator Screen should render mock list properly 1`] = `Object {}`;
