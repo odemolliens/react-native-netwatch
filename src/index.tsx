@@ -166,7 +166,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       stopNativeLoop();
       _ConnectionLogger.resetCallback();
       setReduxActionsCallback(() => {});
-    } else {
+    }
+  }, [props.enabled, props.useReactotron]);
+
+  React.useEffect(() => {
+    if (props.enabled) {
       if (props.interceptIOS) {
         RNNetwatch.startNetwatch();
       }
@@ -181,7 +185,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       setReduxActionsCallback(setReduxActions);
       setupMocks(); // Setup mock responses AFTER everything else in setup
     }
-  }, [props.enabled, props.interceptIOS, props.maxRequests, props.reduxConfig, props.useReactotron, startNativeLoop]);
+  }, [props.enabled, props.interceptIOS, props.maxRequests, props.reduxConfig, startNativeLoop]);
 
   React.useEffect(() => {
     if (!visible) {

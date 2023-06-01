@@ -130,7 +130,7 @@ exports[`Index test suite should contains the main screen with flatlist - style=
       animationType="slide"
       hardwareAccelerated={false}
       onRequestClose={[Function]}
-      visible={false}
+      visible={true}
     >
       <View
         style={
@@ -142,15 +142,15 @@ exports[`Index test suite should contains the main screen with flatlist - style=
         <View
           style={
             Object {
-              "height": "100%",
+              "height": 0,
             }
           }
         >
           <Main
             clearAll={[Function]}
-            connections={false}
+            connections={true}
             maxRequests={100}
-            nRequests={false}
+            nRequests={true}
             onPress={
               [MockFunction] {
                 "calls": Array [
@@ -183,8 +183,8 @@ exports[`Index test suite should contains the main screen with flatlist - style=
               }
             }
             onShowMocksList={[Function]}
-            reduxActions={false}
-            rnRequests={false}
+            reduxActions={true}
+            rnRequests={true}
             showStats={true}
             testId="mainScreen"
           />
@@ -192,12 +192,12 @@ exports[`Index test suite should contains the main screen with flatlist - style=
         <View
           style={
             Object {
-              "height": 0,
+              "height": "100%",
             }
           }
         >
           <Details
-            item={false}
+            item={true}
             onEditMockResponse={[Function]}
             onPressBack={
               [MockFunction] {
@@ -222,12 +222,12 @@ exports[`Index test suite should contains the main screen with flatlist - style=
           hardwareAccelerated={false}
           onRequestClose={[Function]}
           statusBarTranslucent={true}
-          visible={false}
+          visible={true}
         >
           <MockingNavigator
-            mockResponse={false}
+            mockResponse={true}
             onPressBack={[Function]}
-            update={false}
+            update={true}
           />
         </Modal>
       </View>
@@ -237,145 +237,6 @@ exports[`Index test suite should contains the main screen with flatlist - style=
 `;
 
 exports[`Index test suite should have Netwatch disabled 1`] = `""`;
-
-exports[`Index test suite should have Netwatch visible 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "base00": "#1F2937",
-      "base03": "#06B6D4",
-      "base07": "#D1D5DB",
-      "base08": "#B91C1C",
-      "base09": "#D97706",
-      "base0B": "#4D7C0F",
-      "base0D": "#F9FAFB",
-      "black": "#000",
-      "failedColor": "#B91C1C",
-      "primaryColor": "#06B6D4",
-      "reduxColor": "#764ABC",
-      "secondaryColor": "#1F2937",
-      "secondaryDarkColor": "#111827",
-      "secondaryLightColor": "#374151",
-      "successColor": "#4D7C0F",
-      "textColorFour": "#6B7280",
-      "textColorOne": "#F9FAFB",
-      "textColorThree": "#9CA3AF",
-      "textColorTwo": "#D1D5DB",
-      "warningColor": "#D97706",
-      "white": "#FFF",
-    }
-  }
->
-  <Provider>
-    <Modal
-      animationType="slide"
-      hardwareAccelerated={false}
-      onRequestClose={[Function]}
-      visible={false}
-    >
-      <View
-        style={
-          Object {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        >
-          <Main
-            clearAll={[Function]}
-            connections={false}
-            maxRequests={100}
-            nRequests={false}
-            onPress={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            onPressClose={[Function]}
-            onPressDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            onShowMocksList={[Function]}
-            reduxActions={false}
-            rnRequests={false}
-            showStats={true}
-            testId="mainScreen"
-          />
-        </View>
-        <View
-          style={
-            Object {
-              "height": 0,
-            }
-          }
-        >
-          <Details
-            item={false}
-            onEditMockResponse={[Function]}
-            onPressBack={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            testId="detailScreen"
-          />
-        </View>
-        <Modal
-          animationType="slide"
-          hardwareAccelerated={false}
-          onRequestClose={[Function]}
-          statusBarTranslucent={true}
-          visible={false}
-        >
-          <MockingNavigator
-            mockResponse={false}
-            onPressBack={[Function]}
-            update={false}
-          />
-        </Modal>
-      </View>
-    </Modal>
-  </Provider>
-</ContextProvider>
-`;
 
 exports[`Index test suite should have Netwatch warning if not disabledShake but onPressClose 1`] = `
 <ContextProvider
@@ -410,7 +271,7 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
       animationType="slide"
       hardwareAccelerated={false}
       onRequestClose={[Function]}
-      visible={false}
+      visible={true}
     >
       <View
         style={
@@ -422,15 +283,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
         <View
           style={
             Object {
-              "height": "100%",
+              "height": 0,
             }
           }
         >
           <Main
             clearAll={[Function]}
-            connections={false}
+            connections={true}
             maxRequests={50}
-            nRequests={false}
+            nRequests={true}
             onPress={
               [MockFunction] {
                 "calls": Array [
@@ -440,8 +301,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                   Array [
                     true,
                   ],
+                  Array [
+                    true,
+                  ],
                 ],
                 "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -463,8 +331,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                   Array [
                     true,
                   ],
+                  Array [
+                    true,
+                  ],
                 ],
                 "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -477,8 +352,8 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
               }
             }
             onShowMocksList={[Function]}
-            reduxActions={false}
-            rnRequests={false}
+            reduxActions={true}
+            rnRequests={true}
             showStats={true}
             testId="mainScreen"
           />
@@ -486,12 +361,12 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
         <View
           style={
             Object {
-              "height": 0,
+              "height": "100%",
             }
           }
         >
           <Details
-            item={false}
+            item={true}
             onEditMockResponse={[Function]}
             onPressBack={
               [MockFunction] {
@@ -502,8 +377,15 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
                   Array [
                     true,
                   ],
+                  Array [
+                    true,
+                  ],
                 ],
                 "results": Array [
+                  Object {
+                    "type": "return",
+                    "value": undefined,
+                  },
                   Object {
                     "type": "return",
                     "value": undefined,
@@ -523,12 +405,12 @@ exports[`Index test suite should have Netwatch warning if not disabledShake but 
           hardwareAccelerated={false}
           onRequestClose={[Function]}
           statusBarTranslucent={true}
-          visible={false}
+          visible={true}
         >
           <MockingNavigator
-            mockResponse={false}
+            mockResponse={true}
             onPressBack={[Function]}
-            update={false}
+            update={true}
           />
         </Modal>
       </View>
@@ -570,7 +452,7 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
       animationType="slide"
       hardwareAccelerated={false}
       onRequestClose={[Function]}
-      visible={false}
+      visible={true}
     >
       <View
         style={
@@ -582,15 +464,15 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
         <View
           style={
             Object {
-              "height": "100%",
+              "height": 0,
             }
           }
         >
           <Main
             clearAll={[Function]}
-            connections={false}
+            connections={true}
             maxRequests={50}
-            nRequests={false}
+            nRequests={true}
             onPress={
               [MockFunction] {
                 "calls": Array [
@@ -623,8 +505,8 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
               }
             }
             onShowMocksList={[Function]}
-            reduxActions={false}
-            rnRequests={false}
+            reduxActions={true}
+            rnRequests={true}
             showStats={true}
             testId="mainScreen"
           />
@@ -632,12 +514,12 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
         <View
           style={
             Object {
-              "height": 0,
+              "height": "100%",
             }
           }
         >
           <Details
-            item={false}
+            item={true}
             onEditMockResponse={[Function]}
             onPressBack={
               [MockFunction] {
@@ -662,12 +544,12 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
           hardwareAccelerated={false}
           onRequestClose={[Function]}
           statusBarTranslucent={true}
-          visible={false}
+          visible={true}
         >
           <MockingNavigator
-            mockResponse={false}
+            mockResponse={true}
             onPressBack={[Function]}
-            update={false}
+            update={true}
           />
         </Modal>
       </View>

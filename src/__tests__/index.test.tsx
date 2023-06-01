@@ -59,31 +59,40 @@ describe('Index test suite', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should call setVisible', () => {
+  it('should call setVisible true', () => {
     let useStateMock: any = (visible: any) => [false, setVisible];
+    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
+    givenProps(true, true);
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    givenComponent();
+    expect(setVisible).toHaveBeenCalledTimes(1);
+    expect(setVisible).toHaveBeenCalledWith(true);
+  });
+
+  it('should call setVisible false', () => {
+    let useStateMock: any = (visible: any) => [true, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(false, true);
     mockUseEffect();
-    givenComponent();
     mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    mockUseEffect();
+    givenComponent();
     expect(setVisible).toHaveBeenCalledTimes(1);
+    expect(setVisible).toHaveBeenCalledWith(false);
   });
 
   it('should have Netwatch disabled', () => {
-    givenProps(true, true);
+    givenProps(false, false);
     mockUseEffect();
     mockUseEffect();
-    givenProps(true, false);
-    givenComponent();
     mockUseEffect();
     mockUseEffect();
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should have Netwatch visible', () => {
-    givenProps(false, true);
-    mockUseEffect();
-    givenProps(true, true);
     mockUseEffect();
     givenComponent();
     expect(component).toMatchSnapshot();
@@ -109,9 +118,8 @@ describe('Index test suite', () => {
   });
 
   it('should contains the main screen with flatlist - style={{ height: "100%"}}', () => {
-    givenProps(true, false);
-    mockUseEffect();
     givenProps(true, true);
+    mockUseEffect();
     mockUseEffect();
     givenComponent();
     expect(component).toMatchSnapshot();
