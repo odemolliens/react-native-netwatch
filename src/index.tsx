@@ -185,6 +185,18 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
       }
       setReduxMaxActions(props.maxRequests);
       setReduxActionsCallback(setReduxActions);
+    }
+  }, [
+    props.enabled,
+    props.interceptIOS,
+    props.maxRequests,
+    props.reduxConfig,
+    startNativeLoop,
+    props.loadMockPresetFromClipboard,
+  ]);
+
+  React.useEffect(() => {
+    if (props.enabled) {
       if (props.loadMockPresetFromClipboard) {
         Clipboard.getString().then(responses => {
           if (responses) {
@@ -196,14 +208,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         setupMocks(); // Setup mock responses AFTER everything else in setup
       }
     }
-  }, [
-    props.enabled,
-    props.interceptIOS,
-    props.maxRequests,
-    props.reduxConfig,
-    startNativeLoop,
-    props.loadMockPresetFromClipboard,
-  ]);
+  }, [props.enabled]);
 
   React.useEffect(() => {
     if (!visible) {
