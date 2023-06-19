@@ -68,6 +68,7 @@ describe('Index test suite', () => {
     mockUseEffect();
     mockUseEffect();
     mockUseEffect();
+    mockUseEffect();
     givenComponent();
     expect(setVisible).toHaveBeenCalledTimes(1);
     expect(setVisible).toHaveBeenCalledWith(true);
@@ -77,6 +78,7 @@ describe('Index test suite', () => {
     let useStateMock: any = (visible: any) => [true, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(false, true);
+    mockUseEffect();
     mockUseEffect();
     mockUseEffect();
     mockUseEffect();
