@@ -60,6 +60,7 @@ export function extractURL(url: string) {
 
 // istanbul ignore next
 export function setupMocks() {
+  mockResponses.length = 0;
   RNFS.readFile(FILE_PATH, 'utf8')
     .then((mockResponsesString: string) => {
       mockResponses.push(...(JSON.parse(mockResponsesString || '[]') as MockResponse[]));

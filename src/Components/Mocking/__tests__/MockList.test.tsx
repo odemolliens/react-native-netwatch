@@ -75,7 +75,7 @@ describe('Test Mock List Screen', () => {
     thenShouldResetMockResponses();
   });
 
-  it('should not paste anything if clipboard is empty', async function () {
+  it('should not paste anything if clipboard is empty', async () => {
     givenClipboardContent('');
     givenNavbarRightSide();
     await whenPressingPasteButton();
