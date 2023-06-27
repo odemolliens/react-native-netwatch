@@ -17,7 +17,13 @@ import { ReduxAction } from './Core/Objects/ReduxAction';
 import { NRequest } from './Core/Objects/NRequest';
 import { ConnectionInfo } from './Core/Objects/ConnectionInfo';
 import { ThemeContext, themes } from './Theme';
-import { clearMockResponses, MockResponse, resetMockResponses, setupMocks } from './Components/Mocking/utils';
+import {
+  clearMockResponses,
+  mockRequestWithResponse,
+  MockResponse,
+  resetMockResponses,
+  setupMocks,
+} from './Components/Mocking/utils';
 import { MockingNavigator } from './Components/Mocking';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -34,6 +40,7 @@ export interface IProps {
   showStats?: boolean;
   useReactotron?: boolean;
   loadMockPresetFromClipboard?: boolean;
+  mockPresets?: Array<MockResponse>;
 }
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
@@ -204,11 +211,16 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
           }
           setupMocks();
         });
+      } else if (Array.isArray(props.mockPresets)) {
+        props.mockPresets.forEach(preset => {
+          mockRequestWithResponse(preset);
+        });
+        setupMocks();
       } else {
-        setupMocks(); // Setup mock responses AFTER everything else in setup
+        setupMocks();
       }
     }
-  }, [props.enabled]);
+  }, [props.enabled, props.loadMockPresetFromClipboard, props.mockPresets]);
 
   React.useEffect(() => {
     if (!visible) {
