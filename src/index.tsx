@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
+import base64 from 'react-native-base64';
 import { DeviceEventEmitter, EmitterSubscription, Modal, NativeModules, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
@@ -27,6 +28,7 @@ import {
 import { MockingNavigator } from './Components/Mocking';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import Clipboard from '@react-native-clipboard/clipboard';
+import { LaunchArguments } from 'react-native-launch-arguments';
 
 export interface IProps {
   visible?: boolean;
@@ -40,8 +42,10 @@ export interface IProps {
   showStats?: boolean;
   useReactotron?: boolean;
   loadMockPresetFromClipboard?: boolean;
+  loadMockPresetFromInputParameters?: boolean;
   mockPresets?: Array<MockResponse>;
 }
+
 export const reduxLogger = reduxLoggerMiddleware;
 export const _RNLogger = new RNLogger();
 export const _ConnectionLogger = new ConnectionLogger();
@@ -204,23 +208,29 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
 
   React.useEffect(() => {
     if (props.enabled) {
-      if (props.loadMockPresetFromClipboard) {
-        Clipboard.getString().then(responses => {
-          if (responses) {
-            resetMockResponses(responses);
+      try {
+        if (props.loadMockPresetFromInputParameters) {
+          const args = LaunchArguments.value<{ netwatchMocks: string }>();
+          if (args && args.netwatchMocks) {
+            resetMockResponses(base64.decode(args.netwatchMocks));
           }
-          setupMocks();
-        });
-      } else if (Array.isArray(props.mockPresets)) {
-        props.mockPresets.forEach(preset => {
-          mockRequestWithResponse(preset);
-        });
-        setupMocks();
-      } else {
-        setupMocks();
+        } else if (props.loadMockPresetFromClipboard) {
+          Clipboard.getString().then(responses => {
+            if (responses) {
+              resetMockResponses(responses);
+            }
+          });
+        } else if (Array.isArray(props.mockPresets)) {
+          props.mockPresets.forEach(preset => {
+            mockRequestWithResponse(preset);
+          });
+        }
+      } catch (e) {
+        console.error(e);
       }
+      setupMocks();
     }
-  }, [props.enabled, props.loadMockPresetFromClipboard, props.mockPresets]);
+  }, [props.enabled, props.loadMockPresetFromClipboard, props.loadMockPresetFromInputParameters, props.mockPresets]);
 
   React.useEffect(() => {
     if (!visible) {
