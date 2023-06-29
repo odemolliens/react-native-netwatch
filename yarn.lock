@@ -6315,6 +6315,11 @@ react-native-json-tree@^1.3.0:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
 
+react-native-launch-arguments@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-launch-arguments/-/react-native-launch-arguments-4.0.0.tgz#5976181c958de15af53c2d07b0b563bc93358bd4"
+  integrity sha512-JyzZOii5Is7OyyEY/8SrdD6XtyQiyMKoTyz7zVMa+7IMMldxqboiJXLKsmEBAVOtEAMYMJE+hd/xVYdVp6YxRg==
+
 react-native-paper@^4.7.1:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.7.2.tgz#a40d1da87af5b030d45b525313cd703d490876ff"
