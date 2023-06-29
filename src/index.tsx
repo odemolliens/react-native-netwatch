@@ -209,9 +209,11 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
     if (props.enabled) {
       try {
         if (props.loadMockPresetFromInputParameters) {
-          const args = LaunchArguments.value<{ netwatchMocks: string }>();
-          if (args && args.netwatchMocks) {
-            resetMockResponses(args.netwatchMocks);
+          const args = LaunchArguments.value<{ netwatchMocks: MockResponse[] }>();
+          if (args && args.netwatchMocks && Array.isArray(args.netwatchMocks)) {
+            args.netwatchMocks.forEach(preset => {
+              mockRequestWithResponse(preset);
+            });
           }
         } else if (props.loadMockPresetFromClipboard) {
           Clipboard.getString().then(responses => {
