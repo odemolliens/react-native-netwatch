@@ -1,6 +1,6 @@
 {
   "name": "react-native-netwatch",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "src/index.tsx",
@@ -78,7 +78,6 @@
     "@react-native-community/netinfo": "*",
     "react": "*",
     "react-native": "*",
-    "react-native-base64": "*",
     "react-native-device-info": "*",
     "react-native-fs": "*",
     "react-native-launch-arguments": "*",
