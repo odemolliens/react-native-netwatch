@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
-import base64 from 'react-native-base64';
 import { DeviceEventEmitter, EmitterSubscription, Modal, NativeModules, useColorScheme, View } from 'react-native';
 import { Details } from './Components/Details';
 import { Main } from './Components/Main';
@@ -212,7 +211,7 @@ export const Netwatch: React.FC<IProps> = (props: IProps) => {
         if (props.loadMockPresetFromInputParameters) {
           const args = LaunchArguments.value<{ netwatchMocks: string }>();
           if (args && args.netwatchMocks) {
-            resetMockResponses(base64.decode(args.netwatchMocks));
+            resetMockResponses(args.netwatchMocks);
           }
         } else if (props.loadMockPresetFromClipboard) {
           Clipboard.getString().then(responses => {
