@@ -27,7 +27,7 @@ import {
 import { MockingNavigator } from './Components/Mocking';
 import { DarkTheme, Provider as PaperProvider } from 'react-native-paper';
 import Clipboard from '@react-native-clipboard/clipboard';
-import { LaunchArguments } from 'react-native-launch-arguments';
+import { LaunchArguments } from "@proximus/react-native-launch-arguments";
 
 export interface IProps {
   visible?: boolean;
