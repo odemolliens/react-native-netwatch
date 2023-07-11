@@ -59,7 +59,7 @@
     "react-native": "0.64.1",
     "react-native-device-info": "^8.0.2",
     "react-native-fs": "^2.20.0",
-    "@proximus/react-native-launch-arguments": "^1.0.1",
+    "react-native-launch-arguments": "4.0.1",
     "react-native-paper": "^4.7.1",
     "react-native-share": "^5.1.4",
     "react-native-vector-icons": "^8.0.0",
