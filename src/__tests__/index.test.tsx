@@ -8,6 +8,9 @@ import EventEmitter from 'react-native/Libraries/vendor/emitter/EventEmitter';
 import RCTDeviceEventEmitter from 'react-native/Libraries/EventEmitter/RCTDeviceEventEmitter';
 
 jest.mock('../Components/Mocking/utils');
+jest.mock('react-native-launch-arguments', () => ({
+  value: jest.fn(),
+}));
 
 /**
  * Mock the NativeEventEmitter as a normal JS EventEmitter.
@@ -60,7 +63,7 @@ describe('Index test suite', () => {
   });
 
   it('should call setVisible true', () => {
-    let useStateMock: any = (visible: any) => [false, setVisible];
+    const useStateMock: any = (visible: any) => [false, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true);
     mockUseEffect();
@@ -75,7 +78,7 @@ describe('Index test suite', () => {
   });
 
   it('should call setVisible false', () => {
-    let useStateMock: any = (visible: any) => [true, setVisible];
+    const useStateMock: any = (visible: any) => [true, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(false, true);
     mockUseEffect();
@@ -128,7 +131,7 @@ describe('Index test suite', () => {
   });
 
   it('should contains the details screen - style={{ height: "100%"}}', () => {
-    let useStateMock: any = (showDetails: any) => [true, setShowDetails];
+    const useStateMock: any = (showDetails: any) => [true, setShowDetails];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true);
     givenComponent();
@@ -155,7 +158,7 @@ describe('Index test suite', () => {
   });
 
   it('should render properly Main component and close main component called setVisible', () => {
-    let useStateMock: any = (visible: any) => [visible, setVisible];
+    const useStateMock: any = (visible: any) => [visible, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 20);
     givenComponent();
@@ -166,7 +169,7 @@ describe('Index test suite', () => {
 
   it('should render properly Modal and called setVisible when back is pressed', () => {
     // Case when shake is actived
-    let useStateMock: any = (visible: any) => [visible, setVisible];
+    const useStateMock: any = (visible: any) => [visible, setVisible];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 20);
     givenComponent();
@@ -186,7 +189,7 @@ describe('Index test suite', () => {
 
   it('should render properly Modal and called setShowDetails when back is pressed', () => {
     // Case when the Details page is visible
-    let useStateMock: any = (showDetails: any) => [true, setShowDetails];
+    const useStateMock: any = (showDetails: any) => [true, setShowDetails];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
     givenProps(true, true, 20, true, true, 'dark', onPressClose);
     givenComponent();

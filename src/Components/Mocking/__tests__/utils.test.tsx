@@ -57,7 +57,7 @@ describe('Test utils module', () => {
     await mockRequestWithResponse(updatedMockResponse);
 
     // Then
-    expect(getMockResponses()[0]).toEqual({ ...updatedMockResponse, active: true, date: 1001 });
+    expect(getMockResponses()[0]).toEqual({ ...updatedMockResponse, date: 1001 });
     expect(RNFS.writeFile).toHaveBeenCalledWith(FILE_PATH, JSON.stringify(getMockResponses()), 'utf8');
   });
 
@@ -74,7 +74,7 @@ describe('Test utils module', () => {
     await mockRequestWithResponse(newMockResponse);
 
     // Then
-    expect(getMockResponses()[0]).toEqual({ ...newMockResponse, active: true, date: 1000 });
+    expect(getMockResponses()[0]).toEqual({ ...newMockResponse, date: 1000 });
     expect(RNFS.writeFile).toHaveBeenCalledWith(FILE_PATH, JSON.stringify(getMockResponses()), 'utf8');
   });
 

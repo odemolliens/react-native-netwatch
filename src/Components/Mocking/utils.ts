@@ -1,6 +1,6 @@
 import RNFS from 'react-native-fs';
 
-export const FILE_PATH = RNFS.DocumentDirectoryPath + 'Netwatch.mockResponses.35435664445664';
+export const FILE_PATH = RNFS.DocumentDirectoryPath + '/Netwatch.mockResponses.35435664445664';
 
 export const mockResponses: MockResponse[] = [];
 
@@ -35,8 +35,7 @@ export function mockRequestWithResponse(mockResponse: MockResponse) {
   for (let i = 0; i < mockResponses.length; i++) {
     if (mockResponses[i].url === mockResponse.url && mockResponses[i].method === mockResponse.method) {
       mockResponses[i] = {
-        ...mockResponse,
-        active: true,
+        ...mockResponse
       };
       found = true;
       break;
