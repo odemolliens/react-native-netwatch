@@ -41,7 +41,7 @@ export function NavbarRightSide(props: {
                   url: `${RNFS.DocumentDirectoryPath}/mocks-preset.json`,
                   type: 'text/plain',
                   // excludedActivityTypes: []
-                }).then(() => {
+                }).finally(() => {
                   RNFS.unlink(`${RNFS.DocumentDirectoryPath}/mocks-preset.json`);
                 });
               })
