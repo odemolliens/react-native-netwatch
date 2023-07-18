@@ -97,7 +97,6 @@ Netwatch with a button from your app, you **must** disable shake and instead pas
 #### Active Netwatch by shaking your phone
 
 ```javascript
-{...}
 
 import { Netwatch } from 'react-native-netwatch';
 
@@ -121,7 +120,6 @@ export default App;
 #### Active Netwatch with a button
 
 ```javascript
-{...}
 
 import { Netwatch } from 'react-native-netwatch';
 
@@ -169,7 +167,7 @@ const createReducer = () => (state, action) =>
 
 const store = createStore(
   createReducer(),
-  compose(applyMiddleware(reduxLogger)actionLog.enhancer),
+  compose(applyMiddleware(reduxLogger)),
 );
 
 export default store;
@@ -232,7 +230,6 @@ To do that, you must passed to Netwatch a props called reduxConfig. This is an o
 All values **must** be string.
 
 ```javascript
-{...}
 
 import { Netwatch } from 'react-native-netwatch';
 
@@ -284,4 +281,251 @@ At this moment, it is not possible to display requests into Netwatch and Reactot
 |  reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
 | useReactotron | Boolean  |   false   |     no      | Redirect requests to Reactotron instead of Netwatch          |
 |     theme     |  String  |  'dark'   |     no      | Possible values are 'dark' or 'light'                        |
+
+
+## Mocking Responses
+
+Netwatch also provides a way to mock responses which is useful during testing and development.
+
+## Using Netwatch UI for Mocking
+
+Netwatch UI provides a user-friendly way to create, export, and import mocks directly from the mobile application.
+
+### Creating Mocks
+
+To create a mock:
+
+1. Open the Netwatch UI by shaking the device or triggering the configured gesture.
+2. Tap on any HTTP request in the list.
+3. Tap on the "Mock Request" button.
+4. Fill in the HTTP method, URL, status code, and response body fields. (leave blank to keep the original value)
+5. Tap "Save".
+
+<p float="left" align="center">
+  <img src="assets/creating.gif" width="300" />
+</p>
+
+### Exporting Mocks
+
+To export a mock:
+
+1. Open the Netwatch UI.
+2. Navigate to the "Mock List" screen by tapping top right hamburger menu.
+3. Tap export button in the navigation bar.
+
+The mock will be copied to the clipboard in a JSON format.
+
+<p float="left" align="center">
+  <img src="assets/exporting.gif" width="300" />
+</p>
+
+### Importing Mocks
+
+To import a mock:
+
+1. Copy the mock JSON to your clipboard.
+2. Open the Netwatch UI.
+3. Navigate to the "Mocked List" screen by tapping top right hamburger menu.
+4. Tap on the "Import" button.
+
+The mock from the clipboard will be parsed and added to the list of mocked requests.
+
+<p float="left" align="center">
+  <img src="assets/importing.gif" width="300" />
+</p>
+
+## Enabling and Disabling Mocks
+
+You can easily control which mock responses are active at any time using the Netwatch UI.
+
+### Enabling a Mock
+
+To enable a mock:
+
+1. Open the Netwatch UI.
+2. Navigate to the "Mock List" screen by tapping top right hamburger menu.
+3. Find the mock response you want to enable.
+4. Tap on the mock response. When the switch is on the right and highlighted, the mock is enabled.
+
+### Disabling a Mock
+
+To disable a mock:
+
+1. Open the Netwatch UI.
+2. Navigate to the "Mock List" screen by tapping top right hamburger menu.
+3. Find the mock response you want to disable.
+4. Tap on the mock response. When the switch is on the left and grayed out, the mock is disabled.
+
+
+<p float="left" align="center">
+  <img src="assets/enabling-disabling.gif" width="300" />
+</p>
+
+## Using presets for fast Mocking
+
+Netwatch provides three ways to mock responses with presets using props: 
+
+- via clipboard (`loadMockPresetFromClipboard`)
+- via input parameters (`loadMockPresetFromInputParameters`)
+- via the `mockPresets` prop.
+
+### `mockPresets`
+
+`mockPresets` is an array of `MockResponse` objects defining the mock HTTP request/response behavior.
+
+```jsx
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/users',
+    status: 200,
+    body: { message: 'Success' },
+  },
+];
+
+<Netwatch mockPresets={mockResponses} enabled={true} />;
+```
+
+### `loadMockPresetFromClipboard`
+
+Copy your mock response data to your clipboard in the correct format and set `loadMockPresetFromClipboard` to `true`.
+
+### `loadMockPresetFromInputParameters`
+
+Set `loadMockPresetFromInputParameters` to `true` and pass the mock data as the `mockPresets` prop.
+
+*Note: If both `loadMockPresetFromClipboard` and `loadMockPresetFromInputParameters` are `true`, the data from the clipboard will be used.*
+
+## Advanced Mocking Examples
+
+### Simulating Request Timeouts
+
+Simulate request timeouts with the `timeout` field in `MockResponse`.
+
+```jsx
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/users',
+    status: 200,
+    body: { message: 'Success' },
+    timeout: 5, // Simulates a delay of 5 seconds
+  },
+];
+
+<Netwatch mockPresets={mockResponses} enabled={true} />;
+```
+
+### HTTP Headers Mocking
+
+Mock HTTP headers with the `headers` field in `MockResponse`.
+
+```jsx
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/users',
+    status: 200,
+    body: { message: 'Success' },
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Custom-Header': 'CustomHeaderValue',
+    },
+  },
+];
+
+<Netwatch mockPresets={mockResponses} enabled={true} />;
+```
+
+### Simulating HTTP Error Statuses
+
+Simulate HTTP error statuses such as 401, 500, and 400.
+
+```jsx
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/secure',
+    status: 401,
+    body: { message: 'Unauthorized' },
+  },
+  {
+    method: 'POST',
+    url: '/api/v1/users',
+    status: 500,
+    body: { message: 'Internal Server Error' },
+  },
+  {
+    method: 'POST',
+    url: '/api/v1/users',
+    status: 400,
+    body: { message: 'Bad Request' },
+  },
+];
+
+<Netwatch mockPresets={mockResponses} enabled={true} />;
+```
+
+## Launching App with Netwatch Mocks using Appium
+
+You can integrate Netwatch with Appium to facilitate your automation testing.
+
+### iOS
+
+Use Appium's `mobile: launchApp` method to start your app with specified parameters:
+
+```javascript
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/users',
+    status: 200,
+    body: { message: 'Success' }
+  }
+];
+
+driver.execute('mobile: launchApp', {
+  sessionId: driver.sessionId,
+  bundleId: driver.capabilities.bundleId,
+  arguments: ['-netwatchMocks', JSON.stringify(mockResponses)],
+});
+```
+
+Then in your React Native application, set `loadMockPresetFromInputParameters` to `true`:
+
+```jsx
+<Netwatch enabled={true} loadMockPresetFromInputParameters={true} />
+```
+
+### Android
+
+For Android, use Appium's `startActivity` method:
+
+```javascript
+const mockResponses = [
+  {
+    method: 'GET',
+    url: '/api/v1/users',
+    status: 200,
+    body: { message: 'Success' }
+  }
+];
+
+driver.startActivity(
+  driver.capabilities.appPackage,
+  driver.capabilities.appActivity,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  `--es 'netwatchMocks' '${JSON.stringify(mockResponses)}'`
+);
+```
+
+Then in your React Native application, set `loadMockPresetFromInputParameters` to `true`:
+
+```jsx
+<Netwatch enabled={true} loadMockPresetFromInputParameters={true} />
+```
 
