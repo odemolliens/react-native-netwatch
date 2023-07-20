@@ -40,6 +40,7 @@ To avoid to have too much dependencies and conflict versions, before install, yo
 - react-native-fs
 - react-native-share
 - @react-native-community/netinfo
+- react-native-launch-arguments
 
 #### Fonts
 
