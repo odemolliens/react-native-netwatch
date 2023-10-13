@@ -35,7 +35,7 @@ export function mockRequestWithResponse(mockResponse: MockResponse) {
   for (let i = 0; i < mockResponses.length; i++) {
     if (mockResponses[i].url === mockResponse.url && mockResponses[i].method === mockResponse.method) {
       mockResponses[i] = {
-        ...mockResponse
+        ...mockResponse,
       };
       found = true;
       break;
@@ -105,7 +105,8 @@ export function setupMocks() {
               // @ts-ignore
               this.responseText = mockRequest.response;
               // @ts-ignore
-              this.response = mockRequest.response;
+              // eslint-disable-next-line no-undef
+              this.response = this.responseType === 'blob' ? new Blob([mockRequest.response]) : mockRequest.response;
             }
             if (mockRequest.statusCode) {
               // We rewrite the status code if it is defined
