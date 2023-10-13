@@ -24,7 +24,7 @@ export const getRequestBody = (dataSent: any): string => stringifyData(dataSent)
 
 export const getResponseBody = async (responseType: string, response?: any): Promise<string> => {
   if (!response) return '';
-  const _responseBody = await (responseType !== 'blob' ? response : parseResponseBlob(response));
+  const _responseBody = await ((responseType === 'blob' && typeof response !== 'string') ?  parseResponseBlob(response): response);
   return stringifyData(_responseBody || '');
 };
 
