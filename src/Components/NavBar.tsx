@@ -1,5 +1,5 @@
 import { Appbar } from 'react-native-paper';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import * as React from 'react';
 import { ReactNode, useContext } from 'react';
@@ -30,12 +30,14 @@ export function NavBar(props: {
 
 const styles = StyleSheet.create({
   header: {
+    paddingTop: Platform.OS === 'ios' ? 0 : 40,
     elevation: 0,
     shadowOffset: {
       width: 0,
       height: 0,
     },
     shadowOpacity: 0,
+    height: Platform.OS === 'ios' ? 60 : 100,
   },
 
   container: {
