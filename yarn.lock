@@ -6307,10 +6307,10 @@ react-native-iphone-x-helper@^1.3.1:
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
 
-react-native-json-tree@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-json-tree/-/react-native-json-tree-1.3.0.tgz#fe3d2fba1b26620b72175ac5b97dd7866b9e1bbb"
-  integrity sha512-bsxQfe/3JNluA358X/lu5sIev6bDwaRMEus1ebHBcSjqGtcxDTp4lsLz1t8sFONNiLtWqHdrdEx+4WTmNl7ayw==
+react-native-json-tree@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-json-tree/-/react-native-json-tree-1.5.0.tgz#eae808149079fe4188733f0623e1e452470e7b40"
+  integrity sha512-RW6rYmuC+tzOzGdgnbZzMFoFTrClZUFHrx406wIX4/w8FGOcOi3en1TpSNkNcxzKm4FGVHDtqR//gThXwLbntA==
   dependencies:
     prop-types "^15.7.2"
     react-base16-styling "^0.8.0"
