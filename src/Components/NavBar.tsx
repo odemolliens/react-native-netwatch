@@ -1,6 +1,6 @@
 import { Appbar } from 'react-native-paper';
-import { Platform, StyleSheet, TouchableOpacity } from "react-native";
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
+import FeatherIcon from '@react-native-vector-icons/feather';
 import * as React from 'react';
 import { ReactNode, useContext } from 'react';
 import { ThemeContext } from '../Theme';
@@ -8,7 +8,7 @@ import { ThemeContext } from '../Theme';
 export function NavBar(props: {
   title: string;
   rightComponent?: ReactNode;
-  icon?: string;
+  icon?: React.ComponentProps<typeof FeatherIcon>['name'];
   onPressBack: (showDetails: boolean) => void;
 }) {
   const theme = useContext(ThemeContext);

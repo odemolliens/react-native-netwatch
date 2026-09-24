@@ -123,7 +123,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                         "flexDirection": "row",
                       }
                     }
-                  />
+                  >
+                    <Text
+                      style={
+                        Object {
+                          "color": "#F9FAFB",
+                          "fontSize": 14,
+                        }
+                      }
+                    >
+                      root : 
+                    </Text>
+                  </Text>
                   <Text
                     onPress={[Function]}
                     style={
@@ -216,7 +227,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          args,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -303,7 +325,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          data,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -347,7 +380,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          files,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -391,7 +435,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          form,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -478,7 +533,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          headers,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -565,7 +631,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                             "flexDirection": "row",
                           }
                         }
-                      />
+                      >
+                        <Text
+                          style={
+                            Object {
+                              "color": "#F9FAFB",
+                              "fontSize": 14,
+                            }
+                          }
+                        >
+                          json,root : 
+                        </Text>
+                      </Text>
                       <Text
                         onPress={[Function]}
                         style={
@@ -601,7 +678,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                           "marginBottom": 8,
                         }
                       }
-                    />
+                    >
+                      <Text
+                        style={
+                          Object {
+                            "color": "#F9FAFB",
+                            "fontSize": 14,
+                          }
+                        }
+                      >
+                        url,root : 
+                      </Text>
+                    </Text>
                     <Text
                       style={
                         Object {
@@ -609,7 +697,18 @@ exports[`Main test suite should render properly in JSON 1`] = `
                           "marginLeft": 5,
                         }
                       }
-                    />
+                    >
+                      <Text
+                        style={
+                          Object {
+                            "color": "#F9FAFB",
+                            "fontSize": 14,
+                          }
+                        }
+                      >
+                        "https://postman-echo.com/post?query=some%20really%20long%20query%20that%20goes%20onto%20multiple%20lines%20so%20we%20can%20test%20what%20happens" : 
+                      </Text>
+                    </Text>
                   </View>
                 </View>
               </View>
@@ -669,7 +768,17 @@ exports[`Main test suite should render properly in raw 1`] = `
             }
           }
         >
-          <View />
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#F9FAFB",
+                }
+              }
+            >
+              {"args":{"query":"some really long query that goes onto multiple lines so we can test what happens"},"data":{"test":"hello"},"files":{},"form":{},"headers":{"x-forwarded-proto":"https","x-forwarded-port":"443","host":"postman-echo.com","x-amzn-trace-id":"Root=1-605871d5-7bf937ce7fd0d4c0392726bc","content-length":"16","content-type":"application/json","accept":"*/*","x-special":"dev-test","if-none-match":"W/\\"32e-r/l1NhNWVizxAiJazd2G/2G3rHs\\"","accept-language":"en-us","accept-encoding":"gzip, deflate, br","user-agent":"example/1 CFNetwork/1220.1 Darwin/20.3.0","x-others":"Another test with a very very long string just to see how it is render in the application and if it is all done","cookie":"sails.sid=s%3A9fHegW1j43POAQ8xKlXTuE7wfhWp9guw.ZM4PklZGQHdDSAeo7%2FqvaE3LjGdLyf9KcAuv6cK0hpY"},"json":{"test":"hello"},"url":"https://postman-echo.com/post?query=some%20really%20long%20query%20that%20goes%20onto%20multiple%20lines%20so%20we%20can%20test%20what%20happens"}
+            </Text>
+          </View>
         </RCTScrollView>
       </View>
     </RCTScrollView>
@@ -724,7 +833,17 @@ exports[`Main test suite should render properly without title 1`] = `
             }
           }
         >
-          <View />
+          <View>
+            <Text
+              style={
+                Object {
+                  "color": "#F9FAFB",
+                }
+              }
+            >
+              {"args":{"query":"some really long query that goes onto multiple lines so we can test what happens"},"data":{"test":"hello"},"files":{},"form":{},"headers":{"x-forwarded-proto":"https","x-forwarded-port":"443","host":"postman-echo.com","x-amzn-trace-id":"Root=1-605871d5-7bf937ce7fd0d4c0392726bc","content-length":"16","content-type":"application/json","accept":"*/*","x-special":"dev-test","if-none-match":"W/\\"32e-r/l1NhNWVizxAiJazd2G/2G3rHs\\"","accept-language":"en-us","accept-encoding":"gzip, deflate, br","user-agent":"example/1 CFNetwork/1220.1 Darwin/20.3.0","x-others":"Another test with a very very long string just to see how it is render in the application and if it is all done","cookie":"sails.sid=s%3A9fHegW1j43POAQ8xKlXTuE7wfhWp9guw.ZM4PklZGQHdDSAeo7%2FqvaE3LjGdLyf9KcAuv6cK0hpY"},"json":{"test":"hello"},"url":"https://postman-echo.com/post?query=some%20really%20long%20query%20that%20goes%20onto%20multiple%20lines%20so%20we%20can%20test%20what%20happens"}
+            </Text>
+          </View>
         </RCTScrollView>
       </View>
     </RCTScrollView>

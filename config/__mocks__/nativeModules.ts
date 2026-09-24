@@ -85,8 +85,7 @@ export const mockNativeModules: any = {
       LibraryDir: '',
     },
     ViewData: {
-      dataForService: (fn: any) =>
-        fn({ error: null, data: { service: 'service', data: [{ items: [] }] } }),
+      dataForService: (fn: any) => fn({ error: null, data: { service: 'service', data: [{ items: [] }] } }),
     },
     UrlRouter: {
       openUri: jest.fn(),
@@ -103,10 +102,6 @@ export const mockNativeModules: any = {
     PlatformConstants: jest.fn(),
     RNCNetInfo: jest.fn(),
     FileReaderModule: jest.fn(),
-    RNNetwatch: {
-      getNativeRequests: jest.fn(),
-      startNetwatch: jest.fn(),
-    },
     RNFirebase: {
       apps: {
         name: 'example',
@@ -117,6 +112,10 @@ export const mockNativeModules: any = {
     addListener: jest.fn(),
     removeListener: jest.fn(),
   }),
+  TurboModuleRegistry: {
+    get: (name: string) => mockNativeModules.NativeModules[name],
+    getEnforcing: (name: string) => mockNativeModules.NativeModules[name],
+  },
   Platform: {
     OS: 'ios',
     Version: '13.0.0',

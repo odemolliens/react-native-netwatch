@@ -1,35 +1,25 @@
-/**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-const blacklist = require('metro-config/src/defaults/exclusionList');
-/* eslint-enable @typescript-eslint/no-var-requires */
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+const exclusionList = require('metro-config/private/defaults/exclusionList').default;
 
 const moduleRoot = path.resolve(__dirname, '..');
 
-module.exports = {
+const config = {
   watchFolders: [moduleRoot],
+  server: {
+    port: 8083,
+  },
   resolver: {
     extraNodeModules: {
       react: path.resolve(__dirname, 'node_modules/react'),
       'react-native': path.resolve(__dirname, 'node_modules/react-native'),
+      'react-native-netwatch': moduleRoot,
     },
-    blacklistRE: blacklist([
+    blockList: exclusionList([
       new RegExp(`${moduleRoot}/node_modules/react/.*`),
       new RegExp(`${moduleRoot}/node_modules/react-native/.*`),
     ]),
   },
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: true,
-      },
-    }),
-  },
 };
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

@@ -1,9 +1,9 @@
-import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
+import XHRInterceptor from '../XHRInterceptorCompat';
 import RNLogger from '../RNLogger';
 import { RNRequest } from '../Objects/RNRequest';
 
 jest.mock('react-native/Libraries/Blob/FileReader', () => ({}));
-jest.mock('react-native/Libraries/Network/XHRInterceptor', () => ({
+jest.mock('../XHRInterceptorCompat', () => ({
   isInterceptorEnabled: jest.fn().mockReturnValue(true),
   setOpenCallback: jest.fn(),
   setRequestHeaderCallback: jest.fn(),

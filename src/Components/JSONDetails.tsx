@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import { View, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { Appbar, Title } from 'react-native-paper';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FeatherIcon from '@react-native-vector-icons/feather';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 import { Text } from './Text';
 
 import JSONTree from 'react-native-json-tree';

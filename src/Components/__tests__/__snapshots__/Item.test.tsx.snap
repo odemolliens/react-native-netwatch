@@ -248,107 +248,6 @@ exports[`Item test suite should render Connection properly 1`] = `
 </View>
 `;
 
-exports[`Item test suite should render Native Request properly 1`] = `
-<ForwardRef
-  onPress={[Function]}
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "borderBottomWidth": 0.5,
-        "flexDirection": "row",
-        "height": 60,
-        "maxHeight": 60,
-        "minHeight": 60,
-        "paddingBottom": 0.5,
-      },
-      Object {
-        "backgroundColor": "#374151",
-        "borderBottomColor": "#6B7280",
-      },
-      Object {
-        "backgroundColor": "red",
-      },
-    ]
-  }
-  testID="itemTouchable-73"
->
-  <Status
-    item={
-      NRequest {
-        "_id": 73,
-        "dataSent": "dataSent",
-        "endTime": 1613477575757,
-        "method": "GET",
-        "readyState": 4,
-        "response": "response",
-        "responseContentType": "application/json",
-        "responseSize": 0,
-        "responseType": "blob",
-        "responseURL": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
-        "shortUrl": "",
-        "startTime": 1613477574742,
-        "status": 200,
-        "timeout": 0,
-        "type": "RNR",
-        "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
-      }
-    }
-  />
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "paddingHorizontal": 16,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <TextSecondaryColor
-        numberOfLines={1}
-      >
-        run.mocky.io
-      </TextSecondaryColor>
-      <TextSecondaryColor
-        style={
-          Array [
-            Object {
-              "fontSize": 10,
-            },
-            Object {
-              "color": "#9CA3AF",
-            },
-          ]
-        }
-      >
-        12:12:54
-      </TextSecondaryColor>
-    </View>
-    <View
-      style={
-        Object {
-          "flexDirection": "row",
-          "justifyContent": "space-between",
-        }
-      }
-    >
-      <Text
-        numberOfLines={1}
-      >
-        /v3/1a2d092a-42b2-4a89-a44f-267935dc13e9
-      </Text>
-    </View>
-  </View>
-</ForwardRef>
-`;
-
 exports[`Item test suite should render Request properly 1`] = `
 <ForwardRef
   onPress={[Function]}
@@ -391,7 +290,7 @@ exports[`Item test suite should render Request properly 1`] = `
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
-        "type": "NR",
+        "type": "RNR",
         "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
       }
     }
@@ -686,7 +585,7 @@ exports[`Item test suite should render properly & press item 1`] = `
         "startTime": 1613477574742,
         "status": 200,
         "timeout": 0,
-        "type": "NR",
+        "type": "RNR",
         "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
       }
     }

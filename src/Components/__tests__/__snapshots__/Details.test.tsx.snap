@@ -245,7 +245,7 @@ exports[`Details test suite Test Request item should render properly with reques
   >
     <RequestDetails
       item={
-        NRequest {
+        RNRequest {
           "_id": 75,
           "dataSent": "{\\"data\\":\\"This is a test with a long body, more than 100\\",\\"next\\":\\"characters to check if the viewmore button appears correctly.\\",\\"explain\\":\\"In fact, we need to have at least 100 characters to show this button\\",\\"and\\":\\" test if we can press the button\\"}",
           "endTime": 1613477575757,

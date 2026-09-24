@@ -193,7 +193,7 @@ exports[`Test Mock List Screen should render properly 1`] = `
           />
         </View>
       </View>
-      <Component />
+      <Divider />
     </ForwardRef>
     <ForwardRef
       key="mock-1"
@@ -260,7 +260,7 @@ exports[`Test Mock List Screen should render properly 1`] = `
           />
         </View>
       </View>
-      <Component />
+      <Divider />
     </ForwardRef>
   </ScrollView>
 </View>

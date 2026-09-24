@@ -4,7 +4,6 @@ import { IProps, Main } from '../Main';
 import ReduxAction from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
 import { EnumFilterType, EnumSourceType } from '../../types';
-import NRequest from '../../Core/Objects/NRequest';
 import { Alert, TouchableOpacity } from 'react-native';
 import Share from 'react-native-share';
 
@@ -59,15 +58,6 @@ describe('Main test suite', () => {
       givenProps();
       givenComponent();
       expect(setSource).toHaveBeenCalledTimes(2);
-    });
-
-    it('should run set source Native Request', () => {
-      const useStateMock: any = (source: any) => [EnumSourceType.Nativerequest, setSource];
-      jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-      mockUseEffect();
-      givenProps();
-      givenComponent();
-      expect(setSource).toHaveBeenCalledTimes(1);
     });
 
     it('should run set source All', () => {
@@ -153,7 +143,7 @@ describe('Main test suite', () => {
     givenProps();
     givenComponent();
     // component = shallow(
-    //   <Main reduxActions={mockActions} rnRequests={mockRNRequests} nRequests={mockNRequests} {...props} />,
+    //   <Main reduxActions={mockActions} rnRequests={mockRNRequests} {...props} />,
     // );
     component.find(`[testID="itemsList"]`).props().keyExtractor({ _id: 73 });
     component.find(`[testID="itemsList"]`).props().getItemLayout({ _data: null, index: 73 });
@@ -215,7 +205,6 @@ describe('Main test suite', () => {
       onPressDetail: jest.fn(),
       reduxActions: mockActions,
       rnRequests: mockRNRequests,
-      nRequests: mockNRequests,
       clearAll: jest.fn(),
       maxRequests: 50,
       onShowMocksList: jest.fn(),
@@ -236,26 +225,6 @@ const mockActions: ReduxAction[] = [
 const mockRNRequests: RNRequest[] = [
   new RNRequest({
     _id: 74,
-    dataSent: 'dataSent',
-    endTime: 1613477575757,
-    method: 'GET',
-    readyState: 4,
-    response: 'response',
-    responseContentType: 'application/json',
-    responseSize: 0,
-    responseType: 'blob',
-    responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-    startTime: 1613477574742,
-    status: 200,
-    timeout: 0,
-    type: 'RNR',
-    url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  }),
-];
-
-const mockNRequests: NRequest[] = [
-  new NRequest({
-    _id: 75,
     dataSent: 'dataSent',
     endTime: 1613477575757,
     method: 'GET',

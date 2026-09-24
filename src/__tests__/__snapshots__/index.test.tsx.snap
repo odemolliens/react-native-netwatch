@@ -28,7 +28,9 @@ exports[`Index test suite should contains the details screen - style={{ height: 
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
@@ -53,7 +55,6 @@ exports[`Index test suite should contains the details screen - style={{ height: 
             clearAll={[Function]}
             connections={true}
             maxRequests={100}
-            nRequests={true}
             onPress={[MockFunction]}
             onPressClose={[Function]}
             onPressDetail={[MockFunction]}
@@ -125,7 +126,9 @@ exports[`Index test suite should contains the main screen with flatlist - style=
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
@@ -150,7 +153,6 @@ exports[`Index test suite should contains the main screen with flatlist - style=
             clearAll={[Function]}
             connections={true}
             maxRequests={100}
-            nRequests={true}
             onPress={
               [MockFunction] {
                 "calls": Array [
@@ -238,187 +240,6 @@ exports[`Index test suite should contains the main screen with flatlist - style=
 
 exports[`Index test suite should have Netwatch disabled 1`] = `""`;
 
-exports[`Index test suite should have Netwatch warning if not disabledShake but onPressClose 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "base00": "#1F2937",
-      "base03": "#06B6D4",
-      "base07": "#D1D5DB",
-      "base08": "#B91C1C",
-      "base09": "#D97706",
-      "base0B": "#4D7C0F",
-      "base0D": "#F9FAFB",
-      "black": "#000",
-      "failedColor": "#B91C1C",
-      "primaryColor": "#06B6D4",
-      "reduxColor": "#764ABC",
-      "secondaryColor": "#1F2937",
-      "secondaryDarkColor": "#111827",
-      "secondaryLightColor": "#374151",
-      "successColor": "#4D7C0F",
-      "textColorFour": "#6B7280",
-      "textColorOne": "#F9FAFB",
-      "textColorThree": "#9CA3AF",
-      "textColorTwo": "#D1D5DB",
-      "warningColor": "#D97706",
-      "white": "#FFF",
-    }
-  }
->
-  <Provider>
-    <Modal
-      animationType="slide"
-      hardwareAccelerated={false}
-      onRequestClose={[Function]}
-      visible={true}
-    >
-      <View
-        style={
-          Object {
-            "flex": 1,
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "height": 0,
-            }
-          }
-        >
-          <Main
-            clearAll={[Function]}
-            connections={true}
-            maxRequests={50}
-            nRequests={true}
-            onPress={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                  Array [
-                    true,
-                  ],
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            onPressClose={[MockFunction]}
-            onPressDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                  Array [
-                    true,
-                  ],
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            onShowMocksList={[Function]}
-            reduxActions={true}
-            rnRequests={true}
-            showStats={true}
-            testId="mainScreen"
-          />
-        </View>
-        <View
-          style={
-            Object {
-              "height": "100%",
-            }
-          }
-        >
-          <Details
-            item={true}
-            onEditMockResponse={[Function]}
-            onPressBack={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                  Array [
-                    true,
-                  ],
-                  Array [
-                    true,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
-            testId="detailScreen"
-          />
-        </View>
-        <Modal
-          animationType="slide"
-          hardwareAccelerated={false}
-          onRequestClose={[Function]}
-          statusBarTranslucent={true}
-          visible={true}
-        >
-          <MockingNavigator
-            mockResponse={true}
-            onPressBack={[Function]}
-            update={true}
-          />
-        </Modal>
-      </View>
-    </Modal>
-  </Provider>
-</ContextProvider>
-`;
-
 exports[`Index test suite should have Netwatch with light theme 1`] = `
 <ContextProvider
   value={
@@ -447,7 +268,9 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
@@ -472,38 +295,9 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
             clearAll={[Function]}
             connections={true}
             maxRequests={50}
-            nRequests={true}
-            onPress={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
+            onPress={[MockFunction]}
             onPressClose={[MockFunction]}
-            onPressDetail={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
+            onPressDetail={[MockFunction]}
             onShowMocksList={[Function]}
             reduxActions={true}
             rnRequests={true}
@@ -521,21 +315,7 @@ exports[`Index test suite should have Netwatch with light theme 1`] = `
           <Details
             item={true}
             onEditMockResponse={[Function]}
-            onPressBack={
-              [MockFunction] {
-                "calls": Array [
-                  Array [
-                    false,
-                  ],
-                ],
-                "results": Array [
-                  Object {
-                    "type": "return",
-                    "value": undefined,
-                  },
-                ],
-              }
-            }
+            onPressBack={[MockFunction]}
             testId="detailScreen"
           />
         </View>
@@ -586,12 +366,14 @@ exports[`Index test suite should render properly 1`] = `
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
       onRequestClose={[Function]}
-      visible={false}
+      visible={true}
     >
       <View
         style={
@@ -611,7 +393,6 @@ exports[`Index test suite should render properly 1`] = `
             clearAll={[Function]}
             connections={Array []}
             maxRequests={100}
-            nRequests={Array []}
             onPress={[Function]}
             onPressClose={[Function]}
             onPressDetail={[Function]}
@@ -694,7 +475,9 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
@@ -719,7 +502,6 @@ exports[`Index test suite should render properly visible and enabled 1`] = `
             clearAll={[Function]}
             connections={true}
             maxRequests={100}
-            nRequests={true}
             onPress={[MockFunction]}
             onPressClose={[Function]}
             onPressDetail={[MockFunction]}
@@ -791,7 +573,9 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
     }
   }
 >
-  <Provider>
+  <Provider
+    theme={Object {}}
+  >
     <Modal
       animationType="slide"
       hardwareAccelerated={false}
@@ -816,7 +600,6 @@ exports[`Index test suite should render properly visible, enabled and maxRequest
             clearAll={[Function]}
             connections={true}
             maxRequests={20}
-            nRequests={true}
             onPress={[MockFunction]}
             onPressClose={[Function]}
             onPressDetail={[MockFunction]}

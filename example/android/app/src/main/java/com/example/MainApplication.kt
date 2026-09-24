@@ -1,59 +1,23 @@
 package com.example
 
 import android.app.Application
-import android.content.Context
-import com.imranmentese.reactnativenetwatch.RNNetwatchPackage
-import com.facebook.react.*
-import com.facebook.soloader.SoLoader
-import java.lang.reflect.InvocationTargetException
+import com.facebook.react.PackageList
+import com.facebook.react.ReactApplication
+import com.facebook.react.ReactHost
+import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
+import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 
 class MainApplication : Application(), ReactApplication {
 
-    private val mReactNativeHost = object : ReactNativeHost(this) {
-        override fun getUseDeveloperSupport(): Boolean {
-            return BuildConfig.DEBUG
-        }
-
-        override fun getPackages(): List<ReactPackage> {
-            val packages = PackageList(this).packages
-            packages.add(RNNetwatchPackage())
-            packages.add(ReactNativeModules())
-            return packages
-        }
-
-        override fun getJSMainModuleName(): String {
-            return "index"
-        }
-    }
-
-    override fun getReactNativeHost(): ReactNativeHost {
-        return mReactNativeHost
+    override val reactHost: ReactHost by lazy {
+        getDefaultReactHost(
+            context = applicationContext,
+            packageList = PackageList(this).packages,
+        )
     }
 
     override fun onCreate() {
         super.onCreate()
-        SoLoader.init(this, false)
-    }
-
-    companion object {
-
-        private fun initializeFlipper(context: Context, reactInstanceManager: ReactInstanceManager) {
-            if (BuildConfig.DEBUG) {
-                try {
-                    val aClass = Class.forName("com.example.ReactNativeFlipper")
-                    aClass
-                            .getMethod("initializeFlipper", Context::class.java, ReactInstanceManager::class.java)
-                            .invoke(null, context, reactInstanceManager)
-                } catch (e: ClassNotFoundException) {
-                    e.printStackTrace()
-                } catch (e: NoSuchMethodException) {
-                    e.printStackTrace()
-                } catch (e: IllegalAccessException) {
-                    e.printStackTrace()
-                } catch (e: InvocationTargetException) {
-                    e.printStackTrace()
-                }
-            }
-        }
+        loadReactNative(this)
     }
 }

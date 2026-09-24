@@ -4,9 +4,9 @@ import { ThemeContext } from '../../Theme';
 import { NavBar } from '../NavBar';
 import { Divider } from 'react-native-paper';
 import { clearMockResponses, FILE_PATH, getMockResponses, MockResponse, resetMockResponses } from './utils';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import FeatherIcon from '@react-native-vector-icons/feather';
 import Share from 'react-native-share';
-import RNFS from 'react-native-fs';
+import * as RNFS from '@dr.pogodin/react-native-fs';
 import Clipboard from '@react-native-clipboard/clipboard';
 
 export function NavbarRightSide(props: {

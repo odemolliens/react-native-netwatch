@@ -4,9 +4,8 @@ import { Alert, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-nat
 import Share from 'react-native-share';
 import { Appbar, Snackbar } from 'react-native-paper';
 import RNRequest from '../Core/Objects/RNRequest';
-import NRequest from '../Core/Objects/NRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import FeatherIcon from '@react-native-vector-icons/feather';
 import { ThemeContext } from '../Theme';
 import { ActionDetails } from './ActionDetails';
 import JSONDetails from './JSONDetails';
@@ -39,7 +38,7 @@ export const Details: React.FC<IProps> = props => {
 
   // _onShareRequest and _onShareReduxAction open the share panel. The text format is
   // plain text
-  const _onShareRequest = async (item: RNRequest | NRequest): Promise<void> => {
+  const _onShareRequest = async (item: RNRequest): Promise<void> => {
     try {
       await Share.open({
         message: formatSharedMessage(
@@ -51,7 +50,7 @@ export const Details: React.FC<IProps> = props => {
         ),
       });
     } catch (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert('Error', (error as Error).message);
     }
   };
 
@@ -63,7 +62,7 @@ export const Details: React.FC<IProps> = props => {
         message: `${_type}\n${_payload}`,
       });
     } catch (error) {
-      Alert.alert('Error', error.message);
+      Alert.alert('Error', (error as Error).message);
     }
   };
 
@@ -83,7 +82,7 @@ export const Details: React.FC<IProps> = props => {
   }
 
   // 2. We want to display the a request RESPONSE BODY only in a JSON Tree
-  if (showJSONResponseDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
+  if (showJSONResponseDetails && props.item instanceof RNRequest) {
     return (
       <JSONDetails
         title="Response details"
@@ -94,7 +93,7 @@ export const Details: React.FC<IProps> = props => {
   }
 
   // 3. We want to display the a request REQUEST BODY only in a JSON Tree
-  if (showJSONRequestDetails && (props.item instanceof RNRequest || props.item instanceof NRequest)) {
+  if (showJSONRequestDetails && props.item instanceof RNRequest) {
     return (
       <JSONDetails
         title="Request details"
@@ -126,9 +125,9 @@ export const Details: React.FC<IProps> = props => {
     );
   }
 
-  // 5. We want to display ALL INFORMATIONS in a request (React-Native or Native)
-  if (props.item instanceof RNRequest || props.item instanceof NRequest) {
-    _action = () => _onShareRequest(props.item as RNRequest | NRequest);
+  // 5. We want to display all information for a React Native request.
+  if (props.item instanceof RNRequest) {
+    _action = () => _onShareRequest(props.item as RNRequest);
     _content = (
       <RequestDetails
         item={props.item}

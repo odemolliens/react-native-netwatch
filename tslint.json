@@ -8,14 +8,6 @@
   ],
   "jsRules": {},
   "rules": {
-    "no-unused-declaration": {
-      "options": [{
-        "declarations": false,
-        "ignored": {},
-        "imports": true
-      }],
-      "severity": "error"
-    },
     "object-literal-key-quotes": false,
     "no-console": false,
     "ban-types": false,

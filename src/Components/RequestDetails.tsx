@@ -17,7 +17,6 @@ import {
 import { Text, Title } from './Text';
 import { tag } from './Status';
 import { ThemeContext } from '../Theme';
-import { NRequest } from '../Core/Objects/NRequest';
 import { RNRequest } from '../Core/Objects/RNRequest';
 import { EnumStatus } from '../types';
 import url from 'url';
@@ -29,7 +28,7 @@ import { MockResponse } from './Mocking/utils';
 
 export interface IProps {
   testId?: string;
-  item: NRequest | RNRequest;
+  item: RNRequest;
   onPressViewMoreRequest: (value: boolean) => void;
   onPressViewMoreResponse: (value: boolean) => void;
   setSnackBarMessage: (value: string) => void;
@@ -37,7 +36,7 @@ export interface IProps {
   onEditMockResponse: (mockResponse: MockResponse, update: false) => void;
 }
 
-// This component is specif to request (React-Native or Native).
+// This component displays a React Native request.
 // If you need the componant which handle the Redux action, see
 // ActionDetails.tsx
 export const RequestDetails: React.FC<IProps> = (props: IProps) => {

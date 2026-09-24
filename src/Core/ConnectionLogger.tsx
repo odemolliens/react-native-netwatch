@@ -1,6 +1,5 @@
-import NetInfo from '@react-native-community/netinfo';
+import NetInfo, { NetInfoState } from '@react-native-community/netinfo';
 import { ConnectionInfo } from './Objects/ConnectionInfo';
-import { NetInfoState } from '@react-native-community/netinfo/src/internal/types';
 
 export class ConnectionLogger {
   static instance: ConnectionLogger;

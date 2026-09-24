@@ -1,61 +1,43 @@
-//
-//  AppDelegate.swift
-//  example
-//
-//  Copyright © 2020 Facebook. All rights reserved.
-//
-
 import UIKit
-#if DEBUG
-import FlipperKit
-#endif
+import React
+import React_RCTAppDelegate
+import ReactAppDependencyProvider
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, RCTBridgeDelegate {
-
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
+  var reactNativeDelegate: ReactNativeDelegate?
+  var reactNativeFactory: RCTReactNativeFactory?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    initializeFlipper(with: application)
+    let delegate = ReactNativeDelegate()
+    let factory = RCTReactNativeFactory(delegate: delegate)
+    delegate.dependencyProvider = RCTAppDependencyProvider()
 
-    let bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
-    let rootView = RCTRootView(bridge: bridge!, moduleName: "example", initialProperties: nil)
-
-    rootView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-
+    reactNativeDelegate = delegate
+    reactNativeFactory = factory
     window = UIWindow(frame: UIScreen.main.bounds)
-    let rootViewController = UIViewController()
-    rootViewController.view = rootView
-    window?.rootViewController = rootViewController
-    window?.makeKeyAndVisible()
-    
-    
-    let defaultSession = URLSession(configuration: .default)
-    if (defaultSession.configuration.protocolClasses != nil) {
-        defaultSession.configuration.protocolClasses?.append(NetwatchInterceptor.self)
-    }
-    URLProtocol.registerClass(NetwatchInterceptor.self)
+
+    factory.startReactNative(
+      withModuleName: "example",
+      in: window,
+      launchOptions: launchOptions
+    )
 
     return true
   }
+}
 
-  func sourceURL(for bridge: RCTBridge!) -> URL! {
-    #if DEBUG
-    return RCTBundleURLProvider.sharedSettings()?.jsBundleURL(forBundleRoot: "index", fallbackResource: nil)
-    #else
-    return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-    #endif
+class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
+  override func sourceURL(for bridge: RCTBridge) -> URL? {
+    bundleURL()
   }
 
-  private func initializeFlipper(with application: UIApplication) {
+  override func bundleURL() -> URL? {
     #if DEBUG
-    let client = FlipperClient.shared()
-    let layoutDescriptionMapper = SKDescriptorMapper(defaults: ())
-    client?.add(FlipperKitLayoutPlugin(rootNode: application, with: layoutDescriptionMapper))
-    client?.add(FKUserDefaultsPlugin(suiteName: nil))
-    client?.add(FlipperKitReactPlugin())
-    client?.add(FlipperKitNetworkPlugin(networkAdapter: SKIOSNetworkAdapter()))
-    client?.start()
+    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
+    #else
+    Bundle.main.url(forResource: "main", withExtension: "jsbundle")
     #endif
   }
 }

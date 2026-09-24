@@ -49,7 +49,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -121,7 +121,7 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -131,33 +131,6 @@ exports[`Settings test suite should render properly and DELETE filter radio pres
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -403,7 +376,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -475,7 +448,7 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -485,33 +458,6 @@ exports[`Settings test suite should render properly and GET filter radio pressed
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -757,7 +703,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -829,7 +775,7 @@ exports[`Settings test suite should render properly and POST filter radio presse
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -839,33 +785,6 @@ exports[`Settings test suite should render properly and POST filter radio presse
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -1111,7 +1030,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -1183,7 +1102,7 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -1193,33 +1112,6 @@ exports[`Settings test suite should render properly and PUT filter radio pressed
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -1465,7 +1357,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -1537,7 +1429,7 @@ exports[`Settings test suite should render properly and all filter radio pressed
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -1547,33 +1439,6 @@ exports[`Settings test suite should render properly and all filter radio pressed
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -1902,387 +1767,6 @@ exports[`Settings test suite should render properly and all source radio pressed
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
-        />
-      </Group>
-      <Title
-        style={
-          Array [
-            Object {
-              "fontSize": 16,
-              "marginBottom": 10,
-              "marginTop": 24,
-              "paddingLeft": 24,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Type:
-      </Title>
-      <Group
-        onValueChange={[Function]}
-        value="GET"
-      >
-        <Item
-          color="#06B6D4"
-          label="ALL"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioAllMethod"
-          uncheckedColor="#06B6D4"
-          value="ALL"
-        />
-        <Item
-          color="#06B6D4"
-          label="GET"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioGet"
-          uncheckedColor="#06B6D4"
-          value="GET"
-        />
-        <Item
-          color="#06B6D4"
-          label="POST"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioPost"
-          uncheckedColor="#06B6D4"
-          value="POST"
-        />
-        <Item
-          color="#06B6D4"
-          label="PUT"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioPut"
-          uncheckedColor="#06B6D4"
-          value="PUT"
-        />
-        <Item
-          color="#06B6D4"
-          label="DELETE"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioDelete"
-          uncheckedColor="#06B6D4"
-          value="DELETE"
-        />
-      </Group>
-    </View>
-  </ScrollView>
-  <View>
-    <ForwardRef
-      onPress={[Function]}
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "justifyContent": "center",
-            "marginBottom": 36,
-            "marginHorizontal": 24,
-            "minHeight": 48,
-          },
-          Object {
-            "backgroundColor": "#06B6D4",
-          },
-        ]
-      }
-      testID="ResetButton"
-    >
-      <Title
-        style={
-          Array [
-            Object {
-              "color": "#111827",
-            },
-          ]
-        }
-      >
-        Reset filters
-      </Title>
-    </ForwardRef>
-  </View>
-</View>
-`;
-
-exports[`Settings test suite should render properly and native request source radio pressed 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flex": 1,
-        "height": "100%",
-        "justifyContent": "space-between",
-        "width": "100%",
-      },
-      Object {
-        "backgroundColor": "#111827",
-      },
-    ]
-  }
->
-  <ScrollView
-    style={
-      Object {
-        "flex": 1,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "flex": 1,
-        }
-      }
-    >
-      <Title
-        style={
-          Array [
-            Object {
-              "fontSize": 16,
-              "marginBottom": 10,
-              "marginTop": 24,
-              "paddingLeft": 24,
-            },
-            Object {
-              "color": "#F9FAFB",
-            },
-          ]
-        }
-      >
-        Display:
-      </Title>
-      <Group
-        onValueChange={[Function]}
-        value="NR"
-      >
-        <Item
-          color="#06B6D4"
-          label="All Requests and Actions"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioAllSource"
-          uncheckedColor="#06B6D4"
-          value="ALL"
-        />
-        <Item
-          color="#06B6D4"
-          label="Redux Action"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioRedux"
-          uncheckedColor="#06B6D4"
-          value="REDUX"
-        />
-        <Item
-          color="#06B6D4"
-          label="React Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioRNR"
-          uncheckedColor="#06B6D4"
-          value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
-        />
       </Group>
       <Title
         style={
@@ -2609,33 +2093,6 @@ exports[`Settings test suite should render properly and react native request sou
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title
@@ -2964,33 +2421,6 @@ exports[`Settings test suite should render properly and redux source radio press
           uncheckedColor="#06B6D4"
           value="RNR"
         />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="unchecked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
-        />
       </Group>
     </View>
   </ScrollView>
@@ -3078,7 +2508,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
       </Title>
       <Group
         onValueChange={[Function]}
-        value="NR"
+        value="RNR"
       >
         <Item
           color="#06B6D4"
@@ -3150,7 +2580,7 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           }
           mode="android"
           onPress={[Function]}
-          status="unchecked"
+          status="checked"
           style={
             Object {
               "flexDirection": "row-reverse",
@@ -3160,33 +2590,6 @@ exports[`Settings test suite should render properly and reset button pressed 1`]
           testID="RadioRNR"
           uncheckedColor="#06B6D4"
           value="RNR"
-        />
-        <Item
-          color="#06B6D4"
-          label="Native Requests"
-          labelStyle={
-            Array [
-              Object {
-                "fontSize": 14,
-                "marginLeft": 8,
-              },
-              Object {
-                "color": "#F9FAFB",
-              },
-            ]
-          }
-          mode="android"
-          onPress={[Function]}
-          status="checked"
-          style={
-            Object {
-              "flexDirection": "row-reverse",
-              "height": 42,
-            }
-          }
-          testID="RadioNR"
-          uncheckedColor="#06B6D4"
-          value="NR"
         />
       </Group>
       <Title

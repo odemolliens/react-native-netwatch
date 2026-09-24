@@ -33,7 +33,7 @@ export const Indicator: React.FC<IProps> = (props: IProps) => {
         key="success"
         style={{
           height,
-          width: `${props.success.toString()}%`,
+          width: `${props.success}%` as `${number}%`,
           backgroundColor: theme.successColor,
           justifyContent: 'center',
           alignItems: 'center',
@@ -47,7 +47,7 @@ export const Indicator: React.FC<IProps> = (props: IProps) => {
         key="warning"
         style={{
           height,
-          width: `${props.warning.toString()}%`,
+          width: `${props.warning}%` as `${number}%`,
           backgroundColor: theme.warningColor,
           justifyContent: 'center',
           alignItems: 'center',
@@ -61,7 +61,7 @@ export const Indicator: React.FC<IProps> = (props: IProps) => {
         key="failure"
         style={{
           height,
-          width: `${props.failed.toString()}%`,
+          width: `${props.failed}%` as `${number}%`,
           backgroundColor: theme.failedColor,
           justifyContent: 'center',
           alignItems: 'center',
