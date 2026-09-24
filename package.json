@@ -1,6 +1,6 @@
 {
   "name": "react-native-netwatch",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Network traffic logger for React Native",
   "homepage": "https://github.com/odemolliens/react-native-netwatch",
   "main": "src/index.tsx",
@@ -31,7 +31,7 @@
     "react-native-paper": "^5.15.3",
     "react-native-safe-area-context": "^5.10.0",
     "react-native-share": "^12.3.1",
-    "@dr.pogodin/react-native-fs": "^2.40.3",
+    "@dr.pogodin/react-native-fs": "^2.33.1",
     "@react-native-clipboard/clipboard": "^1.16.3",
     "@react-native-community/netinfo": "^12.0.1",
     "@react-native-vector-icons/feather": "^13.1.4",
@@ -74,7 +74,7 @@
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "@dr.pogodin/react-native-fs": ">=2.40.3 <3",
+    "@dr.pogodin/react-native-fs": ">=2.33.1 <3",
     "@react-native-clipboard/clipboard": ">=1.16.3 <2",
     "@react-native-community/netinfo": ">=11.5.0 <13",
     "@react-native-vector-icons/feather": ">=13.1.4 <14",

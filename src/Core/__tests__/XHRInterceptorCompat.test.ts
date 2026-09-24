@@ -1,51 +1,122 @@
-import { resolveFirstAvailableModule } from '../resolveFirstAvailableModule';
+describe('XHRInterceptorCompat', () => {
+  const originalXMLHttpRequest = (global as any).XMLHttpRequest;
 
-describe('resolveFirstAvailableModule', () => {
-  it('returns the default export of the first available module', () => {
-    const expectedModule = { enableInterception: jest.fn() };
-    const fallbackLoader = jest.fn();
-
-    const resolvedModule = resolveFirstAvailableModule(
-      [() => ({ default: expectedModule }), fallbackLoader],
-      'Module not available',
-    );
-
-    expect(resolvedModule).toBe(expectedModule);
-    expect(fallbackLoader).not.toHaveBeenCalled();
+  beforeEach(() => {
+    jest.resetModules();
   });
 
-  it('supports modules without a default export', () => {
-    const expectedModule = { enableInterception: jest.fn() };
-
-    expect(resolveFirstAvailableModule([() => expectedModule], 'Module not available')).toBe(expectedModule);
+  afterEach(() => {
+    (global as any).XMLHttpRequest = originalXMLHttpRequest;
   });
 
-  it('uses the next loader when a module is unavailable', () => {
-    const expectedModule = { enableInterception: jest.fn() };
+  const setup = () => {
+    const open = jest.fn();
+    const send = jest.fn();
+    const setRequestHeader = jest.fn();
 
-    const resolvedModule = resolveFirstAvailableModule(
-      [
-        () => {
-          throw new Error('Unavailable');
-        },
-        () => expectedModule,
-      ],
-      'Module not available',
-    );
+    const XMLHttpRequestMock = function () {} as any;
+    XMLHttpRequestMock.prototype.open = open;
+    XMLHttpRequestMock.prototype.send = send;
+    XMLHttpRequestMock.prototype.setRequestHeader = setRequestHeader;
+    (global as any).XMLHttpRequest = XMLHttpRequestMock;
 
-    expect(resolvedModule).toBe(expectedModule);
+    const interceptor = require('../XHRInterceptorCompat').default;
+
+    return { interceptor, XMLHttpRequestMock, open, send, setRequestHeader };
+  };
+
+  it('intercepts open, headers and send without importing React Native internals', () => {
+    const { interceptor, XMLHttpRequestMock, open, send, setRequestHeader } = setup();
+    const openCallback = jest.fn();
+    const sendCallback = jest.fn();
+    const requestHeaderCallback = jest.fn();
+    const xhr = new XMLHttpRequestMock();
+
+    xhr.addEventListener = jest.fn();
+    interceptor.setOpenCallback(openCallback);
+    interceptor.setSendCallback(sendCallback);
+    interceptor.setRequestHeaderCallback(requestHeaderCallback);
+    interceptor.enableInterception();
+
+    xhr.open('GET', 'https://example.test');
+    xhr.setRequestHeader('Accept', 'application/json');
+    xhr.send('body');
+
+    expect(openCallback).toHaveBeenCalledWith('GET', 'https://example.test', xhr);
+    expect(requestHeaderCallback).toHaveBeenCalledWith('Accept', 'application/json', xhr);
+    expect(sendCallback).toHaveBeenCalledWith('body', xhr);
+    expect(open).toHaveBeenCalledWith('GET', 'https://example.test');
+    expect(setRequestHeader).toHaveBeenCalledWith('Accept', 'application/json');
+    expect(send).toHaveBeenCalledWith('body');
   });
 
-  it('throws the provided error when no module is available', () => {
-    expect(() =>
-      resolveFirstAvailableModule(
-        [
-          () => {
-            throw new Error('Unavailable');
-          },
-        ],
-        'Module not available',
+  it('reports response headers and completed responses', () => {
+    const { interceptor, XMLHttpRequestMock } = setup();
+    const headerReceivedCallback = jest.fn();
+    const responseCallback = jest.fn();
+    const xhr = new XMLHttpRequestMock();
+    let readyStateListener = () => {};
+
+    Object.assign(xhr, {
+      HEADERS_RECEIVED: 2,
+      DONE: 4,
+      readyState: 1,
+      status: 200,
+      timeout: 1000,
+      response: '{"ok":true}',
+      responseURL: 'https://example.test',
+      responseType: 'json',
+      getResponseHeader: jest.fn((header: string) =>
+        header === 'Content-Type' ? 'application/json; charset=utf-8' : '12',
       ),
-    ).toThrow('Module not available');
+      getAllResponseHeaders: jest.fn(() => 'Content-Type: application/json'),
+      addEventListener: jest.fn((_event: string, listener: () => void) => {
+        readyStateListener = listener;
+      }),
+    });
+
+    interceptor.setHeaderReceivedCallback(headerReceivedCallback);
+    interceptor.setResponseCallback(responseCallback);
+    interceptor.enableInterception();
+    xhr.send();
+
+    xhr.readyState = xhr.HEADERS_RECEIVED;
+    readyStateListener();
+    expect(headerReceivedCallback).toHaveBeenCalledWith('application/json', 12, 'Content-Type: application/json', xhr);
+
+    xhr.readyState = xhr.DONE;
+    readyStateListener();
+    expect(responseCallback).toHaveBeenCalledWith(200, 1000, '{"ok":true}', 'https://example.test', 'json', xhr);
+  });
+
+  it('restores the original XMLHttpRequest methods when disabled', () => {
+    const { interceptor, XMLHttpRequestMock, open, send, setRequestHeader } = setup();
+
+    interceptor.enableInterception();
+    expect(interceptor.isInterceptorEnabled()).toBe(true);
+    interceptor.disableInterception();
+
+    expect(interceptor.isInterceptorEnabled()).toBe(false);
+    expect(XMLHttpRequestMock.prototype.open).toBe(open);
+    expect(XMLHttpRequestMock.prototype.send).toBe(send);
+    expect(XMLHttpRequestMock.prototype.setRequestHeader).toBe(setRequestHeader);
+  });
+
+  it('does nothing when XMLHttpRequest is unavailable', () => {
+    (global as any).XMLHttpRequest = undefined;
+    const interceptor = require('../XHRInterceptorCompat').default;
+
+    expect(() => interceptor.enableInterception()).not.toThrow();
+    expect(interceptor.isInterceptorEnabled()).toBe(false);
+  });
+
+  it('does not patch XMLHttpRequest more than once', () => {
+    const { interceptor, XMLHttpRequestMock } = setup();
+
+    interceptor.enableInterception();
+    const patchedOpen = XMLHttpRequestMock.prototype.open;
+    interceptor.enableInterception();
+
+    expect(XMLHttpRequestMock.prototype.open).toBe(patchedOpen);
   });
 });

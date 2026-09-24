@@ -1031,7 +1031,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@dr.pogodin/react-native-fs@^2.40.3":
+"@dr.pogodin/react-native-fs@^2.33.1":
   version "2.40.3"
   resolved "https://registry.yarnpkg.com/@dr.pogodin/react-native-fs/-/react-native-fs-2.40.3.tgz#77310b423eaa07800544aff09bb3fc1e80a4db1d"
   integrity sha512-4ZTrM7kwFnH+8Ay8aNCK8qRQyOv9dVtd0cmv5kVBUK8JRLFgPww0mT2KE1OJ0XNtJRyUuOyhm9AijJ4IW8FExQ==
