@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Netwatch } from 'react-native-netwatch';
 import { connect, Provider } from 'react-redux';
 import store from './redux/store';
-import { Dispatch } from 'redux';
-import { Text, TouchableHighlight, StyleSheet, View, NativeModules } from 'react-native';
+import { Text, TouchableHighlight, StyleSheet, View } from 'react-native';
 import { makeRequestInContinue } from './utils/requestGenerator';
-
-const { ExampleModule } = NativeModules;
 
 // FIXME: RCTBridge required dispatch_sync to load RCTDevLoadingView. This may lead to deadlocks (iOS)
 const reduxConfigExample = {
@@ -14,11 +11,6 @@ const reduxConfigExample = {
   'action/withPayloadNamedDifferent': '👩 - Extra info',
   'action/withoutPayload': '🔑 - Extra info Logged',
 };
-
-if (__DEV__) {
-  // @ts-ignore
-  import('./ReactotronConfig').then(() => console.log('Reactotron Configured'));
-}
 
 const App = () => {
   const [netwatchVisible, setNetwatchVisible] = useState(false);
@@ -29,12 +21,9 @@ const App = () => {
       <ConnectedComponent
         enabled={netwatchEnabled}
         visible={netwatchVisible}
-        interceptIOS={true}
         onPressClose={() => setNetwatchVisible(false)}
-        disableShake
         reduxConfig={reduxConfigExample}
         showStats={true}
-        useReactotron={false}
       />
       <View style={styles.container}>
         <Text style={styles.title}>react-native-netwatch</Text>
@@ -53,15 +42,6 @@ const App = () => {
           testID="buttonDisabledNetwatch"
         >
           <Text style={styles.textStyle}>{netwatchEnabled ? 'Disabled Netwatch' : 'Enabled Netwatch'}</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.enableButton}
-          onPress={() => {
-            ExampleModule.fetchSomething('https://reqres.in/api/users?page=2');
-          }}
-          testID="buttonSendNativeRequest"
-        >
-          <Text style={styles.textStyle}>Send a Native request</Text>
         </TouchableHighlight>
         <ConnectedButtonA />
         <ConnectedButtonB />
@@ -114,7 +94,7 @@ const ButtonC = (props: any) => (
   </TouchableHighlight>
 );
 
-export function mapDispatchToProps(dispatch: Dispatch, props: any): any {
+export function mapDispatchToProps(dispatch: import('redux').Dispatch, props: any): any {
   return {
     ...props,
     customAction: (action: any) => dispatch(action),

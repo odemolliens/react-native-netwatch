@@ -10,11 +10,12 @@ import {
   compare,
   xlsxWriter,
 } from '../helpers';
-import RNFS from 'react-native-fs';
+import * as RNFS from '@dr.pogodin/react-native-fs';
 
-jest.mock('react-native-fs', () => ({
+jest.mock('@dr.pogodin/react-native-fs', () => ({
   exists: jest.fn(),
   deleteFile: jest.fn(),
+  unlink: jest.fn(),
   writeFile: jest.fn(),
   DocumentDirectoryPath: 'my_directory',
 }));
@@ -33,6 +34,7 @@ describe('Helpers tests', () => {
     consoleError.mockRestore();
   });
   afterEach(() => {
+    jest.clearAllMocks();
     // Clear mock (all calls etc) after each test.
     // It's needed when you're using console somewhere in the tests so you have clean mock each time
     consoleError.mockClear();
@@ -168,7 +170,7 @@ describe('Helpers tests', () => {
             "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
             "status": 200,
             "timeout": "",
-            "type": "NATIVE REQUEST",
+            "type": "REACT NATIVE REQUEST",
             "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
           },
           Object {
@@ -189,7 +191,7 @@ describe('Helpers tests', () => {
             "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
             "status": 301,
             "timeout": "",
-            "type": "NATIVE REQUEST",
+            "type": "REACT NATIVE REQUEST",
             "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
           },
           Object {
@@ -210,7 +212,7 @@ describe('Helpers tests', () => {
             "startTime": "Tue Feb 16 2021 12:12:54 GMT+0000 (Coordinated Universal Time)",
             "status": 500,
             "timeout": "",
-            "type": "NATIVE REQUEST",
+            "type": "REACT NATIVE REQUEST",
             "url": "https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9",
           },
           Object {
@@ -289,15 +291,15 @@ describe('Helpers tests', () => {
         { _id: 2, startTime: 209387, type: 'RNR' },
       ];
       const arrayTwo: Array<ILog> = [
-        { _id: 3, startTime: 397452, type: 'NR' },
-        { _id: 4, startTime: 489338, type: 'NR' },
+        { _id: 3, startTime: 397452, type: 'RNR' },
+        { _id: 4, startTime: 489338, type: 'RNR' },
       ];
 
       const result: Array<ILog> = [
         { _id: 1, startTime: 2763, type: 'RNR' },
         { _id: 2, startTime: 209387, type: 'RNR' },
-        { _id: 3, startTime: 397452, type: 'NR' },
-        { _id: 4, startTime: 489338, type: 'NR' },
+        { _id: 3, startTime: 397452, type: 'RNR' },
+        { _id: 4, startTime: 489338, type: 'RNR' },
       ];
 
       expect(mergeArrays(arrayOne, arrayTwo)).toStrictEqual(result);
@@ -317,9 +319,9 @@ describe('Helpers tests', () => {
 
   describe('Test RNFS', () => {
     it('should create a new file', async () => {
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
-      RNFS.writeFile = jest.fn().mockImplementation((path, text, encoding) => Promise.resolve({}));
-      RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
+      (RNFS.exists as jest.Mock).mockResolvedValue(false);
+      (RNFS.writeFile as jest.Mock).mockResolvedValue({});
+      (RNFS.unlink as jest.Mock).mockResolvedValue(true);
 
       let file = await xlsxWriter();
       expect(RNFS.exists).toBeCalledTimes(1);
@@ -329,28 +331,28 @@ describe('Helpers tests', () => {
     });
 
     it('should throw an error if param for xlsxWriter is not an array of object', () => {
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
-      RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
+      (RNFS.exists as jest.Mock).mockResolvedValue(false);
+      (RNFS.unlink as jest.Mock).mockResolvedValue(true);
       // @ts-ignore
       expect(() => xlsxWriter({})).rejects.toThrowErrorMatchingInlineSnapshot(`"js.forEach is not a function"`);
       expect(RNFS.exists).toBeCalledTimes(1);
     });
 
     it('should replace an existing file ', async () => {
-      RNFS.writeFile = jest.fn().mockImplementation((path, text, encoding) => Promise.resolve({}));
-      RNFS.unlink = jest.fn().mockImplementation(() => Promise.resolve(true));
+      (RNFS.writeFile as jest.Mock).mockResolvedValue({});
+      (RNFS.unlink as jest.Mock).mockResolvedValue(true);
 
       // Create a first file
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
-      let file = await xlsxWriter(myDatas, 'utf-8', '/my/path', false);
+      (RNFS.exists as jest.Mock).mockResolvedValue(false);
+      let file = await xlsxWriter(myDatas, 'utf8', '/my/path', false);
       expect(RNFS.exists).toBeCalledTimes(1);
       expect(RNFS.unlink).not.toBeCalled();
       expect(RNFS.writeFile).toBeCalledTimes(1);
       expect(file).not.toBeUndefined();
 
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(true));
+      (RNFS.exists as jest.Mock).mockClear().mockResolvedValue(true);
       // Try to replace with another file with the same path
-      let newfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
+      let newfile = await xlsxWriter(myDatas, 'utf8', '/my/path');
       expect(RNFS.exists).toBeCalledTimes(1);
       expect(RNFS.unlink).toBeCalledTimes(1);
       expect(RNFS.writeFile).toBeCalledTimes(2);
@@ -358,21 +360,21 @@ describe('Helpers tests', () => {
     });
 
     it('should throw an error when writing a new file', async () => {
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(false));
-      RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Error unexpected' }));
+      (RNFS.exists as jest.Mock).mockResolvedValue(false);
+      (RNFS.writeFile as jest.Mock).mockRejectedValue({ error: 'Error unexpected' });
 
-      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path', false);
+      let errorfile = await xlsxWriter(myDatas, 'utf8', '/my/path', false);
       expect(consoleError).toHaveBeenCalledTimes(1);
       expect(errorfile).toBeUndefined();
     });
 
     it('should throw an error during unlink', async () => {
-      RNFS.exists = jest.fn().mockImplementation(() => Promise.resolve(true));
-      RNFS.unlink = jest.fn().mockImplementation(() => Promise.reject({ error: 'Error unexpected' }));
-      RNFS.writeFile = jest.fn().mockImplementation(() => Promise.reject({ error: 'Cannot write this file' }));
+      (RNFS.exists as jest.Mock).mockResolvedValue(true);
+      (RNFS.unlink as jest.Mock).mockRejectedValue({ error: 'Error unexpected' });
+      (RNFS.writeFile as jest.Mock).mockRejectedValue({ error: 'Cannot write this file' });
 
-      let errorfile = await xlsxWriter(myDatas, 'utf-8', '/my/path');
-      expect(consoleError).toHaveBeenCalledTimes(2);
+      let errorfile = await xlsxWriter(myDatas, 'utf8', '/my/path');
+      expect(consoleError).toHaveBeenCalledTimes(1);
       expect(errorfile).toBeUndefined();
     });
   });
@@ -428,7 +430,7 @@ const myRequests = [
     startTime: 1613477574742,
     status: 200,
     timeout: 0,
-    type: 'NR',
+    type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
   },
   {
@@ -454,7 +456,7 @@ const myRequests = [
     startTime: 1613477574742,
     status: 301,
     timeout: 0,
-    type: 'NR',
+    type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
   },
   {
@@ -480,7 +482,7 @@ const myRequests = [
     startTime: 1613477574742,
     status: 500,
     timeout: 0,
-    type: 'NR',
+    type: 'RNR',
     url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
   },
   {

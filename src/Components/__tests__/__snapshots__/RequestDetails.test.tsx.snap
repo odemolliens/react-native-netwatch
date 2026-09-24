@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Status test suite should render NRequest properly 1`] = `
+exports[`Status test suite should render failed request properly 1`] = `
 <View
   style={
     Object {

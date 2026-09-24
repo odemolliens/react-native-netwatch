@@ -1,4 +1,4 @@
-import RNFS from 'react-native-fs';
+import * as RNFS from '@dr.pogodin/react-native-fs';
 
 export const FILE_PATH = RNFS.DocumentDirectoryPath + '/Netwatch.mockResponses.35435664445664';
 

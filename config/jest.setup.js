@@ -37,10 +37,14 @@ jest.mock('react-native-paper', () => {
       Item: () => <></>,
     },
     Snackbar: () => <></>,
+    Title: () => <></>,
+    Divider: () => <></>,
+    TextInput: () => <></>,
     Text: () => <></>,
     Icon: () => <></>,
     Searchbar: () => <></>,
     ActivityIndicator: () => <></>,
+    MD3DarkTheme: {},
     Provider: ({ children }) => children,
   };
 });
@@ -48,7 +52,12 @@ jest.mock('react-native-paper', () => {
 jest.useFakeTimers();
 // jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 jest.mock('react-native/Libraries/Blob/FileReader', () => {});
-jest.mock('react-native-fs', () => {
+jest.mock(
+  'react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor',
+  () => ({ default: require('react-native/Libraries/Network/XHRInterceptor') }),
+  { virtual: true },
+);
+jest.mock('@dr.pogodin/react-native-fs', () => {
   return {
     mkdir: jest.fn(),
     moveFile: jest.fn(),
@@ -100,29 +109,9 @@ jest.mock('react-native-share', () => {
   };
 });
 
-jest.mock('react-native-vector-icons', () => {
-  return {
-    Icon: jest.mock(),
-    RNVectorIconsManager: jest.mock(),
-    createIconSetFromIcoMoon: jest.fn(),
-    createIconSet: jest.fn(),
-  };
-});
-
-jest.mock('react-native-vector-icons/Feather', () => 'Icon');
-jest.mock('react-native-vector-icons/Fontisto', () => 'Icon');
-
-jest.mock('react-native-device-info', () => {
-  return {
-    getBrand: jest.fn(),
-    getBaseOsSync: jest.fn(),
-    getSystemVersion: jest.fn(),
-    getApiLevelSync: jest.fn(),
-    getApplicationName: jest.fn(),
-    getVersion: jest.fn(),
-    getBuildNumber: jest.fn(),
-  };
-});
+jest.mock('@react-native-vector-icons/feather', () => 'Icon');
+jest.mock('@react-native-vector-icons/fontisto', () => 'Icon');
+jest.mock('@react-native-vector-icons/material-design-icons', () => 'Icon');
 
 jest.mock('@react-native-community/netinfo', () => ({
   isConnected: {

@@ -8,15 +8,13 @@
 
 # React Native Netwatch
 
-Network traffic logger for React Native. <br/>
-Includes an interface to see http traffic from RN and native side
+Network traffic logger for requests initiated from React Native JavaScript.
 
 ## Features
 
-- Log network requests coming from React Native side
-- Log network requests coming from the native side (iOS and Android) (optional)
+- Supports React Native's New Architecture (Fabric and TurboModules)
+- Log network requests coming from React Native JavaScript
 - Log Redux actions (optional)
-- Shake the device to display the tool
 - View details of each request/action
 - Generate and share the list of requests/actions in Excel (XLSX) file
 - Log connectivity change
@@ -34,23 +32,29 @@ Includes an interface to see http traffic from RN and native side
 
 ### Dependencies
 
-To avoid to have too much dependencies and conflict versions, before install, you must have these dependancies in your react-native project.
+Netwatch keeps native packages as peer dependencies so that the application owns a single autolinked copy. Install these packages in your React Native project:
 
-- react-native-paper
-- react-native-fs
-- react-native-share
-- @react-native-community/netinfo
-- react-native-launch-arguments
+- `@dr.pogodin/react-native-fs`
+- `@react-native-clipboard/clipboard`
+- `@react-native-community/netinfo`
+- `react-native-paper`
+- `react-native-safe-area-context`
+- `react-native-share`
+- `@react-native-vector-icons/feather`
+- `@react-native-vector-icons/fontisto`
+- `@react-native-vector-icons/material-design-icons`
 
 #### Fonts
 
-Netwatch has react-native-vector-icons as dependency. Be sure that you have these fonts installed in your project:
+Netwatch only uses these icon sets:
 
 - Fontisto
 - Feather
 - MaterialCommunityIcons
 
-Please refer to this page for more details: <a href='https://github.com/oblador/react-native-vector-icons#ios'>Install fonts react-native-vector-icons</a>
+The scoped icon packages autolink their native resources. Refer to the
+<a href='https://github.com/oblador/react-native-vector-icons/blob/master/MIGRATION.md'>React Native Vector Icons migration guide</a>
+when upgrading an application which used the former monolithic package.
 
 ### Installation
 
@@ -64,19 +68,22 @@ or
 npm install react-native-netwatch
 ```
 
-### iOS
+### New Architecture support
 
-Inside your project, go to ios directory and execute pod install
+Version 2 supports React Native's New Architecture and is validated with React Native 0.82, React 19, Fabric, TurboModules, and Hermes on Android and iOS. React Native 0.82 or newer is required because the current filesystem TurboModule uses Codegen APIs unavailable in older releases.
 
-```bash
-cd ios && pod install && ..
-```
+Netwatch itself no longer ships a custom native module, Codegen configuration, CocoaPod, or Android package. Its peer dependencies still use standard React Native autolinking.
 
-OR simply
+### Removed native sniffing and shake support
 
-```bash
-npx pod-install
-```
+Starting with version 2, Netwatch's request-capture layer is JavaScript-only:
+
+- only requests initiated from React Native JavaScript are tracked and displayed;
+- native Android and iOS requests are no longer intercepted;
+- the shake-to-open event has been removed;
+- the `interceptIOS` and `disableShake` props have been removed from the public API.
+
+There is no prop to re-enable shake handling or native request sniffing. Applications must control the UI with the `visible` and `onPressClose` props. Requests created directly by native Android or iOS code are outside Netwatch's scope and will not appear in the request list.
 
 ---
 
@@ -88,14 +95,9 @@ If you want add Network traffic in your project, just import 'react-native-netwa
 and add the Netwatch component in the most higher position in the tree of components.</br>
 For example, just after your store provider or your root component
 
-Now, when you will launch your application and shake the device, it will display automatically Netwatch.
-
 ### How to activate Netwatch
 
-You have two possibilities to activate Netwatch in your project. With a button from you app or by shaking your phone. If you want activate
-Netwatch with a button from your app, you **must** disable shake and instead pass the props onPressClose and visible.
-
-#### Active Netwatch by shaking your phone
+Control the `visible` prop from your application. For example, you can open Netwatch with a button:
 
 ```javascript
 
@@ -108,33 +110,8 @@ const App = () => {
     <Provider store={store}>
       <Netwatch
         enabled={true}
-        interceptIOS={true}
-      />
-      <AppNavigator />
-    </Provider>
-  );
-};
-
-export default App;
-```
-
-#### Active Netwatch with a button
-
-```javascript
-
-import { Netwatch } from 'react-native-netwatch';
-
-const App = () => {
-  const [netwatchVisible, setNetwatchVisible] = useState(false);
-
-  return (
-    <Provider store={store}>
-      <Netwatch
-        enabled={true}
-        interceptIOS={true}
         visible={netwatchVisible}
         onPressClose={() => setNetwatchVisible(false)}
-        disableShake
       />
         <TouchableHighlight
           style={styles.openButton}
@@ -177,39 +154,6 @@ export default store;
 
 Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/src/redux/store.ts#L23)
 
-### Using Netwatch to intercept and display native requests
-
-#### Android (optional)
-
-To be able to intercept requests from Android side and display them into Netwatch</br>
-You have to add to your OkHttp client Netwatch interceptor
-
-```java
-okHttpClient.addInterceptor(new NetwatchInterceptor(context));
-```
-
-Example in our demo application [here](https://github.com/odemolliens/react-native-netwatch/blob/5b6d19f40d7dc98cedb665172503fed93a8b0ae8/example/android/app/src/main/java/com/example/ExampleModule.java#L24)
-
-#### iOS (optional)
-
-Nothing to do on native side for the iOS.</br>
-You have just to set `interceptIOS` to true and it will intercept requests which use `URLProtocol` on native side and display them into Netwatch</br>
-
-- To intercept request sent with Alamofire
-
-```objective-c
-'Bridging-Header.h'
-
-#import <NetwatchInterceptor.h>
-```
-
-```swift
-let configuration = URLSessionConfiguration.default
-configuration.protocolClasses?.insert(NetwatchInterceptor.self, at: 0)
-let sessionManager = Alamofire.SessionManager(configuration: configuration)
-sessionManager.request(...)
-```
-
 ### Show stats
 
 You can have statistics and see how many requests are succeeded or failed. By default, the indicator is closed. If you want the percentage, just press the indactor to opened it. Press again to close.
@@ -245,7 +189,6 @@ const App = () => {
     <Provider store={store}>
       <Netwatch
         enabled={true}
-        interceptIOS={true}
         reduxConfig={reduxConfigExample}
       />
       <AppNavigator />
@@ -270,13 +213,13 @@ At this moment, it is not possible to display requests into Netwatch and Reactot
 
 ## Props
 
+> **Version 2 migration:** `disableShake` and `interceptIOS` no longer exist. Netwatch does not provide replacement props for shake handling or native request sniffing. Use `visible` to open or close Netwatch from your own UI.
+
 |    Params     |   Type   |  Default  | Mandatory ? | Description                                                  |
 | :-----------: | :------: | :-------: | :---------: | :----------------------------------------------------------- |
 |    enabled    | Boolean  |   true    |   **yes**   | Enabled/Disabled logger to intercept request and actions     |
 |    visible    | Boolean  |   false   |     no      | Show the main screen to display intercepted requests/actions |
 | onPressClose  | Function | undefined |     no      | Called when Close button is pressed in the Main screen       |
-| interceptIOS  | Boolean  |   false   |     no      | Intercept native iOS requests                                |
-| disableShake  | Boolean  |   false   |     no      | Set to true to disable shake feature to display Netwatch     |
 |  maxRequests  |  Number  |    100    |     no      | Maximum requests displayed                                   |
 |   showStats   | Boolean  |   true    |     no      | Show stats indicator                                         |
 |  reduxConfig  |  Object  |    {}     |     no      | Extra infos for Redux Action. Accept only string as vaulues  |
@@ -296,7 +239,7 @@ Netwatch UI provides a user-friendly way to create, export, and import mocks dir
 
 To create a mock:
 
-1. Open the Netwatch UI by shaking the device or triggering the configured gesture.
+1. Open the Netwatch UI with the control connected to its `visible` prop.
 2. Tap on any HTTP request in the list.
 3. Tap on the "Mock Request" button.
 4. Fill in the HTTP method, URL, status code, and response body fields. (leave blank to keep the original value)
@@ -364,10 +307,9 @@ To disable a mock:
 
 ## Using presets for fast Mocking
 
-Netwatch provides three ways to mock responses with presets using props: 
+Netwatch provides two ways to mock responses with presets using props:
 
 - via clipboard (`loadMockPresetFromClipboard`)
-- via input parameters (`loadMockPresetFromInputParameters`)
 - via the `mockPresets` prop.
 
 ### `mockPresets`
@@ -390,12 +332,6 @@ const mockResponses = [
 ### `loadMockPresetFromClipboard`
 
 Copy your mock response data to your clipboard in the correct format and set `loadMockPresetFromClipboard` to `true`.
-
-### `loadMockPresetFromInputParameters`
-
-Set `loadMockPresetFromInputParameters` to `true` and pass the mock data as the `mockPresets` prop.
-
-*Note: If both `loadMockPresetFromClipboard` and `loadMockPresetFromInputParameters` are `true`, the data from the clipboard will be used.*
 
 ## Advanced Mocking Examples
 
@@ -466,67 +402,3 @@ const mockResponses = [
 
 <Netwatch mockPresets={mockResponses} enabled={true} />;
 ```
-
-## Launching App with Netwatch Mocks using Appium
-
-You can integrate Netwatch with Appium to facilitate your automation testing.
-
-### iOS
-
-Use Appium's `mobile: launchApp` method to start your app with specified parameters:
-
-```javascript
-const mockResponses = [
-  {
-    method: 'GET',
-    url: '/api/v1/users',
-    status: 200,
-    body: { message: 'Success' }
-  }
-];
-
-driver.execute('mobile: launchApp', {
-  sessionId: driver.sessionId,
-  bundleId: driver.capabilities.bundleId,
-  arguments: ['-netwatchMocks', JSON.stringify(mockResponses)],
-});
-```
-
-Then in your React Native application, set `loadMockPresetFromInputParameters` to `true`:
-
-```jsx
-<Netwatch enabled={true} loadMockPresetFromInputParameters={true} />
-```
-
-### Android
-
-For Android, use Appium's `startActivity` method:
-
-```javascript
-const mockResponses = [
-  {
-    method: 'GET',
-    url: '/api/v1/users',
-    status: 200,
-    body: { message: 'Success' }
-  }
-];
-
-driver.startActivity(
-  driver.capabilities.appPackage,
-  driver.capabilities.appActivity,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-  `--es 'netwatchMocks' '${JSON.stringify(mockResponses)}'`
-);
-```
-
-Then in your React Native application, set `loadMockPresetFromInputParameters` to `true`:
-
-```jsx
-<Netwatch enabled={true} loadMockPresetFromInputParameters={true} />
-```
-

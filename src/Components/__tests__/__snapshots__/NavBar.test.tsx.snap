@@ -6,6 +6,8 @@ exports[`Test NabBar componsnet should render properly 1`] = `
     Array [
       Object {
         "elevation": 0,
+        "height": 60,
+        "paddingTop": 0,
         "shadowOffset": Object {
           "height": 0,
           "width": 0,
@@ -38,7 +40,7 @@ exports[`Test NabBar componsnet should render properly 1`] = `
   >
     <Icon
       color="#F9FAFB"
-      name="left"
+      name="arrow-left"
       size={24}
     />
   </ForwardRef>

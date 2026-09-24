@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useContext } from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { ThemeContext } from '../Theme';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from '@react-native-vector-icons/material-design-icons';
 
 export interface IProps {
   onPress: () => void;

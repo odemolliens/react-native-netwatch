@@ -15,13 +15,12 @@ export enum EnumStatus {
   Failed = 'FAILED',
 }
 
-export type LogType = 'REDUX' | 'RNR' | 'NR' | 'CONNECT';
-export type SourceType = 'ALL' | 'RNR' | 'NR' | 'REDUX';
+export type LogType = 'REDUX' | 'RNR' | 'CONNECT';
+export type SourceType = 'ALL' | 'RNR' | 'REDUX';
 
 export enum EnumSourceType {
   All = 'ALL',
   ReactNativeRequest = 'RNR',
-  Nativerequest = 'NR',
   Redux = 'REDUX',
   Connection = 'CONNECTION',
 }

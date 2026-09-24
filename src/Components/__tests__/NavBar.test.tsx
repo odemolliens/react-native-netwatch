@@ -7,13 +7,13 @@ describe('Test NabBar componsnet', () => {
   let component: ShallowWrapper;
 
   it('should render properly', () => {
-    component = shallow(<NavBar title={'title'} icon={'left'} onPressBack={() => jest.fn()} />);
+    component = shallow(<NavBar title={'title'} icon={'arrow-left'} onPressBack={() => jest.fn()} />);
     expect(component).toMatchSnapshot();
   });
 
   it('should go back when pressing left side', () => {
     const onPressBack = jest.fn();
-    component = shallow(<NavBar title={'title'} icon={'left'} onPressBack={onPressBack} />);
+    component = shallow(<NavBar title={'title'} icon={'arrow-left'} onPressBack={onPressBack} />);
     component.find(TouchableOpacity).simulate('press');
     expect(onPressBack).toHaveBeenCalled();
   });

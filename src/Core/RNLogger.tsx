@@ -1,8 +1,8 @@
 // @ts-ignore
-import XHRInterceptor from 'react-native/Libraries/Network/XHRInterceptor';
 import { RequestMethod, RNLoggerOptions } from '../types';
 import { RNRequest } from './Objects/RNRequest';
 import { getResponseBody, getRequestBody } from './Objects/RNRequest';
+import XHRInterceptor from './XHRInterceptorCompat';
 
 // readyState = 0 - Client has been created. open() not called yet.
 // readyState = 1 - open() has been called.

@@ -4,12 +4,11 @@ import { View, StyleSheet, Alert, TouchableOpacity, FlatList, Keyboard } from 'r
 import Share from 'react-native-share';
 import { Appbar, Searchbar, ActivityIndicator } from 'react-native-paper';
 import Item, { ITEM_HEIGHT } from './Item';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import FeatherIcon from '@react-native-vector-icons/feather';
 import { Settings } from './Settings';
 import { ILog, SourceType, RequestMethod, EnumSourceType, EnumFilterType, EnumStatus } from '../types';
 import RNRequest from '../Core/Objects/RNRequest';
 import ReduxAction from '../Core/Objects/ReduxAction';
-import NRequest from '../Core/Objects/NRequest';
 import ConnectionInfo from '../Core/Objects/ConnectionInfo';
 import { ThemeContext } from '../Theme';
 import { xlsxWriter, formatDatas, mergeArrays, compare, getStatus } from '../Utils/helpers';
@@ -22,7 +21,6 @@ export interface IProps {
   onPressDetail: (value: boolean) => void;
   reduxActions: ReduxAction[];
   rnRequests: RNRequest[];
-  nRequests: NRequest[];
   connections: ConnectionInfo[];
   clearAll: Function;
   maxRequests?: number;
@@ -60,7 +58,7 @@ export const Main = (props: IProps) => {
   };
 
   // This is the main useEffect. Every time props.rnRequests, props.reduxActions,
-  // props.nRequests, props.connections, source, filter or searchQuery are modified
+  // props.connections, source, filter or searchQuery are modified
   // the FlatList is updated. This update is made in three steps
   React.useEffect(() => {
     let _requests: ILog[] = [];
@@ -71,21 +69,19 @@ export const Main = (props: IProps) => {
       _requests = props.reduxActions;
     } else if (source === EnumSourceType.ReactNativeRequest) {
       _requests = props.rnRequests;
-    } else if (source === EnumSourceType.Nativerequest) {
-      _requests = props.nRequests.sort(compare).reverse();
     } else {
-      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.nRequests, props.connections)
+      _requests = mergeArrays(props.reduxActions, props.rnRequests, props.connections)
         .sort(compare)
         .reverse()
         .slice(0, props.maxRequests);
     }
 
     // 2. We get our temporary requests list from step 1.
-    // If needed, we applied the filter choosen. We do that only for a request (Native or not but a request)
+    // If needed, apply the filter only to React Native requests.
     let _filteredRequests: ILog[] = _requests;
     if (filter !== EnumFilterType.All) {
       _filteredRequests = _requests.filter((request: ILog) => {
-        return (request instanceof RNRequest || request instanceof NRequest) && filter === request.method;
+        return request instanceof RNRequest && filter === request.method;
       });
     }
 
@@ -95,7 +91,7 @@ export const Main = (props: IProps) => {
     let _searchedRequests: ILog[] = _filteredRequests;
     if (searchQuery !== '') {
       _searchedRequests = _filteredRequests.filter((request: ILog) => {
-        if (request instanceof RNRequest || request instanceof NRequest) {
+        if (request instanceof RNRequest) {
           return (
             request.url?.toLowerCase().includes(searchQuery.toLowerCase()) ||
             request.status === parseInt(searchQuery, 10) ||
@@ -111,7 +107,7 @@ export const Main = (props: IProps) => {
     }
 
     setRequests(_searchedRequests);
-  }, [props.rnRequests, props.reduxActions, props.nRequests, props.connections, source, filter, searchQuery]);
+  }, [props.rnRequests, props.reduxActions, props.connections, source, filter, searchQuery]);
 
   // Open the share panel if the button 'share' is pressed
   React.useEffect(() => {
@@ -129,7 +125,7 @@ export const Main = (props: IProps) => {
     let _failed: number = 0;
 
     requests.map(item => {
-      if (item instanceof RNRequest || item instanceof NRequest) {
+      if (item instanceof RNRequest) {
         switch (getStatus(item.status)) {
           case EnumStatus.Success:
             _success++;

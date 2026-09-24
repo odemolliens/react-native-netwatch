@@ -13,7 +13,6 @@ exports[`Status test suite should render properly redux action 1`] = `
   testID="buttonCopyToClipboard"
 >
   <Icon
-    allowFontScaling={false}
     color="#06B6D4"
     name="clipboard-arrow-left-outline"
     size={14}

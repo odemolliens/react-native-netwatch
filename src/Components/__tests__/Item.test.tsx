@@ -3,7 +3,6 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { Item, IProps } from '../Item';
 import { ReduxAction } from '../../Core/Objects/ReduxAction';
 import { RNRequest } from '../../Core/Objects/RNRequest';
-import { NRequest } from '../../Core/Objects/NRequest';
 import { ConnectionInfo } from '../../Core/Objects/ConnectionInfo';
 
 describe('Item test suite', () => {
@@ -13,12 +12,6 @@ describe('Item test suite', () => {
 
   it('should render Request properly', () => {
     givenProps(mockRequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-  });
-
-  it('should render Native Request properly', () => {
-    givenProps(mockNativeRequest);
     givenComponent();
     expect(component).toMatchSnapshot();
   });
@@ -108,24 +101,6 @@ describe('Item test suite', () => {
   });
 
   const mockRequest: RNRequest = new RNRequest({
-    _id: 73,
-    dataSent: 'dataSent',
-    endTime: 1613477575757,
-    method: 'GET',
-    readyState: 4,
-    response: 'response',
-    responseContentType: 'application/json',
-    responseSize: 0,
-    responseType: 'blob',
-    responseURL: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-    startTime: 1613477574742,
-    status: 200,
-    timeout: 0,
-    type: 'NR',
-    url: 'https://run.mocky.io/v3/1a2d092a-42b2-4a89-a44f-267935dc13e9',
-  });
-
-  const mockNativeRequest: NRequest = new NRequest({
     _id: 73,
     dataSent: 'dataSent',
     endTime: 1613477575757,

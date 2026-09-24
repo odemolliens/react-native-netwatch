@@ -27,6 +27,7 @@ project.xcworkspace
 build/
 .idea
 .gradle
+.cxx/
 local.properties
 *.iml
 *.hprof
@@ -63,3 +64,4 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/ios/.xcode.env.local

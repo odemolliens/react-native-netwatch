@@ -1,43 +1,18 @@
 import { EnumStatus, ILog } from '../types';
-import RNFS from 'react-native-fs';
-import {
-  getDeviceId,
-  getSystemVersion,
-  getApiLevelSync,
-  getApplicationName,
-  getVersion,
-  getBuildNumber,
-} from 'react-native-device-info';
+import * as RNFS from '@dr.pogodin/react-native-fs';
+import { Platform } from 'react-native';
 import XLSX from 'xlsx';
-import { NRequest } from '../Core/Objects/NRequest';
 import { RNRequest } from '../Core/Objects/RNRequest';
 
 interface IDeviceInfo {
-  brand: string;
+  platform: string;
   systemVersion: string;
-  apiLevel: number;
-  appName: string;
-  appVersion: string;
-  appBuild: string;
 }
 
-const _getDeviceInfo = (): IDeviceInfo => {
-  const _brand = getDeviceId();
-  const _systemVersion = getSystemVersion();
-  const _apiLevel = getApiLevelSync();
-  const _appName = getApplicationName();
-  const _appVersion = getVersion();
-  const _appBuild = getBuildNumber();
-
-  return {
-    brand: _brand,
-    systemVersion: _systemVersion,
-    apiLevel: _apiLevel,
-    appName: _appName,
-    appVersion: _appVersion,
-    appBuild: _appBuild,
-  };
-};
+const _getDeviceInfo = (): IDeviceInfo => ({
+  platform: Platform.OS,
+  systemVersion: String(Platform.Version),
+});
 
 export const getTime = (date: number | string): string => {
   // iOS need a string, Android need a number
@@ -76,7 +51,12 @@ export const addEllipsis = (value: string): string =>
 
 const _path = RNFS.DocumentDirectoryPath + '/export' + '.xlsx';
 // write the file
-export const xlsxWriter = async (text = [], encoding = 'ascii', path = _path, showDeviceInfo: boolean = true) => {
+export const xlsxWriter = async (
+  text = [],
+  encoding: RNFS.EncodingT = 'ascii',
+  path = _path,
+  showDeviceInfo: boolean = true,
+) => {
   if (await RNFS.exists(path)) {
     await deleteFile(path);
   }
@@ -94,7 +74,7 @@ export const xlsxWriter = async (text = [], encoding = 'ascii', path = _path, sh
       const deviceInfos = XLSX.utils.json_to_sheet(_temp);
       XLSX.utils.book_append_sheet(wb, deviceInfos, 'device_infos');
     } catch (error) {
-      console.error(error.message);
+      console.error((error as Error).message);
     }
   }
   // Write the file
@@ -163,8 +143,7 @@ export const formatDatas = (array: any): [] => {
       .map(value => {
         try {
           if (value[0] === 'type') {
-            if (value[1] !== 'NR' && value[1] !== 'RNR') _temp[value[0]] = value[1];
-            if (value[1] === 'NR') _temp[value[0]] = 'NATIVE REQUEST';
+            if (value[1] !== 'RNR') _temp[value[0]] = value[1];
             if (value[1] === 'RNR') _temp[value[0]] = 'REACT NATIVE REQUEST';
           } else if (
             (value[0] === 'startTime' || value[0] === 'endTime') &&
@@ -206,12 +185,12 @@ export const compare = (a: ILog, b: ILog) => {
   return comparison;
 };
 
-export const getGeneralElementsAsArray = (item: NRequest | RNRequest) => (item && Object.entries(item)) || [];
+export const getGeneralElementsAsArray = (item: RNRequest) => (item && Object.entries(item)) || [];
 
-export const getRequestHeadersElementsAsArray = (item: NRequest | RNRequest) =>
+export const getRequestHeadersElementsAsArray = (item: RNRequest) =>
   (item?.requestHeaders && Object.entries(item.requestHeaders)) || [];
 
-export const getResponseHeadersElementsAsArray = (item: NRequest | RNRequest) =>
+export const getResponseHeadersElementsAsArray = (item: RNRequest) =>
   (item?.responseHeaders && Object.entries(item.responseHeaders)) || [];
 
 export const stringifyData = (array: Array<string[]>): string => {

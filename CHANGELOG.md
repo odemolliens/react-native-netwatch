@@ -1,4 +1,22 @@
-# Changelog (Current version: 1.2.8)
+# Changelog
+
+### 2.0.0
+
+New Architecture support and breaking changes:
+
+- Add support for React Native's New Architecture; validated with React Native 0.82, React 19, Fabric, TurboModules, and Hermes on Android and iOS
+- Remove native Android and iOS request interception; Netwatch now tracks React Native JavaScript requests only
+- Remove the shake-to-open event and the `disableShake` prop; there is no replacement prop, so applications must control Netwatch with `visible`
+- Remove the `interceptIOS` prop; native Android and iOS requests can no longer be enabled or sniffed through props
+- Remove the native module, Codegen configuration, CocoaPod, Android package, and native example code
+- Remove the Native Requests source and model from the UI
+- Remove the example's direct OkHttp dependencies and obsolete Flipper setup
+- Remove `react-native-launch-arguments` and the `loadMockPresetFromInputParameters` prop
+- Remove `react-native-device-info`; exports now use React Native platform information
+- Replace `react-native-fs` with the New Architecture-compatible `@dr.pogodin/react-native-fs`
+- Move native packages to constrained peer dependencies and update NetInfo, Paper, Share, Clipboard, and Safe Area Context
+- Replace the legacy monolithic `react-native-vector-icons` package with the three scoped icon packages Netwatch uses
+- Fix [CVE-2023-30533](https://nvd.nist.gov/vuln/detail/CVE-2023-30533), reported in [issue #223](https://github.com/odemolliens/react-native-netwatch/issues/223), by upgrading SheetJS `xlsx` from the vulnerable npm release to version 0.20.3 from the official SheetJS CDN
 
 ### Version 1.2.8
 

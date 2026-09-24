@@ -3,11 +3,10 @@ import { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
 import ReduxAction from '../Core/Objects/ReduxAction';
 import RNRequest from '../Core/Objects/RNRequest';
-import NRequest from '../Core/Objects/NRequest';
 import { getStatus } from '../Utils/helpers';
 import { ThemeContext } from '../Theme';
 import { EnumStatus } from '../types';
-import Fontisto from 'react-native-vector-icons/Fontisto';
+import Fontisto from '@react-native-vector-icons/fontisto';
 import { Text } from '../Components/Text';
 import { ILog } from '../types';
 
@@ -52,7 +51,7 @@ export const Status: React.FC<IProps> = (props: IProps) => {
   if (props.item instanceof ReduxAction) {
     _color = theme.reduxColor;
     _line1 = 'REDUX';
-  } else if (props.item instanceof NRequest || props.item instanceof RNRequest) {
+  } else if (props.item instanceof RNRequest) {
     const _temp = getStatus(props.item.status);
     if (_temp === EnumStatus.Success) _color = theme.successColor;
     if (_temp === EnumStatus.Warning) _color = theme.warningColor;

@@ -71,19 +71,6 @@ export const Settings = (props: IProps) => {
               color={theme.primaryColor}
               uncheckedColor={theme.primaryColor}
             />
-
-            <RadioButton.Item
-              value={EnumSourceType.Nativerequest}
-              status={checkedSource === EnumSourceType.Nativerequest ? 'checked' : 'unchecked'}
-              onPress={() => setCheckedSource(EnumSourceType.Nativerequest)}
-              testID={'RadioNR'}
-              label="Native Requests"
-              labelStyle={[styles.radioButtonLabel, { color: theme.textColorOne }]}
-              mode="android"
-              style={styles.radioButton}
-              color={theme.primaryColor}
-              uncheckedColor={theme.primaryColor}
-            />
           </RadioButton.Group>
 
           {!disabledFilter && (

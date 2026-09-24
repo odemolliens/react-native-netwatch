@@ -4,10 +4,10 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { clearMockResponses, getMockResponses, resetMockResponses } from '../utils';
 import { Button, TouchableOpacity } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
-import RNFS from 'react-native-fs';
+import * as RNFS from '@dr.pogodin/react-native-fs';
 import Share from 'react-native-share';
 
-jest.mock('react-native-fs', () => ({
+jest.mock('@dr.pogodin/react-native-fs', () => ({
   copyFile: jest.fn(),
   unlink: jest.fn(),
 }));

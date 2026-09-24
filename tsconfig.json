@@ -18,11 +18,11 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
     "typeRoots": ["./node_modules/@types"],                       /* List of folders to include type definitions from. */
   },
   "include": [
     "src/**/*",
-    "declarations.d.ts",
     "libs.d.ts",
     "react-native.config.js"
   ],

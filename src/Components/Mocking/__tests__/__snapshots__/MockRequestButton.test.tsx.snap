@@ -13,7 +13,6 @@ exports[`Test MockRequestButton should render properly 1`] = `
   testID="buttonMockRequest"
 >
   <Icon
-    allowFontScaling={false}
     color="#06B6D4"
     name="clipboard-arrow-left-outline"
     size={14}

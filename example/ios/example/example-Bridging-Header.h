@@ -6,5 +6,3 @@
 #import <React/RCTRootView.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTBridgeModule.h>
-
-#import <NetwatchInterceptor.h>

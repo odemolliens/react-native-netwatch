@@ -7,9 +7,9 @@ import {
   resetMockResponses,
   setupMocks,
 } from '../utils';
-import RNFS from 'react-native-fs';
+import * as RNFS from '@dr.pogodin/react-native-fs';
 
-jest.mock('react-native-fs', () => ({
+jest.mock('@dr.pogodin/react-native-fs', () => ({
   writeFile: jest.fn(),
   unlink: jest.fn(),
   readFile: jest.fn(),

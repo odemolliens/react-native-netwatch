@@ -25,7 +25,6 @@ exports[`Status test suite should render properly redux action 1`] = `
     View more
   </Text>
   <Icon
-    allowFontScaling={false}
     color="#06B6D4"
     name="more"
     size={14}

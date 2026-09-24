@@ -1,4 +1,4 @@
 import { appActionEpic } from './appEpic';
-import { combineEpics, Epic } from 'redux-observable';
+import { combineEpics } from 'redux-observable';
 
-export const rootEpic: Epic = combineEpics(appActionEpic);
+export const rootEpic: import('redux-observable').Epic<any, any, any, any> = combineEpics(appActionEpic);

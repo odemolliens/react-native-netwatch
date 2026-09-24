@@ -1,5 +1,5 @@
 import { ILog, LogType } from '../../types';
-import { NetInfoState } from '@react-native-community/netinfo/src/internal/types';
+import { NetInfoState } from '@react-native-community/netinfo';
 
 export class ConnectionInfo implements ILog {
   _id: number = -1;

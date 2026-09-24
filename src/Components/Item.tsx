@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { RNRequest } from '../Core/Objects/RNRequest';
-import { NRequest } from '../Core/Objects/NRequest';
 import { ReduxAction } from '../Core/Objects/ReduxAction';
 import { ConnectionInfo } from '../Core/Objects/ConnectionInfo';
 import { Status } from './Status';
@@ -33,10 +32,7 @@ export const Item: React.FC<IProps> = (props: IProps) => {
     _line1 = `connection type : ${props.item.connection?.type}`;
     _line2 = props.item.connection?.isConnected ? 'You are connected' : 'You are disconnected';
   } else {
-    if (
-      (props.item instanceof RNRequest || props.item instanceof NRequest) &&
-      (props.item.url || props.item.shortUrl)
-    ) {
+    if (props.item instanceof RNRequest && (props.item.url || props.item.shortUrl)) {
       const urlObject = props.item.shortUrl ? url.parse(props.item.shortUrl) : url.parse(props.item.url);
       _line1 = (urlObject.host !== null && urlObject?.host) || '';
       _line2 = (urlObject.path !== null && urlObject?.path) || '';

@@ -1,4 +1,3 @@
-import { AnyAction } from 'redux';
 import { APP_ACTION_FAILURE, APP_ACTION_REQUEST, APP_ACTION_SUCCESS } from '../actions/appActions.types';
 
 interface IResponse {
@@ -21,7 +20,7 @@ export const defaultState: IAppState = {
   isSuccess: false,
 };
 
-export default function (state = defaultState, action: AnyAction) {
+export default function (state = defaultState, action: import('redux').AnyAction) {
   switch (action.type) {
     case APP_ACTION_REQUEST:
       return {

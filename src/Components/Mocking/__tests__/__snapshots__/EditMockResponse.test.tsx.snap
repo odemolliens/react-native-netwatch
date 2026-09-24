@@ -99,7 +99,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
           value={true}
         />
       </View>
-      <Component
+      <TextInput
         label="URL"
         mode="flat"
         onChangeText={
@@ -124,7 +124,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
         }
         value="https://www.google.com"
       />
-      <Component
+      <TextInput
         keyboardType="numeric"
         label="Response Code"
         mode="flat"
@@ -150,7 +150,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
         }
         value={0}
       />
-      <Component
+      <TextInput
         keyboardType="numeric"
         label="Timeout value"
         mode="flat"
@@ -176,7 +176,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
         }
         value={0}
       />
-      <Component
+      <TextInput
         label="Response Method"
         mode="flat"
         onChangeText={
@@ -201,7 +201,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
         }
         value="GET"
       />
-      <Component
+      <TextInput
         label="Headers"
         mode="flat"
         multiline={true}
@@ -232,7 +232,7 @@ exports[`Test Edit Mock Response Screen should render properly 1`] = `
         }
         value=""
       />
-      <Component
+      <TextInput
         label="Body"
         mode="flat"
         multiline={true}
@@ -367,7 +367,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
           value={true}
         />
       </View>
-      <Component
+      <TextInput
         label="URL"
         mode="flat"
         onChangeText={
@@ -392,7 +392,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
         }
         value="https://www.google.com"
       />
-      <Component
+      <TextInput
         keyboardType="numeric"
         label="Response Code"
         mode="flat"
@@ -418,7 +418,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
         }
         value={0}
       />
-      <Component
+      <TextInput
         keyboardType="numeric"
         label="Timeout value"
         mode="flat"
@@ -444,7 +444,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
         }
         value={0}
       />
-      <Component
+      <TextInput
         label="Response Method"
         mode="flat"
         onChangeText={
@@ -469,7 +469,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
         }
         value="GET"
       />
-      <Component
+      <TextInput
         label="Headers"
         mode="flat"
         multiline={true}
@@ -500,7 +500,7 @@ exports[`Test Edit Mock Response Screen should render properly when updating moc
         }
         value=""
       />
-      <Component
+      <TextInput
         label="Body"
         mode="flat"
         multiline={true}

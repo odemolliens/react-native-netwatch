@@ -63,23 +63,10 @@ describe('Settings test suite', () => {
     expect(setCheckedSource).toHaveBeenCalledWith(EnumSourceType.ReactNativeRequest);
   });
 
-  it('should render properly and native request source radio pressed', () => {
-    const useStateMock: any = (source: any) => [source, setCheckedSource];
-    jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest);
-    givenComponent();
-    expect(component).toMatchSnapshot();
-
-    whenPressingButton('RadioNR');
-    expect(component.find(`[testID="RadioNR"]`).prop('value')).toBe(EnumSourceType.Nativerequest);
-    expect(setCheckedSource).toHaveBeenCalledTimes(1);
-    expect(setCheckedSource).toHaveBeenCalledWith(EnumSourceType.Nativerequest);
-  });
-
   it('should render properly and all filter radio pressed', () => {
     const useStateMock: any = (source: any) => [source, setCheckedFilter];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Get);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.Get);
     givenComponent();
     const RadioButtonFilter = component.find(RadioButton.Group).last();
     expect(component).toMatchSnapshot();
@@ -96,7 +83,7 @@ describe('Settings test suite', () => {
   it('should render properly and GET filter radio pressed', () => {
     const useStateMock: any = (source: any) => [source, setCheckedFilter];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.All);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.All);
     givenComponent();
     expect(component).toMatchSnapshot();
 
@@ -109,7 +96,7 @@ describe('Settings test suite', () => {
   it('should render properly and POST filter radio pressed', () => {
     const useStateMock: any = (source: any) => [source, setCheckedFilter];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Delete);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.Delete);
     givenComponent();
     expect(component).toMatchSnapshot();
 
@@ -122,7 +109,7 @@ describe('Settings test suite', () => {
   it('should render properly and PUT filter radio pressed', () => {
     const useStateMock: any = (source: any) => [source, setCheckedFilter];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Post);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.Post);
     givenComponent();
     expect(component).toMatchSnapshot();
 
@@ -135,7 +122,7 @@ describe('Settings test suite', () => {
   it('should render properly and DELETE filter radio pressed', () => {
     const useStateMock: any = (source: any) => [source, setCheckedFilter];
     jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Put);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.Put);
     givenComponent();
     expect(component).toMatchSnapshot();
 
@@ -146,7 +133,7 @@ describe('Settings test suite', () => {
   });
 
   it('should render properly and reset button pressed', () => {
-    givenProps(EnumSourceType.Nativerequest, EnumFilterType.Put);
+    givenProps(EnumSourceType.ReactNativeRequest, EnumFilterType.Put);
     givenComponent();
     expect(component).toMatchSnapshot();
     whenPressingButton('ResetButton');

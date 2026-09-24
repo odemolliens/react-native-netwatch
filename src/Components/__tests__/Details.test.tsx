@@ -2,7 +2,6 @@ import * as React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { Details, IProps } from '../Details';
 import { RNRequest } from '../../Core/Objects/RNRequest';
-import { NRequest } from '../../Core/Objects/NRequest';
 import { ReduxAction } from '../../Core/Objects/ReduxAction';
 import Share from 'react-native-share';
 import ActionDetails from '../ActionDetails';
@@ -58,14 +57,14 @@ describe('Details test suite', () => {
 
   describe('Test Request item', () => {
     it('should share requests', () => {
-      givenProps(mockNRequestWithLongBody);
+      givenProps(mockRequestWithLongBody);
       givenComponent();
       component.find(`[testID="buttonShare"]`).simulate('press');
       expect(Share.open).toHaveBeenCalledTimes(1);
     });
 
     it('should render properly with request & press backbutton', () => {
-      givenProps(mockNRequestWithLongBody);
+      givenProps(mockRequestWithLongBody);
       givenComponent();
       expect(component).toMatchSnapshot();
       whenPressingButton('buttonBackToMainScreen');
@@ -120,7 +119,7 @@ describe('Details test suite', () => {
     it('should called setShowJSONRequestDetails', () => {
       const useStateMock: any = (showJSONRequestDetails: any) => [showJSONRequestDetails, setShowJSONRequestDetails];
       jest.spyOn(React, 'useState').mockImplementation(useStateMock);
-      givenProps(mockNRequestWithLongBody);
+      givenProps(mockRequestWithLongBody);
       givenComponent();
       component.find(RequestDetails).invoke('onPressViewMoreRequest')(true);
       expect(setShowJSONRequestDetails).toHaveBeenCalledTimes(1);
@@ -170,7 +169,7 @@ describe('Details test suite', () => {
     },
   });
 
-  const mockNRequestWithLongBody: NRequest = new NRequest({
+  const mockRequestWithLongBody: RNRequest = new RNRequest({
     _id: 75,
     dataSent: JSON.stringify({
       data: 'This is a test with a long body, more than 100',
