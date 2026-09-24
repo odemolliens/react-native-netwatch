@@ -1,21 +1,51 @@
-const modernInterceptorPath = 'react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor';
+import { resolveFirstAvailableModule } from '../resolveFirstAvailableModule';
 
-describe('XHRInterceptorCompat', () => {
-  beforeEach(() => {
-    jest.resetModules();
+describe('resolveFirstAvailableModule', () => {
+  it('returns the default export of the first available module', () => {
+    const expectedModule = { enableInterception: jest.fn() };
+    const fallbackLoader = jest.fn();
+
+    const resolvedModule = resolveFirstAvailableModule(
+      [() => ({ default: expectedModule }), fallbackLoader],
+      'Module not available',
+    );
+
+    expect(resolvedModule).toBe(expectedModule);
+    expect(fallbackLoader).not.toHaveBeenCalled();
   });
 
-  afterEach(() => {
-    jest.dontMock(modernInterceptorPath);
+  it('supports modules without a default export', () => {
+    const expectedModule = { enableInterception: jest.fn() };
+
+    expect(resolveFirstAvailableModule([() => expectedModule], 'Module not available')).toBe(expectedModule);
   });
 
-  it('loads the interceptor from recent React Native versions', () => {
-    const interceptor = { enableInterception: jest.fn() };
-    jest.doMock(modernInterceptorPath, () => ({ default: interceptor }), { virtual: true });
+  it('uses the next loader when a module is unavailable', () => {
+    const expectedModule = { enableInterception: jest.fn() };
 
-    jest.isolateModules(() => {
-      expect(require('../XHRInterceptorCompat').default).toBe(interceptor);
-    });
+    const resolvedModule = resolveFirstAvailableModule(
+      [
+        () => {
+          throw new Error('Unavailable');
+        },
+        () => expectedModule,
+      ],
+      'Module not available',
+    );
+
+    expect(resolvedModule).toBe(expectedModule);
   });
 
+  it('throws the provided error when no module is available', () => {
+    expect(() =>
+      resolveFirstAvailableModule(
+        [
+          () => {
+            throw new Error('Unavailable');
+          },
+        ],
+        'Module not available',
+      ),
+    ).toThrow('Module not available');
+  });
 });

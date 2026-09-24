@@ -1,25 +1,12 @@
-// XHRInterceptorCompat.ts
+import { resolveFirstAvailableModule } from './resolveFirstAvailableModule';
 
-let XHRInterceptor: any;
-
-try {
-  const module = require(
-    'react-native/src/private/inspector/XHRInterceptor'
-  );
-
-  XHRInterceptor = module.default ?? module;
-} catch {
-  try {
-    const module = require(
-      'react-native/Libraries/Network/XHRInterceptor'
-    );
-
-    XHRInterceptor = module.default ?? module;
-  } catch {
-    throw new Error(
-      '[react-native-netwatch] XHRInterceptor is not available for this React Native version'
-    );
-  }
-}
+const XHRInterceptor = resolveFirstAvailableModule<any>(
+  [
+    () => require('react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor'),
+    () => require('react-native/src/private/inspector/XHRInterceptor'),
+    () => require('react-native/Libraries/Network/XHRInterceptor'),
+  ],
+  '[react-native-netwatch] XHRInterceptor is not available for this React Native version',
+);
 
 export default XHRInterceptor;

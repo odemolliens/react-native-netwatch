@@ -52,11 +52,6 @@ jest.mock('react-native-paper', () => {
 jest.useFakeTimers();
 // jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 jest.mock('react-native/Libraries/Blob/FileReader', () => {});
-jest.mock(
-  'react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor',
-  () => ({ default: require('react-native/Libraries/Network/XHRInterceptor') }),
-  { virtual: true },
-);
 jest.mock('@dr.pogodin/react-native-fs', () => {
   return {
     mkdir: jest.fn(),
